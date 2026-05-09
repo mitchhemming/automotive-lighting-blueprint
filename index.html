@@ -201,28 +201,46 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .pq .at { font-size: 13px; color: var(--gold); margin-top: 12px; font-style: normal; font-weight: 600; display: block; }
 @media (min-width: 768px) { .aimg { width: 104px; height: 104px; } .pq p { font-size: 22px; } .brands-list { font-size: 18px; } }
 
-/* ── BEFORE / AFTER ─────────────────────────── */
-.ba-wrap { background: var(--s1); padding: 60px 0; }
-@media (min-width: 768px) { .ba-wrap { padding: 96px 0; } }
-.ba-head { text-align: center; padding: 0 24px 30px; }
-.ba-head h2 { margin-bottom: 14px; }
-.ba-head p { color: var(--w80); max-width: 560px; margin: 0 auto; }
-.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-.ba-item { position: relative; }
-.ba-item img { width: 100%; height: 320px; object-fit: cover; display: block; }
-@media (min-width: 768px) { .ba-item img { height: 480px; } }
-.ba-ov { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 16px; }
-.tag { font-family: var(--fh); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 6px 12px; border-radius: 2px; }
-.tag.b { background: rgba(19,19,19,.85); color: var(--w50); }
-.tag.a { background: var(--gold); color: var(--bg); }
-.ba-cap {
-  text-align: center; font-family: var(--fh);
-  font-size: clamp(20px, 5.6vw, 22px); font-weight: 700;
-  letter-spacing: .04em; text-transform: uppercase;
-  color: var(--w); padding: 30px 24px 0; line-height: 1.2;
+/* ── TRANSFORMATION (3-stage) ───────────────── */
+.transform { background: var(--s1); }
+.transform .head { text-align: center; margin-bottom: 48px; }
+.transform .head h2 { margin-bottom: 14px; }
+.transform .head p { color: var(--w80); max-width: 540px; margin: 0 auto; }
+
+.stages { display: flex; flex-direction: column; gap: 56px; }
+@media (min-width: 768px) { .stages { gap: 80px; } }
+
+.stage-label {
+  font-family: var(--fh); font-size: 11px; font-weight: 600;
+  letter-spacing: .22em; color: var(--gold); text-transform: uppercase;
+  margin-bottom: 12px; display: block;
 }
-.ba-cap span { color: var(--gold); }
-@media (min-width: 768px) { .ba-cap { font-size: 30px; padding-top: 40px; } }
+.stage h3 {
+  font-family: var(--fh); font-weight: 900;
+  font-size: clamp(28px, 8vw, 36px);
+  text-transform: uppercase; letter-spacing: .02em;
+  line-height: .95; color: var(--w);
+  margin-bottom: 22px;
+}
+.stage h3 .gc { color: var(--gold); }
+.stage-img {
+  width: 100%; margin-bottom: 22px;
+  border-radius: 4px; overflow: hidden;
+  position: relative;
+}
+.stage-img img {
+  width: 100%; height: 280px; object-fit: cover; display: block;
+}
+.stage-num-badge {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--gold); color: var(--bg);
+  font-family: var(--fh); font-size: 11px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 2px;
+}
+@media (min-width: 768px) { .stage-img img { height: 480px; } }
+.stage p { font-size: clamp(15px, 4.2vw, 17px); color: var(--w80); line-height: 1.65; }
+.stage p strong { color: var(--w); font-weight: 600; }
 
 /* ── METHOD PULL ────────────────────────────── */
 .mpull { background: var(--gold); }
@@ -443,25 +461,53 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ PROOF ═══════════════ -->
-<div class="ba-wrap reveal">
-  <div class="ba-head">
-    <span class="eye">The difference</span>
-    <h2>Same car.<br><span class="gc">Different result.</span></h2>
-    <p>Most automotive photos look identical. Same golden hour. Same angles. Same edits. Controlled lighting changes everything.</p>
-  </div>
-  <div class="ba-grid">
-    <div class="ba-item">
-      <img src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?w=800&q=85&auto=format" alt="Natural light">
-      <div class="ba-ov"><div class="tag b">Natural Light</div></div>
+<!-- ═══════════════ TRANSFORMATION (3-stage) ═══════════════ -->
+<section class="transform pad reveal">
+  <div class="c">
+    <div class="head">
+      <span class="eye">The transformation</span>
+      <h2>From basic shot.<br><span class="gc">To brand-worthy.</span></h2>
+      <p>Same photographer. Same car. Three stages that change everything.</p>
     </div>
-    <div class="ba-item">
-      <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=85&auto=format" alt="Controlled lighting">
-      <div class="ba-ov"><div class="tag a">Controlled Light</div></div>
+
+    <div class="stages">
+
+      <!-- Stage 01 -->
+      <div class="stage">
+        <span class="stage-label">Stage 01 · Invisible</span>
+        <h3>The natural light shot.</h3>
+        <div class="stage-img">
+          <span class="stage-num-badge">01</span>
+          <img src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?w=1000&q=85&auto=format" alt="Stage 01 placeholder">
+        </div>
+        <p>Golden hour. Decent angle. A clean edit. It looks like every other car photo posted today. <strong>Where most photographers stop. And where premium brands keep scrolling.</strong></p>
+      </div>
+
+      <!-- Stage 02 -->
+      <div class="stage">
+        <span class="stage-label">Stage 02 · The unlock</span>
+        <h3>Controlled lighting<br><span class="gc">changes everything.</span></h3>
+        <div class="stage-img">
+          <span class="stage-num-badge">02</span>
+          <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1000&q=85&auto=format" alt="Stage 02 placeholder">
+        </div>
+        <p>Same car. Different photo entirely. Mood. Drama. A premium feel that makes the image look intentional, not lucky. <strong>This is the moment work starts looking like it belongs in a brand campaign.</strong></p>
+      </div>
+
+      <!-- Stage 03 -->
+      <div class="stage">
+        <span class="stage-label">Stage 03 · In demand</span>
+        <h3>Brands notice.<br><span class="gc">Brands hire.</span></h3>
+        <div class="stage-img">
+          <span class="stage-num-badge">03</span>
+          <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1000&q=85&auto=format" alt="Stage 03 placeholder">
+        </div>
+        <p>This is the work that lands premium shoots, magazine features, and paid jobs. Not because of luck or timing. <strong>Because the system produces images at this level, every time you pick up the camera.</strong></p>
+      </div>
+
     </div>
   </div>
-  <p class="ba-cap">Same photographer. <span>Different ceiling.</span></p>
-</div>
+</section>
 
 <!-- ═══════════════ SOLUTION ═══════════════ -->
 <div class="mpull pad reveal">
