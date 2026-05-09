@@ -11,8 +11,9 @@
 /* ── TOKENS ─────────────────────────────────── */
 :root {
   --bg:    #131313;
-  --s1:    #1E1E1E;
-  --s2:    #2A2A2A;
+  --s1:    #1F1F1F;
+  --s2:    #2C2C2C;
+  --s3:    #3A3A3A;
   --line:  #383838;
   --w:     #FFFFFF;
   --w80:   rgba(255,255,255,0.85);
@@ -33,199 +34,154 @@ a { text-decoration: none; color: inherit; }
 .c { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 @media (min-width: 768px) { .c { padding: 0 40px; } }
 
-.pad    { padding-top: 56px; padding-bottom: 56px; }
+.pad { padding-top: 60px; padding-bottom: 60px; }
 .pad-sm { padding-top: 36px; padding-bottom: 36px; }
 @media (min-width: 768px) {
-  .pad    { padding-top: 80px; padding-bottom: 80px; }
-  .pad-sm { padding-top: 52px; padding-bottom: 52px; }
+  .pad { padding-top: 96px; padding-bottom: 96px; }
+  .pad-sm { padding-top: 56px; padding-bottom: 56px; }
 }
 
-/* ── STICKY BAR ─────────────────────────────── */
-.bar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(19,19,19,0.97);
-  border-bottom: 1px solid var(--line);
-  height: 52px;
-}
-.bar .c { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+/* ── TOP HEADER (non-sticky, scrolls away) ──── */
+.top-header { padding: 14px 0; border-bottom: 1px solid var(--line); }
 .logo { display: flex; align-items: center; gap: 9px; }
-.mark {
-  width: 32px; height: 32px; border-radius: 6px;
-  background: var(--gold);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--fh); font-size: 12px; font-weight: 900;
-  color: var(--bg); letter-spacing: .5px; flex-shrink: 0;
-}
+.mark { width: 30px; height: 30px; border-radius: 5px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-size: 11px; font-weight: 900; color: var(--bg); letter-spacing: .5px; flex-shrink: 0; }
 .wm { display: flex; flex-direction: column; }
 .wm1 { font-family: var(--fh); font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--w); text-transform: uppercase; line-height: 1; }
 .wm2 { font-family: var(--fh); font-size: 8px; font-weight: 600; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; margin-top: 1px; }
-.tpill {
-  background: rgba(200,146,42,.15);
-  border: 1px solid rgba(200,146,42,.4);
-  border-radius: 20px; padding: 5px 12px;
-  font-family: var(--fh); font-size: 11px; font-weight: 700;
-  letter-spacing: .08em; color: var(--gold); text-transform: uppercase;
+
+/* ── FLOATING CTA PILL (appears after hero) ─── */
+.float-cta {
+  position: fixed; top: 16px; right: 16px; z-index: 100;
+  background: var(--gold); color: var(--bg);
+  font-family: var(--fh); font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 10px 16px; border-radius: 30px;
+  display: flex; align-items: center; gap: 8px;
+  opacity: 0; transform: translateY(-12px) scale(0.95);
+  transition: opacity .25s ease, transform .25s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,.4);
   white-space: nowrap;
 }
+.float-cta.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; cursor: pointer; }
+.float-cta .arrow { font-size: 14px; }
+@media (min-width: 768px) { .float-cta { top: 24px; right: 24px; padding: 12px 20px; font-size: 13px; } }
 
-.spacer { height: 52px; }
 .rule { height: 1px; background: var(--line); }
 
-/* ── TYPE ────────────────────────────────────── */
+/* ── TYPE (fluid scaling) ───────────────────── */
 .eye {
-  font-family: var(--fh); font-size: 11px; font-weight: 600;
+  font-family: var(--fh); font-weight: 600;
+  font-size: clamp(10px, 2.6vw, 12px);
   letter-spacing: .22em; color: var(--gold); text-transform: uppercase;
   margin-bottom: 14px; display: block;
 }
-h1 { font-family: var(--fh); font-weight: 900; text-transform: uppercase; letter-spacing: .01em; line-height: .88; color: var(--w); font-size: 64px; }
-h2 { font-family: var(--fh); font-weight: 900; text-transform: uppercase; letter-spacing: .01em; line-height: .9; color: var(--w); font-size: 48px; }
+h1 {
+  font-family: var(--fh); font-weight: 900;
+  text-transform: uppercase; letter-spacing: .01em;
+  line-height: .88; color: var(--w);
+  font-size: clamp(46px, 13.5vw, 64px);
+}
+h2 {
+  font-family: var(--fh); font-weight: 900;
+  text-transform: uppercase; letter-spacing: .01em;
+  line-height: .9; color: var(--w);
+  font-size: clamp(36px, 10.5vw, 48px);
+}
 .gc { color: var(--gold); }
-p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
-.lead { font-size: 19px; font-weight: 600; color: var(--w); line-height: 1.5; }
+p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
+.lead { font-size: clamp(17px, 4.8vw, 19px); font-weight: 600; color: var(--w); line-height: 1.5; }
 
 @media (min-width: 768px) {
-  h1 { font-size: 92px; }
-  h2 { font-size: 64px; }
-  p  { font-size: 18px; }
+  h1 { font-size: clamp(64px, 8vw, 92px); }
+  h2 { font-size: clamp(48px, 6.5vw, 64px); }
+  p { font-size: 18px; }
   .lead { font-size: 22px; }
-  .eye { font-size: 12px; }
 }
 
-/* ── BUTTONS ─────────────────────────────────── */
+/* ── BUTTONS ────────────────────────────────── */
 .btn {
   display: block; width: 100%;
   background: var(--gold); color: var(--bg);
-  font-family: var(--fh); font-size: 20px; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase;
+  font-family: var(--fh);
+  font-size: clamp(17px, 4.6vw, 20px);
+  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
   text-align: center; padding: 22px 24px;
   border-radius: 4px; border: none; cursor: pointer; line-height: 1;
-  transition: background .2s;
+  transition: background .2s, transform .15s;
 }
 .btn:hover { background: var(--gold2); }
+.btn:active { transform: scale(0.98); }
 .bn { text-align: center; font-size: 13px; color: var(--w50); margin-top: 12px; font-family: var(--fh); letter-spacing: .08em; text-transform: uppercase; }
-
 @media (min-width: 768px) { .btn { font-size: 22px; padding: 24px 32px; } }
 
-/* ── HERO ─────────────────────────────────────── */
-.hero {
-  position: relative; min-height: 45vh;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  overflow: hidden;
+/* ── HERO TEXT SECTION ──────────────────────── */
+.hero-text { background: var(--bg); padding: 40px 0 36px; }
+.hsub {
+  font-size: clamp(17px, 4.8vw, 20px);
+  font-weight: 600; color: var(--w);
+  line-height: 1.45; margin: 18px 0 28px;
 }
-.hbg {
-  position: absolute; inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=90&auto=format');
+.htimer {
+  font-family: var(--fh); font-size: 12px; font-weight: 600;
+  letter-spacing: .12em; color: var(--w50); text-transform: uppercase;
+  margin-top: 14px; text-align: center;
+}
+.htimer .gold-text { color: var(--gold); }
+@media (min-width: 768px) { .hero-text { padding: 64px 0 56px; } .hsub { font-size: 22px; } }
+
+/* ── HERO IMAGE BANNER ──────────────────────── */
+.hero-banner {
+  width: 100%; height: 320px;
+  background-image: url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1400&q=90&auto=format');
   background-size: cover; background-position: center;
 }
-.hbg::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(19,19,19,.1) 0%,
-    rgba(19,19,19,.45) 38%,
-    rgba(19,19,19,.92) 72%,
-    var(--bg) 100%
-  );
-}
-.hc {
-  position: relative; z-index: 1;
-  width: 100%; max-width: 760px; margin: 0 auto;
-  padding: 0 24px 32px;
-}
-@media (min-width: 768px) {
-  .hc { padding: 0 40px 64px; }
-  .hero { min-height: 80vh; }
-}
-.hsub { font-size: 20px; font-weight: 600; color: var(--w); line-height: 1.45; margin: 18px 0 28px; }
-.htimer { font-family: var(--fh); font-size: 12px; font-weight: 600; letter-spacing: .12em; color: var(--w50); text-transform: uppercase; margin-top: 14px; text-align: center; }
-.htimer .gold-text { color: var(--gold); }
-@media (min-width: 768px) { .hsub { font-size: 22px; } }
+@media (min-width: 768px) { .hero-banner { height: 520px; } }
 
-/* ── RECOGNITION ─────────────────────────────── */
-.fy { background: var(--bg); }
+/* ── RECOGNITION ────────────────────────────── */
+.fy { background: var(--s1); }
 .cks { list-style: none; margin-top: 26px; }
 .cks li {
   display: flex; align-items: flex-start; gap: 14px;
-  font-size: 18px; color: var(--w);
+  font-size: clamp(16px, 4.6vw, 18px); color: var(--w);
   padding: 16px 0; border-bottom: 1px solid var(--line);
   line-height: 1.45;
 }
 .cks li:last-child { border-bottom: none; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
-.fy-tag {
-  margin-top: 24px; padding: 16px 18px;
-  background: var(--s2); border-left: 3px solid var(--gold);
-  font-size: 17px; color: var(--w); font-weight: 600;
-}
+.fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
 @media (min-width: 768px) { .cks li { font-size: 20px; } }
 
-/* ── ABOUT MITCH ─────────────────────────────── */
-.about { background: var(--s1); }
-.aimg {
-  width: 88px; height: 88px; border-radius: 50%;
-  object-fit: cover; border: 2px solid var(--gold);
-  margin: 24px 0 24px;
-}
+/* ── ABOUT MITCH ────────────────────────────── */
+.about { background: var(--bg); }
+.aimg { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); margin: 24px 0; }
 .about p { margin-top: 16px; }
 .about .lead { margin-top: 22px; }
 .cred-strip {
   display: grid; grid-template-columns: repeat(3,1fr);
   margin-top: 26px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  overflow: hidden;
+  background: var(--s1); border: 1px solid var(--line);
+  border-radius: 4px; overflow: hidden;
 }
-.cred {
-  padding: 20px 12px;
-  text-align: center;
-  border-right: 1px solid var(--line);
-}
+.cred { padding: 20px 8px; text-align: center; border-right: 1px solid var(--line); }
 .cred:last-child { border-right: none; }
-.cred-n { font-family: var(--fh); font-size: 28px; font-weight: 900; color: var(--gold); line-height: 1; }
-.cred-l { font-size: 10px; color: var(--w50); text-transform: uppercase; letter-spacing: .1em; margin-top: 5px; }
-@media (min-width: 768px) {
-  .cred { padding: 26px 20px; }
-  .cred-n { font-size: 36px; }
-  .cred-l { font-size: 11px; }
-}
-.brands {
-  margin-top: 18px;
-  padding: 18px 20px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-}
-.brands-label {
-  font-family: var(--fh); font-size: 10px; font-weight: 600;
-  letter-spacing: .2em; color: var(--w50); text-transform: uppercase;
-  margin-bottom: 10px; display: block;
-}
-.brands-list {
-  font-family: var(--fh); font-size: 16px; font-weight: 700;
-  letter-spacing: .08em; color: var(--w); text-transform: uppercase;
-  line-height: 1.5;
-}
-.pq {
-  border-left: 3px solid var(--gold);
-  padding: 20px 22px;
-  margin-top: 28px;
-  background: var(--s2);
-  border-radius: 0 4px 4px 0;
-}
-.pq p { font-size: 19px; color: var(--w); font-style: italic; line-height: 1.5; margin-top: 0; }
+.cred-n { font-family: var(--fh); font-size: clamp(24px, 6.5vw, 28px); font-weight: 900; color: var(--gold); line-height: 1; }
+.cred-l { font-size: clamp(9px, 2.5vw, 10px); color: var(--w50); text-transform: uppercase; letter-spacing: .08em; margin-top: 5px; }
+@media (min-width: 768px) { .cred { padding: 26px 20px; } .cred-n { font-size: 36px; } .cred-l { font-size: 11px; } }
+.brands { margin-top: 18px; padding: 18px 20px; background: var(--s1); border: 1px solid var(--line); border-radius: 4px; }
+.brands-label { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--w50); text-transform: uppercase; margin-bottom: 10px; display: block; }
+.brands-list { font-family: var(--fh); font-size: clamp(14px, 3.8vw, 16px); font-weight: 700; letter-spacing: .06em; color: var(--w); text-transform: uppercase; line-height: 1.6; }
+.pq { border-left: 3px solid var(--gold); padding: 20px 22px; margin-top: 28px; background: var(--s1); border-radius: 0 4px 4px 0; }
+.pq p { font-size: clamp(17px, 4.8vw, 19px); color: var(--w); font-style: italic; line-height: 1.5; margin-top: 0; }
 .pq .at { font-size: 13px; color: var(--gold); margin-top: 12px; font-style: normal; font-weight: 600; display: block; }
-@media (min-width: 768px) {
-  .aimg { width: 104px; height: 104px; }
-  .pq p { font-size: 22px; }
-  .brands-list { font-size: 18px; }
-}
+@media (min-width: 768px) { .aimg { width: 104px; height: 104px; } .pq p { font-size: 22px; } .brands-list { font-size: 18px; } }
 
-/* ── BEFORE / AFTER ───────────────────────────── */
-.ba-wrap { background: var(--bg); padding-top: 56px; padding-bottom: 56px; }
-@media (min-width: 768px) { .ba-wrap { padding-top: 80px; padding-bottom: 80px; } }
-.ba-head { text-align: center; padding: 0 24px 28px; }
+/* ── BEFORE / AFTER ─────────────────────────── */
+.ba-wrap { background: var(--s1); padding: 60px 0; }
+@media (min-width: 768px) { .ba-wrap { padding: 96px 0; } }
+.ba-head { text-align: center; padding: 0 24px 30px; }
 .ba-head h2 { margin-bottom: 14px; }
-.ba-head p { color: var(--w80); font-size: 17px; max-width: 560px; margin: 0 auto; }
+.ba-head p { color: var(--w80); max-width: 560px; margin: 0 auto; }
 .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 .ba-item { position: relative; }
 .ba-item img { width: 100%; height: 320px; object-fit: cover; display: block; }
@@ -235,215 +191,158 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
 .tag.b { background: rgba(19,19,19,.85); color: var(--w50); }
 .tag.a { background: var(--gold); color: var(--bg); }
 .ba-cap {
-  text-align: center;
-  font-family: var(--fh);
-  font-size: 22px; font-weight: 700;
+  text-align: center; font-family: var(--fh);
+  font-size: clamp(20px, 5.6vw, 22px); font-weight: 700;
   letter-spacing: .04em; text-transform: uppercase;
-  color: var(--w); padding: 28px 24px 0;
-  line-height: 1.2;
+  color: var(--w); padding: 30px 24px 0; line-height: 1.2;
 }
 .ba-cap span { color: var(--gold); }
-@media (min-width: 768px) { .ba-cap { font-size: 30px; padding-top: 36px; } }
+@media (min-width: 768px) { .ba-cap { font-size: 30px; padding-top: 40px; } }
 
-/* ── METHOD PULL ──────────────────────────────── */
+/* ── METHOD PULL ────────────────────────────── */
 .mpull { background: var(--gold); }
 .mpull .inner { text-align: center; max-width: 640px; margin: 0 auto; }
 .mpull h2 { color: var(--bg); margin-bottom: 16px; }
-.mpull p { color: rgba(10,10,10,.78); font-size: 18px; }
-@media (min-width: 768px) { .mpull p { font-size: 20px; } }
+.mpull p { color: rgba(19,19,19,.78); font-size: clamp(17px, 4.8vw, 19px); }
+.mpull .eye { color: rgba(19,19,19,0.55); }
+@media (min-width: 768px) { .mpull p { font-size: 21px; } }
 
-/* ── EVEN IF ──────────────────────────────────── */
-.evenif { background: var(--bg); text-align: center; }
+/* ── EVEN IF ────────────────────────────────── */
+.evenif { background: var(--s2); text-align: center; }
 .evenif h2 { margin-bottom: 18px; }
 .evenif .lead { margin-bottom: 26px; }
 .evenif-list { list-style: none; max-width: 520px; margin: 0 auto; }
 .evenif-list li {
   display: flex; align-items: flex-start; gap: 14px;
-  font-size: 17px; color: var(--w); text-align: left;
-  padding: 14px 0; border-bottom: 1px solid var(--line);
-  line-height: 1.45;
+  font-size: clamp(16px, 4.4vw, 17px); color: var(--w); text-align: left;
+  padding: 14px 0; border-bottom: 1px solid var(--line); line-height: 1.45;
 }
 .evenif-list li:last-child { border-bottom: none; }
 .check {
   width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px;
   border-radius: 50%; background: var(--gold);
   display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--fh); font-size: 12px; font-weight: 900; color: var(--bg);
-  line-height: 1;
+  font-family: var(--fh); font-size: 12px; font-weight: 900; color: var(--bg); line-height: 1;
 }
 
-/* ── MODULES ──────────────────────────────────── */
-.mods { background: var(--s1); }
-.mod-intro { color: var(--w80); margin-top: 12px; font-size: 17px; }
+/* ── MODULES ────────────────────────────────── */
+.mods { background: var(--bg); }
+.mod-intro { color: var(--w80); margin-top: 12px; }
 .mgrid { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
-.mc { background: var(--s2); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.mc { background: var(--s1); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
 .mc.prem { border-color: var(--gold); }
 .mi { width: 100%; height: 180px; object-fit: cover; }
 .mb { padding: 18px 20px; }
 .mn { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
 .mn.p { color: var(--gold2); }
-.mt { font-family: var(--fh); font-size: 24px; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; color: var(--w); line-height: 1.05; margin-bottom: 10px; }
+.mt { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 24px); font-weight: 900; text-transform: uppercase; letter-spacing: .03em; color: var(--w); line-height: 1.05; margin-bottom: 10px; }
 .mt.p { color: var(--gold); }
-.md { font-size: 15px; color: var(--w80); line-height: 1.55; }
-@media (min-width: 768px) {
-  .mgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .mi { height: 200px; }
-  .mt { font-size: 22px; }
-}
+.md { font-size: clamp(14px, 3.8vw, 15px); color: var(--w80); line-height: 1.55; }
+@media (min-width: 768px) { .mgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } .mi { height: 200px; } .mt { font-size: 22px; } }
 
-/* ── GALLERY ──────────────────────────────────── */
-.gallery { overflow: hidden; padding: 56px 0; background: var(--bg); }
+/* ── GALLERY ────────────────────────────────── */
+.gallery { overflow: hidden; padding: 60px 0; background: var(--s1); }
+@media (min-width: 768px) { .gallery { padding: 96px 0; } }
 .gallery .head { text-align: center; padding: 0 24px 28px; }
 .gallery .head h2 { margin-bottom: 12px; }
-.gallery .head p { color: var(--w80); font-size: 17px; max-width: 540px; margin: 0 auto; }
+.gallery .head p { color: var(--w80); max-width: 540px; margin: 0 auto; }
 .track { display: flex; gap: 10px; animation: roll 40s linear infinite; width: max-content; }
 .track:hover { animation-play-state: paused; }
 .track img { width: 220px; height: 290px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
 @keyframes roll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-@media (min-width: 768px) {
-  .gallery { padding: 80px 0; }
-  .track img { width: 280px; height: 360px; }
-}
+@media (min-width: 768px) { .track img { width: 280px; height: 360px; } }
 
-/* ── VALUE STACK ──────────────────────────────── */
-.vs { background: var(--s1); }
-.vs-intro { color: var(--w80); margin-top: 12px; font-size: 17px; margin-bottom: 8px; }
+/* ── VALUE STACK ────────────────────────────── */
+.vs { background: var(--s2); }
+.vs-intro { color: var(--w80); margin-top: 12px; margin-bottom: 8px; }
 .vl { list-style: none; margin-top: 28px; }
-.vl li {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  padding: 16px 0; border-bottom: 1px solid var(--line); gap: 16px;
-}
-.vi { font-size: 16px; color: var(--w); flex: 1; line-height: 1.45; }
+.vl li { display: flex; justify-content: space-between; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--line); gap: 16px; }
+.vi { font-size: clamp(15px, 4.2vw, 16px); color: var(--w); flex: 1; line-height: 1.45; }
 .vv { font-family: var(--fh); font-size: 15px; font-weight: 700; color: var(--w50); letter-spacing: .04em; flex-shrink: 0; }
 .vl li.founding { border-left: 3px solid var(--gold); padding-left: 14px; background: rgba(200,146,42,0.05); margin: 0 -14px; padding-right: 14px; }
 .vl li.founding .vi { color: var(--gold2); font-weight: 600; }
 .vl li.founding .vv { color: var(--gold); }
-.vtot {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 22px 0; margin-bottom: 28px;
-}
+.vtot { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; margin-bottom: 28px; }
 .vtl { font-family: var(--fh); font-size: 14px; font-weight: 600; letter-spacing: .12em; color: var(--w50); text-transform: uppercase; }
 .vta { font-family: var(--fh); font-size: 22px; font-weight: 900; color: var(--w50); letter-spacing: .04em; text-decoration: line-through; }
 
-/* ── PRICING ──────────────────────────────────── */
+/* ── PRICING ────────────────────────────────── */
 .pricing { background: var(--bg); }
 .pricing .intro { margin-bottom: 28px; }
-.pc { background: var(--s2); border: 1px solid var(--gold); border-radius: 6px; padding: 30px 24px; }
+.pc { background: var(--s1); border: 1px solid var(--gold); border-radius: 6px; padding: 30px 24px; }
 .pb { display: inline-block; background: var(--gold); color: var(--bg); font-family: var(--fh); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 6px 12px; border-radius: 2px; margin-bottom: 18px; }
-.pn { font-family: var(--fh); font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--w); }
-.pp { font-family: var(--fh); font-size: 76px; font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: .01em; margin: 12px 0 4px; }
+.pn { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 22px); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--w); }
+.pp { font-family: var(--fh); font-size: clamp(64px, 17vw, 76px); font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: .01em; margin: 12px 0 4px; }
 .pw { font-size: 14px; color: var(--w50); margin-bottom: 22px; }
-
-.spots-bar {
-  background: rgba(200,146,42,0.08);
-  border: 1px solid rgba(200,146,42,0.3);
-  border-radius: 4px;
-  padding: 14px 16px;
-  margin: 0 0 22px 0;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.spots-label {
-  font-family: var(--fh); font-size: 11px; font-weight: 700;
-  letter-spacing: .1em; color: var(--gold); text-transform: uppercase;
-}
-.spots-count {
-  font-family: var(--fh); font-size: 22px; font-weight: 900;
-  color: var(--gold2); letter-spacing: .02em;
-}
-
-.preframe {
-  margin: 22px 0;
-  padding: 14px 16px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--gold);
-  border-radius: 0 4px 4px 0;
-  font-size: 15px; color: var(--w);
-  line-height: 1.5;
-}
+.spots-bar { background: rgba(200,146,42,0.08); border: 1px solid rgba(200,146,42,0.3); border-radius: 4px; padding: 14px 16px; margin: 0 0 22px 0; display: flex; align-items: center; justify-content: space-between; }
+.spots-label { font-family: var(--fh); font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--gold); text-transform: uppercase; }
+.spots-count { font-family: var(--fh); font-size: 22px; font-weight: 900; color: var(--gold2); letter-spacing: .02em; }
+.preframe { margin: 22px 0; padding: 14px 16px; background: var(--bg); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; font-size: 15px; color: var(--w); line-height: 1.5; }
 .pi { list-style: none; margin-bottom: 24px; }
-.pi li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: var(--w); padding: 12px 0; border-bottom: 1px solid var(--line); line-height: 1.45; }
+.pi li { display: flex; gap: 12px; align-items: flex-start; font-size: clamp(15px, 4.2vw, 16px); color: var(--w); padding: 12px 0; border-bottom: 1px solid var(--line); line-height: 1.45; }
 .pi li:last-child { border-bottom: none; }
 .pi li.founding { color: var(--gold2); font-weight: 600; }
 .pi li.founding .pd { background: var(--gold2); }
 .pd { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 9px; }
-@media (min-width: 768px) {
-  .pc { padding: 40px 36px; }
-  .pp { font-size: 92px; }
-  .pi li { font-size: 17px; }
-}
+@media (min-width: 768px) { .pc { padding: 40px 36px; } .pi li { font-size: 17px; } }
 
-/* ── WHAT HAPPENS NEXT ────────────────────────── */
+/* ── WHAT HAPPENS NEXT ──────────────────────── */
 .next { background: var(--s2); }
 .next h2 { margin-bottom: 12px; }
-.next-intro { color: var(--w80); font-size: 17px; margin-bottom: 28px; }
+.next-intro { color: var(--w80); margin-bottom: 28px; }
 .steps { list-style: none; counter-reset: s; }
-.steps li {
-  position: relative;
-  padding: 18px 0 18px 56px;
-  border-bottom: 1px solid var(--line);
-  counter-increment: s;
-}
+.steps li { position: relative; padding: 18px 0 18px 56px; border-bottom: 1px solid var(--line); counter-increment: s; }
 .steps li:last-child { border-bottom: none; }
-.steps li::before {
-  content: counter(s, decimal-leading-zero);
-  position: absolute; left: 0; top: 14px;
-  font-family: var(--fh); font-size: 24px; font-weight: 900;
-  color: var(--gold); letter-spacing: .04em;
-}
-.step-t {
-  font-family: var(--fh); font-size: 18px; font-weight: 700;
-  letter-spacing: .04em; color: var(--w); text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.step-d { font-size: 15px; color: var(--w80); line-height: 1.5; }
+.steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--fh); font-size: 24px; font-weight: 900; color: var(--gold); letter-spacing: .04em; }
+.step-t { font-family: var(--fh); font-size: clamp(16px, 4.6vw, 18px); font-weight: 700; letter-spacing: .04em; color: var(--w); text-transform: uppercase; margin-bottom: 4px; }
+.step-d { font-size: clamp(14px, 3.9vw, 15px); color: var(--w80); line-height: 1.5; }
 
-/* ── FAQ ──────────────────────────────────────── */
+/* ── FAQ ────────────────────────────────────── */
 .faq { background: var(--bg); }
-.fq  { border-bottom: 1px solid var(--line); }
-.fqb {
-  width: 100%; background: none; border: none;
-  text-align: left; padding: 20px 0; cursor: pointer;
-  display: flex; justify-content: space-between; align-items: center; gap: 16px;
-  font-family: var(--fb); font-size: 17px; color: var(--w); font-weight: 600;
-}
+.fq { border-bottom: 1px solid var(--line); }
+.fqb { width: 100%; background: none; border: none; text-align: left; padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: var(--fb); font-size: clamp(16px, 4.4vw, 17px); color: var(--w); font-weight: 600; }
 .fqi { font-family: var(--fh); font-size: 28px; font-weight: 300; color: var(--gold); flex-shrink: 0; transition: transform .2s; }
 .fqb.open .fqi { transform: rotate(45deg); }
-.fqa { display: none; font-size: 16px; color: var(--w80); padding-bottom: 22px; line-height: 1.65; }
+.fqa { display: none; font-size: clamp(15px, 4.2vw, 16px); color: var(--w80); padding-bottom: 22px; line-height: 1.65; }
 .fqa.open { display: block; }
 @media (min-width: 768px) { .fqb { font-size: 18px; } }
 
-/* ── FINAL CTA ────────────────────────────────── */
-.final {
-  background: var(--bg);
-  text-align: center;
-  position: relative;
-}
-.final::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-}
+/* ── FINAL CTA ──────────────────────────────── */
+.final { background: var(--s2); text-align: center; position: relative; }
+.final::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
 .final h2 { margin-bottom: 18px; }
 .final .lead { margin-bottom: 12px; }
-.final p { margin-bottom: 32px; font-size: 18px; }
-@media (min-width: 768px) { .final p { font-size: 20px; } }
+.final p { margin-bottom: 32px; }
 
-/* ── FOOTER ───────────────────────────────────── */
+/* ── FOOTER ─────────────────────────────────── */
 footer { border-top: 1px solid var(--line); background: var(--bg); }
 footer p { font-size: 12px; color: var(--w50); }
 footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
-/* ── PHASE VISIBILITY ─────────────────────────── */
+/* ── PHASE VISIBILITY ───────────────────────── */
 [data-phase] { display: none; }
+
+/* ── SCROLL ANIMATIONS ──────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease-out, transform .7s ease-out;
+  will-change: opacity, transform;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
 
 </style>
 </head>
 <body>
 
-<!-- ═══════════════ STICKY BAR ═══════════════ -->
-<header class="bar">
+<!-- ═══════════════ TOP HEADER (scrolls away) ═══════════════ -->
+<header class="top-header">
   <div class="c">
     <div class="logo">
       <div class="mark">CC</div>
@@ -452,15 +351,18 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <span class="wm2">Creative</span>
       </div>
     </div>
-    <div class="tpill" id="bar-status">🔥 Founding Open</div>
   </div>
 </header>
-<div class="spacer"></div>
 
-<!-- ═══════════════ HERO ═══════════════ -->
-<section class="hero">
-  <div class="hbg"></div>
-  <div class="hc">
+<!-- ═══════════════ FLOATING CTA (appears after hero) ═══════════════ -->
+<a href="#checkout" class="float-cta" id="float-cta">
+  <span id="float-text">12 spots left</span>
+  <span class="arrow">→</span>
+</a>
+
+<!-- ═══════════════ HERO TEXT (right under header) ═══════════════ -->
+<section class="hero-text">
+  <div class="c">
     <span class="eye" id="hero-eye">For Automotive Photographers Ready to Get Hired</span>
     <h1>From invisible.<br><span class="gc">To in-demand.</span></h1>
     <p class="hsub">The lighting system that makes premium brands stop scrolling. And start hiring you.</p>
@@ -469,10 +371,11 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<div class="rule"></div>
+<!-- ═══════════════ HERO IMAGE BANNER ═══════════════ -->
+<div class="hero-banner reveal"></div>
 
 <!-- ═══════════════ RECOGNITION ═══════════════ -->
-<section class="fy pad">
+<section class="fy pad reveal">
   <div class="c">
     <span class="eye">If this sounds familiar</span>
     <h2>You're a great photographer.<br><span class="gc">But it's not paying off.</span></h2>
@@ -487,10 +390,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ TRUST ═══════════════ -->
-<section class="about pad">
+<section class="about pad reveal">
   <div class="c">
     <span class="eye">Meet your instructor</span>
     <h2>Hi. I'm Mitch.<br><span class="gc">And I've been there.</span></h2>
@@ -519,10 +420,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ PROOF ═══════════════ -->
-<div class="ba-wrap">
+<div class="ba-wrap reveal">
   <div class="ba-head">
     <span class="eye">The difference</span>
     <h2>Same car.<br><span class="gc">Different result.</span></h2>
@@ -541,23 +440,19 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <p class="ba-cap">Same photographer. <span>Different ceiling.</span></p>
 </div>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ SOLUTION ═══════════════ -->
-<div class="mpull pad">
+<div class="mpull pad reveal">
   <div class="c">
     <div class="inner">
-      <span class="eye" style="color:rgba(10,10,10,0.6);">The solution</span>
+      <span class="eye">The solution</span>
       <h2>One method.<br>Every car.<br>Every time.</h2>
       <p style="margin-top:18px;">The Controlled Lighting Method™. The only artificial lighting system built for automotive photographers. Flash, light painting, editing, and premium brand positioning. All in one course.</p>
     </div>
   </div>
 </div>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ EVEN IF ═══════════════ -->
-<section class="evenif pad">
+<section class="evenif pad reveal">
   <div class="c">
     <span class="eye">Don't worry if</span>
     <h2>This works.<br><span class="gc">Even if.</span></h2>
@@ -572,79 +467,26 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ MODULES ═══════════════ -->
-<section class="mods pad">
+<section class="mods pad reveal">
   <div class="c">
     <span class="eye">Inside the course</span>
     <h2>6 Modules.<br><span class="gc">Full system.</span></h2>
     <p class="mod-intro">Every module is built around one goal. Get you premium-ready in 30 days.</p>
 
     <div class="mgrid">
-
-      <div class="mc">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=700&q=85&auto=format" class="mi" alt="">
-        <div class="mb">
-          <div class="mn">Module 01</div>
-          <div class="mt">Introduction</div>
-          <p class="md">Set yourself up for success. The mindset, the expectations, and how to get the most out of this course.</p>
-        </div>
-      </div>
-
-      <div class="mc">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=85&auto=format" class="mi" alt="">
-        <div class="mb">
-          <div class="mn">Module 02</div>
-          <div class="mt">Gear & Location</div>
-          <p class="md">The exact gear that gets premium results on any budget. Plus how to spot a winning location in seconds.</p>
-        </div>
-      </div>
-
-      <div class="mc">
-        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=700&q=85&auto=format" class="mi" alt="">
-        <div class="mb">
-          <div class="mn">Module 03</div>
-          <div class="mt">Light Painting</div>
-          <p class="md">Create images that stop scrolls and look like nobody else's. The kind of work that gets brands sliding into your DMs.</p>
-        </div>
-      </div>
-
-      <div class="mc">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=700&q=85&auto=format" class="mi" alt="">
-        <div class="mb">
-          <div class="mn">Module 04</div>
-          <div class="mt">Flash Lighting</div>
-          <p class="md">Master artificial light on location. Shoot any car, any environment, any time of day. With total control.</p>
-        </div>
-      </div>
-
-      <div class="mc">
-        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=700&q=85&auto=format" class="mi" alt="">
-        <div class="mb">
-          <div class="mn">Module 05</div>
-          <div class="mt">Lightroom & Photoshop</div>
-          <p class="md">A fast, repeatable editing process that turns good shots into premium-grade work. Every single time.</p>
-        </div>
-      </div>
-
-      <div class="mc prem">
-        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=700&q=85&auto=format" class="mi" alt="">
-        <div class="mb">
-          <div class="mn p">Module 06 / Premium</div>
-          <div class="mt p">The Client Blueprint</div>
-          <p class="md">Position yourself as a premium photographer. Attract the brands you actually want to work with. Charge what your work is worth.</p>
-        </div>
-      </div>
-
+      <div class="mc"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn">Module 01</div><div class="mt">Introduction</div><p class="md">Set yourself up for success. The mindset, the expectations, and how to get the most out of this course.</p></div></div>
+      <div class="mc"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn">Module 02</div><div class="mt">Gear & Location</div><p class="md">The exact gear that gets premium results on any budget. Plus how to spot a winning location in seconds.</p></div></div>
+      <div class="mc"><img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn">Module 03</div><div class="mt">Light Painting</div><p class="md">Create images that stop scrolls and look like nobody else's. The kind of work that gets brands sliding into your DMs.</p></div></div>
+      <div class="mc"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn">Module 04</div><div class="mt">Flash Lighting</div><p class="md">Master artificial light on location. Shoot any car, any environment, any time of day. With total control.</p></div></div>
+      <div class="mc"><img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn">Module 05</div><div class="mt">Lightroom & Photoshop</div><p class="md">A fast, repeatable editing process that turns good shots into premium-grade work. Every single time.</p></div></div>
+      <div class="mc prem"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn p">Module 06 / Premium</div><div class="mt p">The Client Blueprint</div><p class="md">Position yourself as a premium photographer. Attract the brands you actually want to work with. Charge what your work is worth.</p></div></div>
     </div>
   </div>
 </section>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ DESIRE ═══════════════ -->
-<div class="gallery">
+<div class="gallery reveal">
   <div class="head">
     <span class="eye">What you'll create</span>
     <h2>Imagine your portfolio<br><span class="gc">looking like this.</span></h2>
@@ -668,10 +510,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </div>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ THE OFFER ═══════════════ -->
-<section class="vs pad">
+<section class="vs pad reveal">
   <div class="c">
     <span class="eye">Everything you get</span>
     <h2>Worth $1,495.<br><span class="gc">Yours for $<span id="vs-price">195</span>.</span></h2>
@@ -690,21 +530,16 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <li class="founding founding-only"><span class="vi">★ Founding-only live Q&amp;A with Mitch</span><span class="vv">Bonus</span></li>
       <li class="founding founding-only"><span class="vi">★ Behind-the-scenes mini-module</span><span class="vv">Bonus</span></li>
     </ul>
-    <div class="vtot">
-      <span class="vtl">Total value</span>
-      <span class="vta">$1,495</span>
-    </div>
+    <div class="vtot"><span class="vtl">Total value</span><span class="vta">$1,495</span></div>
     <a href="#checkout" class="btn vs-btn">Claim Your Spot · $195 →</a>
   </div>
 </section>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ DECISION ═══════════════ -->
-<section class="pricing pad" id="checkout">
+<section class="pricing pad reveal" id="checkout">
   <div class="c">
     <span class="eye">Pricing</span>
-    <h2 id="pricing-h" style="margin-bottom:14px;">$<span class="dyn-price">195</span> today.<br><span class="gc">More tomorrow.</span></h2>
+    <h2 style="margin-bottom:14px;">$<span class="dyn-price">195</span> today.<br><span class="gc">More tomorrow.</span></h2>
     <p class="intro" id="pricing-intro">Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to $295. Then $495 at launch.</p>
 
     <div class="pc">
@@ -740,97 +575,45 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ WHAT HAPPENS NEXT ═══════════════ -->
-<section class="next pad">
+<section class="next pad reveal">
   <div class="c">
     <span class="eye">What happens after you enrol</span>
     <h2>Three steps<br><span class="gc">to start.</span></h2>
     <p class="next-intro">Simple, fast, and built so you're ready to apply the system the moment the course opens.</p>
-    <ul class="steps" id="steps-list">
-      <li>
-        <div class="step-t" id="step1-t">Lock in your founding spot</div>
-        <div class="step-d" id="step1-d">Pay $195 today and your seat is secured. Founding bonuses included.</div>
-      </li>
-      <li>
-        <div class="step-t" id="step2-t">Course unlocks June 1st</div>
-        <div class="step-d" id="step2-d">Full access to every module on Monday June 1st. Watch on any device.</div>
-      </li>
-      <li>
-        <div class="step-t" id="step3-t">Apply it to your next shoot</div>
-        <div class="step-d" id="step3-d">Use the system on your next car. See the difference. Build your portfolio.</div>
-      </li>
+    <ul class="steps">
+      <li><div class="step-t" id="step1-t">Lock in your founding spot</div><div class="step-d" id="step1-d">Pay $195 today and your seat is secured. Founding bonuses included.</div></li>
+      <li><div class="step-t" id="step2-t">Course unlocks June 1st</div><div class="step-d" id="step2-d">Full access to every module on Monday June 1st. Watch on any device.</div></li>
+      <li><div class="step-t" id="step3-t">Apply it to your next shoot</div><div class="step-d" id="step3-d">Use the system on your next car. See the difference. Build your portfolio.</div></li>
     </ul>
   </div>
 </section>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ FAQ ═══════════════ -->
-<section class="faq pad">
+<section class="faq pad reveal">
   <div class="c">
     <span class="eye">Questions</span>
     <h2>Quick<br><span class="gc">Answers.</span></h2>
     <div style="margin-top:28px;">
-
-      <div class="fq">
-        <button class="fqb" onclick="faq(this)">When do I get the course?<span class="fqi">+</span></button>
-        <div class="fqa">The full course unlocks on Monday, June 1st. Your founding spot is secured the moment you pay. You'll get an email confirmation, and access details closer to launch day.</div>
-      </div>
-
-      <div class="fq">
-        <button class="fqb" onclick="faq(this)">What is "Founding Student" status?<span class="fqi">+</span></button>
-        <div class="fqa">Founding Students are the first 30 people to enrol. You get the lowest price the course will ever be, exclusive bonuses including a private Q&amp;A with me, and special recognition that's never offered again. Once 30 spots are claimed, founding access closes forever.</div>
-      </div>
-
-      <div class="fq">
-        <button class="fqb" onclick="faq(this)">Do I need expensive gear?<span class="fqi">+</span></button>
-        <div class="fqa">No. The method works on any budget. Lighting creates the result. Not the gear. I teach with accessible equipment throughout the course.</div>
-      </div>
-
-      <div class="fq">
-        <button class="fqb" onclick="faq(this)">I've never used flash before. Can I do this?<span class="fqi">+</span></button>
-        <div class="fqa">Yes. We start from the basics. No prior flash or light painting experience needed. If you can use a camera, you can learn this.</div>
-      </div>
-
-      <div class="fq">
-        <button class="fqb" onclick="faq(this)">I don't have access to expensive cars.<span class="fqi">+</span></button>
-        <div class="fqa">Doesn't matter. The Controlled Lighting Method works on any car. A Honda Civic shot with controlled lighting beats a Lamborghini in bad light every single time.</div>
-      </div>
-
-      <div class="fq">
-        <button class="fqb" onclick="faq(this)">What format is the course?<span class="fqi">+</span></button>
-        <div class="fqa">Pre-recorded video lessons broken into bite-sized modules. Watch on any device. Phone, tablet, or laptop. All downloads and templates are accessible inside the course.</div>
-      </div>
-
-      <div class="fq">
-        <button class="fqb" onclick="faq(this)">How long do I have access?<span class="fqi">+</span></button>
-        <div class="fqa">Forever. Lifetime access. Every time the course is updated with new content, you get it automatically. At no extra charge.</div>
-      </div>
-
-      <div class="fq">
-        <button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button>
-        <div class="fqa">Most students apply the system to their first shoot within a week of access opening. With consistent application, you'll have premium-quality work in your portfolio inside 30 days.</div>
-      </div>
-
-      <div class="fq">
-        <button class="fqb" onclick="faq(this)">What if I'm not happy?<span class="fqi">+</span></button>
-        <div class="fqa">The course is no-refund. All content is delivered in full when access opens. But if you complete the course and feel it didn't deliver what was promised, reach out. I'll make it right.</div>
-      </div>
-
+      <div class="fq"><button class="fqb" onclick="faq(this)">When do I get the course?<span class="fqi">+</span></button><div class="fqa">The full course unlocks on Monday, June 1st. Your founding spot is secured the moment you pay. You'll get an email confirmation, and access details closer to launch day.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">What is "Founding Student" status?<span class="fqi">+</span></button><div class="fqa">Founding Students are the first 30 people to enrol. You get the lowest price the course will ever be, exclusive bonuses including a private Q&amp;A with me, and special recognition that's never offered again. Once 30 spots are claimed, founding access closes forever.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">Do I need expensive gear?<span class="fqi">+</span></button><div class="fqa">No. The method works on any budget. Lighting creates the result. Not the gear. I teach with accessible equipment throughout the course.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">I've never used flash before. Can I do this?<span class="fqi">+</span></button><div class="fqa">Yes. We start from the basics. No prior flash or light painting experience needed. If you can use a camera, you can learn this.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">I don't have access to expensive cars.<span class="fqi">+</span></button><div class="fqa">Doesn't matter. The Controlled Lighting Method works on any car. A Honda Civic shot with controlled lighting beats a Lamborghini in bad light every single time.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">What format is the course?<span class="fqi">+</span></button><div class="fqa">Pre-recorded video lessons broken into bite-sized modules. Watch on any device. Phone, tablet, or laptop. All downloads and templates are accessible inside the course.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">How long do I have access?<span class="fqi">+</span></button><div class="fqa">Forever. Lifetime access. Every time the course is updated with new content, you get it automatically. At no extra charge.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button><div class="fqa">Most students apply the system to their first shoot within a week of access opening. With consistent application, you'll have premium-quality work in your portfolio inside 30 days.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">What if I'm not happy?<span class="fqi">+</span></button><div class="fqa">The course is no-refund. All content is delivered in full when access opens. But if you complete the course and feel it didn't deliver what was promised, reach out. I'll make it right.</div></div>
     </div>
   </div>
 </section>
 
-<div class="rule"></div>
-
 <!-- ═══════════════ FINAL CTA ═══════════════ -->
-<section class="final pad">
+<section class="final pad reveal">
   <div class="c">
     <span class="eye">Ready?</span>
     <h2>The photographers getting paid<br><span class="gc">aren't more talented.</span></h2>
-    <p class="lead" style="color:var(--w);font-size:20px;">They just know something you don't. Yet.</p>
+    <p class="lead" style="color:var(--w);">They just know something you don't. Yet.</p>
     <p>Make today the day that changes.</p>
     <a href="#checkout" class="btn final-cta">Claim Your Spot · $195 →</a>
     <p class="bn" id="final-note" style="margin-top:14px;">Founding price. Course access June 1st.</p>
@@ -847,43 +630,25 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
 <script>
 /* ═══════════════════════════════════════════════════════════
-   PHASE CONFIG — UPDATE THESE VALUES TO CONTROL THE PAGE
-   ═══════════════════════════════════════════════════════════
-   The script reads these values and shows the right pricing,
-   urgency, and copy based on the current phase.
-
-   Phase 1 ends when EITHER:
-   - 30 founding spots are claimed (set p1SpotsLeft to 0), OR
-   - The phase 1 end date is reached (May 25, 2026)
-   
-   Update p1SpotsLeft manually as sales come in.
-   When it hits 0, the page automatically moves to Phase 2.
+   PHASE CONFIG · UPDATE THESE TO CONTROL THE PAGE
 ═══════════════════════════════════════════════════════════ */
 const CONFIG = {
-  // ── PHASE 1 — FOUNDING STUDENTS ──
   p1Price: 195,
   p1FoundingCap: 30,
   p1SpotsLeft: 30,                              // ← UPDATE AS SALES COME IN
-  p1EndDate: '2026-05-25T00:00:00+10:00',       // Sydney time
+  p1EndDate: '2026-05-25T00:00:00+10:00',
 
-  // ── PHASE 2 — EARLY ACCESS ──
   p2Price: 295,
-  p2EndDate: '2026-06-01T00:00:00+10:00',       // June 1st launch
+  p2EndDate: '2026-06-01T00:00:00+10:00',
 
-  // ── PHASE 3 — STANDARD ──
   p3Price: 495
 };
 
-/* ═══════════════════════════════════════════════════════════
-   PHASE DETECTION + RENDER
-═══════════════════════════════════════════════════════════ */
+/* ═══════════════ PHASE DETECTION ═══════════════ */
 function getPhase() {
   const now = new Date();
-  const p1End = new Date(CONFIG.p1EndDate);
-  const p2End = new Date(CONFIG.p2EndDate);
-
-  if (CONFIG.p1SpotsLeft > 0 && now < p1End) return 1;
-  if (now < p2End) return 2;
+  if (CONFIG.p1SpotsLeft > 0 && now < new Date(CONFIG.p1EndDate)) return 1;
+  if (now < new Date(CONFIG.p2EndDate)) return 2;
   return 3;
 }
 
@@ -892,13 +657,12 @@ function render() {
   const isFounding = phase === 1;
   const isPreLaunch = phase === 1 || phase === 2;
 
-  // Hide founding-only blocks if not in phase 1
+  // Show/hide founding-only blocks
   document.querySelectorAll('.founding-only').forEach(el => {
     el.style.display = isFounding ? '' : 'none';
   });
 
-  // Set pricing
-  let price, badge, ctaText, urgency, intro, was, finalNote, barStatus, heroEye;
+  let price, badge, ctaText, urgency, intro, was, finalNote, floatText;
 
   if (phase === 1) {
     price = CONFIG.p1Price;
@@ -908,18 +672,16 @@ function render() {
     intro = `Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to $${CONFIG.p2Price}. Then $${CONFIG.p3Price} at launch.`;
     was = `Goes to $${CONFIG.p2Price}. Then $${CONFIG.p3Price} at launch.`;
     finalNote = 'Founding price. Course access June 1st.';
-    barStatus = `🔥 ${CONFIG.p1SpotsLeft} Founding Spots Left`;
-    heroEye = 'For Automotive Photographers Ready to Get Hired';
+    floatText = `${CONFIG.p1SpotsLeft} spots left`;
   } else if (phase === 2) {
     price = CONFIG.p2Price;
     badge = '⚡ Early Access Price';
     ctaText = `Enrol Now · $${price} →`;
-    urgency = `⚡ <span class="gold-text">Early access price</span> · launches June 1st`;
-    intro = `Early access price ends June 1st. Then it goes to $${CONFIG.p3Price} permanently.`;
+    urgency = `⚡ <span class="gold-text">Early access</span> · launches June 1st`;
+    intro = `Early access ends June 1st. Then it goes to $${CONFIG.p3Price} permanently.`;
     was = `Goes to $${CONFIG.p3Price} on June 1st.`;
     finalNote = 'Early access price. Course access June 1st.';
-    barStatus = '⚡ Early Access Open';
-    heroEye = 'For Automotive Photographers Ready to Get Hired';
+    floatText = `Early access · $${price}`;
   } else {
     price = CONFIG.p3Price;
     badge = 'Enrol Today';
@@ -928,34 +690,27 @@ function render() {
     intro = `The course is live. Enrol today and get instant access to every module.`;
     was = '';
     finalNote = 'Secure checkout. Instant access.';
-    barStatus = '✓ Course Now Available';
-    heroEye = 'For Automotive Photographers Ready to Get Hired';
+    floatText = `Enrol · $${price}`;
   }
 
-  // Apply price everywhere
+  // Apply prices everywhere
   document.querySelectorAll('.dyn-price').forEach(el => el.textContent = price);
   document.getElementById('vs-price').textContent = price;
 
   // Apply CTA text
-  document.querySelectorAll('#hero-cta, #checkout-cta, .vs-btn, .final-cta').forEach(el => {
-    el.textContent = ctaText;
-  });
+  document.querySelectorAll('#hero-cta, #checkout-cta, .vs-btn, .final-cta').forEach(el => el.textContent = ctaText);
 
-  // Apply other dynamic content
-  document.getElementById('bar-status').textContent = barStatus;
+  // Update other dynamic content
   document.getElementById('hero-urgency').innerHTML = urgency;
   document.getElementById('price-badge').textContent = badge;
   document.getElementById('pricing-intro').textContent = intro;
   document.getElementById('price-was').textContent = was;
   document.getElementById('final-note').textContent = finalNote;
-  document.getElementById('hero-eye').textContent = heroEye;
+  document.getElementById('float-text').textContent = floatText;
 
-  // Update spots count in pricing card if phase 1
-  if (phase === 1) {
-    document.getElementById('price-spots').textContent = CONFIG.p1SpotsLeft;
-  }
+  if (phase === 1) document.getElementById('price-spots').textContent = CONFIG.p1SpotsLeft;
 
-  // Update "What happens next" steps based on phase
+  // What happens next
   const step1t = document.getElementById('step1-t');
   const step1d = document.getElementById('step1-d');
   const step2t = document.getElementById('step2-t');
@@ -974,12 +729,44 @@ function render() {
   }
 }
 
-/* Run on page load */
 render();
 
-/* ═══════════════════════════════════════════════════════════
-   FAQ ACCORDION
-═══════════════════════════════════════════════════════════ */
+/* ═══════════════ FLOATING CTA SCROLL TRIGGER ═══════════════ */
+(function () {
+  const cta = document.getElementById('float-cta');
+  const heroBanner = document.querySelector('.hero-banner');
+
+  function checkScroll() {
+    if (!heroBanner) return;
+    const heroBottom = heroBanner.offsetTop + heroBanner.offsetHeight;
+    const scrolled = window.scrollY + 100;
+    if (scrolled > heroBottom) {
+      cta.classList.add('visible');
+    } else {
+      cta.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+})();
+
+/* ═══════════════ SCROLL REVEAL ANIMATIONS ═══════════════ */
+(function () {
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+})();
+
+/* ═══════════════ FAQ ACCORDION ═══════════════ */
 function faq(btn) {
   const a = btn.nextElementSibling;
   const o = a.classList.contains('open');
