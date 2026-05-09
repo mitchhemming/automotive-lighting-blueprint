@@ -11,14 +11,18 @@
 /* ── TOKENS ─────────────────────────────────── */
 :root {
   --bg:    #0A0A0A;
-  --s1:    #111111;
-  --s2:    #181818;
-  --line:  #2A2A2A;
+  --s1:    #1A1A1A;
+  --s2:    #232323;
+  --line:  #2E2E2E;
   --w:     #FFFFFF;
   --w80:   rgba(255,255,255,0.85);
   --w50:   rgba(255,255,255,0.50);
   --gold:  #C8922A;
   --gold2: #E8B84A;
+  --em:    #0E2419;
+  --em2:   #1A3D2E;
+  --em3:   #2A6048;
+  --em4:   #3A9E6A;
   --fh:    'Barlow Condensed', sans-serif;
   --fb:    'Barlow', sans-serif;
 }
@@ -108,7 +112,7 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
 
 /* ── HERO ─────────────────────────────────────── */
 .hero {
-  position: relative; min-height: 96vh;
+  position: relative; min-height: 75vh;
   display: flex; flex-direction: column; justify-content: flex-end;
   overflow: hidden;
 }
@@ -129,11 +133,11 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
 .hc {
   position: relative; z-index: 1;
   width: 100%; max-width: 760px; margin: 0 auto;
-  padding: 0 24px 52px;
+  padding: 0 24px 44px;
 }
 @media (min-width: 768px) {
   .hc { padding: 0 40px 72px; }
-  .hero { min-height: 90vh; }
+  .hero { min-height: 85vh; }
 }
 .hsub { font-size: 20px; font-weight: 600; color: var(--w); line-height: 1.45; margin: 18px 0 28px; }
 .htimer { font-family: var(--fh); font-size: 12px; font-weight: 600; letter-spacing: .12em; color: var(--w50); text-transform: uppercase; margin-top: 14px; text-align: center; }
@@ -306,7 +310,7 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
 }
 
 /* ── VALUE STACK ──────────────────────────────── */
-.vs { background: var(--s1); }
+.vs { background: var(--s2); }
 .vs-intro { color: var(--w80); margin-top: 12px; font-size: 17px; margin-bottom: 8px; }
 .vl { list-style: none; margin-top: 28px; }
 .vl li {
@@ -373,15 +377,26 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
   .pi li { font-size: 17px; }
 }
 
-/* ── WHAT HAPPENS NEXT ────────────────────────── */
-.next { background: var(--s1); }
+/* ── WHAT HAPPENS NEXT (Emerald) ──────────────── */
+.next {
+  background: var(--em);
+  position: relative;
+}
+.next::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--em3), transparent);
+}
+.next .eye { color: var(--em4); }
 .next h2 { margin-bottom: 12px; }
-.next-intro { color: var(--w80); font-size: 17px; margin-bottom: 28px; }
+.next h2 .gc { color: var(--em4); }
+.next-intro { color: rgba(255,255,255,0.7); font-size: 17px; margin-bottom: 28px; }
 .steps { list-style: none; counter-reset: s; }
 .steps li {
   position: relative;
   padding: 18px 0 18px 56px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--em2);
   counter-increment: s;
 }
 .steps li:last-child { border-bottom: none; }
@@ -389,14 +404,14 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
   content: counter(s, decimal-leading-zero);
   position: absolute; left: 0; top: 14px;
   font-family: var(--fh); font-size: 24px; font-weight: 900;
-  color: var(--gold); letter-spacing: .04em;
+  color: var(--em4); letter-spacing: .04em;
 }
 .step-t {
   font-family: var(--fh); font-size: 18px; font-weight: 700;
   letter-spacing: .04em; color: var(--w); text-transform: uppercase;
   margin-bottom: 4px;
 }
-.step-d { font-size: 15px; color: var(--w80); line-height: 1.5; }
+.step-d { font-size: 15px; color: rgba(255,255,255,0.78); line-height: 1.5; }
 
 /* ── FAQ ──────────────────────────────────────── */
 .faq { background: var(--bg); }
@@ -414,7 +429,17 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
 @media (min-width: 768px) { .fqb { font-size: 18px; } }
 
 /* ── FINAL CTA ────────────────────────────────── */
-.final { background: var(--s1); text-align: center; }
+.final {
+  background: var(--bg);
+  text-align: center;
+  position: relative;
+}
+.final::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--em3), transparent);
+}
 .final h2 { margin-bottom: 18px; }
 .final .lead { margin-bottom: 12px; }
 .final p { margin-bottom: 32px; font-size: 18px; }
