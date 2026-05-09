@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>The Automotive Lighting Blueprint — Consistent Creative</title>
+<title>The Automotive Lighting Blueprint · Consistent Creative</title>
 <meta name="description" content="The only on-location artificial lighting system built for automotive photographers. Stop blending in. Start getting hired by premium brands.">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -157,7 +157,7 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
 }
 @media (min-width: 768px) { .cks li { font-size: 20px; } }
 
-/* ── ABOUT MITCH (Trust) ─────────────────────── */
+/* ── ABOUT MITCH (Trust + stats embedded) ────── */
 .about { background: var(--s1); }
 .aimg {
   width: 88px; height: 88px; border-radius: 50%;
@@ -166,8 +166,29 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
 }
 .about p { margin-top: 16px; }
 .about .lead { margin-top: 22px; }
+.cred-strip {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  margin-top: 26px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cred {
+  padding: 20px 12px;
+  text-align: center;
+  border-right: 1px solid var(--line);
+}
+.cred:last-child { border-right: none; }
+.cred-n { font-family: var(--fh); font-size: 28px; font-weight: 900; color: var(--gold); line-height: 1; }
+.cred-l { font-size: 10px; color: var(--w50); text-transform: uppercase; letter-spacing: .1em; margin-top: 5px; }
+@media (min-width: 768px) {
+  .cred { padding: 26px 20px; }
+  .cred-n { font-size: 36px; }
+  .cred-l { font-size: 11px; }
+}
 .brands {
-  margin-top: 22px;
+  margin-top: 18px;
   padding: 18px 20px;
   background: var(--bg);
   border: 1px solid var(--line);
@@ -197,19 +218,6 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
   .pq p { font-size: 22px; }
   .brands-list { font-size: 18px; }
 }
-
-/* ── STATS ────────────────────────────────────── */
-.stats {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  background: var(--s2);
-  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-}
-.stat { padding: 24px 10px; text-align: center; border-right: 1px solid var(--line); }
-.stat:last-child { border-right: none; }
-.sn { font-family: var(--fh); font-size: 34px; font-weight: 900; color: var(--w); line-height: 1; }
-.sn.g { color: var(--gold); }
-.sl { font-size: 11px; color: var(--w50); text-transform: uppercase; letter-spacing: .08em; margin-top: 5px; }
-@media (min-width: 768px) { .stat { padding: 32px 20px; } .sn { font-size: 44px; } .sl { font-size: 12px; } }
 
 /* ── BEFORE / AFTER ───────────────────────────── */
 .ba-wrap { background: var(--bg); padding-top: 56px; padding-bottom: 56px; }
@@ -242,6 +250,26 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
 .mpull h2 { color: var(--bg); margin-bottom: 16px; }
 .mpull p { color: rgba(10,10,10,.78); font-size: 18px; }
 @media (min-width: 768px) { .mpull p { font-size: 20px; } }
+
+/* ── EVEN IF (Belief) ─────────────────────────── */
+.evenif { background: var(--bg); text-align: center; }
+.evenif h2 { margin-bottom: 18px; }
+.evenif .lead { margin-bottom: 26px; }
+.evenif-list { list-style: none; max-width: 520px; margin: 0 auto; }
+.evenif-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 17px; color: var(--w); text-align: left;
+  padding: 14px 0; border-bottom: 1px solid var(--line);
+  line-height: 1.45;
+}
+.evenif-list li:last-child { border-bottom: none; }
+.check {
+  width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px;
+  border-radius: 50%; background: var(--gold);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--fh); font-size: 12px; font-weight: 900; color: var(--bg);
+  line-height: 1;
+}
 
 /* ── MODULES ──────────────────────────────────── */
 .mods { background: var(--s1); }
@@ -321,8 +349,33 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
   .pi li { font-size: 17px; }
 }
 
+/* ── WHAT HAPPENS NEXT ────────────────────────── */
+.next { background: var(--s1); }
+.next h2 { margin-bottom: 12px; }
+.next-intro { color: var(--w80); font-size: 17px; margin-bottom: 28px; }
+.steps { list-style: none; counter-reset: s; }
+.steps li {
+  position: relative;
+  padding: 18px 0 18px 56px;
+  border-bottom: 1px solid var(--line);
+  counter-increment: s;
+}
+.steps li:last-child { border-bottom: none; }
+.steps li::before {
+  content: counter(s, decimal-leading-zero);
+  position: absolute; left: 0; top: 14px;
+  font-family: var(--fh); font-size: 24px; font-weight: 900;
+  color: var(--gold); letter-spacing: .04em;
+}
+.step-t {
+  font-family: var(--fh); font-size: 18px; font-weight: 700;
+  letter-spacing: .04em; color: var(--w); text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.step-d { font-size: 15px; color: var(--w80); line-height: 1.5; }
+
 /* ── FAQ ──────────────────────────────────────── */
-.faq { background: var(--s1); }
+.faq { background: var(--bg); }
 .fq  { border-bottom: 1px solid var(--line); }
 .fqb {
   width: 100%; background: none; border: none;
@@ -337,14 +390,14 @@ p  { font-size: 17px; line-height: 1.65; color: var(--w80); }
 @media (min-width: 768px) { .fqb { font-size: 18px; } }
 
 /* ── FINAL CTA ────────────────────────────────── */
-.final { background: var(--bg); text-align: center; }
+.final { background: var(--s1); text-align: center; }
 .final h2 { margin-bottom: 18px; }
 .final .lead { margin-bottom: 12px; }
 .final p { margin-bottom: 32px; font-size: 18px; }
 @media (min-width: 768px) { .final p { font-size: 20px; } }
 
 /* ── FOOTER ───────────────────────────────────── */
-footer { border-top: 1px solid var(--line); background: var(--s1); }
+footer { border-top: 1px solid var(--line); background: var(--bg); }
 footer p { font-size: 12px; color: var(--w50); }
 footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
@@ -368,56 +421,60 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <div class="spacer"></div>
 
 <!-- ═══════════════ HERO ═══════════════ -->
-<!-- TRANSFORMATION-FOCUSED: makes them the subject. The hero promises the OUTCOME, not the course name. -->
 <section class="hero">
   <div class="hbg"></div>
   <div class="hc">
     <span class="eye">For Automotive Photographers Ready to Get Hired</span>
     <h1>From invisible.<br><span class="gc">To in-demand.</span></h1>
-    <p class="hsub">The lighting system that makes premium brands stop scrolling — and start hiring you.</p>
-    <a href="#checkout" class="btn">Enrol — $295 →</a>
+    <p class="hsub">The lighting system that makes premium brands stop scrolling. And start hiring you.</p>
+    <a href="#checkout" class="btn">Enrol Now · $295 →</a>
     <p class="htimer">🔥 Launch price ends in <span id="hero-t">loading…</span></p>
   </div>
 </section>
 
-<!-- ═══════════════ STATS ═══════════════ -->
-<div class="stats">
-  <div class="stat"><div class="sn">15</div><div class="sl">Years</div></div>
-  <div class="stat"><div class="sn">1000s</div><div class="sl">Cars Shot</div></div>
-  <div class="stat"><div class="sn g">50+</div><div class="sl">Major Brands</div></div>
-</div>
-
 <div class="rule"></div>
 
 <!-- ═══════════════ RECOGNITION ═══════════════ -->
-<!-- This is the FIRST stop after the hero. Buyer needs to feel seen before anything else. -->
 <section class="fy pad">
   <div class="c">
     <span class="eye">If this sounds familiar</span>
     <h2>You're a great photographer.<br><span class="gc">But it's not paying off.</span></h2>
     <ul class="cks">
-      <li><span class="dot"></span>You love cars and you've put in the work — but your photos blend in with everyone else's</li>
-      <li><span class="dot"></span>You shoot natural light because that's what every photographer shoots</li>
-      <li><span class="dot"></span>Premium brands keep scrolling past your work like you don't exist</li>
-      <li><span class="dot"></span>You're undercharging — or shooting for free hoping it leads somewhere</li>
+      <li><span class="dot"></span>You love cars. You've put in the work. But your photos blend in with everyone else's.</li>
+      <li><span class="dot"></span>You shoot natural light. Because that's what every photographer shoots.</li>
+      <li><span class="dot"></span>Premium brands keep scrolling past your work like you don't exist.</li>
+      <li><span class="dot"></span>You're undercharging. Or shooting for free hoping it leads somewhere.</li>
       <li><span class="dot"></span>You know you're talented. But you can't break through the ceiling.</li>
     </ul>
-    <div class="fy-tag">If even one of these hit — keep reading. This was built for you.</div>
+    <div class="fy-tag">If even one of these hit, keep reading. This was built for you.</div>
   </div>
 </section>
 
 <div class="rule"></div>
 
 <!-- ═══════════════ TRUST ═══════════════ -->
-<!-- Origin story. Comes after recognition because they need to know WHO is offering the solution. -->
 <section class="about pad">
   <div class="c">
     <span class="eye">Meet your instructor</span>
     <h2>Hi. I'm Mitch.<br><span class="gc">And I've been there.</span></h2>
     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=85&auto=format" alt="Mitch Hemming" class="aimg">
     <p class="lead">I didn't get here with natural light.</p>
-    <p>While other photographers waited for golden hour, I was shooting at midnight — flash and light painting from day one. That choice opened every door.</p>
-    <p>15 years later, I've shot for the brands most photographers only dream of working with.</p>
+    <p>While other photographers waited for golden hour, I was shooting at midnight. Flash and light painting from day one. That choice opened every door.</p>
+
+    <div class="cred-strip">
+      <div class="cred">
+        <div class="cred-n">15</div>
+        <div class="cred-l">Years</div>
+      </div>
+      <div class="cred">
+        <div class="cred-n">1000s</div>
+        <div class="cred-l">Cars Shot</div>
+      </div>
+      <div class="cred">
+        <div class="cred-n">50+</div>
+        <div class="cred-l">Major Brands</div>
+      </div>
+    </div>
 
     <div class="brands">
       <span class="brands-label">A few of the brands I've worked with:</span>
@@ -429,15 +486,14 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="pq">
       <p>"Natural light gets you clients. Controlled lighting gets you premium clients."</p>
-      <span class="at">— Mitch Hemming, Consistent Creative</span>
+      <span class="at">Mitch Hemming, Consistent Creative</span>
     </div>
   </div>
 </section>
 
 <div class="rule"></div>
 
-<!-- ═══════════════ PROOF (Before/After) ═══════════════ -->
-<!-- The Vehicle Shift made visual. The "aha" moment. Bigger, bolder, undeniable. -->
+<!-- ═══════════════ PROOF ═══════════════ -->
 <div class="ba-wrap">
   <div class="ba-head">
     <span class="eye">The difference</span>
@@ -446,11 +502,11 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
   <div class="ba-grid">
     <div class="ba-item">
-      <img src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?w=800&q=85&auto=format" alt="Before — natural light">
+      <img src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?w=800&q=85&auto=format" alt="Natural light">
       <div class="ba-ov"><div class="tag b">Natural Light</div></div>
     </div>
     <div class="ba-item">
-      <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=85&auto=format" alt="After — controlled lighting">
+      <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=85&auto=format" alt="Controlled lighting">
       <div class="ba-ov"><div class="tag a">Controlled Light</div></div>
     </div>
   </div>
@@ -459,41 +515,57 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
 <div class="rule"></div>
 
-<!-- ═══════════════ SOLUTION (Method Pull) ═══════════════ -->
-<!-- The shift moment — visually inverts the page. Introduces the named method. -->
+<!-- ═══════════════ SOLUTION ═══════════════ -->
 <div class="mpull pad">
   <div class="c">
     <div class="inner">
       <span class="eye" style="color:rgba(10,10,10,0.6);">The solution</span>
       <h2>One method.<br>Every car.<br>Every time.</h2>
-      <p style="margin-top:18px;">The Controlled Lighting Method™ is the only artificial lighting system built for automotive photographers. Flash, light painting, editing and premium brand positioning — in one course.</p>
+      <p style="margin-top:18px;">The Controlled Lighting Method™. The only artificial lighting system built for automotive photographers. Flash, light painting, editing, and premium brand positioning. All in one course.</p>
     </div>
   </div>
 </div>
 
 <div class="rule"></div>
 
-<!-- ═══════════════ HOW IT WORKS (Modules) ═══════════════ -->
-<!-- Outcome-led descriptions. Each module promises what they'll be ABLE TO DO, not what's covered. -->
+<!-- ═══════════════ EVEN IF (Belief) ═══════════════ -->
+<section class="evenif pad">
+  <div class="c">
+    <span class="eye">Don't worry if</span>
+    <h2>This works.<br><span class="gc">Even if.</span></h2>
+    <p class="lead">The course assumes you're starting from zero. Because most students are.</p>
+    <ul class="evenif-list">
+      <li><span class="check">✓</span>You've never picked up a flash in your life</li>
+      <li><span class="check">✓</span>You don't own expensive gear</li>
+      <li><span class="check">✓</span>You only get to shoot regular cars</li>
+      <li><span class="check">✓</span>You hate the editing process and avoid it</li>
+      <li><span class="check">✓</span>You're a hobbyist, not a pro</li>
+    </ul>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ═══════════════ MODULES ═══════════════ -->
 <section class="mods pad">
   <div class="c">
     <span class="eye">Inside the course</span>
     <h2>6 Modules.<br><span class="gc">Full system.</span></h2>
-    <p class="mod-intro">Every module is built around one goal: getting you premium-ready, fast.</p>
+    <p class="mod-intro">Every module is built around one goal. Get you premium-ready in 30 days.</p>
 
     <div class="mgrid">
 
       <div class="mc">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=700&q=85&auto=format" class="mi" alt="Introduction">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=700&q=85&auto=format" class="mi" alt="">
         <div class="mb">
           <div class="mn">Module 01</div>
           <div class="mt">Introduction</div>
-          <p class="md">Set yourself up for success. Mindset, expectations, and exactly how to get the most out of this course.</p>
+          <p class="md">Set yourself up for success. The mindset, the expectations, and how to get the most out of this course.</p>
         </div>
       </div>
 
       <div class="mc">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=85&auto=format" class="mi" alt="Gear and Location">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=85&auto=format" class="mi" alt="">
         <div class="mb">
           <div class="mn">Module 02</div>
           <div class="mt">Gear & Location</div>
@@ -502,38 +574,38 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       </div>
 
       <div class="mc">
-        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=700&q=85&auto=format" class="mi" alt="Light Painting">
+        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=700&q=85&auto=format" class="mi" alt="">
         <div class="mb">
           <div class="mn">Module 03</div>
           <div class="mt">Light Painting</div>
-          <p class="md">Create images that stop scrolls and look like nobody else's — the kind of work that gets brands sliding into your DMs.</p>
+          <p class="md">Create images that stop scrolls and look like nobody else's. The kind of work that gets brands sliding into your DMs.</p>
         </div>
       </div>
 
       <div class="mc">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=700&q=85&auto=format" class="mi" alt="Flash Lighting">
+        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=700&q=85&auto=format" class="mi" alt="">
         <div class="mb">
           <div class="mn">Module 04</div>
           <div class="mt">Flash Lighting</div>
-          <p class="md">Master artificial light on location. Shoot any car, any environment, any time of day — with total control.</p>
+          <p class="md">Master artificial light on location. Shoot any car, any environment, any time of day. With total control.</p>
         </div>
       </div>
 
       <div class="mc">
-        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=700&q=85&auto=format" class="mi" alt="Editing">
+        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=700&q=85&auto=format" class="mi" alt="">
         <div class="mb">
           <div class="mn">Module 05</div>
           <div class="mt">Lightroom & Photoshop</div>
-          <p class="md">A fast, repeatable editing process that turns good shots into premium-grade work — every single time.</p>
+          <p class="md">A fast, repeatable editing process that turns good shots into premium-grade work. Every single time.</p>
         </div>
       </div>
 
       <div class="mc prem">
-        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=700&q=85&auto=format" class="mi" alt="Premium Client Blueprint">
+        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=700&q=85&auto=format" class="mi" alt="">
         <div class="mb">
-          <div class="mn p">Module 06 — Premium</div>
+          <div class="mn p">Module 06 / Premium</div>
           <div class="mt p">The Client Blueprint</div>
-          <p class="md">Position yourself as a premium photographer, attract the brands you actually want to work with, and charge what your work is worth.</p>
+          <p class="md">Position yourself as a premium photographer. Attract the brands you actually want to work with. Charge what your work is worth.</p>
         </div>
       </div>
 
@@ -543,8 +615,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
 <div class="rule"></div>
 
-<!-- ═══════════════ DESIRE (Gallery) ═══════════════ -->
-<!-- Reframed from "look at my work" to "this is what YOU'LL create." -->
+<!-- ═══════════════ DESIRE ═══════════════ -->
 <div class="gallery">
   <div class="head">
     <span class="eye">What you'll create</span>
@@ -571,16 +642,16 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
 <div class="rule"></div>
 
-<!-- ═══════════════ THE OFFER (Value Stack) ═══════════════ -->
+<!-- ═══════════════ THE OFFER ═══════════════ -->
 <section class="vs pad">
   <div class="c">
     <span class="eye">Everything you get</span>
     <h2>Worth $1,495.<br><span class="gc">Yours for $295.</span></h2>
-    <p class="vs-intro">Enrol today and get instant access to everything below:</p>
+    <p class="vs-intro">Enrol today and get instant access to everything below.</p>
 
     <ul class="vl">
-      <li><span class="vi">The Automotive Lighting Blueprint — 6 modules</span><span class="vv">$995</span></li>
-      <li><span class="vi">Lifetime access + every future update</span><span class="vv">Incl.</span></li>
+      <li><span class="vi">The Automotive Lighting Blueprint. 6 full modules.</span><span class="vv">$995</span></li>
+      <li><span class="vi">Lifetime access plus every future update</span><span class="vv">Incl.</span></li>
       <li><span class="vi">Lighting diagram templates</span><span class="vv">$147</span></li>
       <li><span class="vi">Lightroom RAW editing preset</span><span class="vv">$97</span></li>
       <li><span class="vi">Editing workflow in Photoshop</span><span class="vv">$97</span></li>
@@ -592,18 +663,18 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <span class="vtl">Total value</span>
       <span class="vta">$1,495</span>
     </div>
-    <a href="#checkout" class="btn">Get Everything — $295 →</a>
+    <a href="#checkout" class="btn">Get Everything · $295 →</a>
   </div>
 </section>
 
 <div class="rule"></div>
 
-<!-- ═══════════════ DECISION (Pricing) ═══════════════ -->
+<!-- ═══════════════ DECISION ═══════════════ -->
 <section class="pricing pad" id="checkout">
   <div class="c">
     <span class="eye">Pricing</span>
     <h2 style="margin-bottom:14px;">$295 today.<br><span class="gc">$495 tomorrow.</span></h2>
-    <p class="intro">Launch price ends in 24 hours. After that, the course goes to its full price of $495 — and stays there.</p>
+    <p class="intro">Launch price ends in 24 hours. After that, the course goes to its full price of $495. And stays there.</p>
 
     <div class="pc">
       <div class="pb">🔥 Launch Price</div>
@@ -616,17 +687,42 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       </div>
 
       <ul class="pi">
-        <li><span class="pd"></span>6 modules — full course access</li>
+        <li><span class="pd"></span>6 modules. Full course access.</li>
         <li><span class="pd"></span>Lighting diagram templates</li>
         <li><span class="pd"></span>Lightroom RAW preset pack</li>
         <li><span class="pd"></span>Editing workflow in Photoshop</li>
         <li><span class="pd"></span>Camera settings reference guide</li>
-        <li><span class="pd"></span>On-location + gear checklists</li>
-        <li><span class="pd"></span>Lifetime access + every future update</li>
+        <li><span class="pd"></span>On-location and gear checklists</li>
+        <li><span class="pd"></span>Lifetime access plus every future update</li>
       </ul>
-      <a href="#" class="btn">Enrol Now — $295 →</a>
-      <p class="bn">Secure checkout · Instant access</p>
+      <a href="#" class="btn">Enrol Now · $295 →</a>
+      <p class="bn">Secure checkout. Instant access.</p>
     </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ═══════════════ WHAT HAPPENS NEXT ═══════════════ -->
+<section class="next pad">
+  <div class="c">
+    <span class="eye">What happens after you enrol</span>
+    <h2>Three steps<br><span class="gc">to start.</span></h2>
+    <p class="next-intro">Simple, fast, and built so you can start applying the system tonight.</p>
+    <ul class="steps">
+      <li>
+        <div class="step-t">Pay and get instant access</div>
+        <div class="step-d">The full course unlocks the moment you enrol. Watch on any device.</div>
+      </li>
+      <li>
+        <div class="step-t">Start with Module 01</div>
+        <div class="step-d">Set yourself up for success. Then move at your own pace through every module.</div>
+      </li>
+      <li>
+        <div class="step-t">Apply it to your next shoot</div>
+        <div class="step-d">Use the system on your next car. See the difference. Build your portfolio.</div>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -641,7 +737,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
       <div class="fq">
         <button class="fqb" onclick="faq(this)">Do I need expensive gear?<span class="fqi">+</span></button>
-        <div class="fqa">No. The method works on any budget. Lighting creates the result — not the gear. I teach with accessible equipment throughout the course.</div>
+        <div class="fqa">No. The method works on any budget. Lighting creates the result. Not the gear. I teach with accessible equipment throughout the course.</div>
       </div>
 
       <div class="fq">
@@ -656,22 +752,22 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
       <div class="fq">
         <button class="fqb" onclick="faq(this)">What format is the course?<span class="fqi">+</span></button>
-        <div class="fqa">Pre-recorded video lessons broken into bite-sized modules. Watch on any device — phone, tablet, laptop. All downloads and templates are accessible inside the course.</div>
+        <div class="fqa">Pre-recorded video lessons broken into bite-sized modules. Watch on any device. Phone, tablet, or laptop. All downloads and templates are accessible inside the course.</div>
       </div>
 
       <div class="fq">
         <button class="fqb" onclick="faq(this)">How long do I have access?<span class="fqi">+</span></button>
-        <div class="fqa">Forever. Lifetime access. Every time the course is updated with new content, you get it automatically — at no extra charge.</div>
+        <div class="fqa">Forever. Lifetime access. Every time the course is updated with new content, you get it automatically. At no extra charge.</div>
       </div>
 
       <div class="fq">
-        <button class="fqb" onclick="faq(this)">How long will it take to see results?<span class="fqi">+</span></button>
-        <div class="fqa">Most students can apply the system to their first shoot within a week. With consistent application, you'll have premium-quality work in your portfolio inside 30 days.</div>
+        <button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button>
+        <div class="fqa">Most students apply the system to their first shoot within a week. With consistent application, you'll have premium-quality work in your portfolio inside 30 days.</div>
       </div>
 
       <div class="fq">
         <button class="fqb" onclick="faq(this)">What if I'm not happy?<span class="fqi">+</span></button>
-        <div class="fqa">The course is no-refund — all content is delivered in full the moment you enrol. If you complete the course and don't feel it delivered, reach out and we'll make it right.</div>
+        <div class="fqa">The course is no-refund. All content is delivered in full the moment you enrol. But if you complete the course and feel it didn't deliver what was promised, reach out. I'll make it right.</div>
       </div>
 
     </div>
@@ -681,22 +777,21 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <div class="rule"></div>
 
 <!-- ═══════════════ FINAL CTA ═══════════════ -->
-<!-- Pulls the strongest line on the page into prime position. -->
 <section class="final pad">
   <div class="c">
     <span class="eye">Ready?</span>
     <h2>The photographers getting paid<br><span class="gc">aren't more talented.</span></h2>
-    <p class="lead" style="color:var(--w);font-size:20px;">They just know something you don't — yet.</p>
+    <p class="lead" style="color:var(--w);font-size:20px;">They just know something you don't. Yet.</p>
     <p>Make today the day that changes.</p>
-    <a href="#checkout" class="btn">Enrol — $295 →</a>
-    <p class="bn" style="margin-top:14px;">Price rises to $495 after launch · Secure checkout · Instant access</p>
+    <a href="#checkout" class="btn">Enrol Now · $295 →</a>
+    <p class="bn" style="margin-top:14px;">Price rises to $495 after launch. Secure checkout. Instant access.</p>
   </div>
 </section>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer class="pad-sm">
   <div class="c">
-    <p>© 2025 Consistent Creative · Mitch Hemming · All rights reserved</p>
+    <p>© 2025 Consistent Creative. Mitch Hemming. All rights reserved.</p>
     <p>Individual results vary. Success depends on implementation and personal effort.</p>
   </div>
 </footer>
