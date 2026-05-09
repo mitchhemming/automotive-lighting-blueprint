@@ -176,59 +176,44 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
 @media (min-width: 768px) { .cks li { font-size: 20px; } }
 
-/* ── ABOUT MITCH (large photo with text overlay) ── */
+/* ── ABOUT MITCH (gold framed photo) ── */
 .about { background: var(--bg); }
+.about p { margin-top: 16px; }
+.about .lead { margin-top: 22px; }
 
-.about-photo {
-  position: relative;
-  width: 100%;
+.about-photo-frame {
+  margin: 32px auto 36px;
+  max-width: 560px;
+  border: 2px solid var(--gold);
+  border-radius: 4px;
   overflow: hidden;
+  position: relative;
 }
-.about-photo img {
+.about-photo-frame img {
   width: 100%;
+  height: auto;
   display: block;
-  max-height: 100vh;
-  object-fit: cover;
-  object-position: center 28%;
 }
-@media (min-width: 768px) {
-  .about-photo img {
-    max-height: 760px;
-  }
-}
-.about-photo::after {
+.about-photo-frame::before,
+.about-photo-frame::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top,
-    rgba(19,19,19,0.95) 0%,
-    rgba(19,19,19,0.55) 22%,
-    rgba(19,19,19,0) 50%
-  );
-  pointer-events: none;
-}
-.about-photo-overlay {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 28px 0 32px;
+  width: 14px;
+  height: 14px;
+  background: var(--gold);
   z-index: 1;
 }
-.about-photo-overlay .eye {
-  display: inline-block;
-  margin-bottom: 12px;
+.about-photo-frame::before {
+  top: -2px; left: -2px;
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 30% 30%, 30% 100%, 0 100%);
 }
-.about-photo-overlay h2 {
-  text-shadow: 0 2px 18px rgba(0,0,0,0.7);
-  margin-bottom: 0;
+.about-photo-frame::after {
+  bottom: -2px; right: -2px;
+  clip-path: polygon(0 70%, 70% 70%, 70% 0, 100% 0, 100% 100%, 0 100%);
 }
 @media (min-width: 768px) {
-  .about-photo-overlay { padding: 40px 0 56px; }
+  .about-photo-frame { margin: 40px auto 48px; max-width: 600px; }
 }
-
-.about-content { padding: 48px 0 56px; }
-@media (min-width: 768px) { .about-content { padding: 72px 0 80px; } }
-.about-content p { margin-top: 16px; }
-.about-content .lead { margin-top: 22px; }
 
 .cred-strip {
   display: grid; grid-template-columns: repeat(3,1fr);
@@ -503,46 +488,37 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 </section>
 
 <!-- ═══════════════ TRUST ═══════════════ -->
-<section class="about reveal">
+<section class="about pad reveal">
+  <div class="c">
+    <span class="eye">Meet your instructor</span>
+    <h2>Hi. I'm Mitch.<br><span class="gc">And I've been there.</span></h2>
 
-  <!-- Full bleed photo with heading overlay -->
-  <div class="about-photo">
-    <img src="mitch.jpg" alt="Mitch Hemming at Lamborghini Brisbane">
-    <div class="about-photo-overlay">
-      <div class="c">
-        <span class="eye">Meet your instructor</span>
-        <h2>Hi. I'm Mitch.<br><span class="gc">And I've been there.</span></h2>
-      </div>
+    <div class="about-photo-frame">
+      <img src="mitch.jpg" alt="Mitch Hemming at Lamborghini Brisbane">
+    </div>
+
+    <p class="lead">I didn't get here with natural light.</p>
+    <p>While other photographers waited for golden hour, I was shooting at midnight. Flash and light painting from day one. That choice opened every door.</p>
+
+    <div class="cred-strip">
+      <div class="cred"><div class="cred-n">15</div><div class="cred-l">Years</div></div>
+      <div class="cred"><div class="cred-n">1000s</div><div class="cred-l">Cars Shot</div></div>
+      <div class="cred"><div class="cred-n">50+</div><div class="cred-l">Major Brands</div></div>
+    </div>
+
+    <div class="brands">
+      <span class="brands-label">A few of the brands I've worked with:</span>
+      <div class="brands-list">Porsche · Ferrari · Mercedes · BMW · Lamborghini · Audi</div>
+    </div>
+
+    <p style="margin-top:22px;">The gap between photographers landing premium brand deals and the ones who aren't? It's almost always the same thing.</p>
+    <p class="lead">It's lighting.</p>
+
+    <div class="pq">
+      <p>"Natural light gets you clients. Controlled lighting gets you premium clients."</p>
+      <span class="at">Mitch Hemming, Consistent Creative</span>
     </div>
   </div>
-
-  <!-- Body content below photo -->
-  <div class="about-content">
-    <div class="c">
-      <p class="lead">I didn't get here with natural light.</p>
-      <p>While other photographers waited for golden hour, I was shooting at midnight. Flash and light painting from day one. That choice opened every door.</p>
-
-      <div class="cred-strip">
-        <div class="cred"><div class="cred-n">15</div><div class="cred-l">Years</div></div>
-        <div class="cred"><div class="cred-n">1000s</div><div class="cred-l">Cars Shot</div></div>
-        <div class="cred"><div class="cred-n">50+</div><div class="cred-l">Major Brands</div></div>
-      </div>
-
-      <div class="brands">
-        <span class="brands-label">A few of the brands I've worked with:</span>
-        <div class="brands-list">Porsche · Ferrari · Mercedes · BMW · Lamborghini · Audi</div>
-      </div>
-
-      <p style="margin-top:22px;">The gap between photographers landing premium brand deals and the ones who aren't? It's almost always the same thing.</p>
-      <p class="lead">It's lighting.</p>
-
-      <div class="pq">
-        <p>"Natural light gets you clients. Controlled lighting gets you premium clients."</p>
-        <span class="at">Mitch Hemming, Consistent Creative</span>
-      </div>
-    </div>
-  </div>
-
 </section>
 
 <!-- ═══════════════ TRANSFORMATION (3-stage) ═══════════════ -->
