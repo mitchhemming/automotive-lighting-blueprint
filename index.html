@@ -118,10 +118,9 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 /* ── HERO (image behind, text in front) ───── */
 .hero {
   position: relative;
-  min-height: 70vh;
   display: flex; flex-direction: column;
   justify-content: flex-start;
-  padding-top: 36px; padding-bottom: 60px;
+  padding-top: 32px; padding-bottom: 48px;
   overflow: hidden;
 }
 .hbg {
@@ -134,7 +133,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   background: linear-gradient(to bottom,
     rgba(19,19,19,0.92) 0%,
     rgba(19,19,19,0.65) 35%,
-    rgba(19,19,19,0.45) 60%,
+    rgba(19,19,19,0.55) 60%,
     rgba(19,19,19,0.85) 90%,
     var(--bg) 100%
   );
@@ -158,7 +157,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 .htimer .gold-text { color: var(--gold); }
 @media (min-width: 768px) {
-  .hero { min-height: 80vh; padding-top: 56px; padding-bottom: 80px; }
+  .hero { padding-top: 56px; padding-bottom: 72px; }
   .hc { padding: 0 40px; }
   .hsub { font-size: 22px; }
 }
@@ -242,13 +241,34 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .stage p { font-size: clamp(15px, 4.2vw, 17px); color: var(--w80); line-height: 1.65; }
 .stage p strong { color: var(--w); font-weight: 600; }
 
-/* ── METHOD PULL ────────────────────────────── */
-.mpull { background: var(--gold); }
-.mpull .inner { text-align: center; max-width: 640px; margin: 0 auto; }
-.mpull h2 { color: var(--bg); margin-bottom: 16px; }
-.mpull p { color: rgba(19,19,19,.78); font-size: clamp(17px, 4.8vw, 19px); }
-.mpull .eye { color: rgba(19,19,19,0.55); }
-@media (min-width: 768px) { .mpull p { font-size: 21px; } }
+/* ── METHOD PULL (gold outlined box on dark) ── */
+.mpull { background: var(--bg); }
+.mpull-box {
+  border: 1px solid var(--gold);
+  background: var(--s1);
+  border-radius: 8px;
+  padding: 36px 24px;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+}
+.mpull-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translate(-50%, -50%);
+  width: 60px; height: 4px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+.mpull h2 { color: var(--w); margin-bottom: 16px; }
+.mpull h2 .gc { color: var(--gold); }
+.mpull p { color: var(--w80); font-size: clamp(17px, 4.8vw, 19px); }
+.mpull .eye { color: var(--gold); }
+@media (min-width: 768px) {
+  .mpull-box { padding: 56px 40px; }
+  .mpull p { font-size: 21px; }
+}
 
 /* ── EVEN IF ────────────────────────────────── */
 .evenif { background: var(--s2); text-align: center; }
@@ -512,9 +532,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <!-- ═══════════════ SOLUTION ═══════════════ -->
 <div class="mpull pad reveal">
   <div class="c">
-    <div class="inner">
+    <div class="mpull-box">
       <span class="eye">The solution</span>
-      <h2>One method.<br>Every car.<br>Every time.</h2>
+      <h2>One method.<br>Every car.<br><span class="gc">Every time.</span></h2>
       <p style="margin-top:18px;">The Controlled Lighting Method™. The only artificial lighting system built for automotive photographers. Flash, light painting, editing, and premium brand positioning. All in one course.</p>
     </div>
   </div>
