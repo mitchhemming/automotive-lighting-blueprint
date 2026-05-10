@@ -206,6 +206,28 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   display: inline-block;
 }
 .caption-text.fading { opacity: 0; }
+.caption-text .gc { color: var(--gold); }
+
+/* Mobile: caption matches hero headline in size + position */
+@media (max-width: 768px) {
+  .caption {
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 32px;
+  }
+  .caption-text {
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.92;
+    text-shadow:
+      0 0 24px rgba(0,0,0,0.95),
+      0 0 48px rgba(0,0,0,0.8),
+      0 4px 16px rgba(0,0,0,0.9),
+      0 1px 3px rgba(0,0,0,1);
+  }
+}
 
 .hero-final {
   position: absolute;
@@ -238,12 +260,13 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .hero-final h1 .line-1 { display: inline-block; }
 .hero-final h1 .gc { color: var(--gold); }
 
-/* Override .btn full-width inside hero so width can match headline's "From invisible" line */
+/* Hero CTA: snug fit around the text — overrides default full-width .btn */
 .hero-final #hero-cta {
   display: inline-block;
   width: auto;
   max-width: 100%;
   margin: 0 auto;
+  padding: 16px 28px;
 }
 .hero-final p.sub {
   font-family: var(--fh);
@@ -610,7 +633,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="hero-final-content">
         <h1><span class="line-1" id="hero-line-1">From invisible</span><br><span class="gc">To in demand</span></h1>
         <p class="sub">The Automotive Lighting Blueprint</p>
-        <a href="#checkout" class="btn" id="hero-cta">Get The Blueprint · $195 →</a>
+        <a href="#checkout" class="btn" id="hero-cta">Get The Blueprint → $195</a>
       </div>
     </div>
 
@@ -803,7 +826,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <li class="founding founding-only"><span class="vi">★ Behind the scenes bonus module</span><span class="vv">Bonus</span></li>
     </ul>
     <div class="vtot"><span class="vtl">Total value</span><span class="vta">$1,495</span></div>
-    <a href="#checkout" class="btn vs-btn">Get The Blueprint · $195 →</a>
+    <a href="#checkout" class="btn vs-btn">Get The Blueprint → $195</a>
   </div>
 </section>
 
@@ -841,7 +864,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <li class="founding founding-only"><span class="pd"></span>★ Live Q&amp;A with Mitch (founding members only)</li>
         <li class="founding founding-only"><span class="pd"></span>★ Behind the scenes bonus module</li>
       </ul>
-      <a href="#" class="btn" id="checkout-cta">Get The Blueprint · $195 →</a>
+      <a href="#" class="btn" id="checkout-cta">Get The Blueprint → $195</a>
       <p class="bn" id="checkout-note">Secure checkout. Course access June 1st.</p>
     </div>
   </div>
@@ -886,7 +909,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <span class="eye">Ready?</span>
     <h2>The photographers getting paid<br><span class="gc">aren't more talented.</span></h2>
     <p class="lead" style="color:var(--w);">They just stopped blending in.</p>
-    <a href="#checkout" class="btn final-cta" style="margin-top:32px;">Get The Blueprint · $195 →</a>
+    <a href="#checkout" class="btn final-cta" style="margin-top:32px;">Get The Blueprint → $195</a>
     <p class="bn" id="final-note" style="margin-top:14px;">Founding price. Course access June 1st.</p>
   </div>
 </section>
@@ -938,7 +961,7 @@ function render() {
   if (phase === 1) {
     price = CONFIG.p1Price;
     badge = '🔥 Founding Student Price';
-    ctaText = `Get The Blueprint · $${price} →`;
+    ctaText = `Get The Blueprint → $${price}`;
     urgency = `🔥 <span class="gold-text">Founding Student price</span> · <span id="hero-spots">${CONFIG.p1SpotsLeft} of ${CONFIG.p1FoundingCap}</span> spots remaining`;
     intro = `Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to $${CONFIG.p2Price}. Then $${CONFIG.p3Price} at launch.`;
     was = `Goes to $${CONFIG.p2Price}. Then $${CONFIG.p3Price} at launch.`;
@@ -947,7 +970,7 @@ function render() {
   } else if (phase === 2) {
     price = CONFIG.p2Price;
     badge = '⚡ Early Access Price';
-    ctaText = `Enrol Now · $${price} →`;
+    ctaText = `Enrol Now → $${price}`;
     urgency = `⚡ <span class="gold-text">Early access</span> · launches June 1st`;
     intro = `Early access ends June 1st. Then it goes to $${CONFIG.p3Price} permanently.`;
     was = `Goes to $${CONFIG.p3Price} on June 1st.`;
@@ -956,7 +979,7 @@ function render() {
   } else {
     price = CONFIG.p3Price;
     badge = 'Enrol Today';
-    ctaText = `Enrol Now · $${price} →`;
+    ctaText = `Enrol Now → $${price}`;
     urgency = `Available now. Instant access.`;
     intro = `The course is live. Enrol today and get instant access to every module.`;
     was = '';
@@ -1065,10 +1088,10 @@ function faq(btn) {
   ];
 
   const TEXT_STATES = [
-    "Watch the method unfold",
-    "One light at a time",
-    "Every detail controlled",
-    "This is what changes everything",   // Final image caption (placeholder — adjust)
+    "Watch the <span class='gc'>method</span> unfold",
+    "One <span class='gc'>light</span> at a time",
+    "Every detail <span class='gc'>controlled</span>",
+    "This is what changes <span class='gc'>everything</span>",
   ];
 
   const TIMING = {
@@ -1141,7 +1164,7 @@ function faq(btn) {
       const t = setTimeout(() => {
         captionText.classList.add('fading');
         const t2 = setTimeout(() => {
-          captionText.textContent = text;
+          captionText.innerHTML = text;
           captionText.classList.remove('fading');
         }, 250);
         textTimeouts.push(t2);
@@ -1168,7 +1191,7 @@ function faq(btn) {
     isPlaying = true;
     heroFinal.classList.remove('visible');
     captionText.classList.remove('fading');
-    captionText.textContent = TEXT_STATES[0];
+    captionText.innerHTML = TEXT_STATES[0];
     document.querySelectorAll('.frame-wrap img').forEach(img => {
       img.classList.remove('active');
       img.style.zIndex = '';
@@ -1207,23 +1230,6 @@ function faq(btn) {
   } else {
     window.addEventListener('load', () => { setTimeout(playSequence, 400); });
   }
-
-  // Size the hero CTA button to match the "From invisible" first line width
-  function sizeHeroCTA() {
-    const line1 = document.getElementById('hero-line-1');
-    const cta = document.getElementById('hero-cta');
-    if (!line1 || !cta) return;
-    // Temporarily clear width to allow accurate measurement
-    cta.style.width = '';
-    const w = line1.getBoundingClientRect().width;
-    if (w > 0) cta.style.width = w + 'px';
-  }
-  // Run once fonts/layout settle, then on resize
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(sizeHeroCTA);
-  }
-  window.addEventListener('load', sizeHeroCTA);
-  window.addEventListener('resize', sizeHeroCTA);
 })();
 </script>
 </body>
