@@ -272,6 +272,18 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 
 /* ── RECOGNITION ────────────────────────────── */
 .fy { background: var(--s1); }
+.fy-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 32px;
+  align-items: start;
+}
+.fy-head .eye { margin-bottom: 14px; display: block; }
+.fy-head h2 { margin-bottom: 0; }
+.fy-body .cks { margin-top: 0; }
+@media (max-width: 768px) {
+  .fy-grid { gap: 18px; }
+}
 .cks { list-style: none; margin-top: 26px; }
 .cks li {
   display: flex; align-items: flex-start; gap: 14px;
@@ -363,49 +375,13 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   margin-bottom: 22px;
 }
 @media (min-width: 768px) { .brands-strip { padding: 20px 24px; } }
-.brands-label { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--w50); text-transform: uppercase; margin-bottom: 8px; display: block; }
-.brands-list { font-family: var(--fh); font-size: clamp(13px, 3.6vw, 15px); font-weight: 700; letter-spacing: .05em; color: var(--w); text-transform: uppercase; line-height: 1.55; margin: 0; }
-@media (min-width: 768px) { .brands-list { font-size: 16px; } }
+.brands-label { font-family: var(--fh); font-size: 13px; font-weight: 600; letter-spacing: .2em; color: var(--w50); text-transform: uppercase; margin-bottom: 12px; display: block; }
+.brands-list { font-family: var(--fh); font-size: clamp(17px, 4.6vw, 20px); font-weight: 700; letter-spacing: .04em; color: var(--w); text-transform: uppercase; line-height: 1.5; margin: 0; }
+@media (min-width: 768px) { .brands-list { font-size: 22px; } .brands-label { font-size: 14px; } }
 
 .closing > p { margin: 0; font-size: clamp(15px, 4.2vw, 16px); line-height: 1.6; color: var(--w80); }
 .closing > p + p { margin-top: 14px; }
 .closing .lead { font-size: clamp(17px, 4.7vw, 18px); font-weight: 600; color: var(--w); margin-top: 18px; line-height: 1.45; }
-
-.about-pq {
-  text-align: center;
-  margin-top: 32px;
-  padding-top: 28px;
-  position: relative;
-}
-.about-pq::before {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: var(--gold);
-  margin: 0 auto 22px;
-}
-.about-pq p {
-  font-family: var(--fh);
-  font-size: clamp(22px, 6vw, 30px);
-  font-weight: 900;
-  color: var(--w);
-  line-height: 1.18;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  margin: 0;
-}
-.about-pq p .gc { color: var(--gold); }
-.about-pq .at {
-  font-family: var(--fb);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--w50);
-  text-transform: uppercase;
-  margin-top: 14px;
-  font-weight: 600;
-  display: block;
-}
 
 /* ── TRANSFORMATION (3-stage) ───────────────── */
 .transform { background: var(--s1); }
@@ -663,15 +639,21 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <!-- ═══════════════ RECOGNITION ═══════════════ -->
 <section class="fy pad reveal">
   <div class="c">
-    <span class="eye">If this sounds familiar</span>
-    <h2>You're a great photographer.<br><span class="gc">But it's not paying off.</span></h2>
-    <ul class="cks">
-      <li><span class="dot"></span><strong>Your photos blend in.</strong> Same golden hour, same angles as everyone else.</li>
-      <li><span class="dot"></span><strong>Premium brands scroll past.</strong> Like your work doesn't exist.</li>
-      <li><span class="dot"></span><strong>You're undercharging.</strong> Or shooting for free hoping it leads somewhere.</li>
-      <li><span class="dot"></span><strong>You can't break the ceiling.</strong> No matter how good your eye gets.</li>
-    </ul>
-    <div class="fy-tag">If even one of these hit, keep reading. This was built for you.</div>
+    <div class="fy-grid">
+      <div class="fy-head">
+        <span class="eye">The Problem</span>
+        <h2>You're a great photographer.<br><span class="gc">But it's not paying off.</span></h2>
+      </div>
+      <div class="fy-body">
+        <ul class="cks">
+          <li><span class="dot"></span><strong>Your photos blend in.</strong> Same golden hour, same angles as everyone else.</li>
+          <li><span class="dot"></span><strong>Premium brands scroll past.</strong> Like your work doesn't exist.</li>
+          <li><span class="dot"></span><strong>You're undercharging.</strong> Or shooting for free hoping it leads somewhere.</li>
+          <li><span class="dot"></span><strong>You can't break the ceiling.</strong> No matter how good your eye gets.</li>
+        </ul>
+        <div class="fy-tag">If even one of these hit, keep reading. This was built for you.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -696,18 +678,13 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     </div>
 
     <div class="brands-strip">
-      <span class="brands-label">A few of the brands I've worked with:</span>
+      <span class="brands-label">Some of the brands I've worked with:</span>
       <p class="brands-list">Lamborghini · McLaren · Ferrari · Bentley · Audi · Maserati · BMW · Mercedes-Benz · + More</p>
     </div>
 
     <div class="closing">
       <p>I still use the same techniques today. The market's more crowded than ever. The competition is sharper. Lighting is still the one skill that puts you above it.</p>
       <p class="lead">That's what this course teaches you.</p>
-    </div>
-
-    <div class="about-pq">
-      <p>Standing out isn't a style.<br><span class="gc">It's a system.</span></p>
-      <span class="at">Mitch Hemming · Consistent Creative</span>
     </div>
   </div>
 </section>
@@ -774,9 +751,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <!-- ═══════════════ EVEN IF ═══════════════ -->
 <section class="evenif pad reveal">
   <div class="c">
-    <span class="eye">Don't worry if</span>
-    <h2>This works.<br><span class="gc">Even if.</span></h2>
-    <p class="lead">The course assumes you're starting from zero. Because most students are.</p>
+    <span class="eye">Beginner-friendly</span>
+    <h2>No lighting experience.<br><span class="gc">No problem.</span></h2>
+    <p class="lead">Most students start with zero flash or light painting knowledge. We teach the entire system from the ground up.</p>
     <ul class="evenif-list">
       <li><span class="check">✓</span>You've never picked up a flash in your life</li>
       <li><span class="check">✓</span>You don't own expensive gear</li>
