@@ -192,6 +192,10 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 .caption-text.fading { opacity: 0; }
 .caption-text .gc { color: var(--gold); }
+.caption-text .m-br { display: none; }
+@media (max-width: 768px) {
+  .caption-text .m-br { display: initial; }
+}
 
 /* Mobile: caption matches hero headline in size, sits just above the car */
 @media (max-width: 768px) {
@@ -639,7 +643,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     </div>
 
     <div class="caption pending" id="captionWrap">
-      <span class="caption-text" id="captionText"><span class='gc'>The Controlled Lighting Method™</span></span>
+      <span class="caption-text" id="captionText">The Controlled Lighting Method™</span>
     </div>
 
     <div class="hero-final" id="heroFinal">
@@ -1103,9 +1107,9 @@ function faq(btn) {
   ];
 
   const TEXT_STATES = [
-    "<span class='gc'>The Controlled Lighting Method™</span>",
-    "<span class='gc'>Light made</span>, not found",
-    "<span class='gc'>Combined</span> into one final image",
+    "The Controlled Lighting Method™",
+    "<span class='gc'>Created</span> by design",
+    "Combined into one<br class='m-br'><span class='gc'>final image</span>",
     "This is what changes <span class='gc'>everything</span>",
   ];
 
