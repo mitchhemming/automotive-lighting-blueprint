@@ -293,25 +293,34 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 .hero-final .htimer .gold-text { color: var(--gold); }
 
-/* Mobile: split layout — headline anchored top, course name + CTA grouped at bottom */
+/* Mobile: split layout — headline centered at 25% from top, bottom group centered at 25% from bottom */
 @media (max-width: 768px) {
   .hero-final {
-    align-items: stretch;        /* let content fill full height */
-    padding: 28px 22px;
+    align-items: stretch;
+    padding: 0 22px;             /* horizontal only — vertical 25%/75% is from full hero edges */
   }
   .hero-final-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;   /* H1 top, bottom-group bottom */
+    position: relative;
     height: 100%;
+    width: 100%;
     max-width: none;
   }
   .hero-final h1 {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%); /* centers H1's vertical midpoint on the 25% mark */
     font-size: clamp(56px, 14vw, 110px);
     line-height: 0.88;
     margin: 0;
   }
   .hero-final-bottom {
+    position: absolute;
+    top: 75%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%); /* centers bottom group's vertical midpoint on the 75% mark = 25% from bottom */
     display: flex;
     flex-direction: column;
     align-items: center;
