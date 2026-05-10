@@ -129,7 +129,26 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   overflow: hidden;
 }
 @media (max-width: 768px) {
-  .frame-wrap { aspect-ratio: 4 / 3; }
+  .frame-wrap { aspect-ratio: 1896 / 2000; }
+}
+
+/* Mobile-only: black header bar with logo above the animation */
+.mobile-header { display: none; }
+@media (max-width: 768px) {
+  .mobile-header {
+    display: block;
+    background: var(--bg);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-header .c {
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  /* Hide overlaid logo on mobile since it's in the header bar */
+  .logo-overlay { display: none; }
 }
 .frame-pic {
   position: absolute;
@@ -587,6 +606,19 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <span id="float-text">12 spots left</span>
   <span class="arrow">→</span>
 </a>
+
+<!-- ═══════════════ MOBILE HEADER (mobile only, scrolls away) ═══════════════ -->
+<header class="mobile-header">
+  <div class="c">
+    <div class="logo">
+      <div class="mark">CC</div>
+      <div class="wm">
+        <span class="wm1">Consistent</span>
+        <span class="wm2">Creative</span>
+      </div>
+    </div>
+  </div>
+</header>
 
 <!-- ═══════════════ HERO ANIMATION ═══════════════ -->
 <section class="hero">
