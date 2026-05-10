@@ -235,7 +235,16 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
     0 1px 3px rgba(0,0,0,1);
   margin-bottom: 22px;
 }
+.hero-final h1 .line-1 { display: inline-block; }
 .hero-final h1 .gc { color: var(--gold); }
+
+/* Override .btn full-width inside hero so width can match headline's "From invisible" line */
+.hero-final #hero-cta {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
 .hero-final p.sub {
   font-family: var(--fh);
   font-size: clamp(20px, 3.2vw, 32px);
@@ -642,10 +651,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="hero-final" id="heroFinal">
       <div class="hero-final-content">
-        <h1>From invisible<br><span class="gc">To in demand</span></h1>
+        <h1><span class="line-1" id="hero-line-1">From invisible</span><br><span class="gc">To in demand</span></h1>
         <p class="sub">The Automotive Lighting Blueprint</p>
         <a href="#checkout" class="btn" id="hero-cta">Claim Your Spot · $195 →</a>
-        <p class="htimer" id="hero-urgency">🔥 <span class="gold-text">Founding Student price</span> · <span id="hero-spots">30 of 30</span> spots remaining</p>
       </div>
     </div>
 
@@ -1107,14 +1115,16 @@ function faq(btn) {
     { startFrame: 0,  text: "Watch the method unfold" },
     { startFrame: 3,  text: "One light at a time" },
     { startFrame: 7,  text: "Every detail controlled" },
-    { startFrame: 11, text: null },
+    { startFrame: 11, text: "This is what changes everything" },  // Final image caption (placeholder — adjust)
   ];
 
   const TIMING = {
     initialHold: 1300,
     frameDuration: 650,
     fadeDuration: 500,
-    holdAfterFade: 700,
+    holdAfterFade: 700,         // Pause after final fade with caption visible
+    finalCaptionHold: 1500,     // How long the final caption stays before fading to headline
+    captionFadeOut: 400,        // Caption fade out time before headline appears
   };
 
   const frameWrap = document.getElementById('frameWrap');
@@ -1208,9 +1218,18 @@ function faq(btn) {
       const isFinalReveal = (i === FRAMES.length - 1);
       showFrame(i, isFinalReveal);
       if (isFinalReveal) {
+        // Sequence on final frame:
+        // 1. Final image fades in (fadeDuration)
+        // 2. Final caption shown during fade + holdAfterFade
+        // 3. Caption fades out (captionFadeOut)
+        // 4. Headline appears
+        const captionFadeStart = TIMING.fadeDuration + TIMING.finalCaptionHold;
+        setTimeout(() => {
+          captionText.classList.add('fading');
+        }, captionFadeStart);
         setTimeout(() => {
           heroFinal.classList.add('visible');
-        }, TIMING.fadeDuration + TIMING.holdAfterFade);
+        }, captionFadeStart + TIMING.captionFadeOut);
       }
       const nextIsFinalReveal = (i + 1 === FRAMES.length - 1);
       const waitTime = nextIsFinalReveal
@@ -1229,6 +1248,23 @@ function faq(btn) {
   } else {
     window.addEventListener('load', () => { setTimeout(playSequence, 400); });
   }
+
+  // Size the hero CTA button to match the "From invisible" first line width
+  function sizeHeroCTA() {
+    const line1 = document.getElementById('hero-line-1');
+    const cta = document.getElementById('hero-cta');
+    if (!line1 || !cta) return;
+    // Temporarily clear width to allow accurate measurement
+    cta.style.width = '';
+    const w = line1.getBoundingClientRect().width;
+    if (w > 0) cta.style.width = w + 'px';
+  }
+  // Run once fonts/layout settle, then on resize
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(sizeHeroCTA);
+  }
+  window.addEventListener('load', sizeHeroCTA);
+  window.addEventListener('resize', sizeHeroCTA);
 })();
 </script>
 </body>
