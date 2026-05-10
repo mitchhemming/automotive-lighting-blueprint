@@ -359,6 +359,11 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .brands-list { font-family: var(--fh); font-size: clamp(17px, 4.6vw, 20px); font-weight: 700; letter-spacing: .04em; color: var(--w); text-transform: uppercase; line-height: 1.5; margin: 0; }
 @media (min-width: 768px) { .brands-list { font-size: 22px; } .brands-label { font-size: 14px; } }
 
+.brands-strip { margin-bottom: 22px; }
+.closing > p { margin: 0; font-size: clamp(15px, 4.2vw, 16px); line-height: 1.6; color: var(--w80); }
+.closing > p + p { margin-top: 14px; }
+.closing .lead { font-size: clamp(17px, 4.7vw, 18px); font-weight: 600; color: var(--w); margin-top: 18px; line-height: 1.45; }
+
 /* ── TRANSFORMATION (3-stage) ───────────────── */
 .transform { background: var(--s1); }
 .transform .head { text-align: center; margin-bottom: 48px; }
@@ -630,13 +635,15 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <!-- ═══════════════ TRUST ═══════════════ -->
 <section class="about pad reveal">
   <div class="c">
-    <span class="eye">Your Instructor</span>
+    <span class="eye">Your instructor's story</span>
     <h2>I'm Mitch.<br>And from day one,<br><span class="gc">I refused to blend in.</span></h2>
 
     <div class="story-grid">
       <div class="story-text">
-        <p>Fifteen years ago, I started shooting cars. While everyone else chased golden hour, I taught myself light painting. Then flash.</p>
-        <p class="lead">The work started looking like nobody else's. Premium brands noticed. The opportunities followed.</p>
+        <p>Fifteen years ago, I started shooting cars. And I knew straight away that doing what everyone else was doing wasn't going to get me anywhere.</p>
+        <p class="lead">So I went the other way.</p>
+        <p>I taught myself light painting. Then flash. The work started looking like nobody else's.</p>
+        <p>Premium brands noticed. The opportunities followed.</p>
       </div>
       <div class="story-photo">
         <div class="photo-frame">
@@ -648,6 +655,11 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <div class="brands-strip">
       <span class="brands-label">Some of the brands I've worked with:</span>
       <p class="brands-list">Lamborghini · McLaren · Ferrari · Bentley · Audi · Maserati · BMW · Mercedes-Benz · + More</p>
+    </div>
+
+    <div class="closing">
+      <p>I still use the same techniques today. The market's more crowded than ever. The competition is sharper. Lighting is still the one skill that puts you above it.</p>
+      <p class="lead">That's what this course teaches you.</p>
     </div>
   </div>
 </section>
