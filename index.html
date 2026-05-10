@@ -1020,7 +1020,8 @@ function render() {
   document.querySelectorAll('#hero-cta, #checkout-cta, .vs-btn, .final-cta').forEach(el => el.textContent = ctaText);
 
   // Update other dynamic content
-  document.getElementById('hero-urgency').innerHTML = urgency;
+  const urgencyEl = document.getElementById('hero-urgency');
+  if (urgencyEl) urgencyEl.innerHTML = urgency;
   document.getElementById('price-badge').textContent = badge;
   document.getElementById('pricing-intro').textContent = intro;
   document.getElementById('price-was').textContent = was;
