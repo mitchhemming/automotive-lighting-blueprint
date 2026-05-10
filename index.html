@@ -41,8 +41,7 @@ a { text-decoration: none; color: inherit; }
   .pad-sm { padding-top: 56px; padding-bottom: 56px; }
 }
 
-/* ── TOP HEADER (non-sticky, scrolls away) ──── */
-.top-header { padding: 14px 0; border-bottom: 1px solid var(--line); }
+/* ── BRAND LOGO (used in animation overlay) ── */
 .logo { display: flex; align-items: center; gap: 9px; }
 .mark { width: 30px; height: 30px; border-radius: 5px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-size: 11px; font-weight: 900; color: var(--bg); letter-spacing: .5px; flex-shrink: 0; }
 .wm { display: flex; flex-direction: column; }
@@ -115,52 +114,131 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .bn { text-align: center; font-size: 13px; color: var(--w50); margin-top: 12px; font-family: var(--fh); letter-spacing: .08em; text-transform: uppercase; }
 @media (min-width: 768px) { .btn { font-size: 22px; padding: 24px 32px; } }
 
-/* ── HERO (image behind, text in front) ───── */
+/* ── HERO ANIMATION ─────────────────────────── */
 .hero {
   position: relative;
-  display: flex; flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 32px; padding-bottom: 48px;
+  width: 100%;
+  background: var(--bg);
   overflow: hidden;
 }
-.hbg {
-  position: absolute; inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1400&q=90&auto=format');
-  background-size: cover; background-position: center;
+.frame-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
 }
-.hbg::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(19,19,19,0.92) 0%,
-    rgba(19,19,19,0.65) 35%,
-    rgba(19,19,19,0.55) 60%,
-    rgba(19,19,19,0.85) 90%,
-    var(--bg) 100%
-  );
+@media (max-width: 768px) {
+  .frame-wrap { aspect-ratio: 4 / 3; }
 }
-.hc {
-  position: relative; z-index: 1;
-  width: 100%; max-width: 760px; margin: 0 auto;
-  padding: 0 24px;
+.frame-pic {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
-.hsub {
-  font-size: clamp(17px, 4.8vw, 20px);
-  font-weight: 600; color: var(--w);
-  line-height: 1.45; margin: 18px 0 28px;
-  text-shadow: 0 1px 12px rgba(0,0,0,0.5);
+.frame-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  will-change: opacity;
 }
-.hero h1 { text-shadow: 0 2px 16px rgba(0,0,0,0.6); }
-.htimer {
+.frame-wrap img.snap { transition: none; }
+.frame-wrap img.fade { transition: opacity 0.5s ease-in-out; }
+.frame-wrap img.active { opacity: 1; }
+
+.logo-overlay {
+  position: absolute;
+  top: 20px; left: 24px;
+  z-index: 5;
+  display: flex; align-items: center; gap: 9px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+}
+
+.caption {
+  position: absolute;
+  top: 14%;
+  left: 0; right: 0;
+  z-index: 4;
+  text-align: center;
+  padding: 0 32px;
+  pointer-events: none;
+}
+.caption.pending { display: none; }
+.caption-text {
+  font-family: var(--fh);
+  font-weight: 900;
+  font-size: clamp(32px, 6.5vw, 76px);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  color: var(--w);
+  text-transform: uppercase;
+  text-shadow:
+    0 0 20px rgba(0,0,0,0.95),
+    0 0 40px rgba(0,0,0,0.85),
+    0 4px 12px rgba(0,0,0,0.9),
+    0 1px 3px rgba(0,0,0,1);
+  transition: opacity 0.5s ease;
+  display: inline-block;
+}
+.caption-text.fading { opacity: 0; }
+
+.hero-final {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+  padding: 60px 32px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  background: linear-gradient(to bottom, rgba(19,19,19,0.5) 0%, rgba(19,19,19,0.15) 35%, rgba(19,19,19,0.5) 100%);
+}
+.hero-final.visible { opacity: 1; pointer-events: auto; }
+.hero-final-content { text-align: center; max-width: 900px; width: 100%; }
+.hero-final h1 {
+  font-family: var(--fh);
+  font-weight: 900;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--w);
+  text-transform: uppercase;
+  text-shadow:
+    0 0 24px rgba(0,0,0,0.95),
+    0 0 48px rgba(0,0,0,0.8),
+    0 4px 16px rgba(0,0,0,0.9),
+    0 1px 3px rgba(0,0,0,1);
+  margin-bottom: 22px;
+}
+.hero-final h1 .gc { color: var(--gold); }
+.hero-final p.sub {
+  font-family: var(--fh);
+  font-size: clamp(20px, 3.2vw, 32px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--w);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  text-shadow:
+    0 0 16px rgba(0,0,0,0.9),
+    0 2px 8px rgba(0,0,0,0.95),
+    0 1px 2px rgba(0,0,0,1);
+  line-height: 1.2;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-final .htimer {
   font-family: var(--fh); font-size: 12px; font-weight: 600;
-  letter-spacing: .12em; color: var(--w80); text-transform: uppercase;
-  margin-top: 14px; text-align: center;
+  letter-spacing: .12em; color: var(--w); text-transform: uppercase;
+  margin-top: 18px; text-align: center;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
-.htimer .gold-text { color: var(--gold); }
-@media (min-width: 768px) {
-  .hero { padding-top: 56px; padding-bottom: 72px; }
-  .hc { padding: 0 40px; }
-  .hsub { font-size: 22px; }
-}
+.hero-final .htimer .gold-text { color: var(--gold); }
 
 /* ── RECOGNITION ────────────────────────────── */
 .fy { background: var(--s1); }
@@ -504,34 +582,39 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 </head>
 <body>
 
-<!-- ═══════════════ TOP HEADER (scrolls away) ═══════════════ -->
-<header class="top-header">
-  <div class="c">
-    <div class="logo">
-      <div class="mark">CC</div>
-      <div class="wm">
-        <span class="wm1">Consistent</span>
-        <span class="wm2">Creative</span>
-      </div>
-    </div>
-  </div>
-</header>
-
 <!-- ═══════════════ FLOATING CTA (appears after hero) ═══════════════ -->
 <a href="#checkout" class="float-cta" id="float-cta">
   <span id="float-text">12 spots left</span>
   <span class="arrow">→</span>
 </a>
 
-<!-- ═══════════════ HERO (image behind, text in front) ═══════════════ -->
+<!-- ═══════════════ HERO ANIMATION ═══════════════ -->
 <section class="hero">
-  <div class="hbg"></div>
-  <div class="hc">
-    <span class="eye" id="hero-eye">For Automotive Photographers Ready to Get Hired</span>
-    <h1>From invisible.<br><span class="gc">To in demand.</span></h1>
-    <p class="hsub">The lighting system that makes premium brands stop scrolling. And start hiring you.</p>
-    <a href="#checkout" class="btn" id="hero-cta">Claim Your Spot · $195 →</a>
-    <p class="htimer" id="hero-urgency">🔥 <span class="gold-text">Founding Student price</span> · <span id="hero-spots">30 of 30</span> spots remaining</p>
+  <div class="frame-wrap" id="frameWrap">
+
+    <div class="logo-overlay">
+      <div class="logo">
+        <div class="mark">CC</div>
+        <div class="wm">
+          <span class="wm1">Consistent</span>
+          <span class="wm2">Creative</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="caption pending" id="captionWrap">
+      <span class="caption-text" id="captionText">Watch the method unfold</span>
+    </div>
+
+    <div class="hero-final" id="heroFinal">
+      <div class="hero-final-content">
+        <h1>From invisible<br><span class="gc">To in demand</span></h1>
+        <p class="sub">The Automotive Lighting Blueprint</p>
+        <a href="#checkout" class="btn" id="hero-cta">Claim Your Spot · $195 →</a>
+        <p class="htimer" id="hero-urgency">🔥 <span class="gold-text">Founding Student price</span> · <span id="hero-spots">30 of 30</span> spots remaining</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -968,6 +1051,155 @@ function faq(btn) {
   document.querySelectorAll('.fqb').forEach(x => x.classList.remove('open'));
   if (!o) { a.classList.add('open'); btn.classList.add('open'); }
 }
+
+/* ═══════════════ HERO ANIMATION ENGINE ═══════════════ */
+(function () {
+  const FRAMES = [
+    { d: 'frames/frame-desktop-1.jpg',  m: 'frames/frame-mobile-1.jpg' },
+    { d: 'frames/frame-desktop-2.jpg',  m: 'frames/frame-mobile-2.jpg' },
+    { d: 'frames/frame-desktop-3.jpg',  m: 'frames/frame-mobile-3.jpg' },
+    { d: 'frames/frame-desktop-4.jpg',  m: 'frames/frame-mobile-4.jpg' },
+    { d: 'frames/frame-desktop-5.jpg',  m: 'frames/frame-mobile-5.jpg' },
+    { d: 'frames/frame-desktop-6.jpg',  m: 'frames/frame-mobile-6.jpg' },
+    { d: 'frames/frame-desktop-7.jpg',  m: 'frames/frame-mobile-7.jpg' },
+    { d: 'frames/frame-desktop-8.jpg',  m: 'frames/frame-mobile-8.jpg' },
+    { d: 'frames/frame-desktop-9.jpg',  m: 'frames/frame-mobile-9.jpg' },
+    { d: 'frames/frame-desktop-10.jpg', m: 'frames/frame-mobile-10.jpg' },
+    { d: 'frames/frame-desktop-11.jpg', m: 'frames/frame-mobile-11.jpg' },
+    { d: 'frames/frame-desktop-12.jpg', m: 'frames/frame-mobile-12.jpg' },
+  ];
+
+  const TEXT_STATES = [
+    { startFrame: 0,  text: "Watch the method unfold" },
+    { startFrame: 3,  text: "One light at a time" },
+    { startFrame: 7,  text: "Every detail controlled" },
+    { startFrame: 11, text: null },
+  ];
+
+  const TIMING = {
+    initialHold: 1300,
+    frameDuration: 650,
+    fadeDuration: 500,
+    holdAfterFade: 700,
+  };
+
+  const frameWrap = document.getElementById('frameWrap');
+  if (!frameWrap) return;
+
+  FRAMES.forEach((frame, i) => {
+    const pic = document.createElement('picture');
+    pic.className = 'frame-pic';
+    const sourceMobile = document.createElement('source');
+    sourceMobile.media = '(max-width: 768px)';
+    sourceMobile.srcset = frame.m;
+    const img = document.createElement('img');
+    img.src = frame.d;
+    img.id = `frame-${i}`;
+    img.className = 'snap';
+    img.alt = `Lighting build-up frame ${i+1}`;
+    img.loading = i < 3 ? 'eager' : 'lazy';
+    pic.appendChild(sourceMobile);
+    pic.appendChild(img);
+    frameWrap.insertBefore(pic, frameWrap.firstChild);
+  });
+
+  const captionText = document.getElementById('captionText');
+  const captionWrap = document.getElementById('captionWrap');
+  const heroFinal = document.getElementById('heroFinal');
+  let isPlaying = false;
+  let currentTimeout = null;
+
+  function getTextForFrame(i) {
+    for (let s = TEXT_STATES.length - 1; s >= 0; s--) {
+      if (i >= TEXT_STATES[s].startFrame) return TEXT_STATES[s].text;
+    }
+    return null;
+  }
+
+  function showFrame(i, useFade) {
+    if (useFade) {
+      const newFrame = document.getElementById(`frame-${i}`);
+      if (newFrame) {
+        document.querySelectorAll('.frame-wrap img').forEach(img => { img.style.zIndex = ''; });
+        newFrame.style.zIndex = '2';
+        newFrame.classList.remove('snap');
+        newFrame.classList.add('fade');
+        requestAnimationFrame(() => { newFrame.classList.add('active'); });
+      }
+    } else {
+      document.querySelectorAll('.frame-wrap img').forEach(img => {
+        img.classList.remove('active');
+        img.classList.remove('fade');
+        img.classList.add('snap');
+        img.style.zIndex = '';
+      });
+      const current = document.getElementById(`frame-${i}`);
+      if (current) {
+        requestAnimationFrame(() => { current.classList.add('active'); });
+      }
+    }
+
+    const newText = getTextForFrame(i);
+    const isStateChange = TEXT_STATES.some(s => s.startFrame === i);
+    if (isStateChange) {
+      if (newText === null) {
+        captionText.classList.add('fading');
+      } else {
+        captionText.classList.add('fading');
+        setTimeout(() => {
+          captionText.textContent = newText;
+          captionText.classList.remove('fading');
+        }, 250);
+      }
+    }
+  }
+
+  function playSequence() {
+    if (isPlaying) clearTimeout(currentTimeout);
+    isPlaying = true;
+    heroFinal.classList.remove('visible');
+    captionText.classList.remove('fading');
+    captionText.textContent = TEXT_STATES[0].text;
+    document.querySelectorAll('.frame-wrap img').forEach(img => {
+      img.classList.remove('active');
+      img.style.zIndex = '';
+    });
+
+    let i = 0;
+    showFrame(i, false);
+    captionWrap.classList.remove('pending');
+
+    function advance() {
+      i++;
+      if (i >= FRAMES.length) {
+        isPlaying = false;
+        return;
+      }
+      const isFinalReveal = (i === FRAMES.length - 1);
+      showFrame(i, isFinalReveal);
+      if (isFinalReveal) {
+        setTimeout(() => {
+          heroFinal.classList.add('visible');
+        }, TIMING.fadeDuration + TIMING.holdAfterFade);
+      }
+      const nextIsFinalReveal = (i + 1 === FRAMES.length - 1);
+      const waitTime = nextIsFinalReveal
+        ? Math.max(TIMING.frameDuration - TIMING.fadeDuration, 100)
+        : TIMING.frameDuration;
+      currentTimeout = setTimeout(advance, waitTime);
+    }
+    currentTimeout = setTimeout(advance, TIMING.initialHold);
+  }
+
+  // Reduced-motion accessibility: skip animation, show final state immediately
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    showFrame(FRAMES.length - 1, false);
+    captionWrap.classList.add('pending');
+    heroFinal.classList.add('visible');
+  } else {
+    window.addEventListener('load', () => { setTimeout(playSequence, 400); });
+  }
+})();
 </script>
 </body>
 </html>
