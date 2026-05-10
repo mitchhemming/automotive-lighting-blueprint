@@ -176,26 +176,45 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
 @media (min-width: 768px) { .cks li { font-size: 20px; } }
 
-/* ── ABOUT MITCH (gold framed photo) ── */
+/* ── ABOUT MITCH (split layout, mobile optimized) ── */
 .about { background: var(--bg); }
-.about p { margin-top: 16px; }
-.about .lead { margin-top: 22px; }
+.about > .c > .eye { margin-bottom: 14px; }
+.about h2 { margin-bottom: 24px; }
 
-.about-photo-frame {
-  margin: 28px auto 32px;
-  width: 100%;
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-bottom: 24px;
+}
+@media (min-width: 768px) {
+  .story-grid {
+    grid-template-columns: 1fr 38%;
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 32px;
+  }
+}
+
+.story-photo { order: -1; margin-bottom: 18px; }
+@media (min-width: 768px) { .story-photo { order: 0; margin-bottom: 0; } }
+
+.photo-frame {
+  position: relative;
   border: 2px solid var(--gold);
   border-radius: 4px;
   overflow: hidden;
-  position: relative;
-}
-.about-photo-frame img {
+  aspect-ratio: 1 / 1;
   width: 100%;
-  height: auto;
+}
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
-.about-photo-frame::before,
-.about-photo-frame::after {
+.photo-frame::before,
+.photo-frame::after {
   content: '';
   position: absolute;
   width: 14px;
@@ -203,50 +222,81 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   background: var(--gold);
   z-index: 1;
 }
-.about-photo-frame::before {
+.photo-frame::before {
   top: -2px; left: -2px;
   clip-path: polygon(0 0, 100% 0, 100% 30%, 30% 30%, 30% 100%, 0 100%);
 }
-.about-photo-frame::after {
+.photo-frame::after {
   bottom: -2px; right: -2px;
   clip-path: polygon(0 70%, 70% 70%, 70% 0, 100% 0, 100% 100%, 0 100%);
 }
-@media (min-width: 768px) {
-  .about-photo-frame { margin: 36px auto 40px; max-width: 480px; }
-}
 
-.cred-block {
-  margin-top: 28px;
+.story-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+@media (min-width: 768px) {
+  .story-text {
+    aspect-ratio: 1.7 / 1;
+    justify-content: space-between;
+    gap: 0;
+  }
+}
+.story-text p { margin: 0; font-size: clamp(15px, 4.2vw, 16px); line-height: 1.55; color: var(--w80); }
+.story-text .lead { font-size: clamp(17px, 4.7vw, 18px); font-weight: 600; color: var(--w); line-height: 1.4; }
+
+.brands-strip {
+  padding: 16px 18px;
   background: var(--s1);
   border: 1px solid var(--line);
   border-radius: 4px;
-  overflow: hidden;
+  margin-bottom: 22px;
 }
-.cred-strip {
-  display: grid; grid-template-columns: repeat(3,1fr);
-}
-.cred {
-  padding: 22px 8px;
+@media (min-width: 768px) { .brands-strip { padding: 20px 24px; } }
+.brands-label { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--w50); text-transform: uppercase; margin-bottom: 8px; display: block; }
+.brands-list { font-family: var(--fh); font-size: clamp(13px, 3.6vw, 15px); font-weight: 700; letter-spacing: .05em; color: var(--w); text-transform: uppercase; line-height: 1.55; margin: 0; }
+@media (min-width: 768px) { .brands-list { font-size: 16px; } }
+
+.closing > p { margin: 0; font-size: clamp(15px, 4.2vw, 16px); line-height: 1.6; color: var(--w80); }
+.closing > p + p { margin-top: 14px; }
+.closing .lead { font-size: clamp(17px, 4.7vw, 18px); font-weight: 600; color: var(--w); margin-top: 18px; line-height: 1.45; }
+
+.about-pq {
   text-align: center;
-  border-right: 1px solid var(--line);
+  margin-top: 32px;
+  padding-top: 28px;
+  position: relative;
 }
-.cred:last-child { border-right: none; }
-.cred-n { font-family: var(--fh); font-size: clamp(24px, 6.5vw, 28px); font-weight: 900; color: var(--gold); line-height: 1; }
-.cred-l { font-size: clamp(9px, 2.5vw, 10px); color: var(--w50); text-transform: uppercase; letter-spacing: .08em; margin-top: 6px; }
-@media (min-width: 768px) { .cred { padding: 28px 20px; } .cred-n { font-size: 36px; } .cred-l { font-size: 11px; } }
-
-.brands-divider {
-  border-top: 1px solid var(--line);
-  padding: 18px 20px;
+.about-pq::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 22px;
 }
-.brands-label { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--w50); text-transform: uppercase; margin-bottom: 10px; display: block; }
-.brands-list { font-family: var(--fh); font-size: clamp(14px, 3.7vw, 16px); font-weight: 700; letter-spacing: .05em; color: var(--w); text-transform: uppercase; line-height: 1.6; }
-@media (min-width: 768px) { .brands-list { font-size: 17px; } .brands-divider { padding: 22px 26px; } }
-
-.pq { border-left: 3px solid var(--gold); padding: 20px 22px; margin-top: 28px; background: var(--s1); border-radius: 0 4px 4px 0; }
-.pq p { font-size: clamp(17px, 4.8vw, 19px); color: var(--w); font-style: italic; line-height: 1.5; margin-top: 0; }
-.pq .at { font-size: 13px; color: var(--gold); margin-top: 12px; font-style: normal; font-weight: 600; display: block; }
-@media (min-width: 768px) { .pq p { font-size: 22px; } .brands-list { font-size: 18px; } }
+.about-pq p {
+  font-family: var(--fh);
+  font-size: clamp(22px, 6vw, 30px);
+  font-weight: 900;
+  color: var(--w);
+  line-height: 1.18;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.about-pq p .gc { color: var(--gold); }
+.about-pq .at {
+  font-family: var(--fb);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--w50);
+  text-transform: uppercase;
+  margin-top: 14px;
+  font-weight: 600;
+  display: block;
+}
 
 /* ── TRANSFORMATION (3-stage) ───────────────── */
 .transform { background: var(--s1); }
@@ -502,34 +552,36 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <!-- ═══════════════ TRUST ═══════════════ -->
 <section class="about pad reveal">
   <div class="c">
-    <span class="eye">Meet your instructor</span>
-    <h2>Hi. I'm Mitch.<br><span class="gc">And I've been there.</span></h2>
+    <span class="eye">Your instructor's story</span>
+    <h2>I'm Mitch.<br>And from day one,<br><span class="gc">I refused to blend in.</span></h2>
 
-    <div class="about-photo-frame">
-      <img src="mitch.jpg" alt="Mitch Hemming at Lamborghini Brisbane">
-    </div>
-
-    <p class="lead">I didn't get here with natural light.</p>
-    <p>While other photographers waited for golden hour, I was shooting at midnight. Flash and light painting from day one. That choice opened every door.</p>
-
-    <div class="cred-block">
-      <div class="cred-strip">
-        <div class="cred"><div class="cred-n">15</div><div class="cred-l">Years</div></div>
-        <div class="cred"><div class="cred-n">1000s</div><div class="cred-l">Cars Shot</div></div>
-        <div class="cred"><div class="cred-n">50+</div><div class="cred-l">Major Brands</div></div>
+    <div class="story-grid">
+      <div class="story-text">
+        <p>Fifteen years ago, I started shooting cars. And I knew straight away that doing what everyone else was doing wasn't going to get me anywhere.</p>
+        <p class="lead">So I went the other way.</p>
+        <p>I taught myself light painting. Then flash. The work started looking like nobody else's.</p>
+        <p>Premium brands noticed. The opportunities followed.</p>
       </div>
-      <div class="brands-divider">
-        <span class="brands-label">A few of the brands I've worked with:</span>
-        <div class="brands-list">Lamborghini · McLaren · Ferrari · Bentley · Audi · Mercedes Benz · BMW · Maserati · + More</div>
+      <div class="story-photo">
+        <div class="photo-frame">
+          <img src="mitch.jpg" alt="Mitch Hemming at Lamborghini Brisbane">
+        </div>
       </div>
     </div>
 
-    <p style="margin-top:22px;">The gap between photographers landing premium brand deals and the ones who aren't? It's almost always the same thing.</p>
-    <p class="lead">It's lighting.</p>
+    <div class="brands-strip">
+      <span class="brands-label">A few of the brands I've worked with:</span>
+      <p class="brands-list">Lamborghini · McLaren · Ferrari · Bentley · Audi · Maserati · BMW · Mercedes-Benz · + More</p>
+    </div>
 
-    <div class="pq">
-      <p>"Natural light gets you clients. Controlled lighting gets you premium clients."</p>
-      <span class="at">Mitch Hemming, Consistent Creative</span>
+    <div class="closing">
+      <p>I still use the same techniques today. The market's more crowded than ever. The competition is sharper. Lighting is still the one skill that puts you above it.</p>
+      <p class="lead">That's what this course teaches you.</p>
+    </div>
+
+    <div class="about-pq">
+      <p>Standing out isn't a style.<br><span class="gc">It's a system.</span></p>
+      <span class="at">Mitch Hemming · Consistent Creative</span>
     </div>
   </div>
 </section>
