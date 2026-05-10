@@ -293,6 +293,12 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 .hero-final .htimer .gold-text { color: var(--gold); }
 
+/* Mobile: tighten spacing between headline, subhead, and CTA */
+@media (max-width: 768px) {
+  .hero-final h1 { margin-bottom: 10px; }
+  .hero-final p.sub { margin-bottom: 16px; }
+}
+
 /* ── RECOGNITION ────────────────────────────── */
 .fy { background: var(--s1); }
 .cks { list-style: none; margin-top: 26px; }
