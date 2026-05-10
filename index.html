@@ -208,19 +208,19 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .caption-text.fading { opacity: 0; }
 .caption-text .gc { color: var(--gold); }
 
-/* Mobile: caption matches hero headline in size + position */
+/* Mobile: caption matches hero headline in size, sits just above the car */
 @media (max-width: 768px) {
   .caption {
     top: 0;
-    bottom: 0;
+    bottom: 70%;  /* caption text bottom sits at 30% from top, above car at ~40% */
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-    padding: 60px 32px;
+    padding: 0 32px;
   }
   .caption-text {
-    font-size: clamp(48px, 8vw, 96px);
-    line-height: 0.92;
+    font-size: clamp(40px, 8vw, 80px);
+    line-height: 0.95;
     text-shadow:
       0 0 24px rgba(0,0,0,0.95),
       0 0 48px rgba(0,0,0,0.8),
