@@ -147,8 +147,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
     margin: 0 auto;
     padding: 0 24px;
   }
-  /* Hide overlaid logo on mobile since it's in the header bar */
-  .logo-overlay { display: none; }
 }
 .frame-pic {
   position: absolute;
@@ -175,6 +173,10 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   z-index: 5;
   display: flex; align-items: center; gap: 9px;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+}
+/* Hide overlaid logo on mobile since it's in the header bar */
+@media (max-width: 768px) {
+  .logo-overlay { display: none; }
 }
 
 .caption {
@@ -1121,17 +1123,13 @@ function faq(btn) {
   FRAMES.forEach((frame, i) => {
     const pic = document.createElement('picture');
     pic.className = 'frame-pic';
-    const sourceMobile = document.createElement('source');
-    sourceMobile.media = '(max-width: 768px)';
-    sourceMobile.srcset = frame.m;
-    const img = document.createElement('img');
-    img.src = frame.d;
-    img.id = `frame-${i}`;
-    img.className = 'snap';
-    img.alt = `Lighting build-up frame ${i+1}`;
-    img.loading = i < 3 ? 'eager' : 'lazy';
-    pic.appendChild(sourceMobile);
-    pic.appendChild(img);
+    // Build via innerHTML so the parser evaluates <source> media queries
+    // BEFORE the <img> starts loading. Setting img.src directly via JS would
+    // download the desktop fallback first and flash on mobile.
+    pic.innerHTML = `
+      <source media="(max-width: 768px)" srcset="${frame.m}">
+      <img src="${frame.d}" id="frame-${i}" class="snap" alt="Lighting build-up frame ${i+1}" loading="${i < 3 ? 'eager' : 'lazy'}">
+    `;
     frameWrap.insertBefore(pic, frameWrap.firstChild);
   });
 
