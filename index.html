@@ -45,8 +45,12 @@ a { text-decoration: none; color: inherit; }
 .logo { display: flex; align-items: center; gap: 9px; }
 .mark { width: 30px; height: 30px; border-radius: 5px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-size: 11px; font-weight: 900; color: var(--bg); letter-spacing: .5px; flex-shrink: 0; }
 .wm { display: flex; flex-direction: column; }
-.wm1 { font-family: var(--fh); font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--w); text-transform: uppercase; line-height: 1; }
-.wm2 { font-family: var(--fh); font-size: 8px; font-weight: 600; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; margin-top: 1px; }
+.wm1 { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .1em; color: var(--w); text-transform: uppercase; line-height: 1; }
+.wm2 { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; margin-top: 2px; }
+@media (max-width: 768px) {
+  .wm1 { font-size: 11px; }
+  .wm2 { font-size: 8px; margin-top: 1px; }
+}
 
 /* ── FLOATING CTA PILL (appears after hero) ─── */
 .float-cta {
@@ -133,21 +137,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 
 /* Mobile-only: black header bar with logo above the animation */
-.mobile-header { display: none; }
-@media (max-width: 768px) {
-  .mobile-header {
-    display: block;
-    background: var(--bg);
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .mobile-header .c {
-    width: 100%;
-    max-width: 940px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-}
 .frame-pic {
   position: absolute;
   inset: 0;
@@ -173,10 +162,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   z-index: 5;
   display: flex; align-items: center; gap: 9px;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
-}
-/* Hide overlaid logo on mobile since it's in the header bar */
-@media (max-width: 768px) {
-  .logo-overlay { display: none; }
 }
 
 .caption {
@@ -640,26 +625,12 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <span class="arrow">→</span>
 </a>
 
-<!-- ═══════════════ MOBILE HEADER (mobile only, scrolls away) ═══════════════ -->
-<header class="mobile-header">
-  <div class="c">
-    <div class="logo">
-      <div class="mark">CC</div>
-      <div class="wm">
-        <span class="wm1">Consistent</span>
-        <span class="wm2">Creative</span>
-      </div>
-    </div>
-  </div>
-</header>
-
 <!-- ═══════════════ HERO ANIMATION ═══════════════ -->
 <section class="hero">
   <div class="frame-wrap" id="frameWrap">
 
     <div class="logo-overlay">
       <div class="logo">
-        <div class="mark">CC</div>
         <div class="wm">
           <span class="wm1">Consistent</span>
           <span class="wm2">Creative</span>
