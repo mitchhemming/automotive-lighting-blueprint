@@ -12,7 +12,7 @@
 :root {
   --bg:    #131313;
   --s1:    #1F1F1F;
-  --s2:    #2C2C2C;
+  --s2:    #2D2D2D;
   --s3:    #3A3A3A;
   --line:  #383838;
   --w:     #FFFFFF;
@@ -167,10 +167,11 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .cks { list-style: none; margin-top: 26px; }
 .cks li {
   display: flex; align-items: flex-start; gap: 14px;
-  font-size: clamp(16px, 4.6vw, 18px); color: var(--w);
+  font-size: clamp(15px, 4.2vw, 17px); color: var(--w80);
   padding: 16px 0; border-bottom: 1px solid var(--line);
   line-height: 1.45;
 }
+.cks li strong { color: var(--w); font-weight: 600; display: block; margin-bottom: 2px; font-size: clamp(16px, 4.5vw, 18px); }
 .cks li:last-child { border-bottom: none; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
 .fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
@@ -189,8 +190,8 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 @media (min-width: 768px) {
   .story-grid {
-    grid-template-columns: 1fr 38%;
-    gap: 28px;
+    grid-template-columns: 1fr 44%;
+    gap: 32px;
     align-items: start;
     margin-bottom: 32px;
   }
@@ -238,7 +239,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 @media (min-width: 768px) {
   .story-text {
-    aspect-ratio: 1.7 / 1;
+    aspect-ratio: 1.4 / 1;
     justify-content: space-between;
     gap: 0;
   }
@@ -452,11 +453,12 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .next h2 { margin-bottom: 12px; }
 .next-intro { color: var(--w80); margin-bottom: 28px; }
 .steps { list-style: none; counter-reset: s; }
-.steps li { position: relative; padding: 18px 0 18px 56px; border-bottom: 1px solid var(--line); counter-increment: s; }
+.steps li { position: relative; padding: 22px 0 22px 76px; border-bottom: 1px solid var(--line); counter-increment: s; min-height: 80px; }
 .steps li:last-child { border-bottom: none; }
-.steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--fh); font-size: 24px; font-weight: 900; color: var(--gold); letter-spacing: .04em; }
-.step-t { font-family: var(--fh); font-size: clamp(16px, 4.6vw, 18px); font-weight: 700; letter-spacing: .04em; color: var(--w); text-transform: uppercase; margin-bottom: 4px; }
+.steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 18px; font-family: var(--fh); font-size: 44px; font-weight: 900; color: var(--gold); letter-spacing: .02em; line-height: 1; }
+.step-t { font-family: var(--fh); font-size: clamp(18px, 4.8vw, 20px); font-weight: 700; letter-spacing: .04em; color: var(--w); text-transform: uppercase; margin-bottom: 6px; line-height: 1.1; }
 .step-d { font-size: clamp(14px, 3.9vw, 15px); color: var(--w80); line-height: 1.5; }
+@media (min-width: 768px) { .steps li { padding: 26px 0 26px 96px; } .steps li::before { font-size: 56px; top: 22px; } }
 
 /* ── FAQ ────────────────────────────────────── */
 .faq { background: var(--bg); }
@@ -539,11 +541,10 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <span class="eye">If this sounds familiar</span>
     <h2>You're a great photographer.<br><span class="gc">But it's not paying off.</span></h2>
     <ul class="cks">
-      <li><span class="dot"></span>You love cars. You've put in the work. But your photos blend in with everyone else's.</li>
-      <li><span class="dot"></span>You shoot natural light. Because that's what every photographer shoots.</li>
-      <li><span class="dot"></span>Premium brands keep scrolling past your work like you don't exist.</li>
-      <li><span class="dot"></span>You're undercharging. Or shooting for free hoping it leads somewhere.</li>
-      <li><span class="dot"></span>You know you're talented. But you can't break through the ceiling.</li>
+      <li><span class="dot"></span><strong>Your photos blend in.</strong> Same golden hour, same angles as everyone else.</li>
+      <li><span class="dot"></span><strong>Premium brands scroll past.</strong> Like your work doesn't exist.</li>
+      <li><span class="dot"></span><strong>You're undercharging.</strong> Or shooting for free hoping it leads somewhere.</li>
+      <li><span class="dot"></span><strong>You can't break the ceiling.</strong> No matter how good your eye gets.</li>
     </ul>
     <div class="fy-tag">If even one of these hit, keep reading. This was built for you.</div>
   </div>
@@ -640,7 +641,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <div class="mpull-box">
       <span class="eye">The solution</span>
       <h2>One method.<br>Every car.<br><span class="gc">Every time.</span></h2>
-      <p style="margin-top:18px;">The Controlled Lighting Method™. The only artificial lighting system built for automotive photographers. Flash, light painting, editing, and premium brand positioning. All in one course.</p>
+      <p style="margin-top:18px;">The Controlled Lighting Method™. The only artificial lighting system built for automotive photographers. Flash, light painting, editing and brand positioning. All in one place.</p>
     </div>
   </div>
 </div>
@@ -669,7 +670,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <p class="mod-intro">Every module is built around one goal. Get you ready for premium clients in 30 days.</p>
 
     <div class="mgrid">
-      <div class="mc"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn">Module 01</div><div class="mt">Introduction</div><p class="md">Set yourself up for success. The mindset, the expectations, and how to get the most out of this course.</p></div></div>
+      <div class="mc"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn">Module 01</div><div class="mt">Introduction</div><p class="md">Set yourself up for success. The mindset and expectations to get the most from this course.</p></div></div>
       <div class="mc"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn">Module 02</div><div class="mt">Gear & Location</div><p class="md">The exact gear that gets premium results on any budget. Plus how to spot a winning location in seconds.</p></div></div>
       <div class="mc"><img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn">Module 03</div><div class="mt">Light Painting</div><p class="md">Create images that stop scrolls and look like nobody else's. The kind of work that gets brands sliding into your DMs.</p></div></div>
       <div class="mc"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=700&q=85&auto=format" class="mi" alt=""><div class="mb"><div class="mn">Module 04</div><div class="mt">Flash Lighting</div><p class="md">Master artificial light on location. Shoot any car, any environment, any time of day. With total control.</p></div></div>
@@ -790,13 +791,13 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <h2>Quick<br><span class="gc">Answers.</span></h2>
     <div style="margin-top:28px;">
       <div class="fq"><button class="fqb" onclick="faq(this)">When do I get the course?<span class="fqi">+</span></button><div class="fqa">The full course unlocks on Monday, June 1st. Your founding spot is secured the moment you pay. You'll get an email confirmation, and access details closer to launch day.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">What is "Founding Student" status?<span class="fqi">+</span></button><div class="fqa">Founding Students are the first 30 people to enrol. You get the lowest price the course will ever be, exclusive bonuses including a private Q&amp;A with me, and special recognition that's never offered again. Once 30 spots are claimed, founding access closes forever.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">What is "Founding Student" status?<span class="fqi">+</span></button><div class="fqa">Founding Students are the first 30 to enrol. You get the lowest price the course will ever be, exclusive bonuses, and a private Q&amp;A with me. Once 30 spots are claimed, founding access closes forever.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">Do I need expensive gear?<span class="fqi">+</span></button><div class="fqa">No. The method works on any budget. Lighting creates the result. Not the gear. I teach with accessible equipment throughout the course.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">I've never used flash before. Can I do this?<span class="fqi">+</span></button><div class="fqa">Yes. We start from the basics. No prior flash or light painting experience needed. If you can use a camera, you can learn this.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">I don't have access to expensive cars.<span class="fqi">+</span></button><div class="fqa">Doesn't matter. The Controlled Lighting Method works on any car. A Honda Civic shot with controlled lighting beats a Lamborghini in bad light every single time.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">What format is the course?<span class="fqi">+</span></button><div class="fqa">Recorded video lessons broken into short modules. Watch on any device. Phone, tablet, or laptop. All downloads and templates are accessible inside the course.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">How long do I have access?<span class="fqi">+</span></button><div class="fqa">Forever. Lifetime access. Every time the course is updated with new content, you get it automatically. At no extra charge.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button><div class="fqa">Most students apply the system to their first shoot within a week of access opening. With consistent application, you'll have premium quality work in your portfolio inside 30 days.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">What format is the course?<span class="fqi">+</span></button><div class="fqa">Recorded video lessons, broken into short modules. Watch on any device. All templates and downloads inside.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">How long do I have access?<span class="fqi">+</span></button><div class="fqa">Forever. Plus every future update, automatically. No extra cost.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button><div class="fqa">Most students apply the system on their first shoot within a week of access opening. With consistent application, you'll have premium quality work in your portfolio inside 30 days.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">What if I'm not happy?<span class="fqi">+</span></button><div class="fqa">The course has no refunds. All content is delivered in full when access opens. But if you complete the course and feel it didn't deliver what was promised, reach out at <a href="mailto:contact@consistentcreative.com" style="color:var(--gold);">contact@consistentcreative.com</a> and I'll make it right.</div></div>
     </div>
   </div>
@@ -807,9 +808,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <span class="eye">Ready?</span>
     <h2>The photographers getting paid<br><span class="gc">aren't more talented.</span></h2>
-    <p class="lead" style="color:var(--w);">They just know something you don't. Yet.</p>
-    <p>Make today the day that changes.</p>
-    <a href="#checkout" class="btn final-cta">Claim Your Spot · $195 →</a>
+    <p class="lead" style="color:var(--w);">They just stopped blending in.</p>
+    <a href="#checkout" class="btn final-cta" style="margin-top:32px;">Claim Your Spot · $195 →</a>
     <p class="bn" id="final-note" style="margin-top:14px;">Founding price. Course access June 1st.</p>
   </div>
 </section>
