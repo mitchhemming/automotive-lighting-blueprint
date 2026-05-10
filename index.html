@@ -1113,17 +1113,17 @@ function faq(btn) {
   ];
 
   const TEXT_STATES = [
-    { startFrame: 0,  text: "Watch the method unfold" },
-    { startFrame: 3,  text: "One light at a time" },
-    { startFrame: 7,  text: "Every detail controlled" },
-    { startFrame: 11, text: "This is what changes everything" },  // Final image caption (placeholder — adjust)
+    "Watch the method unfold",
+    "One light at a time",
+    "Every detail controlled",
+    "This is what changes everything",   // Final image caption (placeholder — adjust)
   ];
 
   const TIMING = {
     initialHold: 1300,
     frameDuration: 650,
     fadeDuration: 500,
-    holdAfterFade: 700,         // Pause after final fade with caption visible
+    textInterval: 2600,         // Time between each text change (evenly spaced)
     finalCaptionHold: 1500,     // How long the final caption stays before fading to headline
     captionFadeOut: 400,        // Caption fade out time before headline appears
   };
@@ -1150,13 +1150,6 @@ function faq(btn) {
   let isPlaying = false;
   let currentTimeout = null;
 
-  function getTextForFrame(i) {
-    for (let s = TEXT_STATES.length - 1; s >= 0; s--) {
-      if (i >= TEXT_STATES[s].startFrame) return TEXT_STATES[s].text;
-    }
-    return null;
-  }
-
   function showFrame(i, useFade) {
     if (useFade) {
       const newFrame = document.getElementById(`frame-${i}`);
@@ -1179,28 +1172,51 @@ function faq(btn) {
         requestAnimationFrame(() => { current.classList.add('active'); });
       }
     }
+  }
 
-    const newText = getTextForFrame(i);
-    const isStateChange = TEXT_STATES.some(s => s.startFrame === i);
-    if (isStateChange) {
-      if (newText === null) {
+  let textTimeouts = [];
+
+  function clearAllTimeouts() {
+    if (currentTimeout) clearTimeout(currentTimeout);
+    textTimeouts.forEach(t => clearTimeout(t));
+    textTimeouts = [];
+  }
+
+  function scheduleTextChanges() {
+    // Text changes run on their own evenly-spaced timer, decoupled from frame timing
+    TEXT_STATES.forEach((text, idx) => {
+      if (idx === 0) return; // First text is set immediately at sequence start
+      const t = setTimeout(() => {
         captionText.classList.add('fading');
-      } else {
-        captionText.classList.add('fading');
-        setTimeout(() => {
-          captionText.textContent = newText;
+        const t2 = setTimeout(() => {
+          captionText.textContent = text;
           captionText.classList.remove('fading');
         }, 250);
-      }
-    }
+        textTimeouts.push(t2);
+      }, idx * TIMING.textInterval);
+      textTimeouts.push(t);
+    });
+
+    // After last text appears + finalCaptionHold: fade caption out, then show headline
+    const lastTextStart = (TEXT_STATES.length - 1) * TIMING.textInterval;
+    const captionFadeStart = lastTextStart + TIMING.finalCaptionHold;
+    const headlineStart = captionFadeStart + TIMING.captionFadeOut;
+
+    textTimeouts.push(setTimeout(() => {
+      captionText.classList.add('fading');
+    }, captionFadeStart));
+
+    textTimeouts.push(setTimeout(() => {
+      heroFinal.classList.add('visible');
+    }, headlineStart));
   }
 
   function playSequence() {
-    if (isPlaying) clearTimeout(currentTimeout);
+    clearAllTimeouts();
     isPlaying = true;
     heroFinal.classList.remove('visible');
     captionText.classList.remove('fading');
-    captionText.textContent = TEXT_STATES[0].text;
+    captionText.textContent = TEXT_STATES[0];
     document.querySelectorAll('.frame-wrap img').forEach(img => {
       img.classList.remove('active');
       img.style.zIndex = '';
@@ -1210,6 +1226,10 @@ function faq(btn) {
     showFrame(i, false);
     captionWrap.classList.remove('pending');
 
+    // Start independent text scheduler
+    scheduleTextChanges();
+
+    // Frame advance timer (independent of text timer)
     function advance() {
       i++;
       if (i >= FRAMES.length) {
@@ -1218,20 +1238,6 @@ function faq(btn) {
       }
       const isFinalReveal = (i === FRAMES.length - 1);
       showFrame(i, isFinalReveal);
-      if (isFinalReveal) {
-        // Sequence on final frame:
-        // 1. Final image fades in (fadeDuration)
-        // 2. Final caption shown during fade + holdAfterFade
-        // 3. Caption fades out (captionFadeOut)
-        // 4. Headline appears
-        const captionFadeStart = TIMING.fadeDuration + TIMING.finalCaptionHold;
-        setTimeout(() => {
-          captionText.classList.add('fading');
-        }, captionFadeStart);
-        setTimeout(() => {
-          heroFinal.classList.add('visible');
-        }, captionFadeStart + TIMING.captionFadeOut);
-      }
       const nextIsFinalReveal = (i + 1 === FRAMES.length - 1);
       const waitTime = nextIsFinalReveal
         ? Math.max(TIMING.frameDuration - TIMING.fadeDuration, 100)
