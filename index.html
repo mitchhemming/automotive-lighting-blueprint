@@ -211,7 +211,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 /* Mobile: caption matches hero headline in size, sits just above the car */
 @media (max-width: 768px) {
   .caption {
-    top: 22%;       /* first line top anchored here — consistent for 1 line OR 2 */
+    top: 32%;       /* first line top anchored here — consistent for 1 line OR 2 */
     bottom: auto;
     display: flex;
     align-items: flex-start;  /* second line drops down below first */
@@ -1161,20 +1161,42 @@ function faq(btn) {
     // Text changes run on their own evenly-spaced timer, decoupled from frame timing
     TEXT_STATES.forEach((text, idx) => {
       if (idx === 0) return; // First text is set immediately at sequence start
-      const t = setTimeout(() => {
-        captionText.classList.add('fading');
-        const t2 = setTimeout(() => {
+
+      const isLast = (idx === TEXT_STATES.length - 1);
+      const targetTime = idx * TIMING.textInterval;
+
+      if (isLast) {
+        // Final caption: sync fade-in with the final image fade-in.
+        // Pre-fade out the previous caption so it's invisible by targetTime,
+        // then swap text and fade in (matching image fade duration).
+        textTimeouts.push(setTimeout(() => {
+          captionText.classList.add('fading');
+        }, targetTime - TIMING.fadeDuration));
+
+        textTimeouts.push(setTimeout(() => {
           captionText.innerHTML = text;
+          // Force reflow so removing .fading triggers the transition
+          void captionText.offsetWidth;
           captionText.classList.remove('fading');
-        }, 250);
-        textTimeouts.push(t2);
-      }, idx * TIMING.textInterval);
-      textTimeouts.push(t);
+        }, targetTime));
+      } else {
+        // Standard crossfade for captions 1, 2
+        const t = setTimeout(() => {
+          captionText.classList.add('fading');
+          const t2 = setTimeout(() => {
+            captionText.innerHTML = text;
+            captionText.classList.remove('fading');
+          }, 250);
+          textTimeouts.push(t2);
+        }, targetTime);
+        textTimeouts.push(t);
+      }
     });
 
-    // After last text appears + finalCaptionHold: fade caption out, then show headline
+    // After last caption fades in fully + finalCaptionHold: fade caption out, then headline
     const lastTextStart = (TEXT_STATES.length - 1) * TIMING.textInterval;
-    const captionFadeStart = lastTextStart + TIMING.finalCaptionHold;
+    const lastFullyVisible = lastTextStart + TIMING.fadeDuration;  // synced with image fade complete
+    const captionFadeStart = lastFullyVisible + TIMING.finalCaptionHold;
     const headlineStart = captionFadeStart + TIMING.captionFadeOut;
 
     textTimeouts.push(setTimeout(() => {
@@ -1204,7 +1226,7 @@ function faq(btn) {
     // Start independent text scheduler
     scheduleTextChanges();
 
-    // Frame advance timer (independent of text timer)
+    // Frame advance timer (independent of text timer, but image fade now syncs with final caption fade-in)
     function advance() {
       i++;
       if (i >= FRAMES.length) {
@@ -1213,11 +1235,7 @@ function faq(btn) {
       }
       const isFinalReveal = (i === FRAMES.length - 1);
       showFrame(i, isFinalReveal);
-      const nextIsFinalReveal = (i + 1 === FRAMES.length - 1);
-      const waitTime = nextIsFinalReveal
-        ? Math.max(TIMING.frameDuration - TIMING.fadeDuration, 100)
-        : TIMING.frameDuration;
-      currentTimeout = setTimeout(advance, waitTime);
+      currentTimeout = setTimeout(advance, TIMING.frameDuration);
     }
     currentTimeout = setTimeout(advance, TIMING.initialHold);
   }
