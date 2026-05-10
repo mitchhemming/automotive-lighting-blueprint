@@ -328,16 +328,19 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .fy { background: var(--s1); }
 .cks { list-style: none; margin-top: 26px; }
 .cks li {
-  display: flex; align-items: flex-start; gap: 14px;
+  display: grid;
+  grid-template-columns: 8px minmax(110px, 38%) 1fr;
+  align-items: start;
+  column-gap: 14px;
   font-size: clamp(15px, 4.2vw, 17px); color: var(--w80);
   padding: 16px 0; border-bottom: 1px solid var(--line);
   line-height: 1.45;
 }
-.cks li strong { color: var(--w); font-weight: 600; display: block; margin-bottom: 2px; font-size: clamp(16px, 4.5vw, 18px); }
+.cks li strong { color: var(--w); font-weight: 600; font-size: clamp(16px, 4.5vw, 18px); }
 .cks li:last-child { border-bottom: none; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
 .fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
-@media (min-width: 768px) { .cks li { font-size: 20px; } }
+@media (min-width: 768px) { .cks li { font-size: 20px; grid-template-columns: 8px minmax(180px, 30%) 1fr; } }
 
 /* ── ABOUT MITCH (split layout, mobile optimized) ── */
 .about { background: var(--bg); }
