@@ -211,10 +211,10 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 /* Mobile: caption matches hero headline in size, sits just above the car */
 @media (max-width: 768px) {
   .caption {
-    top: 0;
-    bottom: 70%;  /* caption text bottom sits at 30% from top, above car at ~40% */
+    top: 22%;       /* first line top anchored here — consistent for 1 line OR 2 */
+    bottom: auto;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;  /* second line drops down below first */
     justify-content: center;
     padding: 0 32px;
   }
