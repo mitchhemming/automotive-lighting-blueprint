@@ -97,7 +97,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 
 @media (min-width: 768px) {
   h1 { font-size: clamp(64px, 8vw, 92px); }
-  h2 { font-size: clamp(48px, 6.5vw, 64px); }
+  h2 { font-size: clamp(44px, 5.5vw, 54px); letter-spacing: 0; }
   p { font-size: 18px; }
   .lead { font-size: 22px; }
 }
@@ -166,7 +166,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 
 .caption {
   position: absolute;
-  top: 14%;
+  top: 22%;
   left: 0; right: 0;
   z-index: 4;
   text-align: center;
@@ -512,6 +512,9 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 .mpull h2 { color: var(--w); margin-bottom: 16px; }
 .mpull h2 .gc { color: var(--gold); }
+@media (min-width: 768px) {
+  .mpull h2 { font-size: clamp(34px, 4.5vw, 40px); letter-spacing: -0.01em; }
+}
 .mpull p { color: var(--w80); font-size: clamp(17px, 4.8vw, 19px); }
 .mpull .eye { color: var(--gold); }
 @media (min-width: 768px) {
@@ -642,6 +645,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 .nb { white-space: nowrap; }
 .mob-br { display: none; }
 @media (max-width: 768px) { .mob-br { display: initial; } }
+.desk-only { display: none; }
+@media (min-width: 768px) { .desk-only { display: initial; } }
 
 /* ── SCROLL ANIMATIONS ──────────────────────── */
 .reveal {
@@ -716,8 +721,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <!-- ═══════════════ TRUST ═══════════════ -->
 <section class="about pad reveal">
   <div class="c">
-    <span class="eye">Your instructor's story</span>
-    <h2>I'm Mitch. And from day one,<br><span class="gc">I refused to blend in.</span></h2>
+    <span class="eye">Your Instructor</span>
+    <h2>I'm Mitch. <br class="desk-only">And from day one,<br><span class="gc">I refused to blend in.</span></h2>
 
     <div class="story-grid">
       <div class="story-text">
@@ -750,7 +755,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <div class="head">
       <span class="eye">How it works</span>
-      <h2>Learn it.<br><span class="gc">Get hired.</span></h2>
+      <h2>Master the light.<br><span class="gc">Land the clients.</span></h2>
       <p>Three stages. From learning the lighting to landing premium brands. Each one moves you closer.</p>
     </div>
 
@@ -843,7 +848,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="head">
     <span class="eye">What you'll create</span>
     <h2>Imagine your portfolio<br><span class="gc">looking like this.</span></h2>
-    <p>This is the kind of work that gets noticed. The kind that gets you hired.</p>
+    <p>This is the kind of work that gets noticed and gets you hired.</p>
   </div>
   <div style="overflow:hidden;">
     <div class="track">
@@ -1148,7 +1153,7 @@ function faq(btn) {
   const TEXT_STATES = [
     "The Controlled Lighting Method™",
     "<span class='gc'>Created</span> by design",
-    "Combined into one<br class='m-br'><span class='gc'>final image</span>",
+    "Combined into one <br class='m-br'><span class='gc'>final image</span>",
     "This is what changes <span class='gc'>everything</span>",
   ];
 
