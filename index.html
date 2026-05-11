@@ -87,9 +87,9 @@ h1 {
 }
 h2 {
   font-family: var(--fh); font-weight: 900;
-  text-transform: uppercase; letter-spacing: .01em;
-  line-height: .9; color: var(--w);
-  font-size: clamp(36px, 10.5vw, 48px);
+  text-transform: uppercase; letter-spacing: -0.01em;
+  line-height: .95; color: var(--w);
+  font-size: clamp(18px, 5.2vw, 38px);
 }
 .gc { color: var(--gold); }
 p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
@@ -300,8 +300,9 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
     left: 0;
     right: 0;
     transform: translateY(-50%); /* centers H1's vertical midpoint on the 25% mark */
-    font-size: clamp(56px, 14vw, 110px);
-    line-height: 0.88;
+    font-size: clamp(40px, 10vw, 110px);
+    line-height: 0.92;
+    letter-spacing: 0;
     margin: 0;
   }
   .hero-final-bottom {
@@ -329,18 +330,45 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .cks { list-style: none; margin-top: 26px; }
 .cks li {
   display: grid;
-  grid-template-columns: 8px minmax(110px, 38%) 1fr;
+  grid-template-columns: 8px 1fr;
   align-items: start;
   column-gap: 14px;
-  font-size: clamp(15px, 4.2vw, 17px); color: var(--w80);
-  padding: 16px 0; border-bottom: 1px solid var(--line);
-  line-height: 1.45;
+  row-gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
 }
-.cks li strong { color: var(--w); font-weight: 600; font-size: clamp(16px, 4.5vw, 18px); }
+.cks li .dot { grid-row: 1; grid-column: 1; }
+.cks li .cks-h {
+  grid-row: 1; grid-column: 2;
+  color: var(--w); font-weight: 600;
+  font-size: clamp(16px, 4.5vw, 18px);
+  line-height: 1.3;
+}
+.cks li .cks-d {
+  grid-row: 2; grid-column: 2;
+  font-size: clamp(15px, 4.2vw, 17px);
+  color: var(--w80);
+  line-height: 1.55;
+}
 .cks li:last-child { border-bottom: none; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
 .fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
-@media (min-width: 768px) { .cks li { font-size: 20px; grid-template-columns: 8px minmax(180px, 30%) 1fr; } }
+@media (min-width: 768px) {
+  .cks li {
+    grid-template-columns: 8px minmax(180px, 30%) 1fr;
+    row-gap: 0;
+    column-gap: 14px;
+  }
+  .cks li .cks-h {
+    grid-row: 1; grid-column: 2;
+    font-size: 18px;
+  }
+  .cks li .cks-d {
+    grid-row: 1; grid-column: 3;
+    font-size: 20px;
+    line-height: 1.45;
+  }
+}
 
 /* ── ABOUT MITCH (split layout, mobile optimized) ── */
 .about { background: var(--bg); }
@@ -468,7 +496,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   border: 1px solid var(--gold);
   background: var(--s1);
   border-radius: 8px;
-  padding: 36px 24px;
+  padding: 32px 16px;
   text-align: center;
   max-width: 640px;
   margin: 0 auto;
@@ -558,9 +586,12 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .pn { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 22px); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--w); }
 .pp { font-family: var(--fh); font-size: clamp(64px, 17vw, 76px); font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: .01em; margin: 12px 0 4px; }
 .pw { font-size: 14px; color: var(--w50); margin-bottom: 22px; }
-.spots-bar { background: rgba(200,146,42,0.08); border: 1px solid rgba(200,146,42,0.3); border-radius: 4px; padding: 14px 16px; margin: 0 0 22px 0; display: flex; align-items: center; justify-content: space-between; }
+.spots-bar { background: rgba(200,146,42,0.08); border: 1px solid rgba(200,146,42,0.3); border-radius: 4px; padding: 14px 16px; margin: 0 0 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .spots-label { font-family: var(--fh); font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--gold); text-transform: uppercase; }
-.spots-count { font-family: var(--fh); font-size: 22px; font-weight: 900; color: var(--gold2); letter-spacing: .02em; }
+.spots-count { font-family: var(--fh); font-size: 22px; font-weight: 900; color: var(--gold2); letter-spacing: .02em; white-space: nowrap; }
+@media (max-width: 420px) {
+  .spots-bar { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
 .preframe { margin: 22px 0; padding: 14px 16px; background: var(--bg); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; font-size: 15px; color: var(--w); line-height: 1.5; }
 .pi { list-style: none; margin-bottom: 24px; }
 .pi li { display: flex; gap: 12px; align-items: flex-start; font-size: clamp(15px, 4.2vw, 16px); color: var(--w); padding: 12px 0; border-bottom: 1px solid var(--line); line-height: 1.45; }
@@ -606,6 +637,11 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
 /* ── PHASE VISIBILITY ───────────────────────── */
 [data-phase] { display: none; }
+
+/* ── UTILITIES ──────────────────────────────── */
+.nb { white-space: nowrap; }
+.mob-br { display: none; }
+@media (max-width: 768px) { .mob-br { display: initial; } }
 
 /* ── SCROLL ANIMATIONS ──────────────────────── */
 .reveal {
@@ -653,7 +689,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="hero-final-content">
         <h1><span class="line-1" id="hero-line-1">From invisible</span><br><span class="gc">To in demand</span></h1>
         <div class="hero-final-bottom">
-          <p class="sub">The Automotive Lighting Blueprint</p>
+          <p class="sub">The Automotive<br class="mob-br">Lighting Blueprint</p>
           <a href="#checkout" class="btn" id="hero-cta">Get The Blueprint → $195</a>
         </div>
       </div>
@@ -668,10 +704,10 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <span class="eye">The Problem</span>
     <h2>You're a great photographer.<br><span class="gc">But it's not paying off.</span></h2>
     <ul class="cks">
-      <li><span class="dot"></span><strong>Your photos blend in.</strong> Same golden hour, same angles as everyone else.</li>
-      <li><span class="dot"></span><strong>Premium brands scroll past.</strong> Like your work doesn't exist.</li>
-      <li><span class="dot"></span><strong>You're undercharging.</strong> Or shooting for free hoping it leads somewhere.</li>
-      <li><span class="dot"></span><strong>You can't break the ceiling.</strong> No matter how good your eye gets.</li>
+      <li><span class="dot"></span><strong class="cks-h">Your photos blend in.</strong><span class="cks-d">Same golden hour, same angles as everyone else.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">Premium brands scroll past.</strong><span class="cks-d">Like your work doesn't exist.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">You're undercharging.</strong><span class="cks-d">Or shooting for free hoping it leads somewhere.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">You can't break the ceiling.</strong><span class="cks-d">No matter how good your eye gets.</span></li>
     </ul>
     <div class="fy-tag">If even one of these hit, keep reading. This was built for you.</div>
   </div>
@@ -681,7 +717,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="about pad reveal">
   <div class="c">
     <span class="eye">Your instructor's story</span>
-    <h2>I'm Mitch.<br>And from day one,<br><span class="gc">I refused to blend in.</span></h2>
+    <h2>I'm Mitch. And from day one,<br><span class="gc">I refused to blend in.</span></h2>
 
     <div class="story-grid">
       <div class="story-text">
@@ -699,7 +735,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="brands-strip">
       <span class="brands-label">Some of the brands I've worked with:</span>
-      <p class="brands-list">Lamborghini · McLaren · Ferrari · Bentley · Audi · Maserati · BMW · Mercedes-Benz · + More</p>
+      <p class="brands-list">Lamborghini · <span class="nb">Mercedes-Benz</span> · McLaren · Ferrari · Bentley · Audi · Maserati · BMW · + More</p>
     </div>
 
     <div class="closing">
@@ -714,7 +750,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <div class="head">
       <span class="eye">How it works</span>
-      <h2>Lighting makes you stand out.<br><span class="gc">Premium brands hire what stands out.</span></h2>
+      <h2>Learn it.<br><span class="gc">Get hired.</span></h2>
       <p>Three stages. From learning the lighting to landing premium brands. Each one moves you closer.</p>
     </div>
 
@@ -762,7 +798,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <div class="mpull-box">
       <span class="eye">The solution</span>
-      <h2>One method.<br>Every car.<br><span class="gc">Every time.</span></h2>
+      <h2>One method. Every car.<br><span class="gc">Every time.</span></h2>
       <p style="margin-top:18px;">The Controlled Lighting Method™. The only artificial lighting system built for automotive photographers. Flash, light painting, editing and brand positioning. All in one place.</p>
     </div>
   </div>
