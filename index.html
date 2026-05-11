@@ -329,45 +329,18 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .cks { list-style: none; margin-top: 26px; }
 .cks li {
   display: grid;
-  grid-template-columns: 8px 1fr;
+  grid-template-columns: 8px minmax(110px, 38%) 1fr;
   align-items: start;
   column-gap: 14px;
-  row-gap: 4px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
+  font-size: clamp(15px, 4.2vw, 17px); color: var(--w80);
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+  line-height: 1.45;
 }
-.cks li .dot { grid-row: 1; grid-column: 1; }
-.cks li .cks-h {
-  grid-row: 1; grid-column: 2;
-  color: var(--w); font-weight: 600;
-  font-size: clamp(16px, 4.5vw, 18px);
-  line-height: 1.3;
-}
-.cks li .cks-d {
-  grid-row: 2; grid-column: 2;
-  font-size: clamp(15px, 4.2vw, 17px);
-  color: var(--w80);
-  line-height: 1.55;
-}
+.cks li strong { color: var(--w); font-weight: 600; font-size: clamp(16px, 4.5vw, 18px); }
 .cks li:last-child { border-bottom: none; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
 .fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
-@media (min-width: 768px) {
-  .cks li {
-    grid-template-columns: 8px minmax(180px, 30%) 1fr;
-    row-gap: 0;
-    column-gap: 14px;
-  }
-  .cks li .cks-h {
-    grid-row: 1; grid-column: 2;
-    font-size: 18px;
-  }
-  .cks li .cks-d {
-    grid-row: 1; grid-column: 3;
-    font-size: 20px;
-    line-height: 1.45;
-  }
-}
+@media (min-width: 768px) { .cks li { font-size: 20px; grid-template-columns: 8px minmax(180px, 30%) 1fr; } }
 
 /* ── ABOUT MITCH (split layout, mobile optimized) ── */
 .about { background: var(--bg); }
@@ -495,7 +468,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   border: 1px solid var(--gold);
   background: var(--s1);
   border-radius: 8px;
-  padding: 32px 16px;
+  padding: 36px 24px;
   text-align: center;
   max-width: 640px;
   margin: 0 auto;
@@ -611,7 +584,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 
 /* ── FAQ ────────────────────────────────────── */
 .faq { background: var(--bg); }
-@media (max-width: 768px) { .faq h2 { font-size: clamp(32px, 9vw, 48px); } }
 .fq { border-bottom: 1px solid var(--line); }
 .fqb { width: 100%; background: none; border: none; text-align: left; padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: var(--fb); font-size: clamp(16px, 4.4vw, 17px); color: var(--w); font-weight: 600; }
 .fqi { font-family: var(--fh); font-size: 28px; font-weight: 300; color: var(--gold); flex-shrink: 0; transition: transform .2s; }
@@ -634,11 +606,6 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
 /* ── PHASE VISIBILITY ───────────────────────── */
 [data-phase] { display: none; }
-
-/* ── UTILITIES ──────────────────────────────── */
-.nb { white-space: nowrap; }
-.mob-br { display: none; }
-@media (max-width: 768px) { .mob-br { display: initial; } }
 
 /* ── SCROLL ANIMATIONS ──────────────────────── */
 .reveal {
@@ -684,9 +651,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="hero-final" id="heroFinal">
       <div class="hero-final-content">
-        <h1><span class="line-1" id="hero-line-1">Invisible.</span><br><span class="gc">In demand.</span></h1>
+        <h1><span class="line-1" id="hero-line-1">From invisible</span><br><span class="gc">To in demand</span></h1>
         <div class="hero-final-bottom">
-          <p class="sub">The Automotive<br class="mob-br">Lighting Blueprint</p>
+          <p class="sub">The Automotive Lighting Blueprint</p>
           <a href="#checkout" class="btn" id="hero-cta">Get The Blueprint → $195</a>
         </div>
       </div>
@@ -699,12 +666,12 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="fy pad reveal">
   <div class="c">
     <span class="eye">The Problem</span>
-    <h2>Talent isn't<br><span class="gc">paying off.</span></h2>
+    <h2>You're a great photographer.<br><span class="gc">But it's not paying off.</span></h2>
     <ul class="cks">
-      <li><span class="dot"></span><strong class="cks-h">Your photos blend in.</strong><span class="cks-d">Same golden hour, same angles as everyone else.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">Premium brands scroll past.</strong><span class="cks-d">Like your work doesn't exist.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">You're undercharging.</strong><span class="cks-d">Or shooting for free hoping it leads somewhere.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">You can't break the ceiling.</strong><span class="cks-d">No matter how good your eye gets.</span></li>
+      <li><span class="dot"></span><strong>Your photos blend in.</strong> Same golden hour, same angles as everyone else.</li>
+      <li><span class="dot"></span><strong>Premium brands scroll past.</strong> Like your work doesn't exist.</li>
+      <li><span class="dot"></span><strong>You're undercharging.</strong> Or shooting for free hoping it leads somewhere.</li>
+      <li><span class="dot"></span><strong>You can't break the ceiling.</strong> No matter how good your eye gets.</li>
     </ul>
     <div class="fy-tag">If even one of these hit, keep reading. This was built for you.</div>
   </div>
@@ -714,7 +681,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="about pad reveal">
   <div class="c">
     <span class="eye">Your instructor's story</span>
-    <h2>I'm Mitch.<br><span class="gc">I stood out.</span></h2>
+    <h2>I'm Mitch.<br>And from day one,<br><span class="gc">I refused to blend in.</span></h2>
 
     <div class="story-grid">
       <div class="story-text">
@@ -732,7 +699,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="brands-strip">
       <span class="brands-label">Some of the brands I've worked with:</span>
-      <p class="brands-list">Lamborghini · <span class="nb">Mercedes-Benz</span> · McLaren · Ferrari · Bentley · Audi · Maserati · BMW · + More</p>
+      <p class="brands-list">Lamborghini · McLaren · Ferrari · Bentley · Audi · Maserati · BMW · Mercedes-Benz · + More</p>
     </div>
 
     <div class="closing">
@@ -747,7 +714,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <div class="head">
       <span class="eye">How it works</span>
-      <h2>Learn it.<br><span class="gc">Get hired.</span></h2>
+      <h2>Lighting makes you stand out.<br><span class="gc">Premium brands hire what stands out.</span></h2>
       <p>Three stages. From learning the lighting to landing premium brands. Each one moves you closer.</p>
     </div>
 
@@ -795,7 +762,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <div class="mpull-box">
       <span class="eye">The solution</span>
-      <h2>One method.<br><span class="gc">Every time.</span></h2>
+      <h2>One method.<br>Every car.<br><span class="gc">Every time.</span></h2>
       <p style="margin-top:18px;">The Controlled Lighting Method™. The only artificial lighting system built for automotive photographers. Flash, light painting, editing and brand positioning. All in one place.</p>
     </div>
   </div>
@@ -805,7 +772,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="evenif pad reveal">
   <div class="c">
     <span class="eye">Beginner-friendly</span>
-    <h2>Beginner?<br><span class="gc">No problem.</span></h2>
+    <h2>No lighting experience.<br><span class="gc">No problem.</span></h2>
     <p class="lead">Most students start with zero flash or light painting knowledge. We teach the entire system from the ground up.</p>
     <ul class="evenif-list">
       <li><span class="check">✓</span>You've never picked up a flash in your life</li>
@@ -839,7 +806,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <div class="gallery reveal">
   <div class="head">
     <span class="eye">What you'll create</span>
-    <h2>Imagine this.<br><span class="gc">Your work.</span></h2>
+    <h2>Imagine your portfolio<br><span class="gc">looking like this.</span></h2>
     <p>This is the kind of work that gets noticed. The kind that gets you hired.</p>
   </div>
   <div style="overflow:hidden;">
@@ -864,7 +831,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="vs pad reveal">
   <div class="c">
     <span class="eye">Everything you get</span>
-    <h2>Worth $1,495.<br><span class="gc">For $<span id="vs-price">195</span>.</span></h2>
+    <h2>Worth $1,495.<br><span class="gc">Yours for $<span id="vs-price">195</span>.</span></h2>
     <p class="vs-intro">Enrol today and lock in your spot. Course access opens June 1st.</p>
 
     <ul class="vl" id="vs-list">
@@ -889,7 +856,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="pricing pad reveal" id="checkout">
   <div class="c">
     <span class="eye">Pricing</span>
-    <h2 style="margin-bottom:14px;">$<span class="dyn-price">195</span> today.<br><span class="gc">$295 soon.</span></h2>
+    <h2 style="margin-bottom:14px;">$<span class="dyn-price">195</span> today.<br><span class="gc">More tomorrow.</span></h2>
     <p class="intro" id="pricing-intro">Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to $295. Then $495 at launch.</p>
 
     <div class="pc">
@@ -899,7 +866,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <p class="pw" id="price-was">Goes to $295. Then $495 at launch.</p>
 
       <div class="spots-bar founding-only" id="spots-bar">
-        <span class="spots-label">Spots left</span>
+        <span class="spots-label">Founding spots remaining</span>
         <span class="spots-count"><span id="price-spots">30</span> / 30</span>
       </div>
 
@@ -943,7 +910,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="faq pad reveal">
   <div class="c">
     <span class="eye">Questions</span>
-    <h2>Questions?<br><span class="gc">Quick answers.</span></h2>
+    <h2>Quick<br><span class="gc">Answers.</span></h2>
     <div style="margin-top:28px;">
       <div class="fq"><button class="fqb" onclick="faq(this)">When do I get the course?<span class="fqi">+</span></button><div class="fqa">The full course unlocks on Monday, June 1st. Your founding spot is secured the moment you pay. You'll get an email confirmation, and access details closer to launch day.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">What is "Founding Student" status?<span class="fqi">+</span></button><div class="fqa">Founding Students are the first 30 to enrol. You get the lowest price the course will ever be, exclusive bonuses, and a private Q&amp;A with me. Once 30 spots are claimed, founding access closes forever.</div></div>
@@ -962,7 +929,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="final pad reveal">
   <div class="c">
     <span class="eye">Ready?</span>
-    <h2>Stand out.<br><span class="gc">Get paid.</span></h2>
+    <h2>The photographers getting paid<br><span class="gc">aren't more talented.</span></h2>
     <p class="lead" style="color:var(--w);">They just stopped blending in.</p>
     <a href="#checkout" class="btn final-cta" style="margin-top:32px;">Get The Blueprint → $195</a>
     <p class="bn" id="final-note" style="margin-top:14px;">Founding price. Course access June 1st.</p>
