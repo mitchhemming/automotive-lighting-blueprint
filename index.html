@@ -468,8 +468,39 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .transform .head h2 { margin-bottom: 14px; }
 .transform .head p { color: var(--w80); max-width: 540px; margin: 0 auto; }
 
-.stages { display: flex; flex-direction: column; gap: 56px; }
-@media (min-width: 768px) { .stages { gap: 80px; } }
+.stages { display: flex; flex-direction: column; gap: 0; }
+
+.stage { padding-bottom: 44px; }
+.stage:not(:last-child) {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 44px;
+}
+@media (min-width: 768px) {
+  .stage { padding-bottom: 64px; }
+  .stage:not(:last-child) { margin-bottom: 64px; }
+}
+
+.stage-num {
+  font-family: var(--fh);
+  font-size: clamp(72px, 19vw, 100px);
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+}
+.stage-num::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin-top: 14px;
+}
+@media (min-width: 768px) {
+  .stage-num { font-size: 120px; margin-bottom: 18px; }
+  .stage-num::after { margin-top: 16px; width: 48px; }
+}
 
 .stage-label {
   font-family: var(--fh); font-size: 11px; font-weight: 600;
@@ -481,36 +512,48 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   font-size: clamp(28px, 8vw, 36px);
   text-transform: uppercase; letter-spacing: .02em;
   line-height: .95; color: var(--w);
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 .stage h3 .gc { color: var(--gold); }
-.stage-img {
-  width: 100%; margin-bottom: 22px;
-  border-radius: 4px; overflow: hidden;
-  position: relative;
+.stage p {
+  font-size: clamp(15px, 4.2vw, 17px);
+  color: var(--w80);
+  line-height: 1.65;
+  margin-bottom: 24px;
 }
-.stage-img img {
-  width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: cover; display: block;
-}
-.stage-num-badge {
-  position: absolute; top: 14px; left: 14px;
-  background: var(--gold); color: var(--bg);
-  font-family: var(--fh); font-size: 11px; font-weight: 700;
-  letter-spacing: .14em; text-transform: uppercase;
-  padding: 6px 12px; border-radius: 2px;
-}
-.stage p { font-size: clamp(15px, 4.2vw, 17px); color: var(--w80); line-height: 1.65; }
 .stage p strong { color: var(--w); font-weight: 600; }
 
-/* ── MID-PAGE CTA ── */
-.mid-cta { background: var(--bg); text-align: center; }
-.mid-cta .eye { display: block; margin-bottom: 14px; }
-.mid-cta .btn { margin: 0 auto; }
-.mid-cta-note {
+.stage-img {
+  width: 100%;
+  margin: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.stage-img img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── TRANSFORM CTA (closes the 3-stage section) ── */
+.transform-cta {
+  text-align: center;
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+}
+.transform-cta .eye { display: block; margin-bottom: 14px; }
+.transform-cta .btn { margin: 0 auto; }
+.transform-cta-note {
   margin-top: 14px;
   font-size: 13px;
   color: var(--w50);
   letter-spacing: 0.02em;
+}
+@media (min-width: 768px) {
+  .transform-cta { margin-top: 72px; padding-top: 56px; }
 }
 
 /* ── METHOD PULL (gold outlined box on dark) ── */
@@ -583,7 +626,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .mod-intro { color: var(--w80); margin-top: 12px; }
 .mgrid { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
 .mc { background: var(--s1); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
-.mc.prem { border-color: var(--gold); }
 .mi { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
 .mb { padding: 18px 20px; }
 .mn { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
@@ -623,7 +665,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 
 /* ── PRICING ────────────────────────────────── */
 .pricing { background: var(--bg); }
-.pricing .intro { margin-bottom: 28px; }
 .pc { background: var(--s1); border: 1px solid var(--gold); border-radius: 6px; padding: 30px 24px; }
 .pb { display: inline-block; background: var(--gold); color: var(--bg); font-family: var(--fh); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 6px 12px; border-radius: 2px; margin-bottom: 18px; }
 .pn { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 22px); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--w); }
@@ -825,47 +866,45 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
       <!-- Stage 01 -->
       <div class="stage">
-        <span class="stage-label">Stage 01 · Learn it</span>
+        <div class="stage-num">01</div>
+        <span class="stage-label">Learn it</span>
         <h3>You learn<br><span class="gc">the lighting.</span></h3>
         <p>Two techniques. Flash and light painting. Both taught from scratch, step by step. No prior experience needed. <strong>By the end you can light any car, any location, any time of day. Total control over every shot.</strong></p>
         <div class="stage-img">
-          <span class="stage-num-badge">01</span>
           <img src="portfolio/stage-01-learn.jpg" alt="Behind the camera capturing a Ferrari interior on location">
         </div>
       </div>
 
       <!-- Stage 02 -->
       <div class="stage">
-        <span class="stage-label">Stage 02 · Stand out</span>
+        <div class="stage-num">02</div>
+        <span class="stage-label">Stand out</span>
         <h3>Your photos<br><span class="gc">stand out.</span></h3>
         <p>Most photographers wait for golden hour and hope for the best. You won't have to. Controlled lighting gives every shot mood, drama, and a premium feel. Same car. Same location. <strong>But your photos stop the scroll. They look unmistakably yours.</strong></p>
         <div class="stage-img">
-          <span class="stage-num-badge">02</span>
           <img src="portfolio/mclaren-artura.jpg" alt="Orange McLaren Artura with doors open at night against the Gold Coast skyline">
         </div>
       </div>
 
       <!-- Stage 03 -->
       <div class="stage">
-        <span class="stage-label">Stage 03 · Get hired</span>
+        <div class="stage-num">03</div>
+        <span class="stage-label">Get hired</span>
         <h3>Brands<br><span class="gc">hire you.</span></h3>
         <p>Premium brands scroll Instagram looking for work that stands out. Yours now does. They find your portfolio. They send the DM. <strong>Paid shoots. Real clients. The career you came here for.</strong></p>
         <div class="stage-img">
-          <span class="stage-num-badge">03</span>
           <img src="portfolio/stage-03-brands.jpg" alt="Mitch standing in front of a Lamborghini Revuelto at the dealership">
         </div>
       </div>
 
     </div>
-  </div>
-</section>
 
-<!-- ═══════════════ MID-PAGE CTA ═══════════════ -->
-<section class="mid-cta pad-sm reveal">
-  <div class="c">
-    <span class="eye">Your move</span>
-    <a href="checkout.html" class="btn" id="mid-cta-btn">Get The Blueprint → $195 USD</a>
-    <p class="mid-cta-note">Founding price · 30 spots only · Course opens June 1st</p>
+    <div class="transform-cta">
+      <span class="eye">Your move</span>
+      <a href="checkout.html" class="btn" id="mid-cta-btn">Get The Blueprint → $195 USD</a>
+      <p class="transform-cta-note">Founding price · 30 spots only · Course opens June 1st</p>
+    </div>
+
   </div>
 </section>
 
@@ -976,10 +1015,6 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <!-- ═══════════════ DECISION ═══════════════ -->
 <section class="pricing pad reveal" id="checkout">
   <div class="c">
-    <span class="eye">Pricing</span>
-    <h2 style="margin-bottom:14px;"><span class="dyn-price" data-price="course_p1">$195</span> today.<br><span class="gc">More tomorrow.</span></h2>
-    <p class="intro" id="pricing-intro">Founding price ends when 30 spots are claimed or May 25, whichever comes first.<br>Then it goes to $395.</p>
-
     <div class="pc">
       <div class="pb" id="price-badge">🔥 Founding Student Price</div>
       <div class="pn">The Automotive Lighting Blueprint</div>
@@ -1133,22 +1168,20 @@ function render() {
     el.style.display = isFounding ? '' : 'none';
   });
 
-  let badge, ctaText, intro, was, finalNote, floatText;
+  let badge, ctaText, was, finalNote, floatText;
 
   if (phase === 1) {
     badge = '🔥 Founding Student Price';
     ctaText = `Get The Blueprint → ${priceFor('course_p1')} ${currentCurrency}`;
-    intro = `Founding price ends when 30 spots are claimed or May 25, whichever comes first.<br>Then it goes to ${priceFor('course_p2')}.`;
-    was = `Goes to ${priceFor('course_p2')} once the first 30 spots are sold out.`;
+    was = `Founding ends May 25 — or when 30 spots fill. Then ${priceFor('course_p2')}.`;
     finalNote = launched ? 'Founding price. Instant access.' : 'Founding price. Course access June 1st.';
     floatText = `${CONFIG.p1SpotsLeft} spots left`;
   } else {
     badge = launched ? 'Enrol Today' : 'Enrol Now';
     ctaText = `Enrol Now → ${priceFor('course_p2')} ${currentCurrency}`;
-    intro = launched
-      ? `The course is live. Enrol today and get instant access to every module.`
-      : `Founding spots have closed.<br>Course access opens Monday, June 1st.`;
-    was = '';
+    was = launched
+      ? `The course is live. Instant access on enrolment.`
+      : `Founding has closed. Course access opens Monday, June 1st.`;
     finalNote = launched ? 'Secure checkout. Instant access.' : 'Secure checkout. Course access June 1st.';
     floatText = launched ? `Enrol · ${priceFor('course_p2')} ${currentCurrency}` : `Reserve · ${priceFor('course_p2')} ${currentCurrency}`;
   }
@@ -1163,7 +1196,6 @@ function render() {
 
   // Other dynamic content
   document.getElementById('price-badge').textContent = badge;
-  document.getElementById('pricing-intro').innerHTML = intro;
   document.getElementById('price-was').textContent = was;
   document.getElementById('final-note').textContent = finalNote;
   document.getElementById('float-text').textContent = floatText;
