@@ -86,52 +86,16 @@ ul { list-style: none; }
 
 .topbar-right { display: flex; align-items: center; gap: 14px; }
 
-/* ── CURRENCY TOGGLE ───────────────────────── */
-.cur-toggle {
-  background: var(--s1);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 3px;
-  display: inline-flex;
+/* ── CURRENCY LABEL (small suffix next to prices) ── */
+.cc-sm {
   font-family: var(--fh);
-  font-size: 11px;
+  font-size: 0.45em;
   font-weight: 700;
   letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.cur-toggle button {
-  background: transparent;
-  border: none;
-  color: var(--w60);
-  cursor: pointer;
-  padding: 5px 11px;
-  border-radius: 999px;
-  font: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  transition: background .2s, color .2s;
-}
-.cur-toggle button.active {
-  background: var(--gold);
-  color: var(--bg);
-}
-.cur-toggle button:hover:not(.active) { color: var(--w); }
-
-/* Small variant — used inline next to the big price and below CTA buttons */
-.cur-toggle.sm {
-  padding: 2px;
-  font-size: 10px;
-  letter-spacing: .1em;
-}
-.cur-toggle.sm button {
-  padding: 4px 9px;
-}
-
-/* Wrapper that centers a toggle below each card CTA */
-.cta-currency {
-  display: flex;
-  justify-content: center;
-  margin-top: 14px;
+  color: var(--w50);
+  vertical-align: 0.7em;
+  margin-left: 4px;
+  display: inline-block;
 }
 
 @media (max-width: 420px) {
@@ -453,10 +417,6 @@ footer a { color: var(--gold); }
       <span class="b2">Creative</span>
     </a>
     <div class="topbar-right">
-      <div class="cur-toggle" role="group" aria-label="Currency">
-        <button type="button" data-cc="USD" class="active">USD</button>
-        <button type="button" data-cc="AUD">AUD</button>
-      </div>
       <span class="secure-pill">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <rect x="4" y="11" width="16" height="10" rx="1"/>
@@ -484,10 +444,7 @@ footer a { color: var(--gold); }
       <p class="card-sub">4 weeks live with Mitch. The full course included.</p>
       <div class="price-row">
         <span class="price-amount" data-price="cohort">$695</span>
-        <div class="cur-toggle sm" role="group" aria-label="Currency">
-          <button type="button" data-cc="USD" class="active">USD</button>
-          <button type="button" data-cc="AUD">AUD</button>
-        </div>
+        <span class="price-currency" data-currency-label>USD</span>
         <span class="price-note">One-time</span>
       </div>
     </div>
@@ -536,10 +493,7 @@ footer a { color: var(--gold); }
       <p class="card-sub">Self-paced. Same modules. No live access or coaching.</p>
       <div class="price-row">
         <span class="price-amount" data-price="course_p1">$195</span>
-        <div class="cur-toggle sm" role="group" aria-label="Currency">
-          <button type="button" data-cc="USD" class="active">USD</button>
-          <button type="button" data-cc="AUD">AUD</button>
-        </div>
+        <span class="price-currency" data-currency-label>USD</span>
         <span class="price-note">One-time</span>
       </div>
     </div>
@@ -608,34 +562,31 @@ const STRIPE_LINKS = {
    link the button routes to — Stripe handles currency at
    checkout based on customer location.
 ═══════════════════════════════════════════════════════════ */
-const STORAGE_KEY = 'cc_currency';
-let currentCurrency = 'USD';
-try {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved === 'AUD' || saved === 'USD') currentCurrency = saved;
-} catch (e) {}
+/* ═══════════════ AUTO-DETECT CURRENCY ═══════════════
+   AU timezone → AUD. Everyone else → USD.
+   Safety net: Stripe shows correct currency at checkout regardless. */
+function detectCurrency() {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz && tz.startsWith('Australia/')) return 'AUD';
+  } catch (e) {}
+  return 'USD';
+}
+let currentCurrency = detectCurrency();
 
 function fmt(n) { return '$' + Number(n).toLocaleString('en-US'); }
 
-function applyCurrency(currency) {
-  currentCurrency = currency;
-  try { localStorage.setItem(STORAGE_KEY, currency); } catch (e) {}
-
+function applyCurrency() {
   // Update all price displays
   document.querySelectorAll('[data-price]').forEach(el => {
     const key = el.getAttribute('data-price');
-    const val = PRICES[currency] && PRICES[currency][key];
+    const val = PRICES[currentCurrency] && PRICES[currentCurrency][key];
     if (val != null) el.textContent = fmt(val);
   });
 
   // Update currency labels
   document.querySelectorAll('[data-currency-label]').forEach(el => {
-    el.textContent = currency;
-  });
-
-  // Update toggle button active state
-  document.querySelectorAll('.cur-toggle button').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-cc') === currency);
+    el.textContent = currentCurrency;
   });
 }
 
@@ -657,15 +608,8 @@ function wireStripeLinks() {
   });
 }
 
-// Hook up toggle clicks
-document.querySelectorAll('.cur-toggle button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    applyCurrency(btn.getAttribute('data-cc'));
-  });
-});
-
 // Initialise
-applyCurrency(currentCurrency);
+applyCurrency();
 wireStripeLinks();
 </script>
 
