@@ -477,7 +477,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   position: relative;
 }
 .stage-img img {
-  width: 100%; height: 280px; object-fit: cover; display: block;
+  width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: cover; display: block;
 }
 .stage-num-badge {
   position: absolute; top: 14px; left: 14px;
@@ -486,7 +486,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   letter-spacing: .14em; text-transform: uppercase;
   padding: 6px 12px; border-radius: 2px;
 }
-@media (min-width: 768px) { .stage-img img { height: 480px; } }
 .stage p { font-size: clamp(15px, 4.2vw, 17px); color: var(--w80); line-height: 1.65; }
 .stage p strong { color: var(--w); font-weight: 600; }
 
@@ -562,7 +561,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .gallery .head h2 { margin-bottom: 12px; }
 .gallery .head p { color: var(--w80); max-width: 540px; margin: 0 auto; }
 .track { display: flex; gap: 10px; animation: roll 70s linear infinite; width: max-content; }
-.track:hover { animation-play-state: paused; }
 .track img { width: 220px; height: 290px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
 @keyframes roll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 @media (min-width: 768px) { .track img { width: 280px; height: 360px; } }
@@ -767,7 +765,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <h3>You learn<br><span class="gc">the lighting.</span></h3>
         <div class="stage-img">
           <span class="stage-num-badge">01</span>
-          <img src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?w=1000&q=85&auto=format" alt="Stage 01 placeholder">
+          <img src="portfolio/stage-01-learn.jpg" alt="Behind the camera capturing a Ferrari interior on location">
         </div>
         <p>Two techniques. Flash and light painting. Both taught from scratch, step by step. No prior experience needed. <strong>By the end you can light any car, any location, any time of day. Total control over every shot.</strong></p>
       </div>
@@ -778,7 +776,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <h3>Your photos<br><span class="gc">stand out.</span></h3>
         <div class="stage-img">
           <span class="stage-num-badge">02</span>
-          <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1000&q=85&auto=format" alt="Stage 02 placeholder">
+          <img src="portfolio/stage-02-stand-out.jpg" alt="White Ferrari 488 with red wheels shot under a bridge at night">
         </div>
         <p>Most photographers wait for golden hour and hope for the best. You won't have to. Controlled lighting gives every shot mood, drama, and a premium feel. Same car. Same location. <strong>But your photos stop the scroll. They look unmistakably yours.</strong></p>
       </div>
@@ -789,7 +787,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <h3>Brands<br><span class="gc">hire you.</span></h3>
         <div class="stage-img">
           <span class="stage-num-badge">03</span>
-          <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1000&q=85&auto=format" alt="Stage 03 placeholder">
+          <img src="portfolio/stage-03-brands.jpg" alt="Mitch standing in front of a Lamborghini Revuelto at the dealership">
         </div>
         <p>Premium brands scroll Instagram looking for work that stands out. Yours now does. They find your portfolio. They send the DM. <strong>Paid shoots. Real clients. The career you came here for.</strong></p>
       </div>
