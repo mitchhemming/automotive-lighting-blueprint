@@ -480,46 +480,38 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   .stage:not(:last-child) { margin-bottom: 64px; }
 }
 
+.stage-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
 .stage-num {
   font-family: var(--fh);
-  font-size: clamp(72px, 19vw, 100px);
+  font-size: clamp(64px, 17vw, 92px);
   font-weight: 900;
   color: var(--gold);
   line-height: 0.85;
   letter-spacing: -0.04em;
-  margin-bottom: 16px;
-}
-.stage-num::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: var(--gold);
-  margin-top: 14px;
+  flex-shrink: 0;
 }
 @media (min-width: 768px) {
-  .stage-num { font-size: 120px; margin-bottom: 18px; }
-  .stage-num::after { margin-top: 16px; width: 48px; }
+  .stage-head { gap: 22px; margin-bottom: 26px; }
 }
 
-.stage-label {
-  font-family: var(--fh); font-size: 11px; font-weight: 600;
-  letter-spacing: .22em; color: var(--gold); text-transform: uppercase;
-  margin-bottom: 12px; display: block;
-}
 .stage h3 {
   font-family: var(--fh); font-weight: 900;
   font-size: clamp(28px, 8vw, 36px);
   text-transform: uppercase; letter-spacing: .02em;
   line-height: .95; color: var(--w);
-  margin-bottom: 18px;
+  margin-bottom: 0;
 }
 .stage h3 .gc { color: var(--gold); }
 .stage p {
   font-size: clamp(15px, 4.2vw, 17px);
   color: var(--w80);
-  line-height: 1.65;
-  margin-bottom: 24px;
+  line-height: 1.55;
+  margin-bottom: 22px;
 }
 .stage p strong { color: var(--w); font-weight: 600; }
 
@@ -538,12 +530,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 
 /* ── TRANSFORM CTA (closes the 3-stage section) ── */
-.transform-cta {
-  text-align: center;
-  margin-top: 56px;
-  padding-top: 48px;
-  border-top: 1px solid var(--line);
-}
+.transform-cta { text-align: center; }
 .transform-cta .eye { display: block; margin-bottom: 14px; }
 .transform-cta .btn { margin: 0 auto; }
 .transform-cta-note {
@@ -551,9 +538,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   font-size: 13px;
   color: var(--w50);
   letter-spacing: 0.02em;
-}
-@media (min-width: 768px) {
-  .transform-cta { margin-top: 72px; padding-top: 56px; }
 }
 
 /* ── METHOD PULL (gold outlined box on dark) ── */
@@ -648,18 +632,18 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 
 /* ── VALUE STACK ────────────────────────────── */
 .vs { background: var(--s2); }
-.vs-intro { color: var(--w80); margin-top: 10px; margin-bottom: 6px; }
-.vl { list-style: none; margin-top: 18px; }
-.vl li { display: flex; justify-content: space-between; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid var(--line); gap: 16px; }
-.vi { font-size: clamp(15px, 4.2vw, 16px); color: var(--w); flex: 1; line-height: 1.35; }
+.vs-intro { color: var(--w80); margin-top: 8px; margin-bottom: 4px; }
+.vl { list-style: none; margin-top: 12px; }
+.vl li { display: flex; justify-content: space-between; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--line); gap: 16px; }
+.vi { font-size: clamp(15px, 4.2vw, 16px); color: var(--w); flex: 1; line-height: 1.3; }
 .vv { font-family: var(--fh); font-size: 15px; font-weight: 700; color: var(--w50); letter-spacing: .04em; flex-shrink: 0; }
 .vl li.founding { border-left: 3px solid var(--gold); padding-left: 14px; background: rgba(200,146,42,0.05); margin: 0 -14px; padding-right: 14px; }
 .vl li.founding .vi { color: var(--gold2); font-weight: 600; }
 .vl li.founding .vv { color: var(--gold); }
-.vtot { display: flex; justify-content: space-between; align-items: center; padding: 14px 0 4px 0; margin-bottom: 0; }
+.vtot { display: flex; justify-content: space-between; align-items: center; padding: 10px 0 2px 0; margin-bottom: 0; }
 .vtl { font-family: var(--fh); font-size: 14px; font-weight: 600; letter-spacing: .12em; color: var(--w50); text-transform: uppercase; }
 .vta { font-family: var(--fh); font-size: 20px; font-weight: 700; color: var(--w50); letter-spacing: .04em; text-decoration: line-through; }
-.vyou { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0 18px 0; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
+.vyou { display: flex; justify-content: space-between; align-items: baseline; padding: 2px 0 14px 0; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
 .vyl { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .14em; color: var(--w); text-transform: uppercase; }
 .vya { font-family: var(--fh); font-size: clamp(30px, 8.5vw, 40px); font-weight: 900; color: var(--gold); letter-spacing: .01em; line-height: 1; }
 
@@ -848,7 +832,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="brands-strip">
       <span class="brands-label">Some of the brands I've worked with:</span>
-      <p class="brands-list">Lamborghini · <span class="nb">Mercedes-Benz</span> · McLaren · Ferrari · Bentley · Audi · Maserati · BMW · + More</p>
+      <p class="brands-list">Lamborghini · <span class="nb">Mercedes-Benz</span> · McLaren · Ferrari · Bentley · Audi · Maserati · BMW</p>
     </div>
   </div>
 </section>
@@ -866,10 +850,11 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
       <!-- Stage 01 -->
       <div class="stage">
-        <div class="stage-num">01</div>
-        <span class="stage-label">Learn it</span>
-        <h3>You learn<br><span class="gc">the lighting.</span></h3>
-        <p>Two techniques. Flash and light painting. Both taught from scratch, step by step. No prior experience needed. <strong>By the end you can light any car, any location, any time of day. Total control over every shot.</strong></p>
+        <div class="stage-head">
+          <div class="stage-num">01</div>
+          <h3>You learn<br><span class="gc">the lighting.</span></h3>
+        </div>
+        <p>Flash and light painting, taught from scratch. <strong>Light any car, any location, any time of day.</strong></p>
         <div class="stage-img">
           <img src="portfolio/stage-01-learn.jpg" alt="Behind the camera capturing a Ferrari interior on location">
         </div>
@@ -877,10 +862,11 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
       <!-- Stage 02 -->
       <div class="stage">
-        <div class="stage-num">02</div>
-        <span class="stage-label">Stand out</span>
-        <h3>Your photos<br><span class="gc">stand out.</span></h3>
-        <p>Most photographers wait for golden hour and hope for the best. You won't have to. Controlled lighting gives every shot mood, drama, and a premium feel. Same car. Same location. <strong>But your photos stop the scroll. They look unmistakably yours.</strong></p>
+        <div class="stage-head">
+          <div class="stage-num">02</div>
+          <h3>Your photos<br><span class="gc">stand out.</span></h3>
+        </div>
+        <p>No more waiting for golden hour. <strong>Same car, same location — but your photos stop the scroll. Unmistakably yours.</strong></p>
         <div class="stage-img">
           <img src="portfolio/mclaren-artura.jpg" alt="Orange McLaren Artura with doors open at night against the Gold Coast skyline">
         </div>
@@ -888,9 +874,10 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
       <!-- Stage 03 -->
       <div class="stage">
-        <div class="stage-num">03</div>
-        <span class="stage-label">Get hired</span>
-        <h3>Brands<br><span class="gc">hire you.</span></h3>
+        <div class="stage-head">
+          <div class="stage-num">03</div>
+          <h3>Brands<br><span class="gc">hire you.</span></h3>
+        </div>
         <p>Premium brands scroll Instagram looking for work that stands out. Yours now does. They find your portfolio. They send the DM. <strong>Paid shoots. Real clients. The career you came here for.</strong></p>
         <div class="stage-img">
           <img src="portfolio/stage-03-brands.jpg" alt="Mitch standing in front of a Lamborghini Revuelto at the dealership">
