@@ -70,6 +70,47 @@ a { text-decoration: none; color: inherit; }
 .float-cta .arrow { font-size: 14px; }
 @media (min-width: 768px) { .float-cta { top: 24px; right: 24px; padding: 12px 20px; font-size: 13px; } }
 
+/* ── CURRENCY TOGGLE (floating, top-left, mirrors float-cta) ── */
+.cur-toggle-float {
+  position: fixed; top: 16px; left: 16px; z-index: 100;
+  opacity: 0; transform: translateY(-12px) scale(0.95);
+  transition: opacity .25s ease, transform .25s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,.4);
+  border-radius: 999px;
+}
+.cur-toggle-float.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.cur-toggle {
+  background: var(--s1);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+  display: inline-flex;
+  font-family: var(--fh);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.cur-toggle button {
+  background: transparent;
+  border: none;
+  color: var(--w50);
+  cursor: pointer;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  transition: background .2s, color .2s;
+}
+.cur-toggle button.active {
+  background: var(--gold);
+  color: var(--bg);
+}
+.cur-toggle button:hover:not(.active) { color: var(--w); }
+@media (min-width: 768px) { .cur-toggle-float { top: 24px; left: 24px; } }
+
 .rule { height: 1px; background: var(--line); }
 
 /* ── TYPE (fluid scaling) ───────────────────── */
@@ -674,10 +715,18 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <body>
 
 <!-- ═══════════════ FLOATING CTA (appears after hero) ═══════════════ -->
-<a href="enrol.html" class="float-cta" id="float-cta">
+<a href="#checkout" class="float-cta" id="float-cta">
   <span id="float-text">12 spots left</span>
   <span class="arrow">→</span>
 </a>
+
+<!-- ═══════════════ FLOATING CURRENCY TOGGLE (appears after hero) ═══════════════ -->
+<div class="cur-toggle-float" id="cur-toggle-float">
+  <div class="cur-toggle" role="group" aria-label="Currency">
+    <button type="button" data-cc="USD" class="active">USD</button>
+    <button type="button" data-cc="AUD">AUD</button>
+  </div>
+</div>
 
 <!-- ═══════════════ HERO ANIMATION ═══════════════ -->
 <section class="hero">
@@ -872,24 +921,24 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="vs pad reveal">
   <div class="c">
     <span class="eye">Everything you get</span>
-    <h2>Worth $1,495.<br><span class="gc">Yours for $<span id="vs-price">195</span>.</span></h2>
+    <h2>Worth <span data-price="perceived">$1,495</span>.<br><span class="gc">Yours for <span class="dyn-price" data-price="course_p1">$195</span>.</span></h2>
     <p class="vs-intro">Enrol today and lock in your spot. Course access opens June 1st.</p>
 
     <ul class="vl" id="vs-list">
-      <li><span class="vi">The Automotive Lighting Blueprint. 6 full modules.</span><span class="vv">$995</span></li>
+      <li><span class="vi">The Automotive Lighting Blueprint. 6 full modules.</span><span class="vv" data-price="item_course">$995</span></li>
       <li><span class="vi">Lifetime access plus every future update</span><span class="vv">Incl.</span></li>
-      <li><span class="vi">Lighting diagram templates</span><span class="vv">$147</span></li>
-      <li><span class="vi">Lightroom RAW editing preset</span><span class="vv">$97</span></li>
-      <li><span class="vi">Editing workflow in Photoshop</span><span class="vv">$97</span></li>
-      <li><span class="vi">Camera settings reference guide</span><span class="vv">$77</span></li>
-      <li><span class="vi">On location shoot checklist</span><span class="vv">$57</span></li>
-      <li><span class="vi">Gear checklist</span><span class="vv">$35</span></li>
+      <li><span class="vi">Lighting diagram templates</span><span class="vv" data-price="item_diagrams">$147</span></li>
+      <li><span class="vi">Lightroom RAW editing preset</span><span class="vv" data-price="item_preset">$97</span></li>
+      <li><span class="vi">Editing workflow in Photoshop</span><span class="vv" data-price="item_workflow">$97</span></li>
+      <li><span class="vi">Camera settings reference guide</span><span class="vv" data-price="item_settings">$77</span></li>
+      <li><span class="vi">On location shoot checklist</span><span class="vv" data-price="item_checklist">$57</span></li>
+      <li><span class="vi">Gear checklist</span><span class="vv" data-price="item_gear">$35</span></li>
       <li class="founding founding-only"><span class="vi">★ Founding Student status</span><span class="vv">Priceless</span></li>
       <li class="founding founding-only"><span class="vi">★ Founding only live Q&amp;A with Mitch</span><span class="vv">Bonus</span></li>
       <li class="founding founding-only"><span class="vi">★ Behind the scenes bonus module</span><span class="vv">Bonus</span></li>
     </ul>
-    <div class="vtot"><span class="vtl">Total value</span><span class="vta">$1,495</span></div>
-    <a href="enrol.html" class="btn vs-btn">Get The Blueprint → $195</a>
+    <div class="vtot"><span class="vtl">Total value</span><span class="vta" data-price="perceived">$1,495</span></div>
+    <a href="enrol.html" class="btn vs-btn">Lock In My Spot →</a>
   </div>
 </section>
 
@@ -913,13 +962,13 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="pricing pad reveal" id="checkout">
   <div class="c">
     <span class="eye">Pricing</span>
-    <h2 style="margin-bottom:14px;">$<span class="dyn-price">195</span> today.<br><span class="gc">More tomorrow.</span></h2>
+    <h2 style="margin-bottom:14px;"><span class="dyn-price" data-price="course_p1">$195</span> today.<br><span class="gc">More tomorrow.</span></h2>
     <p class="intro" id="pricing-intro">Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to $295. Then $495 at launch.</p>
 
     <div class="pc">
       <div class="pb" id="price-badge">🔥 Founding Student Price</div>
       <div class="pn">The Automotive Lighting Blueprint</div>
-      <div class="pp">$<span class="dyn-price">195</span></div>
+      <div class="pp"><span class="dyn-price" data-price="course_p1">$195</span></div>
       <p class="pw" id="price-was">Goes to $295. Then $495 at launch.</p>
 
       <div class="spots-bar founding-only" id="spots-bar">
@@ -988,7 +1037,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <span class="eye">Ready?</span>
     <h2>The photographers getting paid<br><span class="gc">aren't more talented.</span></h2>
     <p class="lead" style="color:var(--w);">They just stopped blending in.</p>
-    <a href="enrol.html" class="btn final-cta" style="margin-top:32px;">Get The Blueprint → $195</a>
+    <a href="enrol.html" class="btn final-cta" style="margin-top:32px;">Stop Blending In →</a>
     <p class="bn" id="final-note" style="margin-top:14px;">Founding price. Course access June 1st.</p>
   </div>
 </section>
@@ -1003,19 +1052,57 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
 <script>
 /* ═══════════════════════════════════════════════════════════
-   PHASE CONFIG · UPDATE THESE TO CONTROL THE PAGE
+   PRICES — EDIT THE AUD VALUES BELOW IF YOU WANT DIFFERENT
+   AMOUNTS. USD values are the actual sale prices.
 ═══════════════════════════════════════════════════════════ */
-const CONFIG = {
-  p1Price: 195,
-  p1FoundingCap: 30,
-  p1SpotsLeft: 30,                              // ← UPDATE AS SALES COME IN
-  p1EndDate: '2026-05-25T00:00:00+10:00',
-
-  p2Price: 295,
-  p2EndDate: '2026-06-01T00:00:00+10:00',
-
-  p3Price: 495
+const PRICES = {
+  USD: {
+    course_p1:     195,
+    course_p2:     295,
+    course_p3:     495,
+    cohort:        695,
+    perceived:    1495,
+    item_course:   995,
+    item_diagrams: 147,
+    item_preset:    97,
+    item_workflow:  97,
+    item_settings:  77,
+    item_checklist: 57,
+    item_gear:      35
+  },
+  AUD: {
+    course_p1:     295,
+    course_p2:     445,
+    course_p3:     745,
+    cohort:        995,
+    perceived:    2245,
+    item_course:  1495,
+    item_diagrams: 215,
+    item_preset:   145,
+    item_workflow: 145,
+    item_settings: 115,
+    item_checklist: 85,
+    item_gear:      50
+  }
 };
+
+const CONFIG = {
+  p1FoundingCap: 30,
+  p1SpotsLeft:   30,                              // ← UPDATE AS SALES COME IN
+  p1EndDate:     '2026-05-25T00:00:00+10:00',
+  p2EndDate:     '2026-06-01T00:00:00+10:00'
+};
+
+/* ═══════════════ CURRENCY STATE ═══════════════ */
+const STORAGE_KEY = 'cc_currency';
+let currentCurrency = 'USD';
+try {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved === 'AUD' || saved === 'USD') currentCurrency = saved;
+} catch (e) {}
+
+function fmt(n) { return '$' + Number(n).toLocaleString('en-US'); }
+function priceFor(key) { return fmt(PRICES[currentCurrency][key]); }
 
 /* ═══════════════ PHASE DETECTION ═══════════════ */
 function getPhase() {
@@ -1029,53 +1116,47 @@ function render() {
   const phase = getPhase();
   const isFounding = phase === 1;
   const isPreLaunch = phase === 1 || phase === 2;
+  const phaseKey = `course_p${phase}`;
 
   // Show/hide founding-only blocks
   document.querySelectorAll('.founding-only').forEach(el => {
     el.style.display = isFounding ? '' : 'none';
   });
 
-  let price, badge, ctaText, urgency, intro, was, finalNote, floatText;
+  let badge, ctaText, intro, was, finalNote, floatText;
 
   if (phase === 1) {
-    price = CONFIG.p1Price;
     badge = '🔥 Founding Student Price';
-    ctaText = `Get The Blueprint → $${price}`;
-    urgency = `🔥 <span class="gold-text">Founding Student price</span> · <span id="hero-spots">${CONFIG.p1SpotsLeft} of ${CONFIG.p1FoundingCap}</span> spots remaining`;
-    intro = `Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to $${CONFIG.p2Price}. Then $${CONFIG.p3Price} at launch.`;
-    was = `Goes to $${CONFIG.p2Price}. Then $${CONFIG.p3Price} at launch.`;
+    ctaText = `Get The Blueprint → ${priceFor('course_p1')}`;
+    intro = `Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to ${priceFor('course_p2')}. Then ${priceFor('course_p3')} at launch.`;
+    was = `Goes to ${priceFor('course_p2')}. Then ${priceFor('course_p3')} at launch.`;
     finalNote = 'Founding price. Course access June 1st.';
     floatText = `${CONFIG.p1SpotsLeft} spots left`;
   } else if (phase === 2) {
-    price = CONFIG.p2Price;
     badge = '⚡ Early Access Price';
-    ctaText = `Enrol Now → $${price}`;
-    urgency = `⚡ <span class="gold-text">Early access</span> · launches June 1st`;
-    intro = `Early access ends June 1st. Then it goes to $${CONFIG.p3Price} permanently.`;
-    was = `Goes to $${CONFIG.p3Price} on June 1st.`;
+    ctaText = `Enrol Now → ${priceFor('course_p2')}`;
+    intro = `Early access ends June 1st. Then it goes to ${priceFor('course_p3')} permanently.`;
+    was = `Goes to ${priceFor('course_p3')} on June 1st.`;
     finalNote = 'Early access price. Course access June 1st.';
-    floatText = `Early access · $${price}`;
+    floatText = `Early access · ${priceFor('course_p2')}`;
   } else {
-    price = CONFIG.p3Price;
     badge = 'Enrol Today';
-    ctaText = `Enrol Now → $${price}`;
-    urgency = `Available now. Instant access.`;
+    ctaText = `Enrol Now → ${priceFor('course_p3')}`;
     intro = `The course is live. Enrol today and get instant access to every module.`;
     was = '';
     finalNote = 'Secure checkout. Instant access.';
-    floatText = `Enrol · $${price}`;
+    floatText = `Enrol · ${priceFor('course_p3')}`;
   }
 
-  // Apply prices everywhere
-  document.querySelectorAll('.dyn-price').forEach(el => el.textContent = price);
-  document.getElementById('vs-price').textContent = price;
+  // Phase-aware spans get their data-price set to current phase
+  document.querySelectorAll('.dyn-price').forEach(el => {
+    el.setAttribute('data-price', phaseKey);
+  });
 
-  // Apply CTA text
-  document.querySelectorAll('#hero-cta, #checkout-cta, .vs-btn, .final-cta').forEach(el => el.textContent = ctaText);
+  // CTAs (hero + pricing only — vs-btn and final-cta have static varied copy)
+  document.querySelectorAll('#hero-cta, #checkout-cta').forEach(el => el.textContent = ctaText);
 
-  // Update other dynamic content
-  const urgencyEl = document.getElementById('hero-urgency');
-  if (urgencyEl) urgencyEl.innerHTML = urgency;
+  // Other dynamic content
   document.getElementById('price-badge').textContent = badge;
   document.getElementById('pricing-intro').textContent = intro;
   document.getElementById('price-was').textContent = was;
@@ -1092,7 +1173,7 @@ function render() {
 
   if (isPreLaunch) {
     step1t.textContent = phase === 1 ? 'Lock in your founding spot' : 'Lock in early access';
-    step1d.textContent = `Pay $${price} today and your seat is secured.${phase === 1 ? ' Founding bonuses included.' : ''}`;
+    step1d.textContent = `Pay ${priceFor(phaseKey)} today and your seat is secured.${phase === 1 ? ' Founding bonuses included.' : ''}`;
     step2t.textContent = 'Course unlocks June 1st';
     step2d.textContent = 'Full access to every module on Monday June 1st. Watch on any device.';
   } else {
@@ -1103,11 +1184,41 @@ function render() {
   }
 }
 
-render();
+/* ═══════════════ APPLY CURRENCY ═══════════════ */
+function applyCurrencyToElements() {
+  document.querySelectorAll('[data-price]').forEach(el => {
+    const key = el.getAttribute('data-price');
+    const val = PRICES[currentCurrency] && PRICES[currentCurrency][key];
+    if (val != null) el.textContent = fmt(val);
+  });
+  document.querySelectorAll('[data-currency-label]').forEach(el => {
+    el.textContent = currentCurrency;
+  });
+  document.querySelectorAll('.cur-toggle button').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-cc') === currentCurrency);
+  });
+}
 
-/* ═══════════════ FLOATING CTA SCROLL TRIGGER ═══════════════ */
+function setCurrency(currency) {
+  currentCurrency = currency;
+  try { localStorage.setItem(STORAGE_KEY, currency); } catch (e) {}
+  render();
+  applyCurrencyToElements();
+}
+
+// Wire toggle clicks
+document.querySelectorAll('.cur-toggle button').forEach(btn => {
+  btn.addEventListener('click', () => setCurrency(btn.getAttribute('data-cc')));
+});
+
+// Initialise
+render();
+applyCurrencyToElements();
+
+/* ═══════════════ FLOATING CTA + CURRENCY TOGGLE SCROLL TRIGGER ═══════════════ */
 (function () {
   const cta = document.getElementById('float-cta');
+  const curToggle = document.getElementById('cur-toggle-float');
   const hero = document.querySelector('.hero');
 
   function checkScroll() {
@@ -1116,8 +1227,10 @@ render();
     const scrolled = window.scrollY + 100;
     if (scrolled > heroBottom) {
       cta.classList.add('visible');
+      if (curToggle) curToggle.classList.add('visible');
     } else {
       cta.classList.remove('visible');
+      if (curToggle) curToggle.classList.remove('visible');
     }
   }
 
