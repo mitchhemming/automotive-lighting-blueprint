@@ -70,26 +70,17 @@ a { text-decoration: none; color: inherit; }
 .float-cta .arrow { font-size: 14px; }
 @media (min-width: 768px) { .float-cta { top: 24px; right: 24px; padding: 12px 20px; font-size: 13px; } }
 
-/* ── CURRENCY LABEL (small suffix next to prices) ── */
-.cc-sm {
+/* ── CURRENCY LABEL (sits at the baseline of the price next to it) ── */
+.cur-suffix {
   font-family: var(--fh);
-  font-size: 0.45em;
+  font-size: 0.32em;
   font-weight: 700;
-  letter-spacing: .08em;
-  color: var(--w50);
-  vertical-align: 0.7em;
-  margin-left: 4px;
-  display: inline-block;
-}
-.pp-suffix {
-  font-family: var(--fh);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: .22em;
+  letter-spacing: .1em;
   color: var(--w50);
   text-transform: uppercase;
-  margin-top: -4px;
-  margin-bottom: 6px;
+  vertical-align: baseline;
+  margin-left: 6px;
+  display: inline-block;
 }
 
 .rule { height: 1px; background: var(--line); }
@@ -897,7 +888,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="vs pad reveal">
   <div class="c">
     <span class="eye">Everything you get</span>
-    <h2>Worth <span data-price="perceived">$1,495</span><span data-currency-label class="cc-sm">USD</span>.<br><span class="gc">Yours for <span class="dyn-price" data-price="course_p1">$195</span><span data-currency-label class="cc-sm">USD</span>.</span></h2>
+    <h2>Worth <span data-price="perceived">$1,495</span>.<br><span class="gc">Yours for <span class="dyn-price" data-price="course_p1">$195</span>.</span></h2>
     <p class="vs-intro">Enrol today and lock in your spot. Course access opens June 1st.</p>
 
     <ul class="vl" id="vs-list">
@@ -913,8 +904,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <li class="founding founding-only"><span class="vi">★ Founding only live Q&amp;A with Mitch</span><span class="vv">Bonus</span></li>
       <li class="founding founding-only"><span class="vi">★ Behind the scenes bonus module</span><span class="vv">Bonus</span></li>
     </ul>
-    <div class="vtot"><span class="vtl">Total value</span><span class="vta"><span data-price="perceived">$1,495</span><span data-currency-label class="cc-sm">USD</span></span></div>
-    <div class="vyou"><span class="vyl">You pay today</span><span class="vya"><span class="dyn-price" data-price="course_p1">$195</span><span data-currency-label class="cc-sm">USD</span></span></div>
+    <div class="vtot"><span class="vtl">Total value</span><span class="vta" data-price="perceived">$1,495</span></div>
+    <div class="vyou"><span class="vyl">You pay today</span><span class="vya"><span class="dyn-price" data-price="course_p1">$195</span><span class="cur-suffix" data-currency-label>USD</span></span></div>
     <a href="enrol.html" class="btn vs-btn">Lock In My Spot →</a>
   </div>
 </section>
@@ -939,15 +930,14 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="pricing pad reveal" id="checkout">
   <div class="c">
     <span class="eye">Pricing</span>
-    <h2 style="margin-bottom:14px;"><span class="dyn-price" data-price="course_p1">$195</span><span data-currency-label class="cc-sm">USD</span> today.<br><span class="gc">More tomorrow.</span></h2>
-    <p class="intro" id="pricing-intro">Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to $295. Then $495 at launch.</p>
+    <h2 style="margin-bottom:14px;"><span class="dyn-price" data-price="course_p1">$195</span> today.<br><span class="gc">More tomorrow.</span></h2>
+    <p class="intro" id="pricing-intro">Founding price ends when 30 spots are claimed or May 25, whichever comes first.<br>Then it goes to $395.</p>
 
     <div class="pc">
       <div class="pb" id="price-badge">🔥 Founding Student Price</div>
       <div class="pn">The Automotive Lighting Blueprint</div>
-      <div class="pp"><span class="dyn-price" data-price="course_p1">$195</span></div>
-      <div class="pp-suffix" data-currency-label>USD</div>
-      <p class="pw" id="price-was">Goes to $295. Then $495 at launch.</p>
+      <div class="pp"><span class="dyn-price" data-price="course_p1">$195</span><span class="cur-suffix" data-currency-label>USD</span></div>
+      <p class="pw" id="price-was">Goes to $395 once founding fills.</p>
 
       <div class="spots-bar founding-only" id="spots-bar">
         <span class="spots-label">Founding spots remaining</span>
@@ -1036,8 +1026,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 const PRICES = {
   USD: {
     course_p1:     195,
-    course_p2:     295,
-    course_p3:     495,
+    course_p2:     395,
     cohort:        695,
     perceived:    1495,
     item_course:   995,
@@ -1050,8 +1039,7 @@ const PRICES = {
   },
   AUD: {
     course_p1:     295,
-    course_p2:     445,
-    course_p3:     745,
+    course_p2:     549,
     cohort:        995,
     perceived:    2245,
     item_course:  1495,
@@ -1068,7 +1056,7 @@ const CONFIG = {
   p1FoundingCap: 30,
   p1SpotsLeft:   30,                              // ← UPDATE AS SALES COME IN
   p1EndDate:     '2026-05-25T00:00:00+10:00',
-  p2EndDate:     '2026-06-01T00:00:00+10:00'
+  launchDate:    '2026-06-01T00:00:00+10:00'
 };
 
 /* ═══════════════ AUTO-DETECT CURRENCY ═══════════════
@@ -1090,14 +1078,17 @@ function priceFor(key) { return fmt(PRICES[currentCurrency][key]); }
 function getPhase() {
   const now = new Date();
   if (CONFIG.p1SpotsLeft > 0 && now < new Date(CONFIG.p1EndDate)) return 1;
-  if (now < new Date(CONFIG.p2EndDate)) return 2;
-  return 3;
+  return 2;
+}
+
+function isLaunched() {
+  return new Date() >= new Date(CONFIG.launchDate);
 }
 
 function render() {
   const phase = getPhase();
   const isFounding = phase === 1;
-  const isPreLaunch = phase === 1 || phase === 2;
+  const launched = isLaunched();
   const phaseKey = `course_p${phase}`;
 
   // Show/hide founding-only blocks
@@ -1110,24 +1101,19 @@ function render() {
   if (phase === 1) {
     badge = '🔥 Founding Student Price';
     ctaText = `Get The Blueprint → ${priceFor('course_p1')} ${currentCurrency}`;
-    intro = `Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to ${priceFor('course_p2')}. Then ${priceFor('course_p3')} at launch.`;
-    was = `Goes to ${priceFor('course_p2')}. Then ${priceFor('course_p3')} at launch.`;
-    finalNote = 'Founding price. Course access June 1st.';
+    intro = `Founding price ends when 30 spots are claimed or May 25, whichever comes first.<br>Then it goes to ${priceFor('course_p2')}.`;
+    was = `Goes to ${priceFor('course_p2')} once founding fills.`;
+    finalNote = launched ? 'Founding price. Instant access.' : 'Founding price. Course access June 1st.';
     floatText = `${CONFIG.p1SpotsLeft} spots left`;
-  } else if (phase === 2) {
-    badge = '⚡ Early Access Price';
-    ctaText = `Enrol Now → ${priceFor('course_p2')} ${currentCurrency}`;
-    intro = `Early access ends June 1st. Then it goes to ${priceFor('course_p3')} permanently.`;
-    was = `Goes to ${priceFor('course_p3')} on June 1st.`;
-    finalNote = 'Early access price. Course access June 1st.';
-    floatText = `Early access · ${priceFor('course_p2')} ${currentCurrency}`;
   } else {
-    badge = 'Enrol Today';
-    ctaText = `Enrol Now → ${priceFor('course_p3')} ${currentCurrency}`;
-    intro = `The course is live. Enrol today and get instant access to every module.`;
+    badge = launched ? 'Enrol Today' : 'Enrol Now';
+    ctaText = `Enrol Now → ${priceFor('course_p2')} ${currentCurrency}`;
+    intro = launched
+      ? `The course is live. Enrol today and get instant access to every module.`
+      : `Founding spots have closed.<br>Course access opens Monday, June 1st.`;
     was = '';
-    finalNote = 'Secure checkout. Instant access.';
-    floatText = `Enrol · ${priceFor('course_p3')} ${currentCurrency}`;
+    finalNote = launched ? 'Secure checkout. Instant access.' : 'Secure checkout. Course access June 1st.';
+    floatText = launched ? `Enrol · ${priceFor('course_p2')} ${currentCurrency}` : `Reserve · ${priceFor('course_p2')} ${currentCurrency}`;
   }
 
   // Phase-aware spans get their data-price set to current phase
@@ -1140,7 +1126,7 @@ function render() {
 
   // Other dynamic content
   document.getElementById('price-badge').textContent = badge;
-  document.getElementById('pricing-intro').textContent = intro;
+  document.getElementById('pricing-intro').innerHTML = intro;
   document.getElementById('price-was').textContent = was;
   document.getElementById('final-note').textContent = finalNote;
   document.getElementById('float-text').textContent = floatText;
@@ -1153,14 +1139,21 @@ function render() {
   const step2t = document.getElementById('step2-t');
   const step2d = document.getElementById('step2-d');
 
-  if (isPreLaunch) {
-    step1t.textContent = phase === 1 ? 'Lock in your founding spot' : 'Lock in early access';
-    step1d.textContent = `Pay ${priceFor(phaseKey)} today and your seat is secured.${phase === 1 ? ' Founding bonuses included.' : ''}`;
-    step2t.textContent = 'Course unlocks June 1st';
-    step2d.textContent = 'Full access to every module on Monday June 1st. Watch on any device.';
+  if (phase === 1) {
+    step1t.textContent = 'Lock in your founding spot';
+    step1d.textContent = `Pay ${priceFor('course_p1')} ${currentCurrency} today and your seat is secured. Founding bonuses included.`;
+  } else if (!launched) {
+    step1t.textContent = 'Reserve your seat';
+    step1d.textContent = `Pay ${priceFor('course_p2')} ${currentCurrency} today and your seat is secured.`;
   } else {
     step1t.textContent = 'Pay and get instant access';
     step1d.textContent = 'The full course unlocks the moment you enrol. Watch on any device.';
+  }
+
+  if (!launched) {
+    step2t.textContent = 'Course unlocks June 1st';
+    step2d.textContent = 'Full access to every module on Monday June 1st. Watch on any device.';
+  } else {
     step2t.textContent = 'Start with Module 01';
     step2d.textContent = 'Set yourself up for success. Then move at your own pace through every module.';
   }
