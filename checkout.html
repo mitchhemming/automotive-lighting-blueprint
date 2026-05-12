@@ -139,6 +139,41 @@ h1 .gc { color: var(--gold); }
   gap: 12px;
 }
 .line-info { flex: 1; min-width: 0; }
+
+.line-check {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 4px;
+  background: var(--gold);
+  position: relative;
+  margin-top: 1px;
+}
+.line-check::after {
+  content: '';
+  position: absolute;
+  left: 7px; top: 4px;
+  width: 6px; height: 11px;
+  border-right: 2px solid var(--w);
+  border-bottom: 2px solid var(--w);
+  transform: rotate(45deg);
+}
+
+.line-pill {
+  display: inline-block;
+  background: rgba(200,146,42,0.15);
+  color: var(--gold);
+  font-family: var(--fh);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: 2px;
+  white-space: nowrap;
+}
+
 .line-t {
   font-weight: 600;
   font-size: clamp(15px, 4.2vw, 16px);
@@ -485,8 +520,9 @@ footer a { color: var(--gold); }
   <!-- ─── ORDER LINE: COURSE (committed) ─── -->
   <div class="line-card">
     <div class="line-row">
+      <div class="line-check" aria-hidden="true"></div>
       <div class="line-info">
-        <div class="line-t">The Automotive Lighting Blueprint Course</div>
+        <div class="line-t">The Automotive Lighting Blueprint Course <span class="line-pill">Included</span></div>
         <div class="line-sub">Course access opens June 1st · Lifetime access + every update</div>
       </div>
       <div class="line-price"><span data-price="course_p1">$195</span><span class="cur" data-currency-label>USD</span></div>
