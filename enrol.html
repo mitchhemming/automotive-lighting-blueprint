@@ -603,19 +603,22 @@ const PRICES = {
 /* ═══════════════════════════════════════════════════════════
    STRIPE PAYMENT LINKS — 4 LINKS NEEDED: 2 products × 2 currencies
 ═══════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════
+   STRIPE PAYMENT LINKS — 2 links needed, one per product.
+   Each Payment Link's Price has both USD and AUD set up in
+   Stripe, so Stripe shows the right currency at checkout
+   based on the customer's location.
+═══════════════════════════════════════════════════════════ */
 const STRIPE_LINKS = {
-  USD: {
-    cohort: 'PASTE_STRIPE_COHORT_USD_PAYMENT_LINK_HERE',
-    course: 'PASTE_STRIPE_COURSE_USD_PAYMENT_LINK_HERE'
-  },
-  AUD: {
-    cohort: 'PASTE_STRIPE_COHORT_AUD_PAYMENT_LINK_HERE',
-    course: 'PASTE_STRIPE_COURSE_AUD_PAYMENT_LINK_HERE'
-  }
+  cohort: 'https://buy.stripe.com/6oU7sM8yc5hl0DM4Mu6sw02',
+  course: 'https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03'
 };
 
 /* ═══════════════════════════════════════════════════════════
-   CURRENCY TOGGLE — defaults to USD, persists via localStorage
+   CURRENCY TOGGLE — display-only. Defaults to USD, persists
+   via localStorage. The toggle does NOT change which Stripe
+   link the button routes to — Stripe handles currency at
+   checkout based on customer location.
 ═══════════════════════════════════════════════════════════ */
 const STORAGE_KEY = 'cc_currency';
 let currentCurrency = 'USD';
@@ -646,28 +649,21 @@ function applyCurrency(currency) {
   document.querySelectorAll('.cur-toggle button').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-cc') === currency);
   });
-
-  // Re-route Stripe links for the active currency
-  wireStripeLinks();
 }
 
 function wireStripeLinks() {
-  const links = STRIPE_LINKS[currentCurrency] || {};
   document.querySelectorAll('[data-stripe]').forEach(el => {
     const key = el.getAttribute('data-stripe');
-    const url = links[key];
-    const placeholder = `PASTE_STRIPE_${key.toUpperCase()}_${currentCurrency}_PAYMENT_LINK_HERE`;
-    // Reset any previous click handler by cloning
-    const fresh = el.cloneNode(true);
-    el.parentNode.replaceChild(fresh, el);
+    const url = STRIPE_LINKS[key];
+    const placeholder = `PASTE_STRIPE_${key.toUpperCase()}_PAYMENT_LINK_HERE`;
     if (url && url !== placeholder) {
-      fresh.href = url;
+      el.href = url;
     } else {
-      fresh.href = '#';
-      fresh.addEventListener('click', e => {
+      el.href = '#';
+      el.addEventListener('click', e => {
         e.preventDefault();
-        console.warn(`Stripe link for "${key}" (${currentCurrency}) not set. Edit STRIPE_LINKS in enrol.html.`);
-        alert(`Stripe checkout link for ${key} (${currentCurrency}) not configured yet.`);
+        console.warn(`Stripe link for "${key}" not set. Edit STRIPE_LINKS in enrol.html.`);
+        alert(`Stripe checkout link for ${key} not configured yet.`);
       });
     }
   });
@@ -682,6 +678,7 @@ document.querySelectorAll('.cur-toggle button').forEach(btn => {
 
 // Initialise
 applyCurrency(currentCurrency);
+wireStripeLinks();
 </script>
 
 </body>
