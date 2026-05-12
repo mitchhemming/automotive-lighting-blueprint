@@ -490,10 +490,18 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .stage p strong { color: var(--w); font-weight: 600; }
 
 /* ── METHOD PULL (gold outlined box on dark) ── */
-.mpull { background: var(--bg); }
+.mpull {
+  background-color: var(--bg);
+  background-image: linear-gradient(rgba(19,19,19,0.78), rgba(19,19,19,0.78)), url('portfolio/solution-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .mpull-box {
   border: 1px solid var(--gold);
-  background: var(--s1);
+  background: rgba(31, 31, 31, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 8px;
   padding: 32px 16px;
   text-align: center;
