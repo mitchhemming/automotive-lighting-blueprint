@@ -502,6 +502,17 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .stage p { font-size: clamp(15px, 4.2vw, 17px); color: var(--w80); line-height: 1.65; }
 .stage p strong { color: var(--w); font-weight: 600; }
 
+/* ── MID-PAGE CTA ── */
+.mid-cta { background: var(--bg); text-align: center; }
+.mid-cta .eye { display: block; margin-bottom: 14px; }
+.mid-cta .btn { margin: 0 auto; }
+.mid-cta-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--w50);
+  letter-spacing: 0.02em;
+}
+
 /* ── METHOD PULL (gold outlined box on dark) ── */
 .mpull {
   background-color: var(--bg);
@@ -543,7 +554,14 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 
 /* ── EVEN IF ────────────────────────────────── */
-.evenif { background: var(--s1); text-align: center; }
+.evenif {
+  background-color: var(--s1);
+  background-image: linear-gradient(rgba(19,19,19,0.88), rgba(19,19,19,0.88)), url('portfolio/mclaren-720s.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+}
 .evenif h2 { margin-bottom: 18px; }
 .evenif .lead { margin-bottom: 26px; }
 .evenif-list { list-style: none; max-width: 520px; margin: 0 auto; }
@@ -588,18 +606,18 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 
 /* ── VALUE STACK ────────────────────────────── */
 .vs { background: var(--s2); }
-.vs-intro { color: var(--w80); margin-top: 12px; margin-bottom: 8px; }
-.vl { list-style: none; margin-top: 28px; }
-.vl li { display: flex; justify-content: space-between; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--line); gap: 16px; }
-.vi { font-size: clamp(15px, 4.2vw, 16px); color: var(--w); flex: 1; line-height: 1.45; }
+.vs-intro { color: var(--w80); margin-top: 10px; margin-bottom: 6px; }
+.vl { list-style: none; margin-top: 18px; }
+.vl li { display: flex; justify-content: space-between; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid var(--line); gap: 16px; }
+.vi { font-size: clamp(15px, 4.2vw, 16px); color: var(--w); flex: 1; line-height: 1.35; }
 .vv { font-family: var(--fh); font-size: 15px; font-weight: 700; color: var(--w50); letter-spacing: .04em; flex-shrink: 0; }
 .vl li.founding { border-left: 3px solid var(--gold); padding-left: 14px; background: rgba(200,146,42,0.05); margin: 0 -14px; padding-right: 14px; }
 .vl li.founding .vi { color: var(--gold2); font-weight: 600; }
 .vl li.founding .vv { color: var(--gold); }
-.vtot { display: flex; justify-content: space-between; align-items: center; padding: 18px 0 6px 0; margin-bottom: 0; }
+.vtot { display: flex; justify-content: space-between; align-items: center; padding: 14px 0 4px 0; margin-bottom: 0; }
 .vtl { font-family: var(--fh); font-size: 14px; font-weight: 600; letter-spacing: .12em; color: var(--w50); text-transform: uppercase; }
 .vta { font-family: var(--fh); font-size: 20px; font-weight: 700; color: var(--w50); letter-spacing: .04em; text-decoration: line-through; }
-.vyou { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0 22px 0; border-bottom: 1px solid var(--line); margin-bottom: 28px; }
+.vyou { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0 18px 0; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
 .vyl { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .14em; color: var(--w); text-transform: uppercase; }
 .vya { font-family: var(--fh); font-size: clamp(30px, 8.5vw, 40px); font-weight: 900; color: var(--gold); letter-spacing: .01em; line-height: 1; }
 
@@ -791,11 +809,6 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <span class="brands-label">Some of the brands I've worked with:</span>
       <p class="brands-list">Lamborghini · <span class="nb">Mercedes-Benz</span> · McLaren · Ferrari · Bentley · Audi · Maserati · BMW · + More</p>
     </div>
-
-    <div class="closing">
-      <p>I still use the same techniques today. The market's more crowded than ever. The competition is sharper. Lighting is still the one skill that puts you above it.</p>
-      <p class="lead">That's what this course teaches you.</p>
-    </div>
   </div>
 </section>
 
@@ -814,36 +827,45 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="stage">
         <span class="stage-label">Stage 01 · Learn it</span>
         <h3>You learn<br><span class="gc">the lighting.</span></h3>
+        <p>Two techniques. Flash and light painting. Both taught from scratch, step by step. No prior experience needed. <strong>By the end you can light any car, any location, any time of day. Total control over every shot.</strong></p>
         <div class="stage-img">
           <span class="stage-num-badge">01</span>
           <img src="portfolio/stage-01-learn.jpg" alt="Behind the camera capturing a Ferrari interior on location">
         </div>
-        <p>Two techniques. Flash and light painting. Both taught from scratch, step by step. No prior experience needed. <strong>By the end you can light any car, any location, any time of day. Total control over every shot.</strong></p>
       </div>
 
       <!-- Stage 02 -->
       <div class="stage">
         <span class="stage-label">Stage 02 · Stand out</span>
         <h3>Your photos<br><span class="gc">stand out.</span></h3>
+        <p>Most photographers wait for golden hour and hope for the best. You won't have to. Controlled lighting gives every shot mood, drama, and a premium feel. Same car. Same location. <strong>But your photos stop the scroll. They look unmistakably yours.</strong></p>
         <div class="stage-img">
           <span class="stage-num-badge">02</span>
           <img src="portfolio/mclaren-artura.jpg" alt="Orange McLaren Artura with doors open at night against the Gold Coast skyline">
         </div>
-        <p>Most photographers wait for golden hour and hope for the best. You won't have to. Controlled lighting gives every shot mood, drama, and a premium feel. Same car. Same location. <strong>But your photos stop the scroll. They look unmistakably yours.</strong></p>
       </div>
 
       <!-- Stage 03 -->
       <div class="stage">
         <span class="stage-label">Stage 03 · Get hired</span>
         <h3>Brands<br><span class="gc">hire you.</span></h3>
+        <p>Premium brands scroll Instagram looking for work that stands out. Yours now does. They find your portfolio. They send the DM. <strong>Paid shoots. Real clients. The career you came here for.</strong></p>
         <div class="stage-img">
           <span class="stage-num-badge">03</span>
           <img src="portfolio/stage-03-brands.jpg" alt="Mitch standing in front of a Lamborghini Revuelto at the dealership">
         </div>
-        <p>Premium brands scroll Instagram looking for work that stands out. Yours now does. They find your portfolio. They send the DM. <strong>Paid shoots. Real clients. The career you came here for.</strong></p>
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════ MID-PAGE CTA ═══════════════ -->
+<section class="mid-cta pad-sm reveal">
+  <div class="c">
+    <span class="eye">Your move</span>
+    <a href="checkout.html" class="btn" id="mid-cta-btn">Get The Blueprint → $195 USD</a>
+    <p class="mid-cta-note">Founding price · 30 spots only · Course opens June 1st</p>
   </div>
 </section>
 
@@ -871,7 +893,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="mc"><img src="portfolio/ferrari-pair.jpg" class="mi" alt="Pair of red Ferraris lit against a dark studio backdrop"><div class="mb"><div class="mn">Module 03</div><div class="mt">Light Painting</div><p class="md">Create images that stop scrolls and look like nobody else's. The kind of work that gets brands sliding into your DMs.</p></div></div>
       <div class="mc"><img src="portfolio/huracan-lb.jpg" class="mi" alt="Purple Liberty Walk Lamborghini Huracan in front of the Story Bridge at night"><div class="mb"><div class="mn">Module 04</div><div class="mt">Flash Lighting</div><p class="md">Master artificial light on location. Shoot any car, any environment, any time of day. With total control.</p></div></div>
       <div class="mc"><img src="portfolio/photoshop-amg.jpg" class="mi" alt="Adobe Photoshop screenshot showing a blue Mercedes AMG GT-R being edited with color balance and layers"><div class="mb"><div class="mn">Module 05</div><div class="mt">Lightroom & Photoshop</div><p class="md">A fast, repeatable editing process that turns good shots into premium quality work. Every single time.</p></div></div>
-      <div class="mc prem"><img src="portfolio/revuelto-urus.jpg" class="mi" alt="Mitch with a Lamborghini Revuelto and Urus at Lamborghini Brisbane"><div class="mb"><div class="mn p">Module 06 / Premium</div><div class="mt p">The Client Blueprint</div><p class="md">Position yourself as a premium photographer. Attract the brands you actually want to work with. Charge what your work is worth.</p></div></div>
+      <div class="mc"><img src="portfolio/revuelto-urus.jpg" class="mi" alt="Mitch with a Lamborghini Revuelto and Urus at Lamborghini Brisbane"><div class="mb"><div class="mn">Module 06</div><div class="mt">The Client Blueprint</div><p class="md">Position yourself as a premium photographer. Attract the brands you actually want to work with. Charge what your work is worth.</p></div></div>
     </div>
   </div>
 </section>
@@ -946,9 +968,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <ul class="evenif-list">
       <li><span class="check">✓</span>You've never picked up a flash in your life</li>
       <li><span class="check">✓</span>You don't own expensive gear</li>
-      <li><span class="check">✓</span>You only get to shoot regular cars</li>
       <li><span class="check">✓</span>You hate the editing process and avoid it</li>
-      <li><span class="check">✓</span>You're a hobbyist, not a pro</li>
     </ul>
   </div>
 </section>
@@ -975,18 +995,6 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <strong style="color:var(--gold);">One premium brand shoot pays for this course three times over.</strong> The math is simple. The decision should be too.
       </div>
 
-      <ul class="pi">
-        <li><span class="pd"></span>6 modules. Full course access on June 1st.</li>
-        <li><span class="pd"></span>Lighting diagram templates</li>
-        <li><span class="pd"></span>Lightroom RAW preset pack</li>
-        <li><span class="pd"></span>Editing workflow in Photoshop</li>
-        <li><span class="pd"></span>Camera settings reference guide</li>
-        <li><span class="pd"></span>On location and gear checklists</li>
-        <li><span class="pd"></span>Lifetime access plus every future update</li>
-        <li class="founding founding-only"><span class="pd"></span>★ Founding Student status</li>
-        <li class="founding founding-only"><span class="pd"></span>★ Live Q&amp;A with Mitch (founding members only)</li>
-        <li class="founding founding-only"><span class="pd"></span>★ Behind the scenes bonus module</li>
-      </ul>
       <a href="checkout.html" class="btn" id="checkout-cta">Get The Blueprint → $195</a>
       <p class="bn" id="checkout-note">Secure checkout. Course access June 1st.</p>
     </div>
@@ -1015,13 +1023,11 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <div style="margin-top:28px;">
       <div class="fq"><button class="fqb" onclick="faq(this)">When do I get the course?<span class="fqi">+</span></button><div class="fqa">The full course unlocks on Monday, June 1st. Your founding spot is secured the moment you pay. You'll get an email confirmation, and access details closer to launch day.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">What is "Founding Student" status?<span class="fqi">+</span></button><div class="fqa">Founding Students are the first 30 to enrol. You get the lowest price the course will ever be, exclusive bonuses, and a private Q&amp;A with me. Once 30 spots are claimed, founding access closes forever.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">Do I need expensive gear?<span class="fqi">+</span></button><div class="fqa">No. The method works on any budget. Lighting creates the result. Not the gear. I teach with accessible equipment throughout the course.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">Do I need expensive gear or access to expensive cars?<span class="fqi">+</span></button><div class="fqa">No to both. The method works on any budget and on any car. Lighting creates the result, not the gear or the badge. A Honda Civic shot with controlled lighting beats a Lamborghini in bad light every time.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">I've never used flash before. Can I do this?<span class="fqi">+</span></button><div class="fqa">Yes. We start from the basics. No prior flash or light painting experience needed. If you can use a camera, you can learn this.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">I don't have access to expensive cars.<span class="fqi">+</span></button><div class="fqa">Doesn't matter. The Controlled Lighting Method works on any car. A Honda Civic shot with controlled lighting beats a Lamborghini in bad light every single time.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">What format is the course?<span class="fqi">+</span></button><div class="fqa">Recorded video lessons, broken into short modules. Watch on any device. All templates and downloads inside.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">How long do I have access?<span class="fqi">+</span></button><div class="fqa">Forever. Plus every future update, automatically. No extra cost.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button><div class="fqa">Most students apply the system on their first shoot within a week of access opening. With consistent application, you'll have premium quality work in your portfolio inside 30 days.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">What if I'm not happy?<span class="fqi">+</span></button><div class="fqa">The course has no refunds. All content is delivered in full when access opens. But if you complete the course and feel it didn't deliver what was promised, reach out at <a href="mailto:contact@consistentcreative.com" style="color:var(--gold);">contact@consistentcreative.com</a> and I'll make it right.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">What format is the course and how long do I have access?<span class="fqi">+</span></button><div class="fqa">Recorded video lessons, broken into short modules. Watch on any device. All templates and downloads inside. Lifetime access, plus every future update automatically.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button><div class="fqa">Most students apply the system on their first shoot within a week of access opening. With consistent application, you'll have premium quality work in your portfolio inside 30 days.</div></div>
     </div>
   </div>
 </section>
@@ -1153,7 +1159,7 @@ function render() {
   });
 
   // CTAs (hero + pricing only — vs-btn and final-cta have static varied copy)
-  document.querySelectorAll('#hero-cta, #checkout-cta').forEach(el => el.textContent = ctaText);
+  document.querySelectorAll('#hero-cta, #checkout-cta, #mid-cta-btn').forEach(el => el.textContent = ctaText);
 
   // Other dynamic content
   document.getElementById('price-badge').textContent = badge;
