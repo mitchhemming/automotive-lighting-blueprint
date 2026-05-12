@@ -116,6 +116,24 @@ ul { list-style: none; }
   color: var(--bg);
 }
 .cur-toggle button:hover:not(.active) { color: var(--w); }
+
+/* Small variant — used inline next to the big price and below CTA buttons */
+.cur-toggle.sm {
+  padding: 2px;
+  font-size: 10px;
+  letter-spacing: .1em;
+}
+.cur-toggle.sm button {
+  padding: 4px 9px;
+}
+
+/* Wrapper that centers a toggle below each card CTA */
+.cta-currency {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
 @media (max-width: 420px) {
   .secure-pill { display: none; }
 }
@@ -191,8 +209,8 @@ h1 .gc { color: var(--gold); }
 
 .price-row {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
   padding-bottom: 22px;
   border-bottom: 1px solid var(--line);
   margin-bottom: 22px;
@@ -466,7 +484,10 @@ footer a { color: var(--gold); }
       <p class="card-sub">4 weeks live with Mitch. The full course included.</p>
       <div class="price-row">
         <span class="price-amount" data-price="cohort">$695</span>
-        <span class="price-currency" data-currency-label>USD</span>
+        <div class="cur-toggle sm" role="group" aria-label="Currency">
+          <button type="button" data-cc="USD" class="active">USD</button>
+          <button type="button" data-cc="AUD">AUD</button>
+        </div>
         <span class="price-note">One-time</span>
       </div>
     </div>
@@ -502,6 +523,12 @@ footer a { color: var(--gold); }
       <a href="#" data-stripe="cohort" class="btn btn-primary">
         Join Cohort 1 — <span data-price="cohort">$695</span>
       </a>
+      <div class="cta-currency">
+        <div class="cur-toggle sm" role="group" aria-label="Currency">
+          <button type="button" data-cc="USD" class="active">USD</button>
+          <button type="button" data-cc="AUD">AUD</button>
+        </div>
+      </div>
     </div>
   </article>
 
@@ -515,7 +542,10 @@ footer a { color: var(--gold); }
       <p class="card-sub">Self-paced. Same modules. No live access or coaching.</p>
       <div class="price-row">
         <span class="price-amount" data-price="course_p1">$195</span>
-        <span class="price-currency" data-currency-label>USD</span>
+        <div class="cur-toggle sm" role="group" aria-label="Currency">
+          <button type="button" data-cc="USD" class="active">USD</button>
+          <button type="button" data-cc="AUD">AUD</button>
+        </div>
         <span class="price-note">One-time</span>
       </div>
     </div>
@@ -530,6 +560,12 @@ footer a { color: var(--gold); }
       <a href="#" data-stripe="course" class="btn btn-solid-light">
         Get The Course — <span data-price="course_p1">$195</span>
       </a>
+      <div class="cta-currency">
+        <div class="cur-toggle sm" role="group" aria-label="Currency">
+          <button type="button" data-cc="USD" class="active">USD</button>
+          <button type="button" data-cc="AUD">AUD</button>
+        </div>
+      </div>
     </div>
 
     <p class="card-foot-note">Final sale · No refunds on the course</p>
