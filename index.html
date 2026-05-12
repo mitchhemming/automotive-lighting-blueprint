@@ -70,46 +70,27 @@ a { text-decoration: none; color: inherit; }
 .float-cta .arrow { font-size: 14px; }
 @media (min-width: 768px) { .float-cta { top: 24px; right: 24px; padding: 12px 20px; font-size: 13px; } }
 
-/* ── CURRENCY TOGGLE (floating, top-left, mirrors float-cta) ── */
-.cur-toggle-float {
-  position: fixed; top: 16px; left: 16px; z-index: 100;
-  opacity: 0; transform: translateY(-12px) scale(0.95);
-  transition: opacity .25s ease, transform .25s ease;
-  pointer-events: none;
-  box-shadow: 0 4px 20px rgba(0,0,0,.4);
-  border-radius: 999px;
-}
-.cur-toggle-float.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-.cur-toggle {
-  background: var(--s1);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 3px;
-  display: inline-flex;
+/* ── CURRENCY LABEL (small suffix next to prices) ── */
+.cc-sm {
   font-family: var(--fh);
-  font-size: 11px;
+  font-size: 0.45em;
   font-weight: 700;
   letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.cur-toggle button {
-  background: transparent;
-  border: none;
   color: var(--w50);
-  cursor: pointer;
-  padding: 5px 11px;
-  border-radius: 999px;
-  font: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  transition: background .2s, color .2s;
+  vertical-align: 0.7em;
+  margin-left: 4px;
+  display: inline-block;
 }
-.cur-toggle button.active {
-  background: var(--gold);
-  color: var(--bg);
+.pp-suffix {
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  color: var(--w50);
+  text-transform: uppercase;
+  margin-top: -4px;
+  margin-bottom: 6px;
 }
-.cur-toggle button:hover:not(.active) { color: var(--w); }
-@media (min-width: 768px) { .cur-toggle-float { top: 24px; left: 24px; } }
 
 .rule { height: 1px; background: var(--line); }
 
@@ -624,9 +605,12 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .vl li.founding { border-left: 3px solid var(--gold); padding-left: 14px; background: rgba(200,146,42,0.05); margin: 0 -14px; padding-right: 14px; }
 .vl li.founding .vi { color: var(--gold2); font-weight: 600; }
 .vl li.founding .vv { color: var(--gold); }
-.vtot { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; margin-bottom: 28px; }
+.vtot { display: flex; justify-content: space-between; align-items: center; padding: 18px 0 6px 0; margin-bottom: 0; }
 .vtl { font-family: var(--fh); font-size: 14px; font-weight: 600; letter-spacing: .12em; color: var(--w50); text-transform: uppercase; }
-.vta { font-family: var(--fh); font-size: 22px; font-weight: 900; color: var(--w50); letter-spacing: .04em; text-decoration: line-through; }
+.vta { font-family: var(--fh); font-size: 20px; font-weight: 700; color: var(--w50); letter-spacing: .04em; text-decoration: line-through; }
+.vyou { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0 22px 0; border-bottom: 1px solid var(--line); margin-bottom: 28px; }
+.vyl { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .14em; color: var(--w); text-transform: uppercase; }
+.vya { font-family: var(--fh); font-size: clamp(30px, 8.5vw, 40px); font-weight: 900; color: var(--gold); letter-spacing: .01em; line-height: 1; }
 
 /* ── PRICING ────────────────────────────────── */
 .pricing { background: var(--bg); }
@@ -719,14 +703,6 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <span id="float-text">12 spots left</span>
   <span class="arrow">→</span>
 </a>
-
-<!-- ═══════════════ FLOATING CURRENCY TOGGLE (appears after hero) ═══════════════ -->
-<div class="cur-toggle-float" id="cur-toggle-float">
-  <div class="cur-toggle" role="group" aria-label="Currency">
-    <button type="button" data-cc="USD" class="active">USD</button>
-    <button type="button" data-cc="AUD">AUD</button>
-  </div>
-</div>
 
 <!-- ═══════════════ HERO ANIMATION ═══════════════ -->
 <section class="hero">
@@ -921,7 +897,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="vs pad reveal">
   <div class="c">
     <span class="eye">Everything you get</span>
-    <h2>Worth <span data-price="perceived">$1,495</span>.<br><span class="gc">Yours for <span class="dyn-price" data-price="course_p1">$195</span>.</span></h2>
+    <h2>Worth <span data-price="perceived">$1,495</span><span data-currency-label class="cc-sm">USD</span>.<br><span class="gc">Yours for <span class="dyn-price" data-price="course_p1">$195</span><span data-currency-label class="cc-sm">USD</span>.</span></h2>
     <p class="vs-intro">Enrol today and lock in your spot. Course access opens June 1st.</p>
 
     <ul class="vl" id="vs-list">
@@ -937,7 +913,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <li class="founding founding-only"><span class="vi">★ Founding only live Q&amp;A with Mitch</span><span class="vv">Bonus</span></li>
       <li class="founding founding-only"><span class="vi">★ Behind the scenes bonus module</span><span class="vv">Bonus</span></li>
     </ul>
-    <div class="vtot"><span class="vtl">Total value</span><span class="vta" data-price="perceived">$1,495</span></div>
+    <div class="vtot"><span class="vtl">Total value</span><span class="vta"><span data-price="perceived">$1,495</span><span data-currency-label class="cc-sm">USD</span></span></div>
+    <div class="vyou"><span class="vyl">You pay today</span><span class="vya"><span class="dyn-price" data-price="course_p1">$195</span><span data-currency-label class="cc-sm">USD</span></span></div>
     <a href="enrol.html" class="btn vs-btn">Lock In My Spot →</a>
   </div>
 </section>
@@ -962,13 +939,14 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="pricing pad reveal" id="checkout">
   <div class="c">
     <span class="eye">Pricing</span>
-    <h2 style="margin-bottom:14px;"><span class="dyn-price" data-price="course_p1">$195</span> today.<br><span class="gc">More tomorrow.</span></h2>
+    <h2 style="margin-bottom:14px;"><span class="dyn-price" data-price="course_p1">$195</span><span data-currency-label class="cc-sm">USD</span> today.<br><span class="gc">More tomorrow.</span></h2>
     <p class="intro" id="pricing-intro">Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to $295. Then $495 at launch.</p>
 
     <div class="pc">
       <div class="pb" id="price-badge">🔥 Founding Student Price</div>
       <div class="pn">The Automotive Lighting Blueprint</div>
       <div class="pp"><span class="dyn-price" data-price="course_p1">$195</span></div>
+      <div class="pp-suffix" data-currency-label>USD</div>
       <p class="pw" id="price-was">Goes to $295. Then $495 at launch.</p>
 
       <div class="spots-bar founding-only" id="spots-bar">
@@ -1093,13 +1071,17 @@ const CONFIG = {
   p2EndDate:     '2026-06-01T00:00:00+10:00'
 };
 
-/* ═══════════════ CURRENCY STATE ═══════════════ */
-const STORAGE_KEY = 'cc_currency';
-let currentCurrency = 'USD';
-try {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved === 'AUD' || saved === 'USD') currentCurrency = saved;
-} catch (e) {}
+/* ═══════════════ AUTO-DETECT CURRENCY ═══════════════
+   AU timezone → AUD. Everyone else → USD.
+   Safety net: Stripe shows correct currency at checkout regardless. */
+function detectCurrency() {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz && tz.startsWith('Australia/')) return 'AUD';
+  } catch (e) {}
+  return 'USD';
+}
+const currentCurrency = detectCurrency();
 
 function fmt(n) { return '$' + Number(n).toLocaleString('en-US'); }
 function priceFor(key) { return fmt(PRICES[currentCurrency][key]); }
@@ -1127,25 +1109,25 @@ function render() {
 
   if (phase === 1) {
     badge = '🔥 Founding Student Price';
-    ctaText = `Get The Blueprint → ${priceFor('course_p1')}`;
+    ctaText = `Get The Blueprint → ${priceFor('course_p1')} ${currentCurrency}`;
     intro = `Founding price ends when 30 spots are claimed or May 25, whichever comes first. Then it goes to ${priceFor('course_p2')}. Then ${priceFor('course_p3')} at launch.`;
     was = `Goes to ${priceFor('course_p2')}. Then ${priceFor('course_p3')} at launch.`;
     finalNote = 'Founding price. Course access June 1st.';
     floatText = `${CONFIG.p1SpotsLeft} spots left`;
   } else if (phase === 2) {
     badge = '⚡ Early Access Price';
-    ctaText = `Enrol Now → ${priceFor('course_p2')}`;
+    ctaText = `Enrol Now → ${priceFor('course_p2')} ${currentCurrency}`;
     intro = `Early access ends June 1st. Then it goes to ${priceFor('course_p3')} permanently.`;
     was = `Goes to ${priceFor('course_p3')} on June 1st.`;
     finalNote = 'Early access price. Course access June 1st.';
-    floatText = `Early access · ${priceFor('course_p2')}`;
+    floatText = `Early access · ${priceFor('course_p2')} ${currentCurrency}`;
   } else {
     badge = 'Enrol Today';
-    ctaText = `Enrol Now → ${priceFor('course_p3')}`;
+    ctaText = `Enrol Now → ${priceFor('course_p3')} ${currentCurrency}`;
     intro = `The course is live. Enrol today and get instant access to every module.`;
     was = '';
     finalNote = 'Secure checkout. Instant access.';
-    floatText = `Enrol · ${priceFor('course_p3')}`;
+    floatText = `Enrol · ${priceFor('course_p3')} ${currentCurrency}`;
   }
 
   // Phase-aware spans get their data-price set to current phase
@@ -1194,31 +1176,15 @@ function applyCurrencyToElements() {
   document.querySelectorAll('[data-currency-label]').forEach(el => {
     el.textContent = currentCurrency;
   });
-  document.querySelectorAll('.cur-toggle button').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-cc') === currentCurrency);
-  });
 }
-
-function setCurrency(currency) {
-  currentCurrency = currency;
-  try { localStorage.setItem(STORAGE_KEY, currency); } catch (e) {}
-  render();
-  applyCurrencyToElements();
-}
-
-// Wire toggle clicks
-document.querySelectorAll('.cur-toggle button').forEach(btn => {
-  btn.addEventListener('click', () => setCurrency(btn.getAttribute('data-cc')));
-});
 
 // Initialise
 render();
 applyCurrencyToElements();
 
-/* ═══════════════ FLOATING CTA + CURRENCY TOGGLE SCROLL TRIGGER ═══════════════ */
+/* ═══════════════ FLOATING CTA SCROLL TRIGGER ═══════════════ */
 (function () {
   const cta = document.getElementById('float-cta');
-  const curToggle = document.getElementById('cur-toggle-float');
   const hero = document.querySelector('.hero');
 
   function checkScroll() {
@@ -1227,10 +1193,8 @@ applyCurrencyToElements();
     const scrolled = window.scrollY + 100;
     if (scrolled > heroBottom) {
       cta.classList.add('visible');
-      if (curToggle) curToggle.classList.add('visible');
     } else {
       cta.classList.remove('visible');
-      if (curToggle) curToggle.classList.remove('visible');
     }
   }
 
