@@ -46,7 +46,7 @@ ul { list-style: none; }
   background: var(--bg);
 }
 .topbar .inner {
-  max-width: 580px;
+  max-width: 760px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -84,11 +84,47 @@ ul { list-style: none; }
 }
 .secure-pill svg { width: 11px; height: 11px; }
 
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+
+/* ── CURRENCY TOGGLE ───────────────────────── */
+.cur-toggle {
+  background: var(--s1);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+  display: inline-flex;
+  font-family: var(--fh);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.cur-toggle button {
+  background: transparent;
+  border: none;
+  color: var(--w60);
+  cursor: pointer;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  transition: background .2s, color .2s;
+}
+.cur-toggle button.active {
+  background: var(--gold);
+  color: var(--bg);
+}
+.cur-toggle button:hover:not(.active) { color: var(--w); }
+@media (max-width: 420px) {
+  .secure-pill { display: none; }
+}
+
 /* ── MAIN ──────────────────────────────────── */
 main {
   flex: 1;
   width: 100%;
-  max-width: 580px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 32px 24px 48px;
 }
@@ -398,13 +434,19 @@ footer a { color: var(--gold); }
       <span class="b1">Consistent</span>
       <span class="b2">Creative</span>
     </a>
-    <span class="secure-pill">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <rect x="4" y="11" width="16" height="10" rx="1"/>
-        <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
-      </svg>
-      Secure
-    </span>
+    <div class="topbar-right">
+      <div class="cur-toggle" role="group" aria-label="Currency">
+        <button type="button" data-cc="USD" class="active">USD</button>
+        <button type="button" data-cc="AUD">AUD</button>
+      </div>
+      <span class="secure-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="4" y="11" width="16" height="10" rx="1"/>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+        </svg>
+        Secure
+      </span>
+    </div>
   </div>
 </header>
 
@@ -423,8 +465,8 @@ footer a { color: var(--gold); }
       <div class="card-title">Cohort 1</div>
       <p class="card-sub">4 weeks live with Mitch. The full course included.</p>
       <div class="price-row">
-        <span class="price-amount">$795</span>
-        <span class="price-currency">AUD</span>
+        <span class="price-amount" data-price="cohort">$695</span>
+        <span class="price-currency" data-currency-label>USD</span>
         <span class="price-note">One-time</span>
       </div>
     </div>
@@ -458,7 +500,7 @@ footer a { color: var(--gold); }
 
     <div class="card-cta">
       <a href="#" data-stripe="cohort" class="btn btn-primary">
-        Join Cohort 1 — $795
+        Join Cohort 1 — <span data-price="cohort">$695</span>
       </a>
     </div>
   </article>
@@ -472,8 +514,8 @@ footer a { color: var(--gold); }
       <div class="card-title">The Course</div>
       <p class="card-sub">Self-paced. Same modules. No live access or coaching.</p>
       <div class="price-row">
-        <span class="price-amount">$195</span>
-        <span class="price-currency">AUD</span>
+        <span class="price-amount" data-price="course_p1">$195</span>
+        <span class="price-currency" data-currency-label>USD</span>
         <span class="price-note">One-time</span>
       </div>
     </div>
@@ -486,7 +528,7 @@ footer a { color: var(--gold); }
 
     <div class="card-cta">
       <a href="#" data-stripe="course" class="btn btn-solid-light">
-        Get The Course — $195
+        Get The Course — <span data-price="course_p1">$195</span>
       </a>
     </div>
 
@@ -508,27 +550,102 @@ footer a { color: var(--gold); }
 
 <script>
 /* ═══════════════════════════════════════════════════════════
-   STRIPE PAYMENT LINKS — UPDATE BOTH URLS BELOW
+   PRICES — EDIT THE AUD VALUES BELOW IF YOU WANT DIFFERENT
+   AMOUNTS. USD values are the actual sale prices.
 ═══════════════════════════════════════════════════════════ */
-const STRIPE_LINKS = {
-  cohort: 'PASTE_STRIPE_COHORT_PAYMENT_LINK_HERE',
-  course: 'PASTE_STRIPE_COURSE_PAYMENT_LINK_HERE'
+const PRICES = {
+  USD: {
+    course_p1: 195,
+    cohort:    695
+  },
+  AUD: {
+    course_p1: 295,
+    cohort:    995
+  }
 };
 
-document.querySelectorAll('[data-stripe]').forEach(el => {
-  const key = el.getAttribute('data-stripe');
-  const url = STRIPE_LINKS[key];
-  const placeholder = `PASTE_STRIPE_${key.toUpperCase()}_PAYMENT_LINK_HERE`;
-  if (url && url !== placeholder) {
-    el.href = url;
-  } else {
-    el.addEventListener('click', e => {
-      e.preventDefault();
-      console.warn(`Stripe link for "${key}" not set yet. Edit STRIPE_LINKS in enrol.html.`);
-      alert('Checkout link not configured yet. Edit STRIPE_LINKS in enrol.html.');
-    });
+/* ═══════════════════════════════════════════════════════════
+   STRIPE PAYMENT LINKS — 4 LINKS NEEDED: 2 products × 2 currencies
+═══════════════════════════════════════════════════════════ */
+const STRIPE_LINKS = {
+  USD: {
+    cohort: 'PASTE_STRIPE_COHORT_USD_PAYMENT_LINK_HERE',
+    course: 'PASTE_STRIPE_COURSE_USD_PAYMENT_LINK_HERE'
+  },
+  AUD: {
+    cohort: 'PASTE_STRIPE_COHORT_AUD_PAYMENT_LINK_HERE',
+    course: 'PASTE_STRIPE_COURSE_AUD_PAYMENT_LINK_HERE'
   }
+};
+
+/* ═══════════════════════════════════════════════════════════
+   CURRENCY TOGGLE — defaults to USD, persists via localStorage
+═══════════════════════════════════════════════════════════ */
+const STORAGE_KEY = 'cc_currency';
+let currentCurrency = 'USD';
+try {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved === 'AUD' || saved === 'USD') currentCurrency = saved;
+} catch (e) {}
+
+function fmt(n) { return '$' + Number(n).toLocaleString('en-US'); }
+
+function applyCurrency(currency) {
+  currentCurrency = currency;
+  try { localStorage.setItem(STORAGE_KEY, currency); } catch (e) {}
+
+  // Update all price displays
+  document.querySelectorAll('[data-price]').forEach(el => {
+    const key = el.getAttribute('data-price');
+    const val = PRICES[currency] && PRICES[currency][key];
+    if (val != null) el.textContent = fmt(val);
+  });
+
+  // Update currency labels
+  document.querySelectorAll('[data-currency-label]').forEach(el => {
+    el.textContent = currency;
+  });
+
+  // Update toggle button active state
+  document.querySelectorAll('.cur-toggle button').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-cc') === currency);
+  });
+
+  // Re-route Stripe links for the active currency
+  wireStripeLinks();
+}
+
+function wireStripeLinks() {
+  const links = STRIPE_LINKS[currentCurrency] || {};
+  document.querySelectorAll('[data-stripe]').forEach(el => {
+    const key = el.getAttribute('data-stripe');
+    const url = links[key];
+    const placeholder = `PASTE_STRIPE_${key.toUpperCase()}_${currentCurrency}_PAYMENT_LINK_HERE`;
+    // Reset any previous click handler by cloning
+    const fresh = el.cloneNode(true);
+    el.parentNode.replaceChild(fresh, el);
+    if (url && url !== placeholder) {
+      fresh.href = url;
+    } else {
+      fresh.href = '#';
+      fresh.addEventListener('click', e => {
+        e.preventDefault();
+        console.warn(`Stripe link for "${key}" (${currentCurrency}) not set. Edit STRIPE_LINKS in enrol.html.`);
+        alert(`Stripe checkout link for ${key} (${currentCurrency}) not configured yet.`);
+      });
+    }
+  });
+}
+
+// Hook up toggle clicks
+document.querySelectorAll('.cur-toggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    applyCurrency(btn.getAttribute('data-cc'));
+  });
 });
+
+// Initialise
+applyCurrency(currentCurrency);
 </script>
 
 </body>
