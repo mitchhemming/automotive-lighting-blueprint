@@ -392,8 +392,34 @@ h1 .gc { color: var(--gold); }
 /* ── FOOTER ────────────────────────────────── */
 footer {
   border-top: 1px solid var(--line);
-  padding: 24px;
+  padding: 32px 24px 28px;
   text-align: center;
+}
+.brand-footer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 14px;
+  transition: opacity .2s;
+}
+.brand-footer:hover { opacity: 0.75; }
+.brand-footer .b1 {
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--w);
+  text-transform: uppercase;
+  line-height: 1;
+}
+.brand-footer .b2 {
+  font-family: var(--fh);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 4px;
 }
 footer p {
   font-size: 11px;
@@ -489,7 +515,11 @@ footer a { color: var(--gold); }
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
-  <p>© 2026 Consistent Creative · <a href="index.html">Back to course details</a></p>
+  <a href="index.html" class="brand-footer" aria-label="Back to Consistent Creative homepage">
+    <span class="b1">Consistent</span>
+    <span class="b2">Creative</span>
+  </a>
+  <p>© 2026 Consistent Creative · Mitch Hemming</p>
 </footer>
 
 <script>
