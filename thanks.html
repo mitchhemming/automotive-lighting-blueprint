@@ -65,29 +65,67 @@ a:hover { color: var(--gold2); }
 
 main {
   flex: 1;
-  display: flex; align-items: center; justify-content: center;
-  padding: 48px 24px;
+  display: flex; flex-direction: column;
+  align-items: center;
+  padding: 56px 24px 60px;
 }
+
+.brand-header {
+  display: inline-flex; flex-direction: column; align-items: center;
+  margin-bottom: 72px;
+}
+.brand-header .b1 { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .1em; color: var(--w); text-transform: uppercase; line-height: 1; }
+.brand-header .b2 { font-family: var(--fh); font-size: 9px; font-weight: 600; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; margin-top: 3px; }
+
+@media (min-width: 768px) {
+  main { padding: 72px 24px 80px; }
+  .brand-header { margin-bottom: 88px; }
+}
+
 .wrap { max-width: 520px; width: 100%; text-align: center; }
 
-.brand-footer { display: inline-flex; flex-direction: column; align-items: center; margin-bottom: 36px; }
-.brand-footer .b1 { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .1em; color: var(--w); text-transform: uppercase; line-height: 1; }
-.brand-footer .b2 { font-family: var(--fh); font-size: 9px; font-weight: 600; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; margin-top: 3px; }
-
-.check-mark {
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  background: var(--gold);
-  display: inline-flex; align-items: center; justify-content: center;
-  margin-bottom: 28px;
+/* ── SUCCESS TICK (Stripe-style draw-on animation) ── */
+.check-wrap {
+  width: 72px; height: 72px;
+  margin: 0 auto 22px;
+  opacity: 0;
+  transform: scale(0.4);
+  animation: pop-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
 }
-.check-mark::after {
-  content: '';
-  width: 22px; height: 12px;
-  border-left: 3px solid var(--bg);
-  border-bottom: 3px solid var(--bg);
-  transform: rotate(-45deg);
-  margin-top: -6px;
+.check-wrap svg { width: 100%; height: 100%; display: block; }
+.check-circle { fill: var(--gold); }
+.check-tick {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: tick-draw 0.5s ease-out 0.5s forwards;
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.4); }
+  60% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes tick-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── STATUS LABEL + HEADLINE ── */
+.status {
+  font-family: var(--fh);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 14px;
+  opacity: 0;
+  animation: fade-up 0.4s ease-out 0.85s forwards;
 }
 
 h1 {
@@ -95,7 +133,9 @@ h1 {
   font-size: clamp(40px, 10vw, 56px);
   line-height: .95; letter-spacing: 0.01em;
   text-transform: uppercase; color: var(--w);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: fade-up 0.4s ease-out 0.95s forwards;
 }
 h1 .gc { color: var(--gold); }
 
@@ -105,6 +145,13 @@ h1 .gc { color: var(--gold); }
   color: var(--w);
   line-height: 1.4;
   margin-bottom: 32px;
+  opacity: 0;
+  animation: fade-up 0.4s ease-out 1.05s forwards;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .info-card {
@@ -113,8 +160,10 @@ h1 .gc { color: var(--gold); }
   border-left: 3px solid var(--gold);
   border-radius: 4px;
   padding: 22px 22px;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
   text-align: left;
+  opacity: 0;
+  animation: fade-up 0.4s ease-out 1.2s forwards;
 }
 .info-row { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; }
 .info-row:not(:last-child) { border-bottom: 1px solid var(--line); }
@@ -131,8 +180,25 @@ h1 .gc { color: var(--gold); }
 .info-text { font-size: clamp(15px, 4.2vw, 16px); color: var(--w80); line-height: 1.45; }
 .info-text strong { color: var(--w); font-weight: 600; }
 
-.help { font-size: 14px; color: var(--w50); margin-top: 8px; }
+.help {
+  font-size: 14px; color: var(--w50); margin-top: 8px;
+  opacity: 0;
+  animation: fade-up 0.4s ease-out 1.3s forwards;
+}
 .help a { font-weight: 600; }
+
+/* Reduced motion: skip all animations, show final state immediately */
+@media (prefers-reduced-motion: reduce) {
+  .check-wrap, .status, h1, .lead, .info-card, .help {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .check-tick {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
 
 footer {
   border-top: 1px solid var(--line);
@@ -148,15 +214,22 @@ footer p + p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <body>
 
 <main>
+
+  <div class="brand-header">
+    <span class="b1">Consistent</span>
+    <span class="b2">Creative</span>
+  </div>
+
   <div class="wrap">
 
-    <div class="brand-footer">
-      <span class="b1">Consistent</span>
-      <span class="b2">Creative</span>
+    <div class="check-wrap" aria-hidden="true">
+      <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+        <circle class="check-circle" cx="26" cy="26" r="25" />
+        <path class="check-tick" pathLength="100" d="M14 27 L22 35 L38 17" />
+      </svg>
     </div>
 
-    <div class="check-mark" aria-hidden="true"></div>
-
+    <span class="status">Payment successful</span>
     <h1>You're <span class="gc">in.</span></h1>
     <p class="lead">Thank you for your order. Your spot is secured.</p>
 
