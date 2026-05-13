@@ -195,7 +195,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .bn { text-align: center; font-size: 13px; color: var(--w50); margin-top: 12px; font-family: var(--fh); letter-spacing: .08em; text-transform: uppercase; }
 @media (min-width: 768px) { .btn { font-size: 22px; padding: 24px 32px; } }
 
-/* ── HERO ANIMATION ─────────────────────────── */
+/* ── HERO (STATIC) ─────────────────────────── */
 .hero {
   position: relative;
   width: 100%;
@@ -213,25 +213,13 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   .frame-wrap { aspect-ratio: 1150 / 2000; }
 }
 
-/* Mobile-only: black header bar with logo above the animation */
-.frame-pic {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-.frame-wrap img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.frame-pic { position: absolute; inset: 0; width: 100%; height: 100%; }
+.frame-pic img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
   object-fit: cover;
-  opacity: 0;
-  will-change: opacity;
+  display: block;
 }
-.frame-wrap img.snap { transition: none; }
-.frame-wrap img.fade { transition: opacity 0.5s ease-in-out; }
-.frame-wrap img.active { opacity: 1; }
 
 .logo-overlay {
   position: absolute;
@@ -241,72 +229,14 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
 }
 
-.caption {
-  position: absolute;
-  top: 22%;
-  left: 0; right: 0;
-  z-index: 4;
-  text-align: center;
-  padding: 0 32px;
-  pointer-events: none;
-}
-.caption.pending { display: none; }
-.caption-text {
-  font-family: var(--fh);
-  font-weight: 900;
-  font-size: clamp(32px, 6.5vw, 76px);
-  line-height: 1.02;
-  letter-spacing: 0.01em;
-  color: var(--w);
-  text-transform: uppercase;
-  text-shadow:
-    0 0 20px rgba(0,0,0,0.95),
-    0 0 40px rgba(0,0,0,0.85),
-    0 4px 12px rgba(0,0,0,0.9),
-    0 1px 3px rgba(0,0,0,1);
-  transition: opacity 0.5s ease;
-  display: inline-block;
-}
-.caption-text.fading { opacity: 0; }
-.caption-text .gc { color: var(--gold); }
-.caption-text .m-br { display: none; }
-@media (max-width: 768px) {
-  .caption-text .m-br { display: initial; }
-}
-
-/* Mobile: caption matches hero headline in size, sits just above the car */
-@media (max-width: 768px) {
-  .caption {
-    top: 27%;       /* first line top anchored here — consistent for 1 line OR 2 */
-    bottom: auto;
-    display: flex;
-    align-items: flex-start;  /* second line drops down below first */
-    justify-content: center;
-    padding: 0 32px;
-  }
-  .caption-text {
-    font-size: clamp(40px, 8vw, 80px);
-    line-height: 0.95;
-    text-shadow:
-      0 0 24px rgba(0,0,0,0.95),
-      0 0 48px rgba(0,0,0,0.8),
-      0 4px 16px rgba(0,0,0,0.9),
-      0 1px 3px rgba(0,0,0,1);
-  }
-}
-
 .hero-final {
   position: absolute;
   inset: 0;
   z-index: 3;
   display: flex; align-items: center; justify-content: center;
   padding: 60px 32px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
   background: linear-gradient(to bottom, rgba(19,19,19,0.5) 0%, rgba(19,19,19,0.15) 35%, rgba(19,19,19,0.5) 100%);
 }
-.hero-final.visible { opacity: 1; pointer-events: auto; }
 .hero-final-content { text-align: center; max-width: 900px; width: 100%; }
 .hero-final h1 {
   font-family: var(--fh);
@@ -351,19 +281,12 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   margin-left: auto;
   margin-right: auto;
 }
-.hero-final .htimer {
-  font-family: var(--fh); font-size: 12px; font-weight: 600;
-  letter-spacing: .12em; color: var(--w); text-transform: uppercase;
-  margin-top: 18px; text-align: center;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-}
-.hero-final .htimer .gold-text { color: var(--gold); }
 
 /* Mobile: split layout — headline centered at 25% from top, bottom group centered at 25% from bottom */
 @media (max-width: 768px) {
   .hero-final {
     align-items: stretch;
-    padding: 0 22px;             /* horizontal only — vertical 25%/75% is from full hero edges */
+    padding: 0 22px;
   }
   .hero-final-content {
     position: relative;
@@ -376,7 +299,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
     top: 25%;
     left: 0;
     right: 0;
-    transform: translateY(-50%); /* centers H1's vertical midpoint on the 25% mark */
+    transform: translateY(-50%);
     font-size: clamp(40px, 10vw, 110px);
     line-height: 0.92;
     letter-spacing: 0;
@@ -387,7 +310,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
     top: 75%;
     left: 0;
     right: 0;
-    transform: translateY(-50%); /* centers bottom group's vertical midpoint on the 75% mark = 25% from bottom */
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -829,9 +752,14 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <span class="arrow">→</span>
 </a>
 
-<!-- ═══════════════ HERO ANIMATION ═══════════════ -->
+<!-- ═══════════════ HERO (STATIC) ═══════════════ -->
 <section class="hero">
-  <div class="frame-wrap" id="frameWrap">
+  <div class="frame-wrap">
+
+    <picture class="frame-pic">
+      <source media="(max-width: 768px)" srcset="frames/frame-mobile-12.jpg">
+      <img src="frames/frame-desktop-12.jpg" alt="The Automotive Lighting Blueprint — final lit car composition" fetchpriority="high">
+    </picture>
 
     <div class="logo-overlay">
       <div class="logo">
@@ -842,13 +770,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       </div>
     </div>
 
-    <div class="caption pending" id="captionWrap">
-      <span class="caption-text" id="captionText">The Controlled Lighting Method™</span>
-    </div>
-
-    <div class="hero-final" id="heroFinal">
+    <div class="hero-final">
       <div class="hero-final-content">
-        <h1><span class="line-1" id="hero-line-1">From invisible</span><br><span class="gc">To in demand</span></h1>
+        <h1><span class="line-1">From invisible</span><br><span class="gc">To in demand</span></h1>
         <div class="hero-final-bottom">
           <p class="sub">The Automotive <br class="mob-br">Lighting Blueprint</p>
           <a href="checkout.html" class="btn" id="hero-cta">Get The Blueprint → $195</a>
@@ -1339,185 +1263,6 @@ function faq(btn) {
   if (!o) { a.classList.add('open'); btn.classList.add('open'); }
 }
 
-/* ═══════════════ HERO ANIMATION ENGINE ═══════════════ */
-(function () {
-  const FRAMES = [
-    { d: 'frames/frame-desktop-1.jpg',  m: 'frames/frame-mobile-1.jpg' },
-    { d: 'frames/frame-desktop-2.jpg',  m: 'frames/frame-mobile-2.jpg' },
-    { d: 'frames/frame-desktop-3.jpg',  m: 'frames/frame-mobile-3.jpg' },
-    { d: 'frames/frame-desktop-4.jpg',  m: 'frames/frame-mobile-4.jpg' },
-    { d: 'frames/frame-desktop-5.jpg',  m: 'frames/frame-mobile-5.jpg' },
-    { d: 'frames/frame-desktop-6.jpg',  m: 'frames/frame-mobile-6.jpg' },
-    { d: 'frames/frame-desktop-7.jpg',  m: 'frames/frame-mobile-7.jpg' },
-    { d: 'frames/frame-desktop-8.jpg',  m: 'frames/frame-mobile-8.jpg' },
-    { d: 'frames/frame-desktop-9.jpg',  m: 'frames/frame-mobile-9.jpg' },
-    { d: 'frames/frame-desktop-10.jpg', m: 'frames/frame-mobile-10.jpg' },
-    { d: 'frames/frame-desktop-11.jpg', m: 'frames/frame-mobile-11.jpg' },
-    { d: 'frames/frame-desktop-12.jpg', m: 'frames/frame-mobile-12.jpg' },
-  ];
-
-  const TEXT_STATES = [
-    "The Controlled Lighting Method™",
-    "<span class='gc'>Created</span> by design",
-    "Combined into one <br class='m-br'><span class='gc'>final image</span>",
-    "This is what changes <span class='gc'>everything</span>",
-  ];
-
-  const TIMING = {
-    initialHold: 1300,
-    frameDuration: 650,
-    fadeDuration: 500,
-    textInterval: 2600,         // Time between each text change (evenly spaced)
-    finalCaptionHold: 1500,     // How long the final caption stays before fading to headline
-    captionFadeOut: 400,        // Caption fade out time before headline appears
-  };
-
-  const frameWrap = document.getElementById('frameWrap');
-  if (!frameWrap) return;
-
-  FRAMES.forEach((frame, i) => {
-    const pic = document.createElement('picture');
-    pic.className = 'frame-pic';
-    // Build via innerHTML so the parser evaluates <source> media queries
-    // BEFORE the <img> starts loading. Setting img.src directly via JS would
-    // download the desktop fallback first and flash on mobile.
-    pic.innerHTML = `
-      <source media="(max-width: 768px)" srcset="${frame.m}">
-      <img src="${frame.d}" id="frame-${i}" class="snap" alt="Lighting build-up frame ${i+1}" loading="${i < 3 ? 'eager' : 'lazy'}">
-    `;
-    frameWrap.insertBefore(pic, frameWrap.firstChild);
-  });
-
-  const captionText = document.getElementById('captionText');
-  const captionWrap = document.getElementById('captionWrap');
-  const heroFinal = document.getElementById('heroFinal');
-  let isPlaying = false;
-  let currentTimeout = null;
-
-  function showFrame(i, useFade) {
-    if (useFade) {
-      const newFrame = document.getElementById(`frame-${i}`);
-      if (newFrame) {
-        document.querySelectorAll('.frame-wrap img').forEach(img => { img.style.zIndex = ''; });
-        newFrame.style.zIndex = '2';
-        newFrame.classList.remove('snap');
-        newFrame.classList.add('fade');
-        requestAnimationFrame(() => { newFrame.classList.add('active'); });
-      }
-    } else {
-      document.querySelectorAll('.frame-wrap img').forEach(img => {
-        img.classList.remove('active');
-        img.classList.remove('fade');
-        img.classList.add('snap');
-        img.style.zIndex = '';
-      });
-      const current = document.getElementById(`frame-${i}`);
-      if (current) {
-        requestAnimationFrame(() => { current.classList.add('active'); });
-      }
-    }
-  }
-
-  let textTimeouts = [];
-
-  function clearAllTimeouts() {
-    if (currentTimeout) clearTimeout(currentTimeout);
-    textTimeouts.forEach(t => clearTimeout(t));
-    textTimeouts = [];
-  }
-
-  function scheduleTextChanges() {
-    // Text changes run on their own evenly-spaced timer, decoupled from frame timing
-    TEXT_STATES.forEach((text, idx) => {
-      if (idx === 0) return; // First text is set immediately at sequence start
-
-      const isLast = (idx === TEXT_STATES.length - 1);
-      const targetTime = idx * TIMING.textInterval;
-
-      if (isLast) {
-        // Final caption: sync fade-in with the final image fade-in.
-        // Pre-fade out the previous caption so it's invisible by targetTime,
-        // then swap text and fade in (matching image fade duration).
-        textTimeouts.push(setTimeout(() => {
-          captionText.classList.add('fading');
-        }, targetTime - TIMING.fadeDuration));
-
-        textTimeouts.push(setTimeout(() => {
-          captionText.innerHTML = text;
-          // Force reflow so removing .fading triggers the transition
-          void captionText.offsetWidth;
-          captionText.classList.remove('fading');
-        }, targetTime));
-      } else {
-        // Standard crossfade for captions 1, 2
-        const t = setTimeout(() => {
-          captionText.classList.add('fading');
-          const t2 = setTimeout(() => {
-            captionText.innerHTML = text;
-            captionText.classList.remove('fading');
-          }, 250);
-          textTimeouts.push(t2);
-        }, targetTime);
-        textTimeouts.push(t);
-      }
-    });
-
-    // After last caption fades in fully + finalCaptionHold: fade caption out, then headline
-    const lastTextStart = (TEXT_STATES.length - 1) * TIMING.textInterval;
-    const lastFullyVisible = lastTextStart + TIMING.fadeDuration;  // synced with image fade complete
-    const captionFadeStart = lastFullyVisible + TIMING.finalCaptionHold;
-    const headlineStart = captionFadeStart + TIMING.captionFadeOut;
-
-    textTimeouts.push(setTimeout(() => {
-      captionText.classList.add('fading');
-    }, captionFadeStart));
-
-    textTimeouts.push(setTimeout(() => {
-      heroFinal.classList.add('visible');
-    }, headlineStart));
-  }
-
-  function playSequence() {
-    clearAllTimeouts();
-    isPlaying = true;
-    heroFinal.classList.remove('visible');
-    captionText.classList.remove('fading');
-    captionText.innerHTML = TEXT_STATES[0];
-    document.querySelectorAll('.frame-wrap img').forEach(img => {
-      img.classList.remove('active');
-      img.style.zIndex = '';
-    });
-
-    let i = 0;
-    showFrame(i, false);
-    captionWrap.classList.remove('pending');
-
-    // Start independent text scheduler
-    scheduleTextChanges();
-
-    // Frame advance timer (independent of text timer, but image fade now syncs with final caption fade-in)
-    function advance() {
-      i++;
-      if (i >= FRAMES.length) {
-        isPlaying = false;
-        return;
-      }
-      const isFinalReveal = (i === FRAMES.length - 1);
-      showFrame(i, isFinalReveal);
-      currentTimeout = setTimeout(advance, TIMING.frameDuration);
-    }
-    currentTimeout = setTimeout(advance, TIMING.initialHold);
-  }
-
-  // Reduced-motion accessibility: skip animation, show final state immediately
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    showFrame(FRAMES.length - 1, false);
-    captionWrap.classList.add('pending');
-    heroFinal.classList.add('visible');
-  } else {
-    window.addEventListener('load', () => { setTimeout(playSequence, 400); });
-  }
-})();
 </script>
 </body>
 </html>
