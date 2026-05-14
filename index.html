@@ -275,26 +275,20 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 
 /* Scroll cue (replaces hero CTA) */
 .scroll-cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 4px;
-  font-family: var(--fh);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  color: var(--w);
-  text-transform: uppercase;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 0 18px rgba(0,0,0,0.6);
-  cursor: pointer;
+  display: inline-block;
+  padding: 8px 16px;
   text-decoration: none;
-  transition: opacity 0.2s;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
 }
 .scroll-cue:hover { opacity: 0.75; }
+.scroll-cue.hidden { opacity: 0; pointer-events: none; }
 .scroll-cue .arrow {
   display: inline-block;
-  font-size: 20px;
+  font-size: 28px;
   color: var(--gold);
+  -webkit-text-stroke: 1px var(--gold);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.7);
   animation: scrollbobble 1.8s ease-in-out infinite;
   line-height: 1;
 }
@@ -350,11 +344,8 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
     font-size: clamp(24px, 5.2vw, 36px);
     margin: 0;
   }
-  .scroll-cue {
-    font-size: 14px;
-  }
   .scroll-cue .arrow {
-    font-size: 22px;
+    font-size: 24px;
   }
 }
 
@@ -853,8 +844,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <h1><span class="line-1">Your photos blend in.</span><br><span class="gc">No paid brand work.</span></h1>
         <div class="hero-final-bottom">
           <p class="sub">Learn the lighting <br class="mob-br">that gets you booked.</p>
-          <a href="#why" class="scroll-cue" aria-label="Keep reading">
-            <span>Keep reading</span>
+          <a href="#why" class="scroll-cue" aria-label="Scroll down">
             <span class="arrow">↓</span>
           </a>
         </div>
@@ -1322,6 +1312,21 @@ applyCurrencyToElements();
 
   window.addEventListener('scroll', checkScroll, { passive: true });
   checkScroll();
+})();
+
+/* ═══════════════ SCROLL CUE HIDE ON FIRST SCROLL ═══════════════ */
+(function () {
+  const cue = document.querySelector('.scroll-cue');
+  if (!cue) return;
+
+  function hideCue() {
+    if (window.scrollY > 10) {
+      cue.classList.add('hidden');
+      window.removeEventListener('scroll', hideCue);
+    }
+  }
+
+  window.addEventListener('scroll', hideCue, { passive: true });
 })();
 
 /* ═══════════════ SCROLL REVEAL ANIMATIONS ═══════════════ */
