@@ -247,10 +247,9 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   color: var(--w);
   text-transform: uppercase;
   text-shadow:
-    0 0 24px rgba(0,0,0,0.95),
-    0 0 48px rgba(0,0,0,0.8),
-    0 4px 16px rgba(0,0,0,0.9),
-    0 1px 3px rgba(0,0,0,1);
+    0 0 24px rgba(0,0,0,0.9),
+    0 0 8px rgba(0,0,0,0.85),
+    0 1px 2px rgba(0,0,0,0.95);
   margin-bottom: 22px;
 }
 .hero-final h1 .line-1 { display: inline-block; }
@@ -396,7 +395,8 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 
 /* ── ABOUT MITCH (split layout, mobile optimized) ── */
-.about { background: var(--bg); }
+.about { background: var(--bg); padding-bottom: 32px; }
+@media (min-width: 768px) { .about { padding-bottom: 48px; } }
 .about > .c > .eye { margin-bottom: 14px; }
 .about h2 { margin-bottom: 24px; }
 
@@ -841,9 +841,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="hero-final">
       <div class="hero-final-content">
-        <h1><span class="line-1">You can shoot cars.</span><br><span class="gc">So why aren't brands booking?</span></h1>
+        <h1><span class="line-1">Your photos blend in.</span><br><span class="gc">No paid brand work.</span></h1>
         <div class="hero-final-bottom">
-          <p class="sub">The Automotive <br class="mob-br">Lighting Blueprint</p>
+          <p class="sub">Learn the lighting techniques <br class="mob-br">that separate you from the rest.</p>
           <a href="#why" class="scroll-cue" aria-label="Keep reading">
             <span>Keep reading</span>
             <span class="arrow">↓</span>
@@ -859,7 +859,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="fy pad reveal" id="why">
   <div class="c">
     <span class="eye">The Problem</span>
-    <h2>You're a great photographer.<br><span class="gc">But it's not paying off.</span></h2>
+    <h2>Everyone has a media page.<br><span class="gc">Yours blends in with theirs.</span></h2>
     <ul class="cks">
       <li><span class="dot"></span><strong class="cks-h">Your photos blend in.</strong><span class="cks-d">Same golden hour, same angles as everyone else.</span></li>
       <li><span class="dot"></span><strong class="cks-h">Premium brands scroll past.</strong><span class="cks-d">Like your work doesn't exist.</span></li>
@@ -901,8 +901,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <div class="mpull-box">
       <span class="eye">The solution</span>
-      <h2>The same method on every car.<br><span class="gc">Every time.</span></h2>
-      <p style="margin-top:18px;">The Controlled Lighting Method™<br>The only artificial lighting system built for automotive photographers.<br>Flash, light painting, editing and brand positioning. All in one place.</p>
+      <h2>Become the photographer<br><span class="gc">they can't replicate.</span></h2>
+      <p style="margin-top:18px;">The Controlled Lighting Method™<br>The flash and light painting playbook the saturated market hasn't mastered.<br>The skill that ends the competition.</p>
     </div>
   </div>
 </div>
@@ -1110,6 +1110,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="fq"><button class="fqb" onclick="faq(this)">What is "Founding Student" status?<span class="fqi">+</span></button><div class="fqa">Founding Students are the first 30 to enrol. You get the lowest price the course will ever be, exclusive bonuses, and a private Q&amp;A with me. Once 30 spots are claimed, founding access closes forever.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">Do I need expensive gear or access to expensive cars?<span class="fqi">+</span></button><div class="fqa">No to both. The method works on any budget and on any car. Lighting creates the result, not the gear or the badge. A Honda Civic shot with controlled lighting beats a Lamborghini in bad light every time.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">I've never used flash before. Can I do this?<span class="fqi">+</span></button><div class="fqa">Yes. We start from the basics. No prior flash or light painting experience needed. If you can use a camera, you can learn this.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">What if everyone learns this too?<span class="fqi">+</span></button><div class="fqa">Most won't. Light painting and on-location flash take real practice to master. That's exactly why they remain a moat. The photographers who actually put in the work stay booked. The rest stay where they are.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">Is there a money back guarantee?<span class="fqi">+</span></button><div class="fqa">Yes, 30 days from the moment you receive the course. Within those 30 days, complete every module, apply at least one lighting technique I teach to a new shoot, and run the files through the editing process. If you don't see a visible improvement in your work, send me what you created and you'll get every cent back. Same guarantee covers the cohort upsell.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">What format is the course and how long do I have access?<span class="fqi">+</span></button><div class="fqa">Recorded video lessons, broken into short modules. Watch on any device. All templates and downloads inside. Lifetime access, plus every future update automatically.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button><div class="fqa">Most students apply the system on their first shoot within a week of access opening. With consistent application, you'll have premium quality work in your portfolio inside 30 days.</div></div>
