@@ -302,6 +302,15 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   0%, 100% { transform: translateY(0); opacity: 1; }
   50% { transform: translateY(6px); opacity: 0.7; }
 }
+/* Desktop: pin scroll cue to the lower 10% of the hero image */
+@media (min-width: 769px) {
+  .scroll-cue {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 
 /* Mobile: split layout. Headline centered at 25% from top, bottom group centered at 25% from bottom */
 @media (max-width: 768px) {
@@ -843,7 +852,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="hero-final-content">
         <h1><span class="line-1">Your photos blend in.</span><br><span class="gc">No paid brand work.</span></h1>
         <div class="hero-final-bottom">
-          <p class="sub">Learn the lighting techniques <br class="mob-br">that separate you from the rest.</p>
+          <p class="sub">Learn the lighting <br class="mob-br">that gets you booked.</p>
           <a href="#why" class="scroll-cue" aria-label="Keep reading">
             <span>Keep reading</span>
             <span class="arrow">↓</span>
