@@ -679,6 +679,44 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   .spots-bar { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
 .preframe { margin: 22px 0; padding: 14px 16px; background: var(--bg); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; font-size: 15px; color: var(--w); line-height: 1.5; }
+.guarantee-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(200, 146, 42, 0.08);
+  border: 1px solid rgba(200, 146, 42, 0.3);
+  border-radius: 4px;
+  margin: 0 0 18px 0;
+}
+.gb-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+}
+.gb-text {
+  font-size: 14px;
+  color: var(--w);
+  line-height: 1.4;
+  text-align: left;
+}
+.gb-text strong {
+  color: var(--gold);
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  .gb-text { font-size: 15px; }
+}
 .pi { list-style: none; margin-bottom: 24px; }
 .pi li { display: flex; gap: 12px; align-items: flex-start; font-size: clamp(15px, 4.2vw, 16px); color: var(--w); padding: 12px 0; border-bottom: 1px solid var(--line); line-height: 1.45; }
 .pi li:last-child { border-bottom: none; }
@@ -937,12 +975,12 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <p class="mod-intro">Every module is built around one goal. Get you ready for premium clients in 30 days.</p>
 
     <div class="mgrid">
-      <div class="mc"><img src="portfolio/mitch-lambos.jpg" class="mi" alt="Mitch with a black Lamborghini Urus and Aventador in front of a mural"><div class="mb"><div class="mn">Module 01</div><div class="mt">Introduction</div><p class="md">What separates the photographers brands actually hire from the ones who stay invisible. The mindset that opens up everything that follows.</p></div></div>
-      <div class="mc"><img src="portfolio/mclaren-artura-bts.jpg" class="mi" alt="Behind-the-scenes shot of camera on tripod with an orange McLaren Artura on location at night"><div class="mb"><div class="mn">Module 02</div><div class="mt">Gear & Location</div><p class="md">The exact gear that gets editorial results on any budget. Plus how to walk into any location and instantly know where to position the car.</p></div></div>
-      <div class="mc"><img src="portfolio/ferrari-pair.jpg" class="mi" alt="Pair of red Ferraris lit against a dark studio backdrop"><div class="mb"><div class="mn">Module 03</div><div class="mt">Light Painting</div><p class="md">Create images that stop the scroll and look like nobody else's. The work that gets brands DMing you.</p></div></div>
-      <div class="mc"><img src="portfolio/huracan-lb.jpg" class="mi" alt="Purple Liberty Walk Lamborghini Huracan in front of the Story Bridge at night"><div class="mb"><div class="mn">Module 04</div><div class="mt">Flash Lighting</div><p class="md">Shoot any car, in any environment, at any time of day. No more cancelled shoots when the weather turns.</p></div></div>
-      <div class="mc"><img src="portfolio/photoshop-amg.jpg" class="mi" alt="Adobe Photoshop screenshot showing a blue Mercedes AMG GT-R being edited with color balance and layers"><div class="mb"><div class="mn">Module 05</div><div class="mt">Lightroom & Photoshop</div><p class="md">The editing workflow that turns raw files into campaign-quality work. Apply it on any car, any shoot, every time.</p></div></div>
-      <div class="mc"><img src="portfolio/revuelto-urus.jpg" class="mi" alt="Mitch with a Lamborghini Revuelto and Urus at Lamborghini Brisbane"><div class="mb"><div class="mn">Module 06</div><div class="mt">The Client Blueprint</div><p class="md">Position yourself so the right brands want to hire you. How to attract them, what to send, and how to charge what your work is worth.</p></div></div>
+      <div class="mc"><img src="portfolio/mitch-lambos.jpg" class="mi" alt="Mitch with a black Lamborghini Urus and Aventador in front of a mural"><div class="mb"><div class="mn">Module 01</div><div class="mt">Introduction</div><p class="md">Walk in knowing exactly why most car photographers stay invisible, and what you'll do differently from here. The mindset that makes the rest of this course click.</p></div></div>
+      <div class="mc"><img src="portfolio/mclaren-artura-bts.jpg" class="mi" alt="Behind-the-scenes shot of camera on tripod with an orange McLaren Artura on location at night"><div class="mb"><div class="mn">Module 02</div><div class="mt">Gear & Location</div><p class="md">Buy the right gear once, on any budget. Then walk into any location and know where to position the car within minutes.</p></div></div>
+      <div class="mc"><img src="portfolio/ferrari-pair.jpg" class="mi" alt="Pair of red Ferraris lit against a dark studio backdrop"><div class="mb"><div class="mn">Module 03</div><div class="mt">Light Painting</div><p class="md">Light paint any car so the result looks like nothing else in the feed. The skill that gets premium brands sliding into your DMs.</p></div></div>
+      <div class="mc"><img src="portfolio/huracan-lb.jpg" class="mi" alt="Purple Liberty Walk Lamborghini Huracan in front of the Story Bridge at night"><div class="mb"><div class="mn">Module 04</div><div class="mt">Flash Lighting</div><p class="md">Use flash on location to control the light on any shoot, in any weather, at any time of day. No more cancelled shoots.</p></div></div>
+      <div class="mc"><img src="portfolio/photoshop-amg.jpg" class="mi" alt="Adobe Photoshop screenshot showing a blue Mercedes AMG GT-R being edited with color balance and layers"><div class="mb"><div class="mn">Module 05</div><div class="mt">Lightroom & Photoshop</div><p class="md">Deliver campaign-quality edits on every file. The same workflow I use on premium brand work, repeatable across any car, any shoot.</p></div></div>
+      <div class="mc"><img src="portfolio/revuelto-urus.jpg" class="mi" alt="Mitch with a Lamborghini Revuelto and Urus at Lamborghini Brisbane"><div class="mb"><div class="mn">Module 06</div><div class="mt">The Client Blueprint</div><p class="md">Build a portfolio that the right brands can't ignore. Know exactly what to send when they reach out, and how to price your work so it gets taken seriously.</p></div></div>
     </div>
   </div>
 </section>
@@ -1039,6 +1077,11 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <strong style="color:var(--gold);">Premium automotive shoots start around $1,000+. This course pays back with your first one.</strong> The math is simple, and so is the decision.
       </div>
 
+      <div class="guarantee-badge">
+        <span class="gb-icon">✓</span>
+        <div class="gb-text"><strong>30-day money-back guarantee.</strong> Do the work, show me the result.</div>
+      </div>
+
       <a href="checkout.html" class="btn" id="checkout-cta">Get The Blueprint → $195</a>
       <p class="bn" id="checkout-note">Secure checkout. Course access June 1st.</p>
     </div>
@@ -1069,7 +1112,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="fq"><button class="fqb" onclick="faq(this)">What is "Founding Student" status?<span class="fqi">+</span></button><div class="fqa">Founding Students are the first 30 to enrol. You get the lowest price the course will ever be, exclusive bonuses, and a private Q&amp;A with me. Once 30 spots are claimed, founding access closes forever.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">Do I need expensive gear or access to expensive cars?<span class="fqi">+</span></button><div class="fqa">No to both. The method works on any budget and on any car. Lighting creates the result, not the gear or the badge. A Honda Civic shot with controlled lighting beats a Lamborghini in bad light every time.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">I've never used flash before. Can I do this?<span class="fqi">+</span></button><div class="fqa">Yes. We start from the basics. No prior flash or light painting experience needed. If you can use a camera, you can learn this.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">What if I'm not happy?<span class="fqi">+</span></button><div class="fqa">The course has no refunds. All content is delivered in full when access opens. But if you complete the course and feel it didn't deliver what was promised, reach out at <a href="mailto:contact@consistentcreative.com" style="color:var(--gold);">contact@consistentcreative.com</a> and I'll make it right.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">Is there a money-back guarantee?<span class="fqi">+</span></button><div class="fqa">Yes, 30 days from the moment you receive the course. Within those 30 days, complete every module, apply at least one lighting technique I teach to a new shoot, and run the files through the editing process. If you don't see a visible improvement in your work, send me what you created and you'll get every cent back. Same guarantee covers the cohort upsell.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">What format is the course and how long do I have access?<span class="fqi">+</span></button><div class="fqa">Recorded video lessons, broken into short modules. Watch on any device. All templates and downloads inside. Lifetime access, plus every future update automatically.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button><div class="fqa">Most students apply the system on their first shoot within a week of access opening. With consistent application, you'll have premium quality work in your portfolio inside 30 days.</div></div>
     </div>
