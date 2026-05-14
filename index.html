@@ -799,8 +799,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 /* ── SCROLL ANIMATIONS ──────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .7s ease-out, transform .7s ease-out;
+  transform: translateY(20px);
+  transition: opacity .5s ease-out, transform .5s ease-out;
   will-change: opacity, transform;
 }
 .reveal.visible {
@@ -1325,7 +1325,7 @@ applyCurrencyToElements();
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px 200px 0px' });
 
   reveals.forEach(el => observer.observe(el));
 })();
