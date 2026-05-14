@@ -241,7 +241,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .hero-final h1 {
   font-family: var(--fh);
   font-weight: 900;
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(44px, 8vw, 92px);
   line-height: 0.92;
   letter-spacing: 0.01em;
   color: var(--w);
@@ -256,14 +256,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .hero-final h1 .line-1 { display: inline-block; }
 .hero-final h1 .gc { color: var(--gold); }
 
-/* Hero CTA: snug fit around the text — overrides default full-width .btn */
-.hero-final #hero-cta {
-  display: inline-block;
-  width: auto;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 16px 28px;
-}
 .hero-final p.sub {
   font-family: var(--fh);
   font-size: clamp(20px, 3.2vw, 32px);
@@ -280,6 +272,36 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Scroll cue (replaces hero CTA) */
+.scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 4px;
+  font-family: var(--fh);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--w);
+  text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 0 18px rgba(0,0,0,0.6);
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.scroll-cue:hover { opacity: 0.75; }
+.scroll-cue .arrow {
+  display: inline-block;
+  font-size: 20px;
+  color: var(--gold);
+  animation: scrollbobble 1.8s ease-in-out infinite;
+  line-height: 1;
+}
+@keyframes scrollbobble {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.7; }
 }
 
 /* Mobile: split layout — headline centered at 25% from top, bottom group centered at 25% from bottom */
@@ -300,7 +322,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
     left: 0;
     right: 0;
     transform: translateY(-50%);
-    font-size: clamp(44px, 11vw, 120px);
+    font-size: clamp(40px, 9.5vw, 100px);
     line-height: 0.92;
     letter-spacing: 0;
     margin: 0;
@@ -314,14 +336,17 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 18px;
   }
   .hero-final p.sub {
-    font-size: clamp(26px, 5.5vw, 38px);
+    font-size: clamp(24px, 5.2vw, 36px);
     margin: 0;
   }
-  .hero-final #hero-cta {
-    margin: 0;
+  .scroll-cue {
+    font-size: 14px;
+  }
+  .scroll-cue .arrow {
+    font-size: 22px;
   }
 }
 
@@ -432,6 +457,8 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 .story-text p { margin: 0; font-size: clamp(15px, 4.2vw, 16px); line-height: 1.55; color: var(--w80); }
 .story-text .lead { font-size: clamp(17px, 4.7vw, 18px); font-weight: 600; color: var(--w); line-height: 1.4; }
+.story-text .anchor-line { color: var(--w); font-weight: 600; }
+.story-text .anchor-line strong { color: var(--gold); font-weight: 700; }
 
 .brands-strip {
   padding: 16px 18px;
@@ -619,18 +646,22 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 
 /* ── VALUE STACK ────────────────────────────── */
 .vs { background: var(--s2); }
-.vs-intro { color: var(--w80); margin-top: 8px; margin-bottom: 4px; }
-.vl { list-style: none; margin-top: 12px; }
-.vl li { display: flex; justify-content: space-between; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--line); gap: 16px; }
-.vi { font-size: clamp(15px, 4.2vw, 16px); color: var(--w); flex: 1; line-height: 1.3; }
+.vs-intro { color: var(--w80); margin-top: 12px; margin-bottom: 4px; line-height: 1.55; }
+.vl { list-style: none; margin-top: 18px; }
+.vl li { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--line); gap: 16px; }
+.vi { font-size: clamp(15px, 4.2vw, 16px); color: var(--w); flex: 1; line-height: 1.35; }
 .vv { font-family: var(--fh); font-size: 15px; font-weight: 700; color: var(--w50); letter-spacing: .04em; flex-shrink: 0; }
+.vv.vcheck {
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  padding-top: 2px;
+}
 .vl li.founding { border-left: 3px solid var(--gold); padding-left: 14px; background: rgba(200,146,42,0.05); margin: 0 -14px; padding-right: 14px; }
 .vl li.founding .vi { color: var(--gold2); font-weight: 600; }
-.vl li.founding .vv { color: var(--gold); }
-.vtot { display: flex; justify-content: space-between; align-items: center; padding: 10px 0 2px 0; margin-bottom: 0; }
-.vtl { font-family: var(--fh); font-size: 14px; font-weight: 600; letter-spacing: .12em; color: var(--w50); text-transform: uppercase; }
-.vta { font-family: var(--fh); font-size: 20px; font-weight: 700; color: var(--w50); letter-spacing: .04em; text-decoration: line-through; }
-.vyou { display: flex; justify-content: space-between; align-items: baseline; padding: 2px 0 14px 0; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.vl li.founding .vv.vcheck { color: var(--gold2); }
+.vyou { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 14px 0; border-bottom: 1px solid var(--line); margin-bottom: 16px; margin-top: 4px; }
 .vyl { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .14em; color: var(--w); text-transform: uppercase; }
 .vya { font-family: var(--fh); font-size: clamp(30px, 8.5vw, 40px); font-weight: 900; color: var(--gold); letter-spacing: .01em; line-height: 1; }
 
@@ -772,10 +803,13 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="hero-final">
       <div class="hero-final-content">
-        <h1><span class="line-1">From invisible</span><br><span class="gc">To in demand</span></h1>
+        <h1><span class="line-1">You can shoot cars.</span><br><span class="gc">So why aren't brands booking?</span></h1>
         <div class="hero-final-bottom">
           <p class="sub">The Automotive <br class="mob-br">Lighting Blueprint</p>
-          <a href="checkout.html" class="btn" id="hero-cta">Get The Blueprint → $195</a>
+          <a href="#why" class="scroll-cue" aria-label="Keep reading">
+            <span>Keep reading</span>
+            <span class="arrow">↓</span>
+          </a>
         </div>
       </div>
     </div>
@@ -784,7 +818,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 </section>
 
 <!-- ═══════════════ RECOGNITION ═══════════════ -->
-<section class="fy pad reveal">
+<section class="fy pad reveal" id="why">
   <div class="c">
     <span class="eye">The Problem</span>
     <h2>You're a great photographer.<br><span class="gc">But it's not paying off.</span></h2>
@@ -810,6 +844,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <p class="lead">So I went the other way.</p>
         <p>I taught myself light painting. Then flash. The work started looking like nobody else's.</p>
         <p>Premium brands noticed. The opportunities followed.</p>
+        <p class="anchor-line">Now my brand shoots start at <strong>$1,000+</strong>. The lighting techniques I'll teach you are the ones that got me there.</p>
       </div>
       <div class="story-photo">
         <div class="photo-frame">
@@ -830,7 +865,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <div class="mpull-box">
       <span class="eye">The solution</span>
-      <h2>One method. Every car.<br><span class="gc">Every time.</span></h2>
+      <h2>The same method on every car.<br><span class="gc">Every time.</span></h2>
       <p style="margin-top:18px;">The Controlled Lighting Method™<br>The only artificial lighting system built for automotive photographers.<br>Flash, light painting, editing and brand positioning. All in one place.</p>
     </div>
   </div>
@@ -877,7 +912,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
           <div class="stage-num">03</div>
           <h3>Brands<br><span class="gc">hire you.</span></h3>
         </div>
-        <p>Premium brands scroll Instagram looking for work that stands out. Yours now does. They find your portfolio. They send the DM. <strong>Paid shoots. Real clients. The career you came here for.</strong></p>
+        <p>Premium brands scroll Instagram looking for work that stands out. Yours now does. They find you, send the DM, and book the shoot at $1,000+. <strong>This is the career you came here for.</strong></p>
         <div class="stage-img">
           <img src="portfolio/stage-03-brands.jpg" alt="Mitch standing in front of a Lamborghini Revuelto at the dealership">
         </div>
@@ -951,23 +986,22 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="vs pad reveal">
   <div class="c">
     <span class="eye">Everything you get</span>
-    <h2>Worth <span data-price="perceived">$1,495</span>.<br><span class="gc">Yours for <span class="dyn-price" data-price="course_p1">$195</span>.</span></h2>
-    <p class="vs-intro">Enrol today and lock in your spot. Course access opens June 1st.</p>
+    <h2>Yours for <span class="dyn-price" data-price="course_p1">$195</span>.<br><span class="gc">Pays for itself in one shoot.</span></h2>
+    <p class="vs-intro">Premium automotive shoots sit around $1,000. This course costs less than 20% of one. Enrol today, lock in your spot. Course access opens June 1st.</p>
 
     <ul class="vl" id="vs-list">
-      <li><span class="vi">The Automotive Lighting Blueprint. 6 full modules.</span><span class="vv" data-price="item_course">$995</span></li>
-      <li><span class="vi">Lifetime access plus every future update</span><span class="vv">Incl.</span></li>
-      <li><span class="vi">Lighting diagram templates</span><span class="vv" data-price="item_diagrams">$147</span></li>
-      <li><span class="vi">Lightroom RAW editing preset</span><span class="vv" data-price="item_preset">$97</span></li>
-      <li><span class="vi">Editing workflow in Photoshop</span><span class="vv" data-price="item_workflow">$97</span></li>
-      <li><span class="vi">Camera settings reference guide</span><span class="vv" data-price="item_settings">$77</span></li>
-      <li><span class="vi">On location shoot checklist</span><span class="vv" data-price="item_checklist">$57</span></li>
-      <li><span class="vi">Gear checklist</span><span class="vv" data-price="item_gear">$35</span></li>
-      <li class="founding founding-only"><span class="vi">★ Founding Student status</span><span class="vv">Priceless</span></li>
-      <li class="founding founding-only"><span class="vi">★ Founding only live Q&amp;A with Mitch</span><span class="vv">Bonus</span></li>
-      <li class="founding founding-only"><span class="vi">★ Behind the scenes bonus module</span><span class="vv">Bonus</span></li>
+      <li><span class="vi">The Automotive Lighting Blueprint. 6 full modules.</span><span class="vv vcheck">✓</span></li>
+      <li><span class="vi">Lifetime access plus every future update</span><span class="vv vcheck">✓</span></li>
+      <li><span class="vi">Lighting diagram templates</span><span class="vv vcheck">✓</span></li>
+      <li><span class="vi">Lightroom RAW editing preset</span><span class="vv vcheck">✓</span></li>
+      <li><span class="vi">Editing workflow in Photoshop</span><span class="vv vcheck">✓</span></li>
+      <li><span class="vi">Camera settings reference guide</span><span class="vv vcheck">✓</span></li>
+      <li><span class="vi">On location shoot checklist</span><span class="vv vcheck">✓</span></li>
+      <li><span class="vi">Gear checklist</span><span class="vv vcheck">✓</span></li>
+      <li class="founding founding-only"><span class="vi">★ Founding Student status</span><span class="vv vcheck">✓</span></li>
+      <li class="founding founding-only"><span class="vi">★ Founding only live Q&amp;A with Mitch</span><span class="vv vcheck">✓</span></li>
+      <li class="founding founding-only"><span class="vi">★ Behind the scenes bonus module</span><span class="vv vcheck">✓</span></li>
     </ul>
-    <div class="vtot"><span class="vtl">Total value</span><span class="vta" data-price="perceived">$1,495</span></div>
     <div class="vyou"><span class="vyl">You pay today</span><span class="vya"><span class="dyn-price" data-price="course_p1">$195</span><span class="cur-suffix" data-currency-label>USD</span></span></div>
     <a href="checkout.html" class="btn vs-btn">Lock In My Spot →</a>
   </div>
@@ -978,7 +1012,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <span class="eye">Beginner-friendly</span>
     <h2>No lighting experience.<br><span class="gc">No problem.</span></h2>
-    <p class="lead">Most students start with zero flash or light painting knowledge. We teach the entire system from the ground up.</p>
+    <p class="lead">Built for photographers who've never picked up a flash or done light painting. We teach the entire system from the ground up.</p>
     <ul class="evenif-list">
       <li><span class="check">✓</span>You've never picked up a flash in your life</li>
       <li><span class="check">✓</span>You don't own expensive gear</li>
@@ -1002,7 +1036,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       </div>
 
       <div class="preframe">
-        <strong style="color:var(--gold);">One premium brand shoot pays for this course three times over.</strong> The math is simple. The decision should be too.
+        <strong style="color:var(--gold);">Premium automotive shoots start around $1,000+. This course pays back with your first one.</strong> The math is simple, and so is the decision.
       </div>
 
       <a href="checkout.html" class="btn" id="checkout-cta">Get The Blueprint → $195</a>
@@ -1166,8 +1200,8 @@ function render() {
     el.setAttribute('data-price', phaseKey);
   });
 
-  // CTAs (hero + pricing only — vs-btn and final-cta have static varied copy)
-  document.querySelectorAll('#hero-cta, #checkout-cta, #mid-cta-btn').forEach(el => el.textContent = ctaText);
+  // CTAs (pricing + mid-CTA only — hero is now a scroll cue, vs-btn and final-cta have static varied copy)
+  document.querySelectorAll('#checkout-cta, #mid-cta-btn').forEach(el => el.textContent = ctaText);
 
   // Other dynamic content
   document.getElementById('price-badge').textContent = badge;
