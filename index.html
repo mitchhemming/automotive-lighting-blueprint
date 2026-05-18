@@ -342,20 +342,14 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   }
 }
 
-/* ── EXPLAINER ──────────────────────────────── */
-.explainer { background: var(--bg); }
-.explainer .eye { margin-bottom: 16px; }
-.explainer h2 { margin-bottom: 22px; }
-.explainer .lead { color: var(--w80); font-weight: 400; }
-
-/* Force single-line headlines on Explainer + Problem h2s */
-.explainer h2,
+/* Force single-line headlines on Course (mods) + Problem h2s */
+.mods h2,
 .fy h2 {
   font-size: clamp(20px, 6vw, 44px);
   white-space: nowrap;
 }
 @media (min-width: 768px) {
-  .explainer h2,
+  .mods h2,
   .fy h2 {
     font-size: clamp(36px, 5vw, 54px);
   }
@@ -502,14 +496,20 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 /* ── MODULES ────────────────────────────────── */
 .mods { background: var(--bg); }
 .mod-intro { color: var(--w80); margin-top: 12px; }
-.mgrid { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+.mgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 32px; }
 .mc { background: var(--s1); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
 .mi { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
-.mb { padding: 18px 20px; }
+.mb { padding: 14px 14px; }
 .mn { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
-.mt { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 24px); font-weight: 900; text-transform: uppercase; letter-spacing: .03em; color: var(--w); line-height: 1.05; margin-bottom: 10px; }
-.md { font-size: clamp(14px, 3.8vw, 15px); color: var(--w80); line-height: 1.55; }
-@media (min-width: 768px) { .mgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } .mt { font-size: 22px; } }
+.mt { font-family: var(--fh); font-size: clamp(16px, 4.5vw, 22px); font-weight: 900; text-transform: uppercase; letter-spacing: .03em; color: var(--w); line-height: 1.05; margin-bottom: 8px; }
+.md { font-size: clamp(13px, 3.5vw, 14px); color: var(--w80); line-height: 1.5; }
+@media (min-width: 768px) {
+  .mods .c { max-width: 1040px; }
+  .mgrid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .mb { padding: 16px 18px; }
+  .mt { font-size: 19px; }
+  .md { font-size: 14px; }
+}
 
 /* ── VALUE STACK ────────────────────────────── */
 .vs { background: var(--s1); }
@@ -751,8 +751,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="hero-final-content">
         <h1>Create photos that<br><span class="gc">stop the scroll</span></h1>
         <div class="hero-final-bottom">
-          <p class="sub">Master Flash &amp; Light Painting<br>at any location</p>
-          <a href="#course" class="scroll-cue" aria-label="Scroll down">
+          <p class="sub">Learn flash &amp; light painting<br>Any car, any location</p>
+          <a href="#problem" class="scroll-cue" aria-label="Scroll down">
             <span class="arrow">↓</span>
           </a>
         </div>
@@ -762,16 +762,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 2. EXPLAINER ═══════════════ -->
-<section class="explainer pad reveal" id="course">
-  <div class="c">
-    <span class="eye">What this is</span>
-    <h2>A flash &amp; light painting course<br><span class="gc">for automotive photographers.</span></h2>
-    <p class="lead">Six modules. Light any car, in any location, day or night. No prior lighting experience needed.</p>
-  </div>
-</section>
-
-<!-- ═══════════════ 3. PROBLEM ═══════════════ -->
+<!-- ═══════════════ 2. PROBLEM ═══════════════ -->
 <section class="fy pad reveal" id="problem">
   <div class="c">
     <span class="eye">Sound familiar?</span>
@@ -786,7 +777,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 4. GALLERY ═══════════════ -->
+<!-- ═══════════════ 3. GALLERY ═══════════════ -->
 <div class="gallery reveal">
   <div class="head">
     <span class="eye">What you'll create</span>
@@ -821,7 +812,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </div>
 
-<!-- ═══════════════ 5. ABOUT MITCH ═══════════════ -->
+<!-- ═══════════════ 4. ABOUT MITCH ═══════════════ -->
 <section class="about pad reveal">
   <div class="c">
     <span class="eye">Your Instructor</span>
@@ -847,12 +838,12 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 6. MODULES ═══════════════ -->
-<section class="mods pad reveal">
+<!-- ═══════════════ 5. THE COURSE (modules) ═══════════════ -->
+<section class="mods pad reveal" id="course">
   <div class="c">
-    <span class="eye">Inside the course</span>
-    <h2>6 Modules.<br><span class="gc">Full system.</span></h2>
-    <p class="mod-intro">Each module teaches one piece of the lighting system. Watch in order. Apply on your next shoot.</p>
+    <span class="eye">What this is</span>
+    <h2>A flash &amp; light painting course<br><span class="gc">for automotive photographers.</span></h2>
+    <p class="mod-intro">Six modules. Light any car, in any location, day or night. No prior lighting experience needed.</p>
 
     <div class="mgrid">
       <div class="mc"><img src="portfolio/mitch-lambos.jpg" class="mi" alt="Mitch with a black Lamborghini Urus and Aventador in front of a mural"><div class="mb"><div class="mn">Module 01</div><div class="mt">Introduction</div><p class="md">Why most car photographers stay invisible, and what you'll do differently from here. The mindset that makes the rest of this course click.</p></div></div>
@@ -865,7 +856,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 7. VALUE STACK ═══════════════ -->
+<!-- ═══════════════ 6. VALUE STACK ═══════════════ -->
 <section class="vs pad reveal">
   <div class="c">
     <span class="eye">Everything you get</span>
@@ -891,7 +882,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 8. BEGINNER FRIENDLY ═══════════════ -->
+<!-- ═══════════════ 7. BEGINNER FRIENDLY ═══════════════ -->
 <section class="evenif pad reveal">
   <div class="c">
     <span class="eye">Beginner friendly</span>
@@ -906,7 +897,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 9. PRICING ═══════════════ -->
+<!-- ═══════════════ 8. PRICING ═══════════════ -->
 <section class="pricing pad reveal" id="checkout">
   <div class="c">
     <div class="pc">
@@ -933,7 +924,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 10. WHAT HAPPENS NEXT ═══════════════ -->
+<!-- ═══════════════ 9. WHAT HAPPENS NEXT ═══════════════ -->
 <section class="next pad reveal">
   <div class="c">
     <span class="eye">What happens after you enrol</span>
@@ -947,7 +938,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 11. FAQ ═══════════════ -->
+<!-- ═══════════════ 10. FAQ ═══════════════ -->
 <section class="faq pad reveal">
   <div class="c">
     <span class="eye">Questions</span>
@@ -967,7 +958,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 12. FINAL CTA ═══════════════ -->
+<!-- ═══════════════ 11. FINAL CTA ═══════════════ -->
 <section class="final pad reveal">
   <div class="c">
     <span class="eye">Ready?</span>
