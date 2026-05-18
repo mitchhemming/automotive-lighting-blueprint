@@ -41,13 +41,13 @@
 </script>
 
 <title>The Automotive Lighting Blueprint · Consistent Creative</title>
-<meta name="description" content="The only on location artificial lighting system built for automotive photographers. Stop blending in. Start getting hired by premium brands.">
+<meta name="description" content="A course on automotive photography lighting. Master flash and light painting techniques. Light any car, in any location, day or night.">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://consistentcreative.com/">
 <meta property="og:title" content="The Automotive Lighting Blueprint">
-<meta property="og:description" content="The only on location artificial lighting system built for automotive photographers. Stop blending in. Start getting hired by premium brands.">
+<meta property="og:description" content="A course on automotive photography lighting. Master flash and light painting techniques. Light any car, in any location, day or night.">
 <meta property="og:image" content="https://consistentcreative.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -58,7 +58,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Automotive Lighting Blueprint">
-<meta name="twitter:description" content="The only on location artificial lighting system built for automotive photographers. Stop blending in. Start getting hired by premium brands.">
+<meta name="twitter:description" content="A course on automotive photography lighting. Master flash and light painting techniques. Light any car, in any location, day or night.">
 <meta name="twitter:image" content="https://consistentcreative.com/og-image.jpg">
 <meta name="twitter:image:alt" content="The Automotive Lighting Blueprint by Mitch Hemming">
 
@@ -116,7 +116,7 @@ a { text-decoration: none; color: inherit; }
   .wm2 { font-size: 8px; margin-top: 1px; }
 }
 
-/* ── FLOATING CTA PILL (appears after hero) ─── */
+/* ── FLOATING CTA PILL ──────────────────────── */
 .float-cta {
   position: fixed; top: 16px; right: 16px; z-index: 100;
   background: var(--gold); color: var(--bg);
@@ -149,7 +149,7 @@ a { text-decoration: none; color: inherit; }
 
 .rule { height: 1px; background: var(--line); }
 
-/* ── TYPE (fluid scaling) ───────────────────── */
+/* ── TYPE ───────────────────────────────────── */
 .eye {
   font-family: var(--fh); font-weight: 600;
   font-size: clamp(10px, 2.6vw, 12px);
@@ -195,7 +195,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .bn { text-align: center; font-size: 13px; color: var(--w50); margin-top: 12px; font-family: var(--fh); letter-spacing: .08em; text-transform: uppercase; }
 @media (min-width: 768px) { .btn { font-size: 22px; padding: 24px 32px; } }
 
-/* ── HERO (STATIC) ─────────────────────────── */
+/* ── HERO ───────────────────────────────────── */
 .hero {
   position: relative;
   width: 100%;
@@ -272,7 +272,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   margin-right: auto;
 }
 
-/* Scroll cue */
 .scroll-cue {
   display: inline-block;
   padding: 8px 16px;
@@ -295,7 +294,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   0%, 100% { transform: translateY(0); opacity: 1; }
   50% { transform: translateY(6px); opacity: 0.7; }
 }
-/* Desktop: pin scroll cue to the lower 10% of the hero image */
 @media (min-width: 769px) {
   .scroll-cue {
     position: absolute;
@@ -305,7 +303,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   }
 }
 
-/* Mobile: split layout. Headline centered at 25% from top, bottom group centered at 77% from top */
 @media (max-width: 768px) {
   .hero-final {
     align-items: stretch;
@@ -348,50 +345,62 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   }
 }
 
-/* ── RECOGNITION ────────────────────────────── */
-.fy { background: var(--s1); }
-.cks { list-style: none; margin-top: 26px; }
-.cks li {
-  display: grid;
-  grid-template-columns: 8px 1fr;
-  align-items: start;
-  column-gap: 14px;
-  row-gap: 4px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
+/* ── EXPLAINER (NEW) ────────────────────────── */
+.explainer { background: var(--bg); }
+.explainer .eye { margin-bottom: 16px; }
+.explainer h2 { margin-bottom: 22px; }
+.explainer .lead { color: var(--w80); font-weight: 400; }
+
+/* ── METHOD PULL ────────────────────────────── */
+.mpull {
+  background-color: var(--bg);
+  background-image: linear-gradient(rgba(19,19,19,0.50), rgba(19,19,19,0.50)), url('portfolio/solution-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.cks li .dot { grid-row: 1; grid-column: 1; }
-.cks li .cks-h {
-  grid-row: 1; grid-column: 2;
-  color: var(--w); font-weight: 600;
-  font-size: clamp(16px, 4.5vw, 18px);
-  line-height: 1.3;
+.mpull-box {
+  border: 1px solid var(--gold);
+  background: rgba(31, 31, 31, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px;
+  padding: 32px 16px;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
 }
-.cks li .cks-d {
-  grid-row: 2; grid-column: 2;
-  font-size: clamp(15px, 4.2vw, 17px);
-  color: var(--w80);
-  line-height: 1.55;
+.mpull-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translate(-50%, -50%);
+  width: 60px; height: 4px;
+  background: var(--gold);
+  border-radius: 2px;
 }
-.cks li:last-child { border-bottom: none; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
-.fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
+.mpull h2 { color: var(--w); margin-bottom: 16px; font-size: clamp(28px, 7.5vw, 44px); }
+.mpull h2 .gc { color: var(--gold); }
 @media (min-width: 768px) {
-  .cks li {
-    grid-template-columns: 8px minmax(180px, 30%) 1fr;
-    row-gap: 0;
-    column-gap: 14px;
-  }
-  .cks li .cks-h {
-    grid-row: 1; grid-column: 2;
-    font-size: 18px;
-  }
-  .cks li .cks-d {
-    grid-row: 1; grid-column: 3;
-    font-size: 20px;
-    line-height: 1.45;
-  }
+  .mpull h2 { font-size: clamp(44px, 6vw, 56px); letter-spacing: -0.015em; }
 }
+.mpull p { color: var(--w80); font-size: clamp(17px, 4.8vw, 19px); line-height: 1.35; }
+.mpull .eye { color: var(--gold); }
+@media (min-width: 768px) {
+  .mpull-box { padding: 56px 40px; }
+  .mpull p { font-size: 21px; }
+}
+
+/* ── GALLERY ────────────────────────────────── */
+.gallery { overflow: hidden; padding: 60px 0; background: var(--s1); }
+@media (min-width: 768px) { .gallery { padding: 96px 0; } }
+.gallery .head { text-align: center; padding: 0 24px 28px; }
+.gallery .head h2 { margin-bottom: 12px; }
+.gallery .head p { color: var(--w80); max-width: 540px; margin: 0 auto; }
+.track { display: flex; gap: 10px; animation: roll 70s linear infinite; width: max-content; }
+.track img { width: 220px; height: 290px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+@keyframes roll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@media (min-width: 768px) { .track img { width: 280px; height: 360px; } }
 
 /* ── ABOUT MITCH ────────────────────────────── */
 .about { background: var(--bg); padding-bottom: 32px; }
@@ -471,7 +480,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .brands-list { font-family: var(--fh); font-size: clamp(17px, 4.6vw, 20px); font-weight: 700; letter-spacing: .04em; color: var(--w); text-transform: uppercase; line-height: 1.5; margin: 0; }
 @media (min-width: 768px) { .brands-list { font-size: 22px; } .brands-label { font-size: 14px; } }
 
-/* ── TRANSFORMATION (3-stage) ───────────────── */
+/* ── TRANSFORMATION ─────────────────────────── */
 .transform { background: var(--s1); }
 .transform .head { text-align: center; margin-bottom: 48px; }
 .transform .head h2 { margin-bottom: 14px; }
@@ -538,7 +547,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   display: block;
 }
 
-/* ── TRANSFORM CTA ──────────────────────────── */
 .transform-cta { text-align: center; }
 .transform-cta .eye { display: block; margin-bottom: 14px; }
 .transform-cta .btn { margin: 0 auto; }
@@ -549,44 +557,94 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   letter-spacing: 0.02em;
 }
 
-/* ── METHOD PULL ────────────────────────────── */
-.mpull {
-  background-color: var(--bg);
-  background-image: linear-gradient(rgba(19,19,19,0.50), rgba(19,19,19,0.50)), url('portfolio/solution-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* ── MODULES ────────────────────────────────── */
+.mods { background: var(--s2); }
+.mod-intro { color: var(--w80); margin-top: 12px; }
+.mgrid { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+.mc { background: var(--s1); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.mi { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
+.mb { padding: 18px 20px; }
+.mn { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+.mn.p { color: var(--gold2); }
+.mt { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 24px); font-weight: 900; text-transform: uppercase; letter-spacing: .03em; color: var(--w); line-height: 1.05; margin-bottom: 10px; }
+.mt.p { color: var(--gold); }
+.md { font-size: clamp(14px, 3.8vw, 15px); color: var(--w80); line-height: 1.55; }
+@media (min-width: 768px) { .mgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } .mt { font-size: 22px; } }
+
+/* ── VALUE STACK ────────────────────────────── */
+.vs { background: var(--s2); }
+.vs-intro { color: var(--w80); margin-top: 12px; margin-bottom: 4px; line-height: 1.55; }
+.vs-feature {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 22px 0 8px;
+  border-radius: 4px;
+  overflow: hidden;
 }
-.mpull-box {
-  border: 1px solid var(--gold);
-  background: rgba(31, 31, 31, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 8px;
-  padding: 32px 16px;
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto;
-  position: relative;
+.vs-feature img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.mpull-box::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 50%; transform: translate(-50%, -50%);
-  width: 60px; height: 4px;
-  background: var(--gold);
-  border-radius: 2px;
+.vl { list-style: none; margin-top: 18px; }
+.vl li { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--line); gap: 16px; }
+.vi { font-size: clamp(15px, 4.2vw, 16px); color: var(--w); flex: 1; line-height: 1.35; }
+.vv { font-family: var(--fh); font-size: 15px; font-weight: 700; color: var(--w50); letter-spacing: .04em; flex-shrink: 0; }
+.vv.vcheck {
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  padding-top: 2px;
 }
-.mpull h2 { color: var(--w); margin-bottom: 16px; font-size: clamp(28px, 7.5vw, 44px); }
-.mpull h2 .gc { color: var(--gold); }
+.vyou { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 14px 0; border-bottom: 1px solid var(--line); margin-bottom: 16px; margin-top: 4px; }
+.vyl { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .14em; color: var(--w); text-transform: uppercase; }
+.vya { font-family: var(--fh); font-size: clamp(30px, 8.5vw, 40px); font-weight: 900; color: var(--gold); letter-spacing: .01em; line-height: 1; }
+
+/* ── RECOGNITION / PROBLEM ──────────────────── */
+.fy { background: var(--s1); }
+.cks { list-style: none; margin-top: 26px; }
+.cks li {
+  display: grid;
+  grid-template-columns: 8px 1fr;
+  align-items: start;
+  column-gap: 14px;
+  row-gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cks li .dot { grid-row: 1; grid-column: 1; }
+.cks li .cks-h {
+  grid-row: 1; grid-column: 2;
+  color: var(--w); font-weight: 600;
+  font-size: clamp(16px, 4.5vw, 18px);
+  line-height: 1.3;
+}
+.cks li .cks-d {
+  grid-row: 2; grid-column: 2;
+  font-size: clamp(15px, 4.2vw, 17px);
+  color: var(--w80);
+  line-height: 1.55;
+}
+.cks li:last-child { border-bottom: none; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
+.fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
 @media (min-width: 768px) {
-  .mpull h2 { font-size: clamp(44px, 6vw, 56px); letter-spacing: -0.015em; }
-}
-.mpull p { color: var(--w80); font-size: clamp(17px, 4.8vw, 19px); line-height: 1.35; }
-.mpull .eye { color: var(--gold); }
-@media (min-width: 768px) {
-  .mpull-box { padding: 56px 40px; }
-  .mpull p { font-size: 21px; }
+  .cks li {
+    grid-template-columns: 8px minmax(180px, 30%) 1fr;
+    row-gap: 0;
+    column-gap: 14px;
+  }
+  .cks li .cks-h {
+    grid-row: 1; grid-column: 2;
+    font-size: 18px;
+  }
+  .cks li .cks-d {
+    grid-row: 1; grid-column: 3;
+    font-size: 20px;
+    line-height: 1.45;
+  }
 }
 
 /* ── EVEN IF ────────────────────────────────── */
@@ -614,52 +672,22 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   font-family: var(--fh); font-size: 12px; font-weight: 900; color: var(--bg); line-height: 1;
 }
 
-/* ── MODULES ────────────────────────────────── */
-.mods { background: var(--s2); }
-.mod-intro { color: var(--w80); margin-top: 12px; }
-.mgrid { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
-.mc { background: var(--s1); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
-.mi { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
-.mb { padding: 18px 20px; }
-.mn { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
-.mn.p { color: var(--gold2); }
-.mt { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 24px); font-weight: 900; text-transform: uppercase; letter-spacing: .03em; color: var(--w); line-height: 1.05; margin-bottom: 10px; }
-.mt.p { color: var(--gold); }
-.md { font-size: clamp(14px, 3.8vw, 15px); color: var(--w80); line-height: 1.55; }
-@media (min-width: 768px) { .mgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } .mt { font-size: 22px; } }
-
-/* ── GALLERY ────────────────────────────────── */
-.gallery { overflow: hidden; padding: 60px 0; background: var(--s1); }
-@media (min-width: 768px) { .gallery { padding: 96px 0; } }
-.gallery .head { text-align: center; padding: 0 24px 28px; }
-.gallery .head h2 { margin-bottom: 12px; }
-.gallery .head p { color: var(--w80); max-width: 540px; margin: 0 auto; }
-.track { display: flex; gap: 10px; animation: roll 70s linear infinite; width: max-content; }
-.track img { width: 220px; height: 290px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
-@keyframes roll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-@media (min-width: 768px) { .track img { width: 280px; height: 360px; } }
-
-/* ── VALUE STACK ────────────────────────────── */
-.vs { background: var(--s2); }
-.vs-intro { color: var(--w80); margin-top: 12px; margin-bottom: 4px; line-height: 1.55; }
-.vl { list-style: none; margin-top: 18px; }
-.vl li { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--line); gap: 16px; }
-.vi { font-size: clamp(15px, 4.2vw, 16px); color: var(--w); flex: 1; line-height: 1.35; }
-.vv { font-family: var(--fh); font-size: 15px; font-weight: 700; color: var(--w50); letter-spacing: .04em; flex-shrink: 0; }
-.vv.vcheck {
-  color: var(--gold);
-  font-size: 18px;
-  font-weight: 900;
-  line-height: 1;
-  padding-top: 2px;
-}
-.vyou { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 14px 0; border-bottom: 1px solid var(--line); margin-bottom: 16px; margin-top: 4px; }
-.vyl { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .14em; color: var(--w); text-transform: uppercase; }
-.vya { font-family: var(--fh); font-size: clamp(30px, 8.5vw, 40px); font-weight: 900; color: var(--gold); letter-spacing: .01em; line-height: 1; }
-
 /* ── PRICING ────────────────────────────────── */
 .pricing { background: var(--bg); }
 .pc { background: var(--s1); border: 1px solid var(--gold); border-radius: 6px; padding: 30px 24px; }
+.pc-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.pc-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .pb { display: inline-block; background: var(--gold); color: var(--bg); font-family: var(--fh); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 6px 12px; border-radius: 2px; margin-bottom: 18px; }
 .pn { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 22px); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--w); }
 .pp { font-family: var(--fh); font-size: clamp(64px, 17vw, 76px); font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: .01em; margin: 12px 0 4px; }
@@ -731,8 +759,16 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .fqa.open { display: block; }
 @media (min-width: 768px) { .fqb { font-size: 18px; } }
 
-/* ── FINAL CTA ──────────────────────────────── */
-.final { background: var(--s2); text-align: center; position: relative; }
+/* ── FINAL CTA (with bg image) ──────────────── */
+.final {
+  background-color: var(--s2);
+  background-image: linear-gradient(rgba(19,19,19,0.85), rgba(19,19,19,0.85)), url('portfolio/g-wagen-brabus.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  position: relative;
+}
 .final::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
 .final h2 { margin-bottom: 18px; }
 .final .lead { margin-bottom: 12px; }
@@ -802,7 +838,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <span class="arrow">→</span>
 </a>
 
-<!-- ═══════════════ HERO ═══════════════ -->
+<!-- ═══════════════ 1. HERO ═══════════════ -->
 <section class="hero">
   <div class="frame-wrap">
 
@@ -825,7 +861,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <h1>Automotive Photography <span class="gc">That Stands Out</span></h1>
         <div class="hero-final-bottom">
           <p class="sub">Master flash &amp; light painting in any location</p>
-          <a href="#why" class="scroll-cue" aria-label="Scroll down">
+          <a href="#course" class="scroll-cue" aria-label="Scroll down">
             <span class="arrow">↓</span>
           </a>
         </div>
@@ -835,22 +871,62 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ RECOGNITION ═══════════════ -->
-<section class="fy pad reveal" id="why">
+<!-- ═══════════════ 2. EXPLAINER ═══════════════ -->
+<section class="explainer pad reveal" id="course">
   <div class="c">
-    <span class="eye">The Problem</span>
-    <h2>Every car photo looks the same.<br><span class="gc">Including yours.</span></h2>
-    <ul class="cks">
-      <li><span class="dot"></span><strong class="cks-h">Your photos blend in.</strong><span class="cks-d">Same golden hour, same angles as everyone else.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">You're stuck waiting for good light.</strong><span class="cks-d">Bad weather or wrong time of day kills the shoot.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">Flash and light painting feel out of reach.</strong><span class="cks-d">You've never used them with confidence.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">Your work has plateaued.</strong><span class="cks-d">Better gear and more practice haven't changed it.</span></li>
-    </ul>
-    <div class="fy-tag">If even one of these hit, keep reading. This was built for you.</div>
+    <span class="eye">What this is</span>
+    <h2>A course on automotive photography lighting.</h2>
+    <p class="lead">Six full modules teaching flash and light painting techniques. Light any car, in any location, day or night. No prior lighting experience needed.</p>
   </div>
 </section>
 
-<!-- ═══════════════ TRUST ═══════════════ -->
+<!-- ═══════════════ 3. SOLUTION / METHOD PULL ═══════════════ -->
+<div class="mpull pad reveal">
+  <div class="c">
+    <div class="mpull-box">
+      <span class="eye">The solution</span>
+      <h2>Become the photographer<br><span class="gc">they can't replicate.</span></h2>
+      <p style="margin-top:18px;">The Controlled Lighting Method™<br>The flash and light painting techniques most photographers haven't learned.<br>The skill that makes your work stand out.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 4. GALLERY ═══════════════ -->
+<div class="gallery reveal">
+  <div class="head">
+    <span class="eye">What you'll create</span>
+    <h2>Imagine your portfolio<br><span class="gc">looking like this.</span></h2>
+    <p>This is the kind of work that gets noticed.</p>
+  </div>
+  <div style="overflow:hidden;">
+    <div class="track">
+      <img src="portfolio/g-wagen-brabus.jpg" alt="G Wagen Brabus with light bar at night">
+      <img src="portfolio/amg-gtr-green.jpg" alt="Mercedes AMG GTR studio shot">
+      <img src="portfolio/huracan-bridge.jpg" alt="Purple Lamborghini Huracan with Story Bridge">
+      <img src="portfolio/mclaren-720s.jpg" alt="McLaren 720S with doors open at night">
+      <img src="portfolio/rwb-porsche.jpg" alt="RWB Porsche 911 rear shot">
+      <img src="portfolio/bentley-gt.jpg" alt="Bentley Continental GT in tropical setting">
+      <img src="portfolio/aventador-ultimae.jpg" alt="Lamborghini Aventador Ultimae with doors up">
+      <img src="portfolio/z28-camaro.jpg" alt="1972 Chevrolet Z28 Camaro studio shot">
+      <img src="portfolio/lj-torana.jpg" alt="Blue LJ Torana with blower">
+      <img src="portfolio/ferrari-488.jpg" alt="Ferrari 488 in parking garage">
+      <img src="portfolio/lambo-duo.jpg" alt="Lamborghini Huracan STO and Aventador Ultimae together">
+      <img src="portfolio/g-wagen-brabus.jpg" alt="">
+      <img src="portfolio/amg-gtr-green.jpg" alt="">
+      <img src="portfolio/huracan-bridge.jpg" alt="">
+      <img src="portfolio/mclaren-720s.jpg" alt="">
+      <img src="portfolio/rwb-porsche.jpg" alt="">
+      <img src="portfolio/bentley-gt.jpg" alt="">
+      <img src="portfolio/aventador-ultimae.jpg" alt="">
+      <img src="portfolio/z28-camaro.jpg" alt="">
+      <img src="portfolio/lj-torana.jpg" alt="">
+      <img src="portfolio/ferrari-488.jpg" alt="">
+      <img src="portfolio/lambo-duo.jpg" alt="">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 5. ABOUT MITCH ═══════════════ -->
 <section class="about pad reveal">
   <div class="c">
     <span class="eye">Your Instructor</span>
@@ -876,18 +952,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ SOLUTION ═══════════════ -->
-<div class="mpull pad reveal">
-  <div class="c">
-    <div class="mpull-box">
-      <span class="eye">The solution</span>
-      <h2>Become the photographer<br><span class="gc">they can't replicate.</span></h2>
-      <p style="margin-top:18px;">The Controlled Lighting Method™<br>The flash and light painting playbook the saturated market hasn't mastered.<br>The skill that ends the competition.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════ TRANSFORMATION ═══════════════ -->
+<!-- ═══════════════ 6. TRANSFORMATION ═══════════════ -->
 <section class="transform pad reveal">
   <div class="c">
     <div class="head">
@@ -945,7 +1010,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ MODULES ═══════════════ -->
+<!-- ═══════════════ 7. MODULES ═══════════════ -->
 <section class="mods pad reveal">
   <div class="c">
     <span class="eye">Inside the course</span>
@@ -958,52 +1023,21 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="mc"><img src="portfolio/ferrari-pair.jpg" class="mi" alt="Pair of red Ferraris lit against a dark studio backdrop"><div class="mb"><div class="mn">Module 03</div><div class="mt">Light Painting</div><p class="md">Light paint any car so the result looks like nothing else in the feed. The skill that makes your work unmistakable.</p></div></div>
       <div class="mc"><img src="portfolio/huracan-lb.jpg" class="mi" alt="Purple Liberty Walk Lamborghini Huracan in front of the Story Bridge at night"><div class="mb"><div class="mn">Module 04</div><div class="mt">Flash Lighting</div><p class="md">Use flash on location to control the light on any shoot, in any weather, at any time of day. No more cancelled shoots.</p></div></div>
       <div class="mc"><img src="portfolio/photoshop-amg.jpg" class="mi" alt="Adobe Photoshop screenshot showing a blue Mercedes AMG GT R being edited with color balance and layers"><div class="mb"><div class="mn">Module 05</div><div class="mt">Lightroom & Photoshop</div><p class="md">Deliver campaign quality edits on every file. The same workflow I use on premium brand work, repeatable across any car, any shoot.</p></div></div>
-      <div class="mc"><img src="portfolio/revuelto-urus.jpg" class="mi" alt="Mitch with a Lamborghini Revuelto and Urus at Lamborghini Brisbane"><div class="mb"><div class="mn">Module 06</div><div class="mt">Make It Unmistakable</div><p class="md">Apply the lighting techniques to build a signature look. The simple positioning moves that get your work in front of the right people.</p></div></div>
+      <div class="mc"><img src="portfolio/revuelto-urus.jpg" class="mi" alt="Mitch with a Lamborghini Revuelto and Urus at Lamborghini Brisbane"><div class="mb"><div class="mn">Module 06</div><div class="mt">Make It Unmistakable</div><p class="md">Apply the lighting techniques to build a signature look. Simple ways to use what you've learned so the right people start to notice.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ DESIRE ═══════════════ -->
-<div class="gallery reveal">
-  <div class="head">
-    <span class="eye">What you'll create</span>
-    <h2>Imagine your portfolio<br><span class="gc">looking like this.</span></h2>
-    <p>This is the kind of work that gets noticed.</p>
-  </div>
-  <div style="overflow:hidden;">
-    <div class="track">
-      <img src="portfolio/g-wagen-brabus.jpg" alt="G Wagen Brabus with light bar at night">
-      <img src="portfolio/amg-gtr-green.jpg" alt="Mercedes AMG GTR studio shot">
-      <img src="portfolio/huracan-bridge.jpg" alt="Purple Lamborghini Huracan with Story Bridge">
-      <img src="portfolio/mclaren-720s.jpg" alt="McLaren 720S with doors open at night">
-      <img src="portfolio/rwb-porsche.jpg" alt="RWB Porsche 911 rear shot">
-      <img src="portfolio/bentley-gt.jpg" alt="Bentley Continental GT in tropical setting">
-      <img src="portfolio/aventador-ultimae.jpg" alt="Lamborghini Aventador Ultimae with doors up">
-      <img src="portfolio/z28-camaro.jpg" alt="1972 Chevrolet Z28 Camaro studio shot">
-      <img src="portfolio/lj-torana.jpg" alt="Blue LJ Torana with blower">
-      <img src="portfolio/ferrari-488.jpg" alt="Ferrari 488 in parking garage">
-      <img src="portfolio/lambo-duo.jpg" alt="Lamborghini Huracan STO and Aventador Ultimae together">
-      <img src="portfolio/g-wagen-brabus.jpg" alt="">
-      <img src="portfolio/amg-gtr-green.jpg" alt="">
-      <img src="portfolio/huracan-bridge.jpg" alt="">
-      <img src="portfolio/mclaren-720s.jpg" alt="">
-      <img src="portfolio/rwb-porsche.jpg" alt="">
-      <img src="portfolio/bentley-gt.jpg" alt="">
-      <img src="portfolio/aventador-ultimae.jpg" alt="">
-      <img src="portfolio/z28-camaro.jpg" alt="">
-      <img src="portfolio/lj-torana.jpg" alt="">
-      <img src="portfolio/ferrari-488.jpg" alt="">
-      <img src="portfolio/lambo-duo.jpg" alt="">
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════ THE OFFER ═══════════════ -->
+<!-- ═══════════════ 8. VALUE STACK ═══════════════ -->
 <section class="vs pad reveal">
   <div class="c">
     <span class="eye">Everything you get</span>
     <h2>Yours for <span class="dyn-price" data-price="course">$195</span>.<br><span class="gc">Pays for itself in one shoot.</span></h2>
     <p class="vs-intro">Premium automotive shoots sit around $1,000. This course pays back with your first one. Enrol today for pre-sale access. Course opens June 1st.</p>
+
+    <div class="vs-feature">
+      <img src="portfolio/bentley-gt.jpg" alt="Bentley Continental GT shot on location with controlled lighting">
+    </div>
 
     <ul class="vl" id="vs-list">
       <li><span class="vi">The Automotive Lighting Blueprint. 6 full modules.</span><span class="vv vcheck">✓</span></li>
@@ -1020,7 +1054,22 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ EVEN IF ═══════════════ -->
+<!-- ═══════════════ 9. PROBLEM (qualifier) ═══════════════ -->
+<section class="fy pad reveal" id="why">
+  <div class="c">
+    <span class="eye">Is this for you?</span>
+    <h2>Every car photo looks the same.<br><span class="gc">Including yours.</span></h2>
+    <ul class="cks">
+      <li><span class="dot"></span><strong class="cks-h">Your photos blend in.</strong><span class="cks-d">Same golden hour, same angles as everyone else.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">You're stuck waiting for good light.</strong><span class="cks-d">Bad weather or wrong time of day kills the shoot.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">Flash and light painting feel out of reach.</strong><span class="cks-d">You've never used them with confidence.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">Your work has plateaued.</strong><span class="cks-d">Better gear and more practice haven't changed it.</span></li>
+    </ul>
+    <div class="fy-tag">If even one of these hit, this was built for you.</div>
+  </div>
+</section>
+
+<!-- ═══════════════ 10. BEGINNER FRIENDLY ═══════════════ -->
 <section class="evenif pad reveal">
   <div class="c">
     <span class="eye">Beginner friendly</span>
@@ -1034,10 +1083,13 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ DECISION ═══════════════ -->
+<!-- ═══════════════ 11. PRICING ═══════════════ -->
 <section class="pricing pad reveal" id="checkout">
   <div class="c">
     <div class="pc">
+      <div class="pc-image">
+        <img src="portfolio/aventador-ultimae.jpg" alt="Lamborghini Aventador Ultimae shot with controlled lighting on location">
+      </div>
       <div class="pb">Pre-sale</div>
       <div class="pn">The Automotive Lighting Blueprint</div>
       <div class="pp"><span class="dyn-price" data-price="course">$195</span><span class="cur-suffix" data-currency-label>USD</span></div>
@@ -1058,7 +1110,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ WHAT HAPPENS NEXT ═══════════════ -->
+<!-- ═══════════════ 12. WHAT HAPPENS NEXT ═══════════════ -->
 <section class="next pad reveal">
   <div class="c">
     <span class="eye">What happens after you enrol</span>
@@ -1072,7 +1124,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ FAQ ═══════════════ -->
+<!-- ═══════════════ 13. FAQ ═══════════════ -->
 <section class="faq pad reveal">
   <div class="c">
     <span class="eye">Questions</span>
@@ -1089,7 +1141,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ FINAL CTA ═══════════════ -->
+<!-- ═══════════════ 14. FINAL CTA ═══════════════ -->
 <section class="final pad reveal">
   <div class="c">
     <span class="eye">Ready?</span>
@@ -1116,8 +1168,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 /* ═══════════════════════════════════════════════════════════
    PRICES. EDIT IF NEEDED.
    USD = default for everyone except Australian timezone visitors.
-   Safety net: Stripe will charge the correct currency at checkout
-   regardless of what's displayed.
+   Safety net: Stripe charges correct currency at checkout regardless.
 ═══════════════════════════════════════════════════════════ */
 const PRICES = {
   USD: { course: 195 },
@@ -1143,28 +1194,23 @@ function render() {
   const price = fmt(PRICES[currentCurrency].course);
   const cur = currentCurrency;
 
-  // All dynamic price spans
   document.querySelectorAll('.dyn-price').forEach(el => {
     el.textContent = price;
   });
 
-  // Currency suffix labels
   document.querySelectorAll('[data-currency-label]').forEach(el => {
     el.textContent = cur;
   });
 
-  // CTA buttons that use dynamic text
   const ctaText = `Enrol Now → ${price} ${cur}`;
   const midBtn = document.getElementById('mid-cta-btn');
   const checkoutBtn = document.getElementById('checkout-cta');
   if (midBtn) midBtn.textContent = ctaText;
   if (checkoutBtn) checkoutBtn.textContent = ctaText;
 
-  // Floating CTA pill
   const floatText = document.getElementById('float-text');
   if (floatText) floatText.textContent = `Enrol · ${price}`;
 
-  // Step 1 description (currency-aware)
   const step1d = document.getElementById('step1-d');
   if (step1d) step1d.textContent = `Pay ${price} ${cur} and your spot is secured. Pre-sale access locked in.`;
 }
