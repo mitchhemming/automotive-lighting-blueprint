@@ -269,6 +269,20 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   margin-right: auto;
 }
 
+.hero-eye {
+  display: block;
+  font-family: var(--fh);
+  font-weight: 700;
+  font-size: clamp(11px, 2.6vw, 14px);
+  letter-spacing: .28em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-shadow:
+    0 0 14px rgba(0,0,0,0.95),
+    0 1px 3px rgba(0,0,0,1);
+}
+
 .scroll-cue {
   display: inline-block;
   padding: 8px 16px;
@@ -321,6 +335,17 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
     line-height: 0.92;
     letter-spacing: 0;
     margin: 0;
+  }
+  .hero-final .hero-eye {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    transform: translateY(calc(-50% - 78px));
+    text-align: center;
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: .3em;
   }
   .hero-final-bottom {
     position: absolute;
@@ -725,7 +750,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
 <!-- ═══════════════ FLOATING CTA ═══════════════ -->
 <a href="https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03" class="float-cta" id="float-cta">
-  <span id="float-text">Enrol · $195</span>
+  <span id="float-text">Get the course · $195</span>
   <span class="arrow">→</span>
 </a>
 
@@ -749,6 +774,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="hero-final">
       <div class="hero-final-content">
+        <span class="hero-eye">Automotive Photography Course</span>
         <h1>Create photos that<br><span class="gc">stop the scroll</span></h1>
         <div class="hero-final-bottom">
           <p class="sub">Learn flash &amp; light painting<br>Any car, any location</p>
@@ -1024,7 +1050,7 @@ function render() {
   if (checkoutBtn) checkoutBtn.textContent = ctaText;
 
   const floatText = document.getElementById('float-text');
-  if (floatText) floatText.textContent = `Enrol · ${price}`;
+  if (floatText) floatText.textContent = `Get the course · ${price}`;
 
   const step1d = document.getElementById('step1-d');
   if (step1d) step1d.textContent = `Pay ${price} ${cur} and your spot is secured. Presale access locked in.`;
