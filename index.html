@@ -105,7 +105,7 @@ a { text-decoration: none; color: inherit; }
   .pad-sm { padding-top: 56px; padding-bottom: 56px; }
 }
 
-/* ── BRAND LOGO (used in animation overlay) ── */
+/* ── BRAND LOGO ─────────────────────────────── */
 .logo { display: flex; align-items: center; gap: 9px; }
 .mark { width: 30px; height: 30px; border-radius: 5px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-size: 11px; font-weight: 900; color: var(--bg); letter-spacing: .5px; flex-shrink: 0; }
 .wm { display: flex; flex-direction: column; }
@@ -134,7 +134,7 @@ a { text-decoration: none; color: inherit; }
 .float-cta .arrow { font-size: 14px; }
 @media (min-width: 768px) { .float-cta { top: 24px; right: 24px; padding: 12px 20px; font-size: 13px; } }
 
-/* ── CURRENCY LABEL (sits at the baseline of the price next to it) ── */
+/* ── CURRENCY LABEL ─────────────────────────── */
 .cur-suffix {
   font-family: var(--fh);
   font-size: 0.32em;
@@ -235,7 +235,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   z-index: 3;
   display: flex; align-items: center; justify-content: center;
   padding: 60px 32px;
-  background: linear-gradient(to bottom, rgba(19,19,19,0.5) 0%, rgba(19,19,19,0.15) 35%, rgba(19,19,19,0.5) 100%);
+  background: linear-gradient(to bottom, rgba(19,19,19,0.65) 0%, rgba(19,19,19,0.5) 35%, rgba(19,19,19,0.65) 100%);
 }
 .hero-final-content { text-align: center; max-width: 900px; width: 100%; }
 .hero-final h1 {
@@ -252,7 +252,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
     0 1px 2px rgba(0,0,0,0.95);
   margin-bottom: 22px;
 }
-.hero-final h1 .line-1 { display: inline-block; }
 .hero-final h1 .gc { color: var(--gold); }
 
 .hero-final p.sub {
@@ -273,7 +272,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   margin-right: auto;
 }
 
-/* Scroll cue (replaces hero CTA) */
+/* Scroll cue */
 .scroll-cue {
   display: inline-block;
   padding: 8px 16px;
@@ -306,7 +305,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   }
 }
 
-/* Mobile: split layout. Headline centered at 25% from top, bottom group centered at 25% from bottom */
+/* Mobile: split layout. Headline centered at 25% from top, bottom group centered at 77% from top */
 @media (max-width: 768px) {
   .hero-final {
     align-items: stretch;
@@ -394,7 +393,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   }
 }
 
-/* ── ABOUT MITCH (split layout, mobile optimized) ── */
+/* ── ABOUT MITCH ────────────────────────────── */
 .about { background: var(--bg); padding-bottom: 32px; }
 @media (min-width: 768px) { .about { padding-bottom: 48px; } }
 .about > .c > .eye { margin-bottom: 14px; }
@@ -465,16 +464,12 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   background: var(--s1);
   border: 1px solid var(--line);
   border-radius: 4px;
+  margin-bottom: 22px;
 }
 @media (min-width: 768px) { .brands-strip { padding: 20px 24px; } }
 .brands-label { font-family: var(--fh); font-size: 13px; font-weight: 600; letter-spacing: .2em; color: var(--w50); text-transform: uppercase; margin-bottom: 12px; display: block; }
 .brands-list { font-family: var(--fh); font-size: clamp(17px, 4.6vw, 20px); font-weight: 700; letter-spacing: .04em; color: var(--w); text-transform: uppercase; line-height: 1.5; margin: 0; }
 @media (min-width: 768px) { .brands-list { font-size: 22px; } .brands-label { font-size: 14px; } }
-
-.brands-strip { margin-bottom: 22px; }
-.closing > p { margin: 0; font-size: clamp(15px, 4.2vw, 16px); line-height: 1.6; color: var(--w80); }
-.closing > p + p { margin-top: 14px; }
-.closing .lead { font-size: clamp(17px, 4.7vw, 18px); font-weight: 600; color: var(--w); margin-top: 18px; line-height: 1.45; }
 
 /* ── TRANSFORMATION (3-stage) ───────────────── */
 .transform { background: var(--s1); }
@@ -543,7 +538,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   display: block;
 }
 
-/* ── TRANSFORM CTA (closes the 3-stage section) ── */
+/* ── TRANSFORM CTA ──────────────────────────── */
 .transform-cta { text-align: center; }
 .transform-cta .eye { display: block; margin-bottom: 14px; }
 .transform-cta .btn { margin: 0 auto; }
@@ -554,7 +549,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   letter-spacing: 0.02em;
 }
 
-/* ── METHOD PULL (gold outlined box on dark) ── */
+/* ── METHOD PULL ────────────────────────────── */
 .mpull {
   background-color: var(--bg);
   background-image: linear-gradient(rgba(19,19,19,0.50), rgba(19,19,19,0.50)), url('portfolio/solution-bg.jpg');
@@ -658,9 +653,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   line-height: 1;
   padding-top: 2px;
 }
-.vl li.founding { border-left: 3px solid var(--gold); padding-left: 14px; background: rgba(200,146,42,0.05); margin: 0 -14px; padding-right: 14px; }
-.vl li.founding .vi { color: var(--gold2); font-weight: 600; }
-.vl li.founding .vv.vcheck { color: var(--gold2); }
 .vyou { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 14px 0; border-bottom: 1px solid var(--line); margin-bottom: 16px; margin-top: 4px; }
 .vyl { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .14em; color: var(--w); text-transform: uppercase; }
 .vya { font-family: var(--fh); font-size: clamp(30px, 8.5vw, 40px); font-weight: 900; color: var(--gold); letter-spacing: .01em; line-height: 1; }
@@ -672,12 +664,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .pn { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 22px); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--w); }
 .pp { font-family: var(--fh); font-size: clamp(64px, 17vw, 76px); font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: .01em; margin: 12px 0 4px; }
 .pw { font-size: 14px; color: var(--w50); margin-bottom: 22px; }
-.spots-bar { background: rgba(200,146,42,0.08); border: 1px solid rgba(200,146,42,0.3); border-radius: 4px; padding: 14px 16px; margin: 0 0 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.spots-label { font-family: var(--fh); font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--gold); text-transform: uppercase; }
-.spots-count { font-family: var(--fh); font-size: 22px; font-weight: 900; color: var(--gold2); letter-spacing: .02em; white-space: nowrap; }
-@media (max-width: 420px) {
-  .spots-bar { flex-direction: column; align-items: flex-start; gap: 6px; }
-}
 .preframe { margin: 22px 0; padding: 14px 16px; background: var(--bg); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; font-size: 15px; color: var(--w); line-height: 1.5; }
 .guarantee-badge {
   display: flex;
@@ -720,8 +706,6 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .pi { list-style: none; margin-bottom: 24px; }
 .pi li { display: flex; gap: 12px; align-items: flex-start; font-size: clamp(15px, 4.2vw, 16px); color: var(--w); padding: 12px 0; border-bottom: 1px solid var(--line); line-height: 1.45; }
 .pi li:last-child { border-bottom: none; }
-.pi li.founding { color: var(--gold2); font-weight: 600; }
-.pi li.founding .pd { background: var(--gold2); }
 .pd { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 9px; }
 @media (min-width: 768px) { .pc { padding: 40px 36px; } .pi li { font-size: 17px; } }
 
@@ -786,9 +770,6 @@ footer .c { text-align: center; }
 footer p { font-size: 12px; color: var(--w50); }
 footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
-/* ── PHASE VISIBILITY ───────────────────────── */
-[data-phase] { display: none; }
-
 /* ── UTILITIES ──────────────────────────────── */
 .nb { white-space: nowrap; }
 .mob-br { display: none; }
@@ -815,19 +796,19 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 </head>
 <body>
 
-<!-- ═══════════════ FLOATING CTA (appears after hero) ═══════════════ -->
-<a href="#checkout" class="float-cta" id="float-cta">
-  <span id="float-text">12 spots left</span>
+<!-- ═══════════════ FLOATING CTA ═══════════════ -->
+<a href="https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03" class="float-cta" id="float-cta">
+  <span id="float-text">Enrol · $195</span>
   <span class="arrow">→</span>
 </a>
 
-<!-- ═══════════════ HERO (STATIC) ═══════════════ -->
+<!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero">
   <div class="frame-wrap">
 
     <picture class="frame-pic">
       <source media="(max-width: 768px)" srcset="frames/frame-mobile-12.jpg">
-      <img src="frames/frame-desktop-12.jpg" alt="The Automotive Lighting Blueprint, final lit car composition" fetchpriority="high">
+      <img src="frames/frame-desktop-12.jpg" alt="White Liberty Walk Ferrari 488 Spider in an industrial parking garage at night" fetchpriority="high">
     </picture>
 
     <div class="logo-overlay">
@@ -841,9 +822,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="hero-final">
       <div class="hero-final-content">
-        <h1><span class="line-1">Your photos blend in.</span><br><span class="gc">No paid brand work.</span></h1>
+        <h1>Automotive Photography <span class="gc">That Stands Out</span></h1>
         <div class="hero-final-bottom">
-          <p class="sub">Learn the lighting <br class="mob-br">that gets you booked.</p>
+          <p class="sub">Master flash &amp; light painting in any location</p>
           <a href="#why" class="scroll-cue" aria-label="Scroll down">
             <span class="arrow">↓</span>
           </a>
@@ -858,12 +839,12 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="fy pad reveal" id="why">
   <div class="c">
     <span class="eye">The Problem</span>
-    <h2>Everyone has a media page.<br><span class="gc">Yours blends in with theirs.</span></h2>
+    <h2>Every car photo looks the same.<br><span class="gc">Including yours.</span></h2>
     <ul class="cks">
       <li><span class="dot"></span><strong class="cks-h">Your photos blend in.</strong><span class="cks-d">Same golden hour, same angles as everyone else.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">Premium brands scroll past.</strong><span class="cks-d">Like your work doesn't exist.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">You're undercharging.</strong><span class="cks-d">Or shooting for free hoping it leads somewhere.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">You can't break the ceiling.</strong><span class="cks-d">No matter how good your eye gets.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">You're stuck waiting for good light.</strong><span class="cks-d">Bad weather or wrong time of day kills the shoot.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">Flash and light painting feel out of reach.</strong><span class="cks-d">You've never used them with confidence.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">Your work has plateaued.</strong><span class="cks-d">Better gear and more practice haven't changed it.</span></li>
     </ul>
     <div class="fy-tag">If even one of these hit, keep reading. This was built for you.</div>
   </div>
@@ -906,13 +887,13 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </div>
 
-<!-- ═══════════════ TRANSFORMATION (3-stage) ═══════════════ -->
+<!-- ═══════════════ TRANSFORMATION ═══════════════ -->
 <section class="transform pad reveal">
   <div class="c">
     <div class="head">
       <span class="eye">How it works</span>
-      <h2>Master the light.<br><span class="gc">Land the clients.</span></h2>
-      <p>Three stages. Each one moves you closer to the brands you actually want to work with.</p>
+      <h2>Master the light.<br><span class="gc">Make the work stand out.</span></h2>
+      <p>Three stages. Each one moves you closer to work that doesn't blend in.</p>
     </div>
 
     <div class="stages">
@@ -945,9 +926,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="stage">
         <div class="stage-head">
           <div class="stage-num">03</div>
-          <h3>Brands<br><span class="gc">hire you.</span></h3>
+          <h3>Brands<br><span class="gc">notice you.</span></h3>
         </div>
-        <p>Premium brands scroll Instagram looking for work that stands out. Yours now does. They find you, send the DM, and book the shoot at $1,000+. <strong>This is the career you came here for.</strong></p>
+        <p>Premium brands scroll Instagram looking for work that stands out. Yours now does. The right people start to notice. <strong>This is what you came here for.</strong></p>
         <div class="stage-img">
           <img src="portfolio/stage-03-brands.jpg" alt="Mitch standing in front of a Lamborghini Revuelto at the dealership">
         </div>
@@ -957,8 +938,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="transform-cta">
       <span class="eye">Your move</span>
-      <a href="checkout.html" class="btn" id="mid-cta-btn">Get The Blueprint → $195 USD</a>
-      <p class="transform-cta-note">Founding price · 30 spots only · Course opens June 1st</p>
+      <a href="https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03" class="btn" id="mid-cta-btn">Enrol Now → $195 USD</a>
+      <p class="transform-cta-note">Pre-sale · Course opens June 1st</p>
     </div>
 
   </div>
@@ -969,15 +950,15 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <span class="eye">Inside the course</span>
     <h2>6 Modules.<br><span class="gc">Full system.</span></h2>
-    <p class="mod-intro">Every module is built around one goal. Get you ready for premium clients in 30 days.</p>
+    <p class="mod-intro">Every module is built around one goal. Total control over how every car photo turns out.</p>
 
     <div class="mgrid">
       <div class="mc"><img src="portfolio/mitch-lambos.jpg" class="mi" alt="Mitch with a black Lamborghini Urus and Aventador in front of a mural"><div class="mb"><div class="mn">Module 01</div><div class="mt">Introduction</div><p class="md">Walk in knowing exactly why most car photographers stay invisible, and what you'll do differently from here. The mindset that makes the rest of this course click.</p></div></div>
       <div class="mc"><img src="portfolio/mclaren-artura-bts.jpg" class="mi" alt="Behind the scenes shot of camera on tripod with an orange McLaren Artura on location at night"><div class="mb"><div class="mn">Module 02</div><div class="mt">Gear & Location</div><p class="md">Buy the right gear once, on any budget. Then walk into any location and know where to position the car within minutes.</p></div></div>
-      <div class="mc"><img src="portfolio/ferrari-pair.jpg" class="mi" alt="Pair of red Ferraris lit against a dark studio backdrop"><div class="mb"><div class="mn">Module 03</div><div class="mt">Light Painting</div><p class="md">Light paint any car so the result looks like nothing else in the feed. The skill that gets premium brands sliding into your DMs.</p></div></div>
+      <div class="mc"><img src="portfolio/ferrari-pair.jpg" class="mi" alt="Pair of red Ferraris lit against a dark studio backdrop"><div class="mb"><div class="mn">Module 03</div><div class="mt">Light Painting</div><p class="md">Light paint any car so the result looks like nothing else in the feed. The skill that makes your work unmistakable.</p></div></div>
       <div class="mc"><img src="portfolio/huracan-lb.jpg" class="mi" alt="Purple Liberty Walk Lamborghini Huracan in front of the Story Bridge at night"><div class="mb"><div class="mn">Module 04</div><div class="mt">Flash Lighting</div><p class="md">Use flash on location to control the light on any shoot, in any weather, at any time of day. No more cancelled shoots.</p></div></div>
       <div class="mc"><img src="portfolio/photoshop-amg.jpg" class="mi" alt="Adobe Photoshop screenshot showing a blue Mercedes AMG GT R being edited with color balance and layers"><div class="mb"><div class="mn">Module 05</div><div class="mt">Lightroom & Photoshop</div><p class="md">Deliver campaign quality edits on every file. The same workflow I use on premium brand work, repeatable across any car, any shoot.</p></div></div>
-      <div class="mc"><img src="portfolio/revuelto-urus.jpg" class="mi" alt="Mitch with a Lamborghini Revuelto and Urus at Lamborghini Brisbane"><div class="mb"><div class="mn">Module 06</div><div class="mt">The Client Blueprint</div><p class="md">Build a portfolio that the right brands can't ignore. Know exactly what to send when they reach out, and how to price your work so it gets taken seriously.</p></div></div>
+      <div class="mc"><img src="portfolio/revuelto-urus.jpg" class="mi" alt="Mitch with a Lamborghini Revuelto and Urus at Lamborghini Brisbane"><div class="mb"><div class="mn">Module 06</div><div class="mt">Make It Unmistakable</div><p class="md">Apply the lighting techniques to build a signature look. The simple positioning moves that get your work in front of the right people.</p></div></div>
     </div>
   </div>
 </section>
@@ -987,7 +968,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="head">
     <span class="eye">What you'll create</span>
     <h2>Imagine your portfolio<br><span class="gc">looking like this.</span></h2>
-    <p>This is the kind of work that gets noticed and gets you hired.</p>
+    <p>This is the kind of work that gets noticed.</p>
   </div>
   <div style="overflow:hidden;">
     <div class="track">
@@ -1021,8 +1002,8 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="vs pad reveal">
   <div class="c">
     <span class="eye">Everything you get</span>
-    <h2>Yours for <span class="dyn-price" data-price="course_p1">$195</span>.<br><span class="gc">Pays for itself in one shoot.</span></h2>
-    <p class="vs-intro">Premium automotive shoots sit around $1,000. This course pays back with your first one. Enrol today, lock in your spot. Course access opens June 1st.</p>
+    <h2>Yours for <span class="dyn-price" data-price="course">$195</span>.<br><span class="gc">Pays for itself in one shoot.</span></h2>
+    <p class="vs-intro">Premium automotive shoots sit around $1,000. This course pays back with your first one. Enrol today for pre-sale access. Course opens June 1st.</p>
 
     <ul class="vl" id="vs-list">
       <li><span class="vi">The Automotive Lighting Blueprint. 6 full modules.</span><span class="vv vcheck">✓</span></li>
@@ -1033,12 +1014,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <li><span class="vi">Camera settings reference guide</span><span class="vv vcheck">✓</span></li>
       <li><span class="vi">On location shoot checklist</span><span class="vv vcheck">✓</span></li>
       <li><span class="vi">Gear checklist</span><span class="vv vcheck">✓</span></li>
-      <li class="founding founding-only"><span class="vi">★ Founding Student status</span><span class="vv vcheck">✓</span></li>
-      <li class="founding founding-only"><span class="vi">★ Founding only live Q&amp;A with Mitch</span><span class="vv vcheck">✓</span></li>
-      <li class="founding founding-only"><span class="vi">★ Behind the scenes bonus module</span><span class="vv vcheck">✓</span></li>
     </ul>
-    <div class="vyou"><span class="vyl">You pay today</span><span class="vya"><span class="dyn-price" data-price="course_p1">$195</span><span class="cur-suffix" data-currency-label>USD</span></span></div>
-    <a href="checkout.html" class="btn vs-btn">Lock In My Spot →</a>
+    <div class="vyou"><span class="vyl">You pay today</span><span class="vya"><span class="dyn-price" data-price="course">$195</span><span class="cur-suffix" data-currency-label>USD</span></span></div>
+    <a href="https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03" class="btn vs-btn">Enrol Now →</a>
   </div>
 </section>
 
@@ -1060,15 +1038,10 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="pricing pad reveal" id="checkout">
   <div class="c">
     <div class="pc">
-      <div class="pb" id="price-badge">🔥 Founding Student Price</div>
+      <div class="pb">Pre-sale</div>
       <div class="pn">The Automotive Lighting Blueprint</div>
-      <div class="pp"><span class="dyn-price" data-price="course_p1">$195</span><span class="cur-suffix" data-currency-label>USD</span></div>
-      <p class="pw" id="price-was">Goes to $395 once founding fills.</p>
-
-      <div class="spots-bar founding-only" id="spots-bar">
-        <span class="spots-label">Founding spots remaining</span>
-        <span class="spots-count"><span id="price-spots">30</span> / 30</span>
-      </div>
+      <div class="pp"><span class="dyn-price" data-price="course">$195</span><span class="cur-suffix" data-currency-label>USD</span></div>
+      <p class="pw">Course opens June 1st. Enrol today.</p>
 
       <div class="preframe">
         <strong style="color:var(--gold);">Premium automotive shoots start around $1,000+. This course pays back with your first one.</strong> The math is simple, and so is the decision.
@@ -1079,7 +1052,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
         <div class="gb-text"><strong>30 day money back guarantee.</strong> Do the work, show me the result.</div>
       </div>
 
-      <a href="checkout.html" class="btn" id="checkout-cta">Get The Blueprint → $195</a>
+      <a href="https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03" class="btn" id="checkout-cta">Enrol Now → $195</a>
       <p class="bn" id="checkout-note">Secure checkout. Course access June 1st.</p>
     </div>
   </div>
@@ -1092,9 +1065,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <h2>Three steps<br><span class="gc">to start.</span></h2>
     <p class="next-intro">Simple, fast, and built so you're ready to apply the system the moment the course opens.</p>
     <ul class="steps">
-      <li><div class="step-t" id="step1-t">Lock in your founding spot</div><div class="step-d" id="step1-d">Pay $195 today and your seat is secured. Founding bonuses included.</div></li>
+      <li><div class="step-t" id="step1-t">Enrol today</div><div class="step-d" id="step1-d">Pay $195 and your spot is secured. Pre-sale access locked in.</div></li>
       <li><div class="step-t" id="step2-t">Course unlocks June 1st</div><div class="step-d" id="step2-d">Full access to every module on Monday June 1st. Watch on any device.</div></li>
-      <li><div class="step-t" id="step3-t">Apply it to your next shoot</div><div class="step-d" id="step3-d">Use the system on your next car. See the difference. Build your portfolio.</div></li>
+      <li><div class="step-t" id="step3-t">Apply it to your next shoot</div><div class="step-d" id="step3-d">Use the system on your next car. See the difference in the work.</div></li>
     </ul>
   </div>
 </section>
@@ -1105,12 +1078,11 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <span class="eye">Questions</span>
     <h2>Quick<br><span class="gc">Answers.</span></h2>
     <div style="margin-top:28px;">
-      <div class="fq"><button class="fqb" onclick="faq(this)">When do I get the course?<span class="fqi">+</span></button><div class="fqa">The full course unlocks on Monday, June 1st. Your founding spot is secured the moment you pay. You'll get an email confirmation, and access details closer to launch day.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">What is "Founding Student" status?<span class="fqi">+</span></button><div class="fqa">Founding Students are the first 30 to enrol. You get the lowest price the course will ever be, exclusive bonuses, and a private Q&amp;A with me. Once 30 spots are claimed, founding access closes forever.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">When do I get the course?<span class="fqi">+</span></button><div class="fqa">The full course unlocks on Monday, June 1st. Your spot is secured the moment you pay. You'll get an email confirmation, and access details closer to launch day.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">Do I need expensive gear or access to expensive cars?<span class="fqi">+</span></button><div class="fqa">No to both. The method works on any budget and on any car. Lighting creates the result, not the gear or the badge. A Honda Civic shot with controlled lighting beats a Lamborghini in bad light every time.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">I've never used flash before. Can I do this?<span class="fqi">+</span></button><div class="fqa">Yes. We start from the basics. No prior flash or light painting experience needed. If you can use a camera, you can learn this.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">What if everyone learns this too?<span class="fqi">+</span></button><div class="fqa">Most won't. Light painting and on-location flash take real practice to master. That's exactly why they remain a moat. The photographers who actually put in the work stay booked. The rest stay where they are.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">Is there a money back guarantee?<span class="fqi">+</span></button><div class="fqa">Yes, 30 days from the moment you receive the course. Within those 30 days, complete every module, apply at least one lighting technique I teach to a new shoot, and run the files through the editing process. If you don't see a visible improvement in your work, send me what you created and you'll get every cent back. Same guarantee covers the cohort upsell.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">What if everyone learns this too?<span class="fqi">+</span></button><div class="fqa">Most won't. Light painting and on-location flash take real practice to master. That's exactly why they remain a moat. The photographers who actually put in the work stay ahead. The rest stay where they are.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">Is there a money back guarantee?<span class="fqi">+</span></button><div class="fqa">Yes, 30 days from the moment you receive the course. Within those 30 days, complete every module, apply at least one lighting technique I teach to a new shoot, and run the files through the editing process. If you don't see a visible improvement in your work, send me what you created and you'll get every cent back.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">What format is the course and how long do I have access?<span class="fqi">+</span></button><div class="fqa">Recorded video lessons, broken into short modules. Watch on any device. All templates and downloads inside. Lifetime access, plus every future update automatically.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button><div class="fqa">Most students apply the system on their first shoot within a week of access opening. With consistent application, you'll have premium quality work in your portfolio inside 30 days.</div></div>
     </div>
@@ -1121,10 +1093,10 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="final pad reveal">
   <div class="c">
     <span class="eye">Ready?</span>
-    <h2>The photographers getting paid<br><span class="gc">aren't more talented.</span></h2>
+    <h2>The photographers people notice<br><span class="gc">aren't more talented.</span></h2>
     <p class="lead" style="color:var(--w);">They just stopped blending in.</p>
-    <a href="checkout.html" class="btn final-cta" style="margin-top:32px;">Stop Blending In →</a>
-    <p class="bn" id="final-note" style="margin-top:14px;">Founding price. Course access June 1st.</p>
+    <a href="https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03" class="btn final-cta" style="margin-top:32px;">Stop Blending In →</a>
+    <p class="bn" id="final-note" style="margin-top:14px;">Pre-sale. Course access June 1st.</p>
   </div>
 </section>
 
@@ -1142,48 +1114,19 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
 <script>
 /* ═══════════════════════════════════════════════════════════
-   PRICES. EDIT THE AUD VALUES BELOW IF YOU WANT DIFFERENT
-   AMOUNTS. USD values are the actual sale prices.
+   PRICES. EDIT IF NEEDED.
+   USD = default for everyone except Australian timezone visitors.
+   Safety net: Stripe will charge the correct currency at checkout
+   regardless of what's displayed.
 ═══════════════════════════════════════════════════════════ */
 const PRICES = {
-  USD: {
-    course_p1:     195,
-    course_p2:     395,
-    cohort:        695,
-    perceived:    1495,
-    item_course:   995,
-    item_diagrams: 147,
-    item_preset:    97,
-    item_workflow:  97,
-    item_settings:  77,
-    item_checklist: 57,
-    item_gear:      35
-  },
-  AUD: {
-    course_p1:     295,
-    course_p2:     595,
-    cohort:        995,
-    perceived:    2245,
-    item_course:  1495,
-    item_diagrams: 215,
-    item_preset:   145,
-    item_workflow: 145,
-    item_settings: 115,
-    item_checklist: 85,
-    item_gear:      50
-  }
+  USD: { course: 195 },
+  AUD: { course: 295 }
 };
 
-const CONFIG = {
-  p1FoundingCap: 30,
-  p1SpotsLeft:   30,                              // ← UPDATE AS SALES COME IN
-  p1EndDate:     '2026-05-25T00:00:00+10:00',
-  launchDate:    '2026-06-01T00:00:00+10:00'
-};
+const STRIPE_URL = 'https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03';
 
-/* ═══════════════ AUTO-DETECT CURRENCY ═══════════════
-   AU timezone → AUD. Everyone else → USD.
-   Safety net: Stripe shows correct currency at checkout regardless. */
+/* ═══════════════ CURRENCY DETECTION ═══════════════ */
 function detectCurrency() {
   try {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -1194,105 +1137,39 @@ function detectCurrency() {
 const currentCurrency = detectCurrency();
 
 function fmt(n) { return '$' + Number(n).toLocaleString('en-US'); }
-function priceFor(key) { return fmt(PRICES[currentCurrency][key]); }
 
-/* ═══════════════ PHASE DETECTION ═══════════════ */
-function getPhase() {
-  const now = new Date();
-  if (CONFIG.p1SpotsLeft > 0 && now < new Date(CONFIG.p1EndDate)) return 1;
-  return 2;
-}
-
-function isLaunched() {
-  return new Date() >= new Date(CONFIG.launchDate);
-}
-
+/* ═══════════════ RENDER PRICES & CTAs ═══════════════ */
 function render() {
-  const phase = getPhase();
-  const isFounding = phase === 1;
-  const launched = isLaunched();
-  const phaseKey = `course_p${phase}`;
+  const price = fmt(PRICES[currentCurrency].course);
+  const cur = currentCurrency;
 
-  // Show/hide founding-only blocks
-  document.querySelectorAll('.founding-only').forEach(el => {
-    el.style.display = isFounding ? '' : 'none';
-  });
-
-  let badge, ctaText, was, finalNote, floatText;
-
-  if (phase === 1) {
-    badge = '🔥 Founding Student Price';
-    ctaText = `Get The Blueprint → ${priceFor('course_p1')} ${currentCurrency}`;
-    was = `Founding ends May 25, or when 30 spots fill. Then ${priceFor('course_p2')}.`;
-    finalNote = launched ? 'Founding price. Instant access.' : 'Founding price. Course access June 1st.';
-    floatText = `${CONFIG.p1SpotsLeft} spots left`;
-  } else {
-    badge = launched ? 'Enrol Today' : 'Enrol Now';
-    ctaText = `Enrol Now → ${priceFor('course_p2')} ${currentCurrency}`;
-    was = launched
-      ? `The course is live. Instant access on enrolment.`
-      : `Founding has closed. Course access opens Monday, June 1st.`;
-    finalNote = launched ? 'Secure checkout. Instant access.' : 'Secure checkout. Course access June 1st.';
-    floatText = launched ? `Enrol · ${priceFor('course_p2')} ${currentCurrency}` : `Reserve · ${priceFor('course_p2')} ${currentCurrency}`;
-  }
-
-  // Phase-aware spans get their data-price set to current phase
+  // All dynamic price spans
   document.querySelectorAll('.dyn-price').forEach(el => {
-    el.setAttribute('data-price', phaseKey);
+    el.textContent = price;
   });
 
-  // CTAs (pricing + mid CTA only. Hero is now a scroll cue, vs-btn and final-cta have static varied copy)
-  document.querySelectorAll('#checkout-cta, #mid-cta-btn').forEach(el => el.textContent = ctaText);
-
-  // Other dynamic content
-  document.getElementById('price-badge').textContent = badge;
-  document.getElementById('price-was').textContent = was;
-  document.getElementById('final-note').textContent = finalNote;
-  document.getElementById('float-text').textContent = floatText;
-
-  if (phase === 1) document.getElementById('price-spots').textContent = CONFIG.p1SpotsLeft;
-
-  // What happens next
-  const step1t = document.getElementById('step1-t');
-  const step1d = document.getElementById('step1-d');
-  const step2t = document.getElementById('step2-t');
-  const step2d = document.getElementById('step2-d');
-
-  if (phase === 1) {
-    step1t.textContent = 'Lock in your founding spot';
-    step1d.textContent = `Pay ${priceFor('course_p1')} ${currentCurrency} today and your seat is secured. Founding bonuses included.`;
-  } else if (!launched) {
-    step1t.textContent = 'Reserve your seat';
-    step1d.textContent = `Pay ${priceFor('course_p2')} ${currentCurrency} today and your seat is secured.`;
-  } else {
-    step1t.textContent = 'Pay and get instant access';
-    step1d.textContent = 'The full course unlocks the moment you enrol. Watch on any device.';
-  }
-
-  if (!launched) {
-    step2t.textContent = 'Course unlocks June 1st';
-    step2d.textContent = 'Full access to every module on Monday June 1st. Watch on any device.';
-  } else {
-    step2t.textContent = 'Start with Module 01';
-    step2d.textContent = 'Set yourself up for success. Then move at your own pace through every module.';
-  }
-}
-
-/* ═══════════════ APPLY CURRENCY ═══════════════ */
-function applyCurrencyToElements() {
-  document.querySelectorAll('[data-price]').forEach(el => {
-    const key = el.getAttribute('data-price');
-    const val = PRICES[currentCurrency] && PRICES[currentCurrency][key];
-    if (val != null) el.textContent = fmt(val);
-  });
+  // Currency suffix labels
   document.querySelectorAll('[data-currency-label]').forEach(el => {
-    el.textContent = currentCurrency;
+    el.textContent = cur;
   });
+
+  // CTA buttons that use dynamic text
+  const ctaText = `Enrol Now → ${price} ${cur}`;
+  const midBtn = document.getElementById('mid-cta-btn');
+  const checkoutBtn = document.getElementById('checkout-cta');
+  if (midBtn) midBtn.textContent = ctaText;
+  if (checkoutBtn) checkoutBtn.textContent = ctaText;
+
+  // Floating CTA pill
+  const floatText = document.getElementById('float-text');
+  if (floatText) floatText.textContent = `Enrol · ${price}`;
+
+  // Step 1 description (currency-aware)
+  const step1d = document.getElementById('step1-d');
+  if (step1d) step1d.textContent = `Pay ${price} ${cur} and your spot is secured. Pre-sale access locked in.`;
 }
 
-// Initialise
 render();
-applyCurrencyToElements();
 
 /* ═══════════════ FLOATING CTA SCROLL TRIGGER ═══════════════ */
 (function () {
