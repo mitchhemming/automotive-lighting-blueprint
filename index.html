@@ -41,13 +41,13 @@
 </script>
 
 <title>The Automotive Lighting Blueprint · Consistent Creative</title>
-<meta name="description" content="A course on automotive photography lighting. Master flash and light painting techniques. Light any car, in any location, day or night.">
+<meta name="description" content="A flash and light painting course for automotive photographers. Six modules. Light any car, in any location, day or night.">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://consistentcreative.com/">
 <meta property="og:title" content="The Automotive Lighting Blueprint">
-<meta property="og:description" content="A course on automotive photography lighting. Master flash and light painting techniques. Light any car, in any location, day or night.">
+<meta property="og:description" content="A flash and light painting course for automotive photographers. Six modules. Light any car, in any location, day or night.">
 <meta property="og:image" content="https://consistentcreative.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -58,7 +58,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Automotive Lighting Blueprint">
-<meta name="twitter:description" content="A course on automotive photography lighting. Master flash and light painting techniques. Light any car, in any location, day or night.">
+<meta name="twitter:description" content="A flash and light painting course for automotive photographers. Six modules. Light any car, in any location, day or night.">
 <meta name="twitter:image" content="https://consistentcreative.com/og-image.jpg">
 <meta name="twitter:image:alt" content="The Automotive Lighting Blueprint by Mitch Hemming">
 
@@ -107,7 +107,6 @@ a { text-decoration: none; color: inherit; }
 
 /* ── BRAND LOGO ─────────────────────────────── */
 .logo { display: flex; align-items: center; gap: 9px; }
-.mark { width: 30px; height: 30px; border-radius: 5px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-size: 11px; font-weight: 900; color: var(--bg); letter-spacing: .5px; flex-shrink: 0; }
 .wm { display: flex; flex-direction: column; }
 .wm1 { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .1em; color: var(--w); text-transform: uppercase; line-height: 1; }
 .wm2 { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; margin-top: 2px; }
@@ -146,8 +145,6 @@ a { text-decoration: none; color: inherit; }
   margin-left: 6px;
   display: inline-block;
 }
-
-.rule { height: 1px; background: var(--line); }
 
 /* ── TYPE ───────────────────────────────────── */
 .eye {
@@ -345,54 +342,59 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   }
 }
 
-/* ── EXPLAINER (NEW) ────────────────────────── */
+/* ── EXPLAINER ──────────────────────────────── */
 .explainer { background: var(--bg); }
 .explainer .eye { margin-bottom: 16px; }
 .explainer h2 { margin-bottom: 22px; }
 .explainer .lead { color: var(--w80); font-weight: 400; }
 
-/* ── METHOD PULL ────────────────────────────── */
-.mpull {
-  background-color: var(--bg);
-  background-image: linear-gradient(rgba(19,19,19,0.50), rgba(19,19,19,0.50)), url('portfolio/solution-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* ── PROBLEM / RECOGNITION ──────────────────── */
+.fy { background: var(--s1); }
+.cks { list-style: none; margin-top: 26px; }
+.cks li {
+  display: grid;
+  grid-template-columns: 8px 1fr;
+  align-items: start;
+  column-gap: 14px;
+  row-gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
 }
-.mpull-box {
-  border: 1px solid var(--gold);
-  background: rgba(31, 31, 31, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 8px;
-  padding: 32px 16px;
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto;
-  position: relative;
+.cks li .dot { grid-row: 1; grid-column: 1; }
+.cks li .cks-h {
+  grid-row: 1; grid-column: 2;
+  color: var(--w); font-weight: 600;
+  font-size: clamp(16px, 4.5vw, 18px);
+  line-height: 1.3;
 }
-.mpull-box::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 50%; transform: translate(-50%, -50%);
-  width: 60px; height: 4px;
-  background: var(--gold);
-  border-radius: 2px;
+.cks li .cks-d {
+  grid-row: 2; grid-column: 2;
+  font-size: clamp(15px, 4.2vw, 17px);
+  color: var(--w80);
+  line-height: 1.55;
 }
-.mpull h2 { color: var(--w); margin-bottom: 16px; font-size: clamp(28px, 7.5vw, 44px); }
-.mpull h2 .gc { color: var(--gold); }
+.cks li:last-child { border-bottom: none; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
+.fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
 @media (min-width: 768px) {
-  .mpull h2 { font-size: clamp(44px, 6vw, 56px); letter-spacing: -0.015em; }
-}
-.mpull p { color: var(--w80); font-size: clamp(17px, 4.8vw, 19px); line-height: 1.35; }
-.mpull .eye { color: var(--gold); }
-@media (min-width: 768px) {
-  .mpull-box { padding: 56px 40px; }
-  .mpull p { font-size: 21px; }
+  .cks li {
+    grid-template-columns: 8px minmax(180px, 30%) 1fr;
+    row-gap: 0;
+    column-gap: 14px;
+  }
+  .cks li .cks-h {
+    grid-row: 1; grid-column: 2;
+    font-size: 18px;
+  }
+  .cks li .cks-d {
+    grid-row: 1; grid-column: 3;
+    font-size: 20px;
+    line-height: 1.45;
+  }
 }
 
 /* ── GALLERY ────────────────────────────────── */
-.gallery { overflow: hidden; padding: 60px 0; background: var(--s1); }
+.gallery { overflow: hidden; padding: 60px 0; background: var(--bg); }
 @media (min-width: 768px) { .gallery { padding: 96px 0; } }
 .gallery .head { text-align: center; padding: 0 24px 28px; }
 .gallery .head h2 { margin-bottom: 12px; }
@@ -403,8 +405,8 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 @media (min-width: 768px) { .track img { width: 280px; height: 360px; } }
 
 /* ── ABOUT MITCH ────────────────────────────── */
-.about { background: var(--bg); padding-bottom: 32px; }
-@media (min-width: 768px) { .about { padding-bottom: 48px; } }
+.about { background: var(--s1); padding-bottom: 60px; }
+@media (min-width: 768px) { .about { padding-bottom: 96px; } }
 .about > .c > .eye { margin-bottom: 14px; }
 .about h2 { margin-bottom: 24px; }
 
@@ -464,115 +466,34 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   gap: 14px;
 }
 .story-text p { margin: 0; font-size: clamp(15px, 4.2vw, 16px); line-height: 1.55; color: var(--w80); }
-.story-text .lead { font-size: clamp(17px, 4.7vw, 18px); font-weight: 600; color: var(--w); line-height: 1.4; }
 .story-text .anchor-line { color: var(--w); font-weight: 600; }
 .story-text .anchor-line strong { color: var(--gold); font-weight: 700; }
 
 .brands-strip {
   padding: 16px 18px;
-  background: var(--s1);
+  background: var(--s2);
   border: 1px solid var(--line);
   border-radius: 4px;
-  margin-bottom: 22px;
 }
 @media (min-width: 768px) { .brands-strip { padding: 20px 24px; } }
 .brands-label { font-family: var(--fh); font-size: 13px; font-weight: 600; letter-spacing: .2em; color: var(--w50); text-transform: uppercase; margin-bottom: 12px; display: block; }
 .brands-list { font-family: var(--fh); font-size: clamp(17px, 4.6vw, 20px); font-weight: 700; letter-spacing: .04em; color: var(--w); text-transform: uppercase; line-height: 1.5; margin: 0; }
 @media (min-width: 768px) { .brands-list { font-size: 22px; } .brands-label { font-size: 14px; } }
 
-/* ── TRANSFORMATION ─────────────────────────── */
-.transform { background: var(--s1); }
-.transform .head { text-align: center; margin-bottom: 48px; }
-.transform .head h2 { margin-bottom: 14px; }
-.transform .head p { color: var(--w80); max-width: 540px; margin: 0 auto; }
-
-.stages { display: flex; flex-direction: column; gap: 0; }
-
-.stage { padding-bottom: 44px; }
-.stage:not(:last-child) {
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 44px;
-}
-@media (min-width: 768px) {
-  .stage { padding-bottom: 64px; }
-  .stage:not(:last-child) { margin-bottom: 64px; }
-}
-
-.stage-head {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 22px;
-}
-.stage-num {
-  font-family: var(--fh);
-  font-size: clamp(64px, 17vw, 92px);
-  font-weight: 900;
-  color: var(--gold);
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  flex-shrink: 0;
-}
-@media (min-width: 768px) {
-  .stage-head { gap: 22px; margin-bottom: 26px; }
-}
-
-.stage h3 {
-  font-family: var(--fh); font-weight: 900;
-  font-size: clamp(28px, 8vw, 36px);
-  text-transform: uppercase; letter-spacing: .02em;
-  line-height: .95; color: var(--w);
-  margin-bottom: 0;
-}
-.stage h3 .gc { color: var(--gold); }
-.stage p {
-  font-size: clamp(15px, 4.2vw, 17px);
-  color: var(--w80);
-  line-height: 1.55;
-  margin-bottom: 22px;
-}
-.stage p strong { color: var(--w); font-weight: 600; }
-
-.stage-img {
-  width: 100%;
-  margin: 0;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.stage-img img {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  height: auto;
-  object-fit: cover;
-  display: block;
-}
-
-.transform-cta { text-align: center; }
-.transform-cta .eye { display: block; margin-bottom: 14px; }
-.transform-cta .btn { margin: 0 auto; }
-.transform-cta-note {
-  margin-top: 14px;
-  font-size: 13px;
-  color: var(--w50);
-  letter-spacing: 0.02em;
-}
-
 /* ── MODULES ────────────────────────────────── */
-.mods { background: var(--s2); }
+.mods { background: var(--bg); }
 .mod-intro { color: var(--w80); margin-top: 12px; }
 .mgrid { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
 .mc { background: var(--s1); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
 .mi { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
 .mb { padding: 18px 20px; }
 .mn { font-family: var(--fh); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
-.mn.p { color: var(--gold2); }
 .mt { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 24px); font-weight: 900; text-transform: uppercase; letter-spacing: .03em; color: var(--w); line-height: 1.05; margin-bottom: 10px; }
-.mt.p { color: var(--gold); }
 .md { font-size: clamp(14px, 3.8vw, 15px); color: var(--w80); line-height: 1.55; }
 @media (min-width: 768px) { .mgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } .mt { font-size: 22px; } }
 
 /* ── VALUE STACK ────────────────────────────── */
-.vs { background: var(--s2); }
+.vs { background: var(--s1); }
 .vs-intro { color: var(--w80); margin-top: 12px; margin-bottom: 4px; line-height: 1.55; }
 .vs-feature {
   width: 100%;
@@ -602,54 +523,9 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .vyl { font-family: var(--fh); font-size: 14px; font-weight: 700; letter-spacing: .14em; color: var(--w); text-transform: uppercase; }
 .vya { font-family: var(--fh); font-size: clamp(30px, 8.5vw, 40px); font-weight: 900; color: var(--gold); letter-spacing: .01em; line-height: 1; }
 
-/* ── RECOGNITION / PROBLEM ──────────────────── */
-.fy { background: var(--s1); }
-.cks { list-style: none; margin-top: 26px; }
-.cks li {
-  display: grid;
-  grid-template-columns: 8px 1fr;
-  align-items: start;
-  column-gap: 14px;
-  row-gap: 4px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
-}
-.cks li .dot { grid-row: 1; grid-column: 1; }
-.cks li .cks-h {
-  grid-row: 1; grid-column: 2;
-  color: var(--w); font-weight: 600;
-  font-size: clamp(16px, 4.5vw, 18px);
-  line-height: 1.3;
-}
-.cks li .cks-d {
-  grid-row: 2; grid-column: 2;
-  font-size: clamp(15px, 4.2vw, 17px);
-  color: var(--w80);
-  line-height: 1.55;
-}
-.cks li:last-child { border-bottom: none; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
-.fy-tag { margin-top: 24px; padding: 16px 18px; background: var(--s2); border-left: 3px solid var(--gold); font-size: 17px; color: var(--w); font-weight: 600; }
-@media (min-width: 768px) {
-  .cks li {
-    grid-template-columns: 8px minmax(180px, 30%) 1fr;
-    row-gap: 0;
-    column-gap: 14px;
-  }
-  .cks li .cks-h {
-    grid-row: 1; grid-column: 2;
-    font-size: 18px;
-  }
-  .cks li .cks-d {
-    grid-row: 1; grid-column: 3;
-    font-size: 20px;
-    line-height: 1.45;
-  }
-}
-
-/* ── EVEN IF ────────────────────────────────── */
+/* ── BEGINNER FRIENDLY ──────────────────────── */
 .evenif {
-  background-color: var(--s1);
+  background-color: var(--s2);
   background-image: linear-gradient(rgba(19,19,19,0.88), rgba(19,19,19,0.88)), url('portfolio/mclaren-720s.jpg');
   background-size: cover;
   background-position: center;
@@ -730,15 +606,11 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 }
 @media (min-width: 768px) {
   .gb-text { font-size: 15px; }
+  .pc { padding: 40px 36px; }
 }
-.pi { list-style: none; margin-bottom: 24px; }
-.pi li { display: flex; gap: 12px; align-items: flex-start; font-size: clamp(15px, 4.2vw, 16px); color: var(--w); padding: 12px 0; border-bottom: 1px solid var(--line); line-height: 1.45; }
-.pi li:last-child { border-bottom: none; }
-.pd { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 9px; }
-@media (min-width: 768px) { .pc { padding: 40px 36px; } .pi li { font-size: 17px; } }
 
 /* ── WHAT HAPPENS NEXT ──────────────────────── */
-.next { background: var(--s2); }
+.next { background: var(--s1); }
 .next h2 { margin-bottom: 12px; }
 .next-intro { color: var(--w80); margin-bottom: 28px; }
 .steps { list-style: none; counter-reset: s; }
@@ -858,9 +730,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 
     <div class="hero-final">
       <div class="hero-final-content">
-        <h1>Automotive Photography <span class="gc">That Stands Out</span></h1>
+        <h1>Create photos that<br><span class="gc">stop the scroll</span></h1>
         <div class="hero-final-bottom">
-          <p class="sub">Master flash &amp; light painting in any location</p>
+          <p class="sub">Master Flash &amp; Light Painting<br>at any location</p>
           <a href="#course" class="scroll-cue" aria-label="Scroll down">
             <span class="arrow">↓</span>
           </a>
@@ -875,28 +747,32 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="explainer pad reveal" id="course">
   <div class="c">
     <span class="eye">What this is</span>
-    <h2>A course on automotive photography lighting.</h2>
-    <p class="lead">Six full modules teaching flash and light painting techniques. Light any car, in any location, day or night. No prior lighting experience needed.</p>
+    <h2>A flash &amp; light painting course<br><span class="gc">for automotive photographers.</span></h2>
+    <p class="lead">Six modules. Light any car, in any location, day or night. No prior lighting experience needed.</p>
   </div>
 </section>
 
-<!-- ═══════════════ 3. SOLUTION / METHOD PULL ═══════════════ -->
-<div class="mpull pad reveal">
+<!-- ═══════════════ 3. PROBLEM ═══════════════ -->
+<section class="fy pad reveal" id="problem">
   <div class="c">
-    <div class="mpull-box">
-      <span class="eye">The solution</span>
-      <h2>Become the photographer<br><span class="gc">they can't replicate.</span></h2>
-      <p style="margin-top:18px;">The Controlled Lighting Method™<br>The flash and light painting techniques most photographers haven't learned.<br>The skill that makes your work stand out.</p>
-    </div>
+    <span class="eye">Sound familiar?</span>
+    <h2>Every car photo looks the same.<br><span class="gc">Including yours.</span></h2>
+    <ul class="cks">
+      <li><span class="dot"></span><strong class="cks-h">Your photos blend in.</strong><span class="cks-d">Only shooting with natural light. Same as everyone else.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">You're stuck waiting for good light.</strong><span class="cks-d">Bad weather or wrong time of day kills the shoot.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">Flash and light painting feel out of reach.</strong><span class="cks-d">You've watched the tutorials. You've never nailed it on a car.</span></li>
+      <li><span class="dot"></span><strong class="cks-h">Better cars haven't changed it.</strong><span class="cks-d">A Lamborghini in flat light still looks flat.</span></li>
+    </ul>
+    <div class="fy-tag">If even one of these hit, this course is built for you.</div>
   </div>
-</div>
+</section>
 
 <!-- ═══════════════ 4. GALLERY ═══════════════ -->
 <div class="gallery reveal">
   <div class="head">
     <span class="eye">What you'll create</span>
-    <h2>Imagine your portfolio<br><span class="gc">looking like this.</span></h2>
-    <p>This is the kind of work that gets noticed.</p>
+    <h2>Photos that<br><span class="gc">look like this.</span></h2>
+    <p>Same techniques, taught from the ground up.</p>
   </div>
   <div style="overflow:hidden;">
     <div class="track">
@@ -930,13 +806,13 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
 <section class="about pad reveal">
   <div class="c">
     <span class="eye">Your Instructor</span>
-    <h2>I'm Mitch. <br class="desk-only">And from day one,<br><span class="gc">I refused to blend in.</span></h2>
+    <h2>I'm Mitch. <br class="desk-only">And I refused<br><span class="gc">to blend in.</span></h2>
 
     <div class="story-grid">
       <div class="story-text">
-        <p>Fifteen years ago, I started shooting cars. Doing what everyone else was doing wasn't going to get me anywhere. So I went the other way.</p>
-        <p>I taught myself light painting, then flash, and the work started looking like nobody else's. Premium brands noticed, the opportunities followed.</p>
-        <p class="anchor-line">Now my brand shoots start at <strong>$1,000+</strong>, and the lighting techniques I'll teach you are the ones that got me there.</p>
+        <p>15 years ago I started shooting cars. Same problem you've got. Golden hour shots that blended in with everyone else's.</p>
+        <p>So I taught myself light painting, then flash. The work started looking like nobody else's. Premium brands noticed. The opportunities followed.</p>
+        <p class="anchor-line">Now my shoots start at <strong>$1,000+</strong>, and the lighting techniques in this course are exactly how I got there.</p>
       </div>
       <div class="story-photo">
         <div class="photo-frame">
@@ -952,88 +828,30 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 6. TRANSFORMATION ═══════════════ -->
-<section class="transform pad reveal">
-  <div class="c">
-    <div class="head">
-      <span class="eye">How it works</span>
-      <h2>Master the light.<br><span class="gc">Make the work stand out.</span></h2>
-      <p>Three stages. Each one moves you closer to work that doesn't blend in.</p>
-    </div>
-
-    <div class="stages">
-
-      <!-- Stage 01 -->
-      <div class="stage">
-        <div class="stage-head">
-          <div class="stage-num">01</div>
-          <h3>You learn<br><span class="gc">the lighting.</span></h3>
-        </div>
-        <p>Flash and light painting, taught from scratch. <strong>Light any car, any location, any time of day.</strong></p>
-        <div class="stage-img">
-          <img src="portfolio/stage-01-learn.jpg" alt="Behind the camera capturing a Ferrari interior on location">
-        </div>
-      </div>
-
-      <!-- Stage 02 -->
-      <div class="stage">
-        <div class="stage-head">
-          <div class="stage-num">02</div>
-          <h3>Your photos<br><span class="gc">stand out.</span></h3>
-        </div>
-        <p>No more waiting for golden hour. <strong>Same car, same location, and your photos stop the scroll. Unmistakably yours.</strong></p>
-        <div class="stage-img">
-          <img src="portfolio/stage-02-stand-out.jpg" alt="Orange McLaren Artura with doors open at night against the Gold Coast skyline">
-        </div>
-      </div>
-
-      <!-- Stage 03 -->
-      <div class="stage">
-        <div class="stage-head">
-          <div class="stage-num">03</div>
-          <h3>Brands<br><span class="gc">notice you.</span></h3>
-        </div>
-        <p>Premium brands scroll Instagram looking for work that stands out. Yours now does. The right people start to notice. <strong>This is what you came here for.</strong></p>
-        <div class="stage-img">
-          <img src="portfolio/stage-03-brands.jpg" alt="Mitch standing in front of a Lamborghini Revuelto at the dealership">
-        </div>
-      </div>
-
-    </div>
-
-    <div class="transform-cta">
-      <span class="eye">Your move</span>
-      <a href="https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03" class="btn" id="mid-cta-btn">Enrol Now → $195 USD</a>
-      <p class="transform-cta-note">Pre-sale · Course opens June 1st</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════ 7. MODULES ═══════════════ -->
+<!-- ═══════════════ 6. MODULES ═══════════════ -->
 <section class="mods pad reveal">
   <div class="c">
     <span class="eye">Inside the course</span>
     <h2>6 Modules.<br><span class="gc">Full system.</span></h2>
-    <p class="mod-intro">Every module is built around one goal. Total control over how every car photo turns out.</p>
+    <p class="mod-intro">Each module teaches one piece of the lighting system. Watch in order. Apply on your next shoot.</p>
 
     <div class="mgrid">
-      <div class="mc"><img src="portfolio/mitch-lambos.jpg" class="mi" alt="Mitch with a black Lamborghini Urus and Aventador in front of a mural"><div class="mb"><div class="mn">Module 01</div><div class="mt">Introduction</div><p class="md">Walk in knowing exactly why most car photographers stay invisible, and what you'll do differently from here. The mindset that makes the rest of this course click.</p></div></div>
-      <div class="mc"><img src="portfolio/mclaren-artura-bts.jpg" class="mi" alt="Behind the scenes shot of camera on tripod with an orange McLaren Artura on location at night"><div class="mb"><div class="mn">Module 02</div><div class="mt">Gear & Location</div><p class="md">Buy the right gear once, on any budget. Then walk into any location and know where to position the car within minutes.</p></div></div>
-      <div class="mc"><img src="portfolio/ferrari-pair.jpg" class="mi" alt="Pair of red Ferraris lit against a dark studio backdrop"><div class="mb"><div class="mn">Module 03</div><div class="mt">Light Painting</div><p class="md">Light paint any car so the result looks like nothing else in the feed. The skill that makes your work unmistakable.</p></div></div>
-      <div class="mc"><img src="portfolio/huracan-lb.jpg" class="mi" alt="Purple Liberty Walk Lamborghini Huracan in front of the Story Bridge at night"><div class="mb"><div class="mn">Module 04</div><div class="mt">Flash Lighting</div><p class="md">Use flash on location to control the light on any shoot, in any weather, at any time of day. No more cancelled shoots.</p></div></div>
-      <div class="mc"><img src="portfolio/photoshop-amg.jpg" class="mi" alt="Adobe Photoshop screenshot showing a blue Mercedes AMG GT R being edited with color balance and layers"><div class="mb"><div class="mn">Module 05</div><div class="mt">Lightroom & Photoshop</div><p class="md">Deliver campaign quality edits on every file. The same workflow I use on premium brand work, repeatable across any car, any shoot.</p></div></div>
-      <div class="mc"><img src="portfolio/revuelto-urus.jpg" class="mi" alt="Mitch with a Lamborghini Revuelto and Urus at Lamborghini Brisbane"><div class="mb"><div class="mn">Module 06</div><div class="mt">Make It Unmistakable</div><p class="md">Apply the lighting techniques to build a signature look. Simple ways to use what you've learned so the right people start to notice.</p></div></div>
+      <div class="mc"><img src="portfolio/mitch-lambos.jpg" class="mi" alt="Mitch with a black Lamborghini Urus and Aventador in front of a mural"><div class="mb"><div class="mn">Module 01</div><div class="mt">Introduction</div><p class="md">Why most car photographers stay invisible, and what you'll do differently from here. The mindset that makes the rest of this course click.</p></div></div>
+      <div class="mc"><img src="portfolio/mclaren-artura-bts.jpg" class="mi" alt="Behind the scenes shot of camera on tripod with an orange McLaren Artura on location at night"><div class="mb"><div class="mn">Module 02</div><div class="mt">Gear & Location</div><p class="md">Buy the right gear once, on any budget. Walk into any location and know where to put the car in minutes.</p></div></div>
+      <div class="mc"><img src="portfolio/ferrari-pair.jpg" class="mi" alt="Pair of red Ferraris lit against a dark studio backdrop"><div class="mb"><div class="mn">Module 03</div><div class="mt">Light Painting</div><p class="md">Light paint any car so it looks unmistakable. The skill that makes your work stand out from every other photographer in your city.</p></div></div>
+      <div class="mc"><img src="portfolio/huracan-lb.jpg" class="mi" alt="Purple Liberty Walk Lamborghini Huracan in front of the Story Bridge at night"><div class="mb"><div class="mn">Module 04</div><div class="mt">Flash Lighting</div><p class="md">Use flash on location, in any weather, at any time of day. No more waiting for golden hour. No more cancelled shoots.</p></div></div>
+      <div class="mc"><img src="portfolio/photoshop-amg.jpg" class="mi" alt="Adobe Photoshop screenshot showing a blue Mercedes AMG GT R being edited with color balance and layers"><div class="mb"><div class="mn">Module 05</div><div class="mt">Lightroom & Photoshop</div><p class="md">The full edit. Simple Lightroom workflow, plus the Photoshop tricks I use to push photos from good to campaign quality. Only basic Photoshop knowledge needed.</p></div></div>
+      <div class="mc"><img src="portfolio/revuelto-urus.jpg" class="mi" alt="Mitch with a Lamborghini Revuelto and Urus at Lamborghini Brisbane"><div class="mb"><div class="mn">Module 06</div><div class="mt">Make It Unmistakable</div><p class="md">Apply what you learned to build a signature look. The simple moves that make brand owners and car owners want to work with you.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ 8. VALUE STACK ═══════════════ -->
+<!-- ═══════════════ 7. VALUE STACK ═══════════════ -->
 <section class="vs pad reveal">
   <div class="c">
     <span class="eye">Everything you get</span>
-    <h2>Yours for <span class="dyn-price" data-price="course">$195</span>.<br><span class="gc">Pays for itself in one shoot.</span></h2>
-    <p class="vs-intro">Premium automotive shoots sit around $1,000. This course pays back with your first one. Enrol today for pre-sale access. Course opens June 1st.</p>
+    <h2>Everything for <span class="dyn-price" data-price="course">$195</span>.<br><span class="gc">Pays for itself with one shoot.</span></h2>
+    <p class="vs-intro">Even a basic paid car shoot covers the cost of this course. Enrol today for pre-sale access. Course opens June 1st.</p>
 
     <div class="vs-feature">
       <img src="portfolio/bentley-gt.jpg" alt="Bentley Continental GT shot on location with controlled lighting">
@@ -1054,36 +872,22 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 9. PROBLEM (qualifier) ═══════════════ -->
-<section class="fy pad reveal" id="why">
-  <div class="c">
-    <span class="eye">Is this for you?</span>
-    <h2>Every car photo looks the same.<br><span class="gc">Including yours.</span></h2>
-    <ul class="cks">
-      <li><span class="dot"></span><strong class="cks-h">Your photos blend in.</strong><span class="cks-d">Same golden hour, same angles as everyone else.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">You're stuck waiting for good light.</strong><span class="cks-d">Bad weather or wrong time of day kills the shoot.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">Flash and light painting feel out of reach.</strong><span class="cks-d">You've never used them with confidence.</span></li>
-      <li><span class="dot"></span><strong class="cks-h">Your work has plateaued.</strong><span class="cks-d">Better gear and more practice haven't changed it.</span></li>
-    </ul>
-    <div class="fy-tag">If even one of these hit, this was built for you.</div>
-  </div>
-</section>
-
-<!-- ═══════════════ 10. BEGINNER FRIENDLY ═══════════════ -->
+<!-- ═══════════════ 8. BEGINNER FRIENDLY ═══════════════ -->
 <section class="evenif pad reveal">
   <div class="c">
     <span class="eye">Beginner friendly</span>
     <h2>No lighting experience.<br><span class="gc">No problem.</span></h2>
-    <p class="lead">Built for photographers who've never picked up a flash or done light painting. We teach the entire system from the ground up.</p>
+    <p class="lead">We teach the entire system from the ground up.<br>Works on any car, not just supercars.</p>
     <ul class="evenif-list">
       <li><span class="check">✓</span>You've never picked up a flash in your life</li>
       <li><span class="check">✓</span>You don't own expensive gear</li>
       <li><span class="check">✓</span>You hate the editing process and avoid it</li>
+      <li><span class="check">✓</span>You don't have access to supercars</li>
     </ul>
   </div>
 </section>
 
-<!-- ═══════════════ 11. PRICING ═══════════════ -->
+<!-- ═══════════════ 9. PRICING ═══════════════ -->
 <section class="pricing pad reveal" id="checkout">
   <div class="c">
     <div class="pc">
@@ -1096,7 +900,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <p class="pw">Course opens June 1st. Enrol today.</p>
 
       <div class="preframe">
-        <strong style="color:var(--gold);">Premium automotive shoots start around $1,000+. This course pays back with your first one.</strong> The math is simple, and so is the decision.
+        <strong style="color:var(--gold);">A car shoot pays $300+.</strong> This course pays for itself the first time.
       </div>
 
       <div class="guarantee-badge">
@@ -1110,38 +914,41 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   </div>
 </section>
 
-<!-- ═══════════════ 12. WHAT HAPPENS NEXT ═══════════════ -->
+<!-- ═══════════════ 10. WHAT HAPPENS NEXT ═══════════════ -->
 <section class="next pad reveal">
   <div class="c">
     <span class="eye">What happens after you enrol</span>
     <h2>Three steps<br><span class="gc">to start.</span></h2>
     <p class="next-intro">Simple, fast, and built so you're ready to apply the system the moment the course opens.</p>
     <ul class="steps">
-      <li><div class="step-t" id="step1-t">Enrol today</div><div class="step-d" id="step1-d">Pay $195 and your spot is secured. Pre-sale access locked in.</div></li>
-      <li><div class="step-t" id="step2-t">Course unlocks June 1st</div><div class="step-d" id="step2-d">Full access to every module on Monday June 1st. Watch on any device.</div></li>
-      <li><div class="step-t" id="step3-t">Apply it to your next shoot</div><div class="step-d" id="step3-d">Use the system on your next car. See the difference in the work.</div></li>
+      <li><div class="step-t" id="step1-t">Lock in your spot</div><div class="step-d" id="step1-d">Pay $195 and your spot is secured. Pre-sale access locked in.</div></li>
+      <li><div class="step-t">Course unlocks June 1st</div><div class="step-d">Full access to every module on Monday June 1st. Watch on any device.</div></li>
+      <li><div class="step-t">Apply it to your next shoot</div><div class="step-d">Use the system on the next car you shoot. See the difference in the work.</div></li>
     </ul>
   </div>
 </section>
 
-<!-- ═══════════════ 13. FAQ ═══════════════ -->
+<!-- ═══════════════ 11. FAQ ═══════════════ -->
 <section class="faq pad reveal">
   <div class="c">
     <span class="eye">Questions</span>
     <h2>Quick<br><span class="gc">Answers.</span></h2>
     <div style="margin-top:28px;">
       <div class="fq"><button class="fqb" onclick="faq(this)">When do I get the course?<span class="fqi">+</span></button><div class="fqa">The full course unlocks on Monday, June 1st. Your spot is secured the moment you pay. You'll get an email confirmation, and access details closer to launch day.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">Do I need expensive gear or access to expensive cars?<span class="fqi">+</span></button><div class="fqa">No to both. The method works on any budget and on any car. Lighting creates the result, not the gear or the badge. A Honda Civic shot with controlled lighting beats a Lamborghini in bad light every time.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">Does this only work on supercars?<span class="fqi">+</span></button><div class="fqa">No. The lighting works on any car. The badge doesn't matter. Lighting creates the result. A regular car shot with controlled lighting beats a supercar in bad light, every time.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">Do I need expensive gear?<span class="fqi">+</span></button><div class="fqa">No. The method works on any budget. I'll show you exactly what to buy on any budget, and how to make what you already own work harder.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">I've never used flash before. Can I do this?<span class="fqi">+</span></button><div class="fqa">Yes. We start from the basics. No prior flash or light painting experience needed. If you can use a camera, you can learn this.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">What if everyone learns this too?<span class="fqi">+</span></button><div class="fqa">Most won't. Light painting and on-location flash take real practice to master. That's exactly why they remain a moat. The photographers who actually put in the work stay ahead. The rest stay where they are.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">Is there a money back guarantee?<span class="fqi">+</span></button><div class="fqa">Yes, 30 days from the moment you receive the course. Within those 30 days, complete every module, apply at least one lighting technique I teach to a new shoot, and run the files through the editing process. If you don't see a visible improvement in your work, send me what you created and you'll get every cent back.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">How much Photoshop do I need to know?<span class="fqi">+</span></button><div class="fqa">Just the basics. If you can open a file and use layers, you've got enough. The Photoshop module focuses on the specific tricks I use to push photos from good to campaign quality. Lightroom does most of the work.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">How is this different from your free ebook?<span class="fqi">+</span></button><div class="fqa">The ebook gets you the foundation. What flash and light painting are, and why they work. The course is the full system on video. Every technique, every shot, walked through start to finish. Plus the templates, presets, camera settings guide and checklists you can apply on your next shoot.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">What if everyone learns this too?<span class="fqi">+</span></button><div class="fqa">Most won't. Light painting and on-location flash take real practice to master. That's exactly why they remain a moat. The photographers who put in the work stay ahead. The rest stay where they are.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">Is there a money back guarantee?<span class="fqi">+</span></button><div class="fqa">Yes, 30 days from the moment you receive the course. Complete every module, apply at least one lighting technique I teach to a new shoot, and run the files through the editing process. If you don't see a visible improvement in your work, send me what you created and you'll get every cent back.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">What format is the course and how long do I have access?<span class="fqi">+</span></button><div class="fqa">Recorded video lessons, broken into short modules. Watch on any device. All templates and downloads inside. Lifetime access, plus every future update automatically.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button><div class="fqa">Most students apply the system on their first shoot within a week of access opening. With consistent application, you'll have premium quality work in your portfolio inside 30 days.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ 14. FINAL CTA ═══════════════ -->
+<!-- ═══════════════ 12. FINAL CTA ═══════════════ -->
 <section class="final pad reveal">
   <div class="c">
     <span class="eye">Ready?</span>
@@ -1203,9 +1010,7 @@ function render() {
   });
 
   const ctaText = `Enrol Now → ${price} ${cur}`;
-  const midBtn = document.getElementById('mid-cta-btn');
   const checkoutBtn = document.getElementById('checkout-cta');
-  if (midBtn) midBtn.textContent = ctaText;
   if (checkoutBtn) checkoutBtn.textContent = ctaText;
 
   const floatText = document.getElementById('float-text');
