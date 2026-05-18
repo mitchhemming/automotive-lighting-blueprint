@@ -367,15 +367,17 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
   }
 }
 
-/* Force single-line headlines on Course (mods) + Problem h2s */
+/* Force single-line headlines on Course (mods) + Problem + Final CTA h2s */
 .mods h2,
-.fy h2 {
+.fy h2,
+.final h2 {
   font-size: clamp(20px, 6vw, 44px);
   white-space: nowrap;
 }
 @media (min-width: 768px) {
   .mods h2,
-  .fy h2 {
+  .fy h2,
+  .final h2 {
     font-size: clamp(36px, 5vw, 54px);
   }
 }
@@ -893,7 +895,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     </div>
 
     <ul class="vl" id="vs-list">
-      <li><span class="vi">The Automotive Lighting Blueprint. 6 full modules.</span><span class="vv vcheck">✓</span></li>
+      <li><span class="vi">The Automotive Lighting Blueprint course</span><span class="vv vcheck">✓</span></li>
       <li><span class="vi">Lifetime access plus every future update</span><span class="vv vcheck">✓</span></li>
       <li><span class="vi">Lighting diagram templates</span><span class="vv vcheck">✓</span></li>
       <li><span class="vi">Lightroom RAW editing preset</span><span class="vv vcheck">✓</span></li>
