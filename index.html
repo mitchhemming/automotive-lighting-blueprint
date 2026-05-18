@@ -348,8 +348,27 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .explainer h2 { margin-bottom: 22px; }
 .explainer .lead { color: var(--w80); font-weight: 400; }
 
+/* Force single-line headlines on Explainer + Problem h2s */
+.explainer h2,
+.fy h2 {
+  font-size: clamp(20px, 6vw, 44px);
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .explainer h2,
+  .fy h2 {
+    font-size: clamp(36px, 5vw, 54px);
+  }
+}
+
 /* ── PROBLEM / RECOGNITION ──────────────────── */
-.fy { background: var(--s1); }
+.fy {
+  background-color: var(--s1);
+  background-image: linear-gradient(rgba(19,19,19,0.92), rgba(19,19,19,0.92)), url('portfolio/huracan-bridge.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .cks { list-style: none; margin-top: 26px; }
 .cks li {
   display: grid;
@@ -851,7 +870,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
   <div class="c">
     <span class="eye">Everything you get</span>
     <h2>Everything for <span class="dyn-price" data-price="course">$195</span>.<br><span class="gc">Pays for itself with one shoot.</span></h2>
-    <p class="vs-intro">Even a basic paid car shoot covers the cost of this course. Enrol today for pre-sale access. Course opens June 1st.</p>
+    <p class="vs-intro">Even a basic paid car shoot covers the cost of this course. Enrol today for presale access. Course opens June 1st.</p>
 
     <div class="vs-feature">
       <img src="portfolio/bentley-gt.jpg" alt="Bentley Continental GT shot on location with controlled lighting">
@@ -894,7 +913,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="pc-image">
         <img src="portfolio/aventador-ultimae.jpg" alt="Lamborghini Aventador Ultimae shot with controlled lighting on location">
       </div>
-      <div class="pb">Pre-sale</div>
+      <div class="pb">Presale</div>
       <div class="pn">The Automotive Lighting Blueprint</div>
       <div class="pp"><span class="dyn-price" data-price="course">$195</span><span class="cur-suffix" data-currency-label>USD</span></div>
       <p class="pw">Course opens June 1st. Enrol today.</p>
@@ -921,7 +940,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <h2>Three steps<br><span class="gc">to start.</span></h2>
     <p class="next-intro">Simple, fast, and built so you're ready to apply the system the moment the course opens.</p>
     <ul class="steps">
-      <li><div class="step-t" id="step1-t">Lock in your spot</div><div class="step-d" id="step1-d">Pay $195 and your spot is secured. Pre-sale access locked in.</div></li>
+      <li><div class="step-t" id="step1-t">Lock in your spot</div><div class="step-d" id="step1-d">Pay $195 and your spot is secured. Presale access locked in.</div></li>
       <li><div class="step-t">Course unlocks June 1st</div><div class="step-d">Full access to every module on Monday June 1st. Watch on any device.</div></li>
       <li><div class="step-t">Apply it to your next shoot</div><div class="step-d">Use the system on the next car you shoot. See the difference in the work.</div></li>
     </ul>
@@ -940,7 +959,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="fq"><button class="fqb" onclick="faq(this)">I've never used flash before. Can I do this?<span class="fqi">+</span></button><div class="fqa">Yes. We start from the basics. No prior flash or light painting experience needed. If you can use a camera, you can learn this.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">How much Photoshop do I need to know?<span class="fqi">+</span></button><div class="fqa">Just the basics. If you can open a file and use layers, you've got enough. The Photoshop module focuses on the specific tricks I use to push photos from good to campaign quality. Lightroom does most of the work.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">How is this different from your free ebook?<span class="fqi">+</span></button><div class="fqa">The ebook gets you the foundation. What flash and light painting are, and why they work. The course is the full system on video. Every technique, every shot, walked through start to finish. Plus the templates, presets, camera settings guide and checklists you can apply on your next shoot.</div></div>
-      <div class="fq"><button class="fqb" onclick="faq(this)">What if everyone learns this too?<span class="fqi">+</span></button><div class="fqa">Most won't. Light painting and on-location flash take real practice to master. That's exactly why they remain a moat. The photographers who put in the work stay ahead. The rest stay where they are.</div></div>
+      <div class="fq"><button class="fqb" onclick="faq(this)">What if everyone learns this too?<span class="fqi">+</span></button><div class="fqa">Most won't. Light painting and on location flash take real practice to master. That's exactly why they remain a moat. The photographers who put in the work stay ahead. The rest stay where they are.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">Is there a money back guarantee?<span class="fqi">+</span></button><div class="fqa">Yes, 30 days from the moment you receive the course. Complete every module, apply at least one lighting technique I teach to a new shoot, and run the files through the editing process. If you don't see a visible improvement in your work, send me what you created and you'll get every cent back.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">What format is the course and how long do I have access?<span class="fqi">+</span></button><div class="fqa">Recorded video lessons, broken into short modules. Watch on any device. All templates and downloads inside. Lifetime access, plus every future update automatically.</div></div>
       <div class="fq"><button class="fqb" onclick="faq(this)">How long until I see results?<span class="fqi">+</span></button><div class="fqa">Most students apply the system on their first shoot within a week of access opening. With consistent application, you'll have premium quality work in your portfolio inside 30 days.</div></div>
@@ -955,7 +974,7 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
     <h2>The photographers people notice<br><span class="gc">aren't more talented.</span></h2>
     <p class="lead" style="color:var(--w);">They just stopped blending in.</p>
     <a href="https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03" class="btn final-cta" style="margin-top:32px;">Stop Blending In →</a>
-    <p class="bn" id="final-note" style="margin-top:14px;">Pre-sale. Course access June 1st.</p>
+    <p class="bn" id="final-note" style="margin-top:14px;">Presale. Course access June 1st.</p>
   </div>
 </section>
 
@@ -1017,7 +1036,7 @@ function render() {
   if (floatText) floatText.textContent = `Enrol · ${price}`;
 
   const step1d = document.getElementById('step1-d');
-  if (step1d) step1d.textContent = `Pay ${price} ${cur} and your spot is secured. Pre-sale access locked in.`;
+  if (step1d) step1d.textContent = `Pay ${price} ${cur} and your spot is secured. Presale access locked in.`;
 }
 
 render();
