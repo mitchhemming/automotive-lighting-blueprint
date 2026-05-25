@@ -598,7 +598,7 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .pc { background: var(--s1); border: 1px solid var(--gold); border-radius: 6px; padding: 30px 24px; }
 .pc-image {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
   margin-bottom: 24px;
   border-radius: 4px;
   overflow: hidden;
@@ -613,44 +613,27 @@ p { font-size: clamp(16px, 4.4vw, 17px); line-height: 1.65; color: var(--w80); }
 .pn { font-family: var(--fh); font-size: clamp(20px, 5.5vw, 22px); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--w); }
 .pp { font-family: var(--fh); font-size: clamp(64px, 17vw, 76px); font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: .01em; margin: 12px 0 4px; }
 .pw { font-size: 14px; color: var(--w50); margin-bottom: 22px; }
-.preframe { margin: 22px 0; padding: 14px 16px; background: var(--bg); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; font-size: 15px; color: var(--w); line-height: 1.5; }
-.guarantee-badge {
+
+/* Quiet reassurance lines — no box, no fill, so only the CTA reads as clickable */
+.pc-line {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  background: rgba(200, 146, 42, 0.08);
-  border: 1px solid rgba(200, 146, 42, 0.3);
-  border-radius: 4px;
-  margin: 0 0 18px 0;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: clamp(14px, 3.9vw, 15px);
+  color: var(--w80);
+  line-height: 1.45;
+  padding: 4px 0;
 }
-.gb-icon {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--gold);
-  color: var(--bg);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--fh);
-  font-size: 16px;
-  font-weight: 900;
-  line-height: 1;
-}
-.gb-text {
-  font-size: 14px;
-  color: var(--w);
-  line-height: 1.4;
-  text-align: left;
-}
-.gb-text strong {
+.pc-line + .pc-line { margin-top: 6px; }
+.pc-line .tick {
   color: var(--gold);
-  font-weight: 700;
+  font-weight: 900;
+  flex-shrink: 0;
+  line-height: 1.45;
 }
+.pc-line strong { color: var(--w); font-weight: 600; }
+.pc-lines { margin: 0 0 22px; }
 @media (min-width: 768px) {
-  .gb-text { font-size: 15px; }
   .pc { padding: 40px 36px; }
 }
 
@@ -936,13 +919,9 @@ footer p+p { margin-top: 4px; color: rgba(255,255,255,.25); font-size: 11px; }
       <div class="pp"><span class="dyn-price" data-price="course">$195</span><span class="cur-suffix" data-currency-label>USD</span></div>
       <p class="pw">Course opens June 1st. Enrol today.</p>
 
-      <div class="preframe">
-        <strong style="color:var(--gold);">A car shoot pays $300+.</strong> This course pays for itself the first time.
-      </div>
-
-      <div class="guarantee-badge">
-        <span class="gb-icon">✓</span>
-        <div class="gb-text"><strong>30 day money back guarantee.</strong> Do the work, show me the result.</div>
+      <div class="pc-lines">
+        <div class="pc-line"><span class="tick">✓</span><span><strong>30 day money back guarantee.</strong> Do the work, show me the result.</span></div>
+        <div class="pc-line"><span class="tick">✓</span><span><strong>A car shoot pays $300+.</strong> This course pays for itself the first time.</span></div>
       </div>
 
       <a href="checkout.html" class="btn" id="checkout-cta">Enrol Now → $195</a>
