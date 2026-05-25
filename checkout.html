@@ -41,7 +41,7 @@
 </script>
 
 <title>Enrol · The Automotive Lighting Blueprint</title>
-<meta name="description" content="Almost done — complete your order for The Automotive Lighting Blueprint. Optional cohort upgrade available at checkout.">
+<meta name="description" content="Almost done. Complete your order for The Automotive Lighting Blueprint. Optional business coaching upgrade available at checkout.">
 <meta name="robots" content="noindex,nofollow">
 
 <!-- Open Graph -->
@@ -256,7 +256,7 @@ h1 .gc { color: var(--gold); }
   font-weight: 700;
 }
 
-/* ── UPGRADE CARD (cohort add-on) ──────────── */
+/* ── UPGRADE CARD (coaching add-on) ──────────── */
 .upgrade {
   background: var(--s1);
   border: 1px solid var(--gold);
@@ -581,21 +581,21 @@ footer a { color: var(--gold); }
 
   <div class="up-divider">— Optional upgrade —</div>
 
-  <!-- ─── UPGRADE: COHORT (toggleable) ─── -->
+  <!-- ─── UPGRADE: BUSINESS COACHING (toggleable) ─── -->
   <div class="upgrade" id="upCard" role="checkbox" aria-checked="false" tabindex="0">
     <div class="upgrade-head">
       <div class="checkbox" id="upCheck"></div>
       <div class="upgrade-info">
-        <div class="upgrade-title">Add the June Cohort</div>
-        <div class="upgrade-sub">4 weeks of live coaching with Mitch</div>
+        <div class="upgrade-title">Add Business Coaching</div>
+        <div class="upgrade-sub">4 weeks of live coaching on how to make money from automotive photography</div>
       </div>
       <div class="upgrade-price">+$<span id="deltaAmount">500</span><span class="cur" data-currency-label>USD</span></div>
     </div>
     <ul class="upgrade-features">
-      <li>Live group calls every week</li>
-      <li>Private cohort community with photos review &amp; feedback</li>
-      <li>Lightroom &amp; Photoshop editing workshops</li>
-      <li>Personal portfolio audit at the end</li>
+      <li>A live group coaching call every week for 4 weeks</li>
+      <li>How to get paying clients</li>
+      <li>What to charge and how to get paid</li>
+      <li>How to turn your Instagram into bookings</li>
     </ul>
     <div class="upgrade-scarcity"><strong>Only 15 spots</strong> · starts Monday, June 1st</div>
   </div>
@@ -607,7 +607,7 @@ footer a { color: var(--gold); }
       <span class="arrow">+</span>
     </button>
     <div class="guarantee-body" id="gtBody">
-      Show up to all 4 live calls. Submit your work for review. Get your portfolio audited at the end. <strong>If you've done the work and don't feel the cohort delivered, I'll refund the cohort portion of your purchase — no questions asked.</strong> You keep the course and every download for life. The course portion is final sale.
+      Show up to all 4 live calls and do the work between them. If you've shown up and don't feel the coaching delivered, I'll refund the coaching portion of your purchase, no questions asked. <strong>You keep the course and every download for life.</strong> The course portion is final sale.
     </div>
   </div>
 
@@ -628,7 +628,7 @@ footer a { color: var(--gold); }
     Secure checkout via Stripe
     <span class="dot">·</span>
     Course access June 1st
-    <span class="final">Course is final sale · Cohort covered by guarantee</span>
+    <span class="final">Course is final sale · Coaching covered by guarantee</span>
   </p>
 
 </main>
@@ -652,12 +652,12 @@ const PRICES = {
   USD: {
     course_p1: 195,
     course_p2: 395,
-    cohort:    695
+    coaching:  695
   },
   AUD: {
     course_p1: 295,
     course_p2: 595,
-    cohort:    995
+    coaching:  995
   }
 };
 
@@ -673,7 +673,7 @@ const COURSE_KEY = 'course_p1';
    Link and replace COURSE_LINK below.
 ═══════════════════════════════════════════════════════════ */
 const STRIPE_LINKS = {
-  cohort: 'https://buy.stripe.com/6oU7sM8yc5hl0DM4Mu6sw02',
+  coaching: 'https://buy.stripe.com/6oU7sM8yc5hl0DM4Mu6sw02',
   course: 'https://buy.stripe.com/6oU7sMeWAaBFbiq3Iq6sw03'
 };
 
@@ -712,16 +712,16 @@ const ctaPrice = document.getElementById('ctaPrice');
 const deltaAmount = document.getElementById('deltaAmount');
 const ctaBtn = document.getElementById('ctaBtn');
 
-let cohortAdded = false;
+let coachingAdded = false;
 
-function setState(addCohort) {
-  cohortAdded = addCohort;
-  const priceKey = addCohort ? 'cohort' : COURSE_KEY;
-  const linkKey = addCohort ? 'cohort' : 'course';
+function setState(addCoaching) {
+  coachingAdded = addCoaching;
+  const priceKey = addCoaching ? 'coaching' : COURSE_KEY;
+  const linkKey = addCoaching ? 'coaching' : 'course';
 
-  upCheck.classList.toggle('on', addCohort);
-  upCard.classList.toggle('on', addCohort);
-  upCard.setAttribute('aria-checked', addCohort ? 'true' : 'false');
+  upCheck.classList.toggle('on', addCoaching);
+  upCard.classList.toggle('on', addCoaching);
+  upCard.setAttribute('aria-checked', addCoaching ? 'true' : 'false');
 
   totalAmount.textContent = priceFor(priceKey);
   ctaPrice.textContent = priceFor(priceKey);
@@ -735,11 +735,11 @@ function setState(addCohort) {
 }
 
 function applyDelta() {
-  const delta = PRICES[currentCurrency].cohort - PRICES[currentCurrency][COURSE_KEY];
+  const delta = PRICES[currentCurrency].coaching - PRICES[currentCurrency][COURSE_KEY];
   if (deltaAmount) deltaAmount.textContent = Number(delta).toLocaleString('en-US');
 }
 
-/* Pulse the total when the user toggles the upgrade — restartable */
+/* Pulse the total when the user toggles the upgrade, restartable */
 const totalValueEl = document.querySelector('.total-v');
 function pulseTotal() {
   if (!totalValueEl) return;
@@ -750,23 +750,23 @@ function pulseTotal() {
 
 /* Toggle handlers */
 upCard.addEventListener('click', () => {
-  setState(!cohortAdded);
+  setState(!coachingAdded);
   pulseTotal();
 });
 upCard.addEventListener('keydown', (e) => {
   if (e.key === ' ' || e.key === 'Enter') {
     e.preventDefault();
-    setState(!cohortAdded);
+    setState(!coachingAdded);
     pulseTotal();
   }
 });
 
 /* CTA fallback if Stripe link not set */
 ctaBtn.addEventListener('click', (e) => {
-  const link = STRIPE_LINKS[cohortAdded ? 'cohort' : 'course'];
+  const link = STRIPE_LINKS[coachingAdded ? 'coaching' : 'course'];
   if (!link || link.startsWith('PASTE_')) {
     e.preventDefault();
-    alert(`Stripe link for ${cohortAdded ? 'cohort' : 'course'} not configured.`);
+    alert(`Stripe link for ${coachingAdded ? 'coaching' : 'course'} not configured.`);
   }
 });
 
